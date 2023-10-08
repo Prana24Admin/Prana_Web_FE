@@ -1,0 +1,103 @@
+.Popular{
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.best-img{
+    width:450px;
+    height:270px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+.pop{
+  margin-top:40px  
+}
+.cor-img{
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.deal-par{
+    font-size: 12px;
+    font-weight: bold;
+    color:black !important;
+}
+.deal{
+    line-height: 0.7px;
+    color:black !important;
+    font-size: 12px;
+}
+.deal-mrp{
+    font-size: 14px;
+    font-weight: bold;
+}
+.deal-mrp1{
+    font-size: 14px;
+    font-weight: bold;
+    color:black !important;
+    line-height: 1px;
+}
+.deal-mrp2{
+    font-size: 12px;
+    font-weight: bold;
+    color:black !important;
+    line-height: 1px;
+
+}
+.rup{
+    color:red
+}
+.deal-btn{
+    background-color: #0e382c;
+    color:white;
+    padding:3px 20px;
+    border-color:#0e382c
+}
+.deal-img{
+    margin-top: 40px;
+}
+.med-slide{
+   margin:40px 40px 0px 40px
+}
+.innercard-poppar{
+    font-size: 12px;
+    font-weight: bold;
+    color:black 
+}
+.innercard-poppar1{
+    font-size: 14px;
+    line-height: 0.7px;
+    color:black !important
+}
+.innercard-poppar2{
+    font-size: 14px;
+}
+.mrp-pop{
+    font-weight: bold;
+    color:red
+}
+.innercard-btn{
+    background-color: #0e382c;
+    color:white;
+    padding:3px 10px;
+    border-radius: 10px;
+}
+.card-con{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.card-health{
+    margin-left: 40px;
+}
+.card-health-par{
+    margin-left:15px;
+    margin-top:10px
+}
+.med-inner-med{
+    margin-left: 40px;
+    font-weight: bold;
+}
+.med-inner-sub-par{
+    margin-right:40px;
+    opacity:0.7;
+    font-size: 12px;
+}

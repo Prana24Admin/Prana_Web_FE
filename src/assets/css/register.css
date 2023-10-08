@@ -1,0 +1,130 @@
+.reg-par{
+    text-align: center;
+    color:#0e382c;
+}
+.outer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+.splash-img{
+    width: 500px;
+    height:570px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius:20px
+}
+.inner {
+  width: 500px;
+  height:570px;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  transition: all .3s;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.outer .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.outer h3 {
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+label{
+  font-weight: 600;
+}
+.forgot-password,
+.forgot-password{
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+  cursor: pointer;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+.reg-foot{
+    margin-top: 30px;
+}
+.register-btn{
+    margin-top:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+}
+.reg-btn{
+    background-color: #25a0cb;
+    border:none;
+    color:white;
+    border-radius: 20px;
+    padding:5px 20px;
+    width:200px;
+    margin-top:20px
+}
+.for-par{
+    cursor: pointer;
+    margin-top: 10px;
+}
+.reg{
+  margin-top:20px
+}
+.reg-foot{
+  margin-top: 60px;
+}
+.forgot{
+  text-align: right;
+  font-size: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color:grey;
+  cursor: pointer;
+}
+.register-screen{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:75px
+}
+.prana-head{
+    color:#25a0cb
+}
+.form-field{
+    margin-top: 10px;
+}
+.log-login{
+  font-weight: bold;
+}
+#form-login{
+  margin-top: 60px;
+}
+#form-pass{
+  margin-top: 15px;
+}
+#pass-for{
+  margin-top: 30px;
+}
+#form-login1{
+  margin-top: 100px;
+}
+.inputfield-otp{
+  display: flex;
+  flex-direction: row;
+  
+}
+.otp-in{
+  width:50px;
+  margin-left:20px;
+  margin-right: 10px;
+}

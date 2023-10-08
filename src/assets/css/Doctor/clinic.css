@@ -1,0 +1,27 @@
+.book{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1px;
+   }
+   .clinic{
+       margin:40px
+   }
+   .clinic-img{
+       width:280px;
+       height:200px;
+       border-radius: 5px;
+   }
+   .clinic-col{
+       margin-left:40px
+   }
+   .clinic-par{
+       font-size: 15px;
+       font-weight: bold;
+       color:black !important;
+       margin-top: 3PX;
+   
+   }
+   .clinic-par1{
+       line-height: 1px;
+       color:black !important
+   }

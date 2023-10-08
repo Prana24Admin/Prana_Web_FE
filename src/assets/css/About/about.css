@@ -1,0 +1,62 @@
+.par-txt{
+    text-align: center;
+    margin:10px 25px;
+    font-size: 18px;
+}
+.ultimate{
+    text-align: center;
+}
+.about-img{
+    width:80px;
+    height:80px
+}
+.connect{
+    margin-top: 10px;
+    color:grey
+}
+.transparency{
+    margin:10px;
+    color:grey
+}
+.par-mid{
+    background-color: #0e382c;
+    margin-top: 40px;
+    height:100px;
+
+}
+.ultimate{
+    font-size: 20px;
+    color:#fff;
+    padding-top: 30px;
+}
+.pra{
+    color:#0e382c;
+    opacity:0.5
+}
+.prana{
+    margin: 30px 100px 0px 100px;
+   
+}
+.yout{
+    margin: 30px 100px;
+}
+.about-inner-par{
+    font-weight: bold;
+    margin-left:60px;
+    line-height: 1px; 
+    font-size:20px;
+    margin-top: 30px;  
+}
+.about-inner-par1{
+    margin-left:60px;
+    line-height: 1px; 
+    margin-top:30px   
+}
+.about-inner-par2{
+    margin-left:40px;
+    background-color: #d7faf8; 
+    padding:20px 20px;
+    border-radius: 10px;
+    width: 260px;
+    margin-top: 30px;
+}

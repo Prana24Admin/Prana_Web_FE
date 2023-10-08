@@ -1,0 +1,41 @@
+.pay-col{
+    margin-left:10px
+}
+.pay-img{
+    width:460px
+}
+.prescription{
+    margin-top:40px
+}
+.pre-row{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.pres-img{
+    width:150px;
+    height:150px
+}
+.upload-img{
+    width:200px;
+    height:150px;
+    background:none !important;
+    border: none !important;
+}
+.col2{
+    margin-left: 40px;
+}
+.trend-col{
+    margin-top:10px
+}
+.ayur{
+    margin-left:60px
+ }
+ .ayur1{
+     margin-left:30px
+ }
+ 
+ .card-row-shop{
+    margin:10px 20px;
+ }
+ 

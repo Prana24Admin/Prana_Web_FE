@@ -1,0 +1,203 @@
+.innerLab-img{
+    width:1340px;
+    height: 300px;
+    border-radius: 20px;
+}
+.innerlab-med{
+    margin-left:80px;
+    margin-top: 50px;
+}
+.innerLab-img{
+    width:1340px;
+    height: 300px;
+    border-radius: 20px;
+}
+.innerlab-med{
+    margin-left:80px;
+    margin-top: 50px;
+}
+.labicon-person{
+    width:56px;
+    height:56px
+}
+.row-space-lab{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left:80px ;
+    margin-top:60px;
+    margin-right: 100px;
+    background-color: #e6f5fc;
+    padding:20px 20px;
+    border-radius: 20px;
+}
+.innerLab-par-med{
+    font-size: 12px;
+    line-height: 0.5px;
+}
+.innerLab-par1-med{
+    font-weight: bold;
+}
+.inner-col-lab-med{
+    margin-left:10px
+}
+.med-call-icon{
+    height:20px
+}
+.lab-num{
+    font-weight: bold;
+    margin-top: 5px;
+    margin-right:10px
+}
+.innermedicine-img1{
+    margin-left:80px;
+    margin-top: 70px;
+    width:1340px;
+    height: 300px;
+    border-radius: 20px;
+}
+.innerTest-med{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.innerTest-test{
+    width:27px;
+    height:21px
+}
+.inner-inner-row{
+    margin-left: 20px;
+    border:1px solid black;
+    padding:5px 20px 0px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.innerTestcol{
+    margin-left:30px;
+    margin-right:30px;
+    
+}
+.plus-lab{
+    margin-left:80px;
+    margin-right:80px;
+    justify-content: center;
+    background-color:#8573e1;
+    padding:20px 0px 10px 0px;
+    border-radius: 20px;
+}
+.plus-icon{
+    width:30px;
+    height:31px;
+}
+.plus-col{
+    margin-left:30px
+}
+.par-col-plus{
+    color:white;
+    margin-top: 2px;
+}
+.testby-par{
+    margin-top: 40px;
+    margin-left: 80px;
+    font-weight: bold;
+    font-size: 24px;
+}
+.testby{
+    width:150px;
+    height:150px
+}
+.cour-test{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+.testbyimg-par{
+    margin-left:50px;
+    margin-top:20px;
+    font-weight: bold;
+}
+.checkup-row{
+    margin-left: 80px;
+}
+.checkup-col{
+    margin:10px 50px;
+    border:1px solid grey;
+    padding:10px 50px 0px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.card-img-health-pack{
+    width:350px;
+    height:400px;
+}
+.vitamin-img-lab{
+    width:350px;
+    height:250px
+}
+.vitamin-par{
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    color:black
+}
+.vitamin-par1{
+    line-height: 0.7px;
+    font-size: 12px;
+    color:black;
+    text-align: center;
+}
+.vitamin-par2{
+    text-align: center;
+    font-weight: bold;
+    color:black
+}
+.cor-img-test{
+    margin-left:80px;
+    margin-top:40px;
+    margin-right:80px
+}
+.rate-mark{
+    margin-left:15px;
+    color:black;
+    margin-top:10px
+}
+.stri-mark{
+    color:red
+}
+.book-now{
+    text-align: right;
+    margin-right: 10px;
+    color:white;
+    background-color:#0e382c ;
+    padding:5px 20px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.mark-row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.offer-col1{
+    margin-left:20px
+}
+.cor-img{
+   margin-top:60px;
+   
+}
+.cor-thou{
+    font-size:32px;
+    font-weight:bold;
+    text-align:center
+}
+.cor-evry{
+    
+    text-align:center;
+    
+}
+.raj{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold
+}

@@ -1,0 +1,214 @@
+.about-par{
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 120px;
+}
+.about-par-span{
+    color:#0e382c;
+}
+.about-par1{
+    /* background-color: #2f227c; */
+    color:#0e382c;
+    font-size:1.35rem;
+    text-align: center;
+}
+.about-con{
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.about-row{
+    padding-top:40px;
+ }
+.row-about-par1{
+    font-size: 1.35rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.row-about-par2{
+    font-size: 1.35rem;
+   line-height: 1.6;
+}
+.back_image{
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center top;
+    background-attachment: fixed;
+    height :80vh
+}
+#row-about-par{
+    margin-left:164px;
+}
+.box,.box1,.box2 {
+    box-shadow: 0 5px 10px rgba(0,0,0);
+    transition: box-shadow 0.3s ease-in-out;
+    padding:70px;
+    border-radius: 10px;
+    border-color:white !important ;
+    margin-bottom: 50px;
+    margin-right:60px;
+    margin-top:20px
+}
+.box:hover:after,.box1:hover:after,.box2:hover:after {
+    content:'Customer comes first” ';
+    background-color: #0e382c;
+   color:white; 
+}
+.box:after,.box1:after,.box2:after {
+    content:'Customer First';
+    color :#0e382c;
+    font-size: 1.56rem;
+}
+.box:hover,.box1:hover,.box2:hover{
+    box-shadow: 0 5px 10px rgba(0,0,0);
+    transition: box-shadow 0.3s ease-in-out;
+    padding:70px;
+    border-radius: 10px;
+    border-color:white !important ;
+    margin-bottom: 50px;
+    /* background-color: #2f227c; */
+    background-color: #0e382c;
+}
+.sub-row3{
+    justify-content: center;
+    align-items: center;
+    
+}
+.sub-row2{
+    justify-content: center;
+    align-items: center;
+}
+.about-inner-container2{
+    background-color:#0e382c;
+    padding-bottom:30px;
+    margin-top:60px;
+}
+.about-inner2-par{
+    color:white;
+    font-size:2.5rem;
+    padding-top:20px;
+    text-align: center;
+}
+.about-inner2-span-par{
+    color:#0e382c
+}
+.about-inner2-par1{
+    color:white;
+    font-size: 1.35rem;
+    line-height:1.6;
+    margin:20px;
+}
+.sub-row4{
+    justify-content: center;
+    align-items: center;
+    margin-left:30px;
+    margin-left: 200px;
+}
+.inner-col{
+    width:50%
+}
+.image-team{
+    margin-left:130px;
+    width:275px;
+    height:275px
+}
+.about-inner2-par2{
+    color:#0e382c;
+    font-size: 1.5rem;
+}
+.about-inner2-sub-par2{
+color:#0e382c;
+font-size: 1.15rem;
+}
+.sub-row5{
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom:50px;
+}
+.inner-col1{
+    margin-right:120px;
+}
+.about-col{
+    display: flex;
+    flex-direction: row;
+    width:50%;
+    margin:40px 100px 40px 150px;
+}
+.about-heading{
+    color:#0e382c
+}
+.about-sub-inner-container4{
+    background-color: #ffefde;
+    padding:100px
+}
+.vl{
+    border:1px solid grey !important
+}
+.about-row{
+    margin-left:30px
+}
+.about-row-col h5, .about-row-col p{
+    margin-left:30px;
+}
+
+.about-inner-new-container{
+    margin-top:60px;
+}
+.about-inner-container4{
+    margin-top:60px;
+}
+.about-inner-container3{
+margin-top: 60px;;
+}
+.btn-about-career{
+    
+background-color: #0e382c;
+border:#0e382c;
+color:white;
+padding:10px 30px;
+border-radius: 25px;
+cursor:pointer
+}
+.btn-about-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.about-inner-container5{
+    margin-top:60px;
+    text-align: center;
+    background:#0e382c;
+    color:white;
+}
+.row-investors{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.col-inv{
+    margin-left: 60px;
+    background: white;
+    padding: 10px;
+}
+.investors{
+    margin: 70px 0px 10px 0px;
+    padding-bottom: 60px;
+}
+.about-inner-container5 h2{
+    padding-top:30px;
+    
+}
+.sub-col-8{
+    margin: 30px;
+    height: 30px;
+}
+.playstore{
+    width:136px;
+    height:42px
+}
+.par-col{
+    margin-top:20px
+}

@@ -1,0 +1,25 @@
+.offers{
+    margin-top:40px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.offer-img{
+    height:50px;
+    width:50px
+}
+.offer-col{
+    margin:10px
+}
+.offer-col1{
+    margin:30px
+}
+.offer-col2{
+    margin-top: 40px;
+
+}
+.home-inner-offer{
+    margin-left:40px
+}
+.card-offer-cur{
+    cursor: pointer;
+}

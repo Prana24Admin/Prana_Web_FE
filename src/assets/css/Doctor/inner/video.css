@@ -1,0 +1,130 @@
+.video-row{
+    background-color: #eef8e6;
+    padding-top:100px
+}
+.video-btn{
+    background-color: red;
+    color:white;
+    width:150px;
+    text-align: center;
+    padding:5px 0px;
+    margin-top:20px;
+    cursor:pointer
+}
+.sofa{
+    width: 400px;
+    height: 200px;
+    margin-left:600px;
+    margin-top: 60px;
+}
+.video-col{
+    margin-left:100px;
+    margin-top:60px
+}
+.private{
+    font-size: 20px;
+}
+.per{
+    height:75px;
+    width:75px;
+    border-top-left-radius: 50% 50%;
+     border-top-right-radius: 50% 50%; 
+     border-bottom-right-radius: 50% 50%; 
+     border-bottom-left-radius: 50% 50%;
+}
+#per{
+    position: relative;
+    margin-left:-18px
+}
+.vid-par{
+    margin:20px 10px
+}
+.btn-doctor-video{
+    background-color: #0e3821;
+    color: white;
+    border: none;
+}
+.reg-par{
+    text-align: center;
+    color:#0e382c;
+}
+.outer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  /* margin-top: 50px; */
+}
+
+.inner {
+  width: 450px;
+  /* margin: auto; */
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+
+.outer .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.outer h3 {
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+label{
+  font-weight: 600;
+}
+.forgot-password,
+.forgot-password{
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+  cursor: pointer;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
+.reg-foot{
+    margin-top: 30px;
+}
+.register-btn{
+    margin-top:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+}
+.reg-btn{
+    background-color: #0e382c;
+    color:white;
+    border-radius: 10px;
+    padding:5px 20px
+}
+.for-par{
+    cursor: pointer;
+    color:#0e382c
+}
+.reg{
+  margin-top:20px
+}
+.reg-foot{
+  margin-top: 60px;
+}
+.forgot{
+  text-align: right;
+  font-size: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+  color:grey;
+  cursor: pointer;
+}

@@ -1,0 +1,10 @@
+/* .feature-img-row{
+    display: flex;
+    flex-direction: column;
+} */
+.feature-home{
+   display: flex;
+}
+#slide-img{
+    margin:10px 20px
+}

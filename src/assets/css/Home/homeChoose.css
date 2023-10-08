@@ -1,0 +1,22 @@
+.choose-img{
+    width:84px;
+    height:84px;
+}
+.choose-par{
+    font-weight: bold;
+    font-size: 20px;
+}
+.choose{
+    background-color: #f8f9ff;
+    padding:40px 20px;
+    margin:20px 40px
+}
+.choose-mill{
+    font-size:18px;
+    font-weight: bold;
+    line-height:1px
+}
+.choose-col{
+    margin-top:20px;
+    margin-left:30px
+}

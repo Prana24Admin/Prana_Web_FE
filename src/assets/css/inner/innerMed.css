@@ -1,0 +1,37 @@
+.innermed{
+    margin-top:30px
+}
+.innerMed-popular{
+    margin: 20px 30px;
+}
+.nutri{
+    color: black !important;
+    font-weight: bold;
+    margin-left:50px
+}
+.deal{
+    font-size: 12px;
+    color:black !important;
+    margin-left:30px
+}
+.price{
+    color:black !important;
+    margin-left:30px;
+    line-height: 1px;
+}
+.deal-btn{
+    margin-left: 30px;
+    background-color: #0e382c;
+    color:white;
+    padding:10px 40px;
+    border: none;
+    border-radius:20px;
+}
+#deal{
+    margin-left:40px
+}
+.health-inner-img{
+    width:96px;
+    height:96px;
+    margin-left: 30px;
+}

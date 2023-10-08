@@ -1,0 +1,14 @@
+.inner-nav{
+    margin:0px 10px;
+    cursor: pointer;
+}
+.inner-nav:hover {
+    color:red;
+    }
+.inner-nav-row{
+    margin-left: 40px;
+}
+.med-row{
+    font-weight: bold;
+   
+}

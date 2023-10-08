@@ -1,0 +1,54 @@
+.cart-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.card-cart-inner{
+    width:600px;
+    margin:20px 0px;
+    
+}
+.vitamin-img-healthcare-cart {
+    width: 157px;
+    height: 157px;
+    margin-top: 18px;
+    margin-left: 27px;
+}
+.vitamin-img-healthcare-cart-par{
+    margin-left: 33px;
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+}
+.cart-title{
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    
+}
+.cart-title-inner{
+    margin-top: 20px;
+}
+
+.cart-title-inner1{
+   /* line-height:0.7px */
+}
+.main-head-title{
+    margin: 10px;
+    font-size: 24px;
+    font-weight:bold
+}
+.cart-inner-title-row{
+    margin-left: 30px;
+}
+.plus-cart-icon{
+    height: 35px;
+  width: 35px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%; /* may require vendor prefixes */
+  border:1px solid black;
+  font-size: 25px;
+}

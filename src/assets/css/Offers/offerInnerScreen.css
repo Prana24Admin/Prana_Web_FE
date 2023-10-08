@@ -1,0 +1,30 @@
+.offer-inner-row{
+    display: flex;
+    justify-content: space-around;
+    margin-top:30px;
+    margin-bottom:30px
+}
+.offer-inner-col{
+    padding-right:30px
+}
+.cardScreen{
+    width:40rem;
+    margin:20px
+}
+.col-offer-inner-row{
+    display: flex;
+    justify-content: space-between;
+}
+.offer-inner-par{
+    margin-left:30px
+}
+.coupon{
+    margin-left: 20px;
+}
+.code{
+    font-weight: bold;
+}
+.copy-code{
+    margin-right: 20px;
+    color:#0e382c;
+}

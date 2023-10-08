@@ -1,0 +1,14 @@
+.trending-img{
+    width:146px;
+    height:146px
+}
+.item-cost{
+    margin-left:40px;
+    line-height:0.5px;
+    font-size: 12px;
+}
+.item-rate{
+    margin-left:40px;
+    font-size: 14px;
+    font-weight: 'bold';
+}

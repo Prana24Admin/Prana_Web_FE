@@ -123,8 +123,17 @@ const Register = () => {
                     className="form-control"
                     placeholder="Enter Last Name"
                     name="last_name"
-                    {...register("lastName", { pattern: /^[A-Za-z]+$/i })}
+                    {...register("lastName", {
+                      required: true,
+                      pattern: /^[A-Za-z]+$/i,
+                    })}
+                    aria-invalid={errors.lastName ? "true" : "false"}
                   />
+                  {errors.lastName?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Last name is required
+                    </p>
+                  )}
                 </div>
                 <div className="form-group form-field">
                   <label>Email</label>
@@ -133,10 +142,17 @@ const Register = () => {
                     className="form-control"
                     placeholder="Enter email"
                     {...register("email", {
+                      required: true,
                       pattern:
                         /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     })}
+                    aria-invalid={errors.email ? "true" : "false"}
                   />
+                  {errors.email?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Email is required
+                    </p>
+                  )}
                 </div>
                 <div className="form-group form-field">
                   <label>Phone No.</label>
@@ -145,9 +161,23 @@ const Register = () => {
                     className="form-control"
                     placeholder="Enter contact no"
                     {...register("phoneNumber", {
+                      required: true,
+                      minLength: 10,
+                      maxLength: 10,
                       pattern: /^\d{10}$/,
                     })}
+                    aria-invalid={errors.phoneNumber ? "true" : "false"}
                   />
+                  {errors.phoneNumber?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      please Enter correct mobile number
+                    </p>
+                  )}
+                  {errors.phoneNumber?.type === "minLength" && (
+                    <p className="form-error" role="alert">
+                      Mobile number must be 10 digit
+                    </p>
+                  )}
                 </div>
                 <div className="form-group form-field">
                   <label>Password</label>
@@ -156,10 +186,22 @@ const Register = () => {
                     className="form-control"
                     placeholder="Enter password"
                     {...register("password", {
+                      required: true,
                       min: 8,
                       pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
                     })}
+                    aria-invalid={errors.password ? "true" : "false"}
                   />
+                  {errors.password?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Password is required
+                    </p>
+                  )}
+                  {errors.password?.type === "min" && (
+                    <p className="form-error" role="alert">
+                      Password must be 8 digits
+                    </p>
+                  )}
                 </div>
                 <div className="register-btn form-field">
                   <button type="submit" className="reg-btn">

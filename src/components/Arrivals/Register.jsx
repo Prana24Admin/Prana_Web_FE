@@ -32,19 +32,67 @@ const Register = () => {
 
   const onSubmit = (data) => console.log(data);
 
+  // async function signUp(){
+  //     let item={firstName,lastName,password,email,phone}
+  //      console.log(item)
+  //      axios.post('https://api-prana.prana24.in/api/auth/admin/signup',{
+  //         email:email,
+  //         first_name:firstName,
+  //         last_name:lastName,
+  //         phone_number:phone,
+  //         password:password
+  //      }).then(result=>{
+  //         console.log(result)
+  //      }).catch(error =>{
+  //         console.log(error)
+  //      })
+  // let result = await fetch('https://api-prana.prana24.in/api/auth/admin/signup',{
+  //     method:'POST',
+  //     body:JSON.stringify(item),
+  //     headers:{
+  //         "Content-Type" : 'application/json',
+  //         "Accept" : 'application/json'
+  //     }
+  // })
+  // result = await result.json()
+  // console.log("result",result)
+  //         var myHeaders = new Headers();
+  // myHeaders.append("Content-Type", "application/json");
+
+  // var raw = JSON.stringify({
+  //   "first_name": "J",
+  //   "last_name": "K",
+  //   "email": "grandhi.saikiranmayi@gmail.com",
+  //   "password": "password",
+  //   "phone_ext": "+91",
+  //   "phone_number": "9100394566"
+  // });
+
+  // var requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: raw,
+  //   redirect: 'follow'
+  // };
+
+  // fetch("https://api-prana.prana24.in/api/auth/admin/signup", requestOptions)
+  //   .then(response => response.text())
+  //   .then(result => console.log(result))
+  //   .catch(error => console.log('error', error));
+  //
   return (
     <div className="register-screen">
-      <div className="max-width">
-        <div className="d-flex flex-row col-lg-8">
-          <div className="d-flex flex-column">
-            <img className="splash-img" src={Splash} alt="" />
-          </div>
-          <div className="d-flex flex-column col-lg-6">
-            <div className="outer">
-              <div className="inner">
-                <h3 className="prana-head">Prana 24</h3>
-                <form className="form" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="form-group input-height form-field">
+      <div className="d-flex flex-row col-lg-8">
+        <div className="d-flex flex-column">
+          <img className="splash-img" src={Splash} alt="" />
+        </div>
+        <div className="d-flex flex-column col-lg-6">
+          <div className="outer">
+            <div className="inner">
+              <h3 className="prana-head">Prana 24</h3>
+              <form className="form" onSubmit={handleSubmit(onSubmit)}>
+                <div className="input-height">
+                  <div className="form-group form-field">
                     <label>First Name</label>
                     <input
                       type="text"
@@ -69,109 +117,107 @@ const Register = () => {
                       </p>
                     )}
                   </div>
-                  <div className="form-group input-height form-field">
-                    <label>Last Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter Last Name"
-                      name="last_name"
-                      {...register("lastName", {
-                        required: true,
-                        pattern: /^[A-Za-z]+$/i,
-                      })}
-                      aria-invalid={errors.lastName ? "true" : "false"}
-                    />
-                    {errors.lastName?.type === "required" && (
-                      <p className="form-error" role="alert">
-                        Last name is required
-                      </p>
-                    )}
-                  </div>
-                  <div className="form-group input-height form-field">
-                    <label>Email</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter email"
-                      {...register("email", {
-                        required: true,
-                      })}
-                      aria-invalid={errors.email ? "true" : "false"}
-                    />
-                    {errors.email?.type === "required" && (
-                      <p className="form-error" role="alert">
-                        Email is required
-                      </p>
-                    )}
-                  </div>
-                  <div className="form-group input-height form-field">
-                    <label>Phone No.</label>
-                    <input
-                      type="Phone"
-                      className="form-control"
-                      placeholder="Enter contact no"
-                      {...register("phoneNumber", {
-                        required: true,
-                        minLength: 10,
-                        maxLength: 10,
-                        pattern: /^\d{10}$/,
-                      })}
-                      aria-invalid={errors.phoneNumber ? "true" : "false"}
-                    />
-                    {errors.phoneNumber?.type === "required" && (
-                      <p className="form-error" role="alert">
-                        please Enter correct mobile number
-                      </p>
-                    )}
-                    {errors.phoneNumber?.type === "minLength" && (
-                      <p className="form-error" role="alert">
-                        Mobile number must be 10 digits
-                      </p>
-                    )}
-                    {errors.phoneNumber?.type === "maxLength" && (
-                      <p className="form-error" role="alert">
-                        Mobile should not be greater than 10 digits
-                      </p>
-                    )}
-                  </div>
-                  <div className="form-group input-height form-field">
-                    <label>Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter password"
-                      {...register("password", {
-                        required: true,
-                        minLength: 8,
-                      })}
-                      aria-invalid={errors.password ? "true" : "false"}
-                    />
-                    {errors.password?.type === "required" && (
-                      <p className="form-error" role="alert">
-                        Password is required
-                      </p>
-                    )}
-                    {errors.password?.type === "minLength" && (
-                      <p className="form-error" role="alert">
-                        Password must be 8 digits
-                      </p>
-                    )}
-                  </div>
-                  <div className="register-btn form-field">
-                    <button type="submit" className="reg-btn">
-                      Register
-                    </button>
-                  </div>
-                  <p
-                    className="forgot-password text-center for-par"
-                    onClick={navigateLogin}
-                  >
-                    Already registered{"  "}{" "}
-                    <span className="log-login">Login</span>
-                  </p>
-                </form>
-              </div>
+                </div>
+                <div className="form-group input-height form-field">
+                  <label>Last Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter Last Name"
+                    name="last_name"
+                    {...register("lastName", {
+                      required: true,
+                      pattern: /^[A-Za-z]+$/i,
+                    })}
+                    aria-invalid={errors.lastName ? "true" : "false"}
+                  />
+                  {errors.lastName?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Last name is required
+                    </p>
+                  )}
+                </div>
+                <div className="form-group input-height form-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    placeholder="Enter email"
+                    {...register("email", {
+                      required: true,
+                      // pattern:
+                      //   /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    })}
+                    aria-invalid={errors.email ? "true" : "false"}
+                  />
+                  {errors.email?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Email is required
+                    </p>
+                  )}
+                </div>
+                <div className="form-group input-height form-field">
+                  <label>Phone No.</label>
+                  <input
+                    type="Phone"
+                    className="form-control"
+                    placeholder="Enter contact no"
+                    {...register("phoneNumber", {
+                      required: true,
+                      minLength: 10,
+                      maxLength: 10,
+                      pattern: /^\d{10}$/,
+                    })}
+                    aria-invalid={errors.phoneNumber ? "true" : "false"}
+                  />
+                  {errors.phoneNumber?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      please Enter correct mobile number
+                    </p>
+                  )}
+                  {errors.phoneNumber?.type === "minLength" && (
+                    <p className="form-error" role="alert">
+                      Mobile number must be 10 digit
+                    </p>
+                  )}
+                </div>
+                <div className="form-group input-height form-field">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter password"
+                    {...register("password", {
+                      required: true,
+                      min: 8,
+                      pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
+                    })}
+                    aria-invalid={errors.password ? "true" : "false"}
+                  />
+                  {errors.password?.type === "required" && (
+                    <p className="form-error" role="alert">
+                      Password is required
+                    </p>
+                  )}
+                  {errors.password?.type === "min" && (
+                    <p className="form-error" role="alert">
+                      Password must be 8 digits
+                    </p>
+                  )}
+                </div>
+                <div className="register-btn form-field">
+                  <button type="submit" className="reg-btn">
+                    Register
+                  </button>
+                </div>
+                <p
+                  className="forgot-password text-center for-par"
+                  onClick={navigateLogin}
+                >
+                  Already registered{"  "}{" "}
+                  <span className="log-login">Login</span>
+                </p>
+              </form>
             </div>
           </div>
         </div>

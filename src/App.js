@@ -1,32 +1,33 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from './components/Arrivals/Register'
-import Home from './components/Home/index'
-import Login from './components/Arrivals/Login'
-import Forgot from './components/Arrivals/forgot'
-import OTP from './components/Arrivals/otp'
-import PasswordChange from './components/Arrivals/passwordchange'
-import AboutIn from './components/About/index'
-import Contact from './components/contact/index'
-import Career from './components/career/index'
-import OfferScreen from './components/Offers/index'
-import Payment from './components/Offers/payment'
-import Medicine from './components/Offers/medicine';
-import Diagnostic from './components/Offers/disgnostic';
-import HealthCare from './components/Offers/healthCare';
-import Prescription from './components/Home/innerHome/prescription'
-import InnerMed from './components/Inner/Medicine/index'
-import InnerAyur from './components/Inner/Ayurveda/index'
-import Doctor from './components/Doctor/index'
-import InnerDoctor from './components/Doctor/inner/index'
-import FindDoctor from './components/Doctor/findDoctor/index';
-import Appointment from './components/Doctor/findDoctor/appointment';
-import InnerLab from './components/Lab/index';
-import HealthCareIndex from './components/HealthCare/index'
-import HealthBlogIndex from './components/HealthBlog/index'
-import CartIndex from './components/cart/index';
-const App = () =>{
-  return(
+import Register from "./components/Arrivals/Register";
+import Home from "./components/Home/index";
+
+import Forgot from "./components/Arrivals/forgot";
+import OTP from "./components/Arrivals/otp";
+import PasswordChange from "./components/Arrivals/passwordchange";
+import AboutIn from "./components/About/index";
+import Contact from "./components/contact/index";
+import Career from "./components/career/index";
+import OfferScreen from "./components/Offers/index";
+import Payment from "./components/Offers/payment";
+import Medicine from "./components/Offers/medicine";
+import Diagnostic from "./components/Offers/disgnostic";
+import HealthCare from "./components/Offers/healthCare";
+import Prescription from "./components/Home/innerHome/prescription";
+import InnerMed from "./components/Inner/Medicine/index";
+import InnerAyur from "./components/Inner/Ayurveda/index";
+import Doctor from "./components/Doctor/index";
+import InnerDoctor from "./components/Doctor/inner/index";
+import FindDoctor from "./components/Doctor/findDoctor/index";
+import Appointment from "./components/Doctor/findDoctor/appointment";
+import InnerLab from "./components/Lab/index";
+import HealthCareIndex from "./components/HealthCare/index";
+import HealthBlogIndex from "./components/HealthBlog/index";
+import CartIndex from "./components/cart/index";
+import Login from "./components/Arrivals/Login/Login";
+const App = () => {
+  return (
     <>
       <Router>
         <Routes>
@@ -53,11 +54,11 @@ const App = () =>{
           <Route path="/inner/doctor/finddoctor" element={<FindDoctor />} />
           <Route path="/inner/doctor/appointment" element={<Appointment />} />
           <Route path="/inner/healthCare" element={<HealthCareIndex />} />
-          <Route path="/inner/healthBlog" element = {<HealthBlogIndex />} />
+          <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
           <Route path="/cart" element={<CartIndex />} />
         </Routes>
       </Router>
     </>
-  )
-}
-export default App
+  );
+};
+export default App;

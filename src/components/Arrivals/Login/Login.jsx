@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import Splash from "../../assets/images/splash.jpg";
+import Splash from "../../../assets/images/splash.jpg";
+import "./login.module.css";
 import axios from "axios";
 import { Form, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 const Login = () => {
   const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
@@ -15,6 +17,31 @@ const Login = () => {
   const navigateForgot = () => {
     navigate("/forgot");
   };
+
+  // const {
+  //   signin,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   defaultValues: {
+  //     email: "",
+  //     password: "",
+  //   },
+  // });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <>
       <div className="register-screen">
@@ -26,14 +53,29 @@ const Login = () => {
             <div className="outer">
               <div className="inner">
                 <h3 className="prana-head">Prana 24</h3>
-                <form className="form" id="form-login">
-                  <div className="form-group">
+                <form
+                  className="form"
+                  id="form-login"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <div className="form-group input-height">
                     <label>Email</label>
                     <input
                       type="email"
                       className="form-control"
                       placeholder="Enter email"
+                      {...register("email", {
+                        required: true,
+                        // pattern:
+                        //   /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      })}
+                      aria-invalid={errors.email ? "true" : "false"}
                     />
+                    {errors.email?.type === "required" && (
+                      <p className="form-error" role="alert">
+                        Email is required
+                      </p>
+                    )}
                   </div>
 
                   <div className="form-group" id="form-pass">
@@ -42,7 +84,23 @@ const Login = () => {
                       type="password"
                       className="form-control"
                       placeholder="Enter password"
+                      {...register("password", {
+                        required: true,
+                        min: 8,
+                        pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
+                      })}
+                      aria-invalid={errors.password ? "true" : "false"}
                     />
+                    {errors.password?.type === "required" && (
+                      <p className="form-error" role="alert">
+                        Password is required
+                      </p>
+                    )}
+                    {errors.password?.type === "min" && (
+                      <p className="form-error" role="alert">
+                        Password must be 8 digits
+                      </p>
+                    )}
                   </div>
                   <div>
                     <p
@@ -57,7 +115,7 @@ const Login = () => {
                     <button
                       type="submit"
                       className="reg-btn"
-                      onClick={navigateHome}
+                      // onClick={navigateHome}
                     >
                       Login
                     </button>

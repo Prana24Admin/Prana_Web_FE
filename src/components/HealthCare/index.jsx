@@ -7,7 +7,7 @@ import Health from "./health";
 import Footer from "../Home/innerHome/footer";
 import Video from "./video";
 import HealthTxt from "./healthTxt";
-import Products from "./Products";
+import Categories from "./Categories";
 const HealthCareIndex = () => {
   return (
     <>
@@ -18,7 +18,7 @@ const HealthCareIndex = () => {
         <InnerNav />
       </div>
       <div>
-        <Products />
+        <Categories />
       </div>
       <div>
         <HealthSlide />

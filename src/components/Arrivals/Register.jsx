@@ -5,81 +5,43 @@ import "../../assets/css/register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
   const navigateLogin = () => {
     navigate("/login");
   };
-  const navigateHome = () => {
-    navigate("/home");
-  };
 
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
-      phoneNumber: "",
+      phone_number: "",
       password: "",
+      phone_ext: "+91",
+      address: "Hyd",
     },
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await axios
+      .post("https://api-prana.prana24.in/api/auth/signup", data)
+      .then((response) => {
+        toast.success("Register success");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  // async function signUp(){
-  //     let item={firstName,lastName,password,email,phone}
-  //      console.log(item)
-  //      axios.post('https://api-prana.prana24.in/api/auth/admin/signup',{
-  //         email:email,
-  //         first_name:firstName,
-  //         last_name:lastName,
-  //         phone_number:phone,
-  //         password:password
-  //      }).then(result=>{
-  //         console.log(result)
-  //      }).catch(error =>{
-  //         console.log(error)
-  //      })
-  // let result = await fetch('https://api-prana.prana24.in/api/auth/admin/signup',{
-  //     method:'POST',
-  //     body:JSON.stringify(item),
-  //     headers:{
-  //         "Content-Type" : 'application/json',
-  //         "Accept" : 'application/json'
-  //     }
-  // })
-  // result = await result.json()
-  // console.log("result",result)
-  //         var myHeaders = new Headers();
-  // myHeaders.append("Content-Type", "application/json");
-
-  // var raw = JSON.stringify({
-  //   "first_name": "J",
-  //   "last_name": "K",
-  //   "email": "grandhi.saikiranmayi@gmail.com",
-  //   "password": "password",
-  //   "phone_ext": "+91",
-  //   "phone_number": "9100394566"
-  // });
-
-  // var requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   body: raw,
-  //   redirect: 'follow'
-  // };
-
-  // fetch("https://api-prana.prana24.in/api/auth/admin/signup", requestOptions)
-  //   .then(response => response.text())
-  //   .then(result => console.log(result))
-  //   .catch(error => console.log('error', error));
-  //
   return (
     <div className="register-screen">
       <div className="d-flex flex-row col-lg-8">
@@ -99,19 +61,19 @@ const Register = () => {
                       className="form-control"
                       placeholder="Enter First Name"
                       name="first_name"
-                      {...register("firstName", {
+                      {...register("first_name", {
                         required: true,
                         minLength: 3,
                         maxLength: 20,
                       })}
-                      aria-invalid={errors.firstName ? "true" : "false"}
+                      aria-invalid={errors.first_name ? "true" : "false"}
                     />
-                    {errors.firstName?.type === "required" && (
+                    {errors.first_name?.type === "required" && (
                       <p className="form-error" role="alert">
                         First name is required
                       </p>
                     )}
-                    {errors.firstName?.type === "minLength" && (
+                    {errors.first_name?.type === "minLength" && (
                       <p className="form-error" role="alert">
                         Greater than 3 characters
                       </p>
@@ -125,13 +87,13 @@ const Register = () => {
                     className="form-control"
                     placeholder="Enter Last Name"
                     name="last_name"
-                    {...register("lastName", {
+                    {...register("last_name", {
                       required: true,
                       pattern: /^[A-Za-z]+$/i,
                     })}
-                    aria-invalid={errors.lastName ? "true" : "false"}
+                    aria-invalid={errors.last_name ? "true" : "false"}
                   />
-                  {errors.lastName?.type === "required" && (
+                  {errors.last_name?.type === "required" && (
                     <p className="form-error" role="alert">
                       Last name is required
                     </p>
@@ -162,20 +124,20 @@ const Register = () => {
                     type="Phone"
                     className="form-control"
                     placeholder="Enter contact no"
-                    {...register("phoneNumber", {
+                    {...register("phone_number", {
                       required: true,
                       minLength: 10,
                       maxLength: 10,
                       pattern: /^\d{10}$/,
                     })}
-                    aria-invalid={errors.phoneNumber ? "true" : "false"}
+                    aria-invalid={errors.phone_number ? "true" : "false"}
                   />
-                  {errors.phoneNumber?.type === "required" && (
+                  {errors.phone_number?.type === "required" && (
                     <p className="form-error" role="alert">
                       please Enter correct mobile number
                     </p>
                   )}
-                  {errors.phoneNumber?.type === "minLength" && (
+                  {errors.phone_number?.type === "minLength" && (
                     <p className="form-error" role="alert">
                       Mobile number must be 10 digit
                     </p>
@@ -190,7 +152,7 @@ const Register = () => {
                     {...register("password", {
                       required: true,
                       min: 8,
-                      pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
+                      // pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
                   />
@@ -206,8 +168,12 @@ const Register = () => {
                   )}
                 </div>
                 <div className="register-btn form-field">
-                  <button type="submit" className="reg-btn">
-                    Register
+                  <button
+                    disabled={isSubmitting}
+                    type="submit"
+                    className="reg-btn"
+                  >
+                    {isSubmitting ? "Loading ..." : "Register"}
                   </button>
                 </div>
                 <p

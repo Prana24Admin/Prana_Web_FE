@@ -5,29 +5,19 @@ import axios from "axios";
 import { Form, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
 const Login = () => {
   const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
   const navigateRegister = () => {
     navigate("/");
   };
-  const navigateHome = () => {
-    navigate("/home");
-  };
+
   const navigateForgot = () => {
     navigate("/forgot");
   };
 
-  // const {
-  //   signin,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm({
-  //   defaultValues: {
-  //     email: "",
-  //     password: "",
-  //   },
-  // });
   const {
     register,
     handleSubmit,
@@ -40,7 +30,19 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await axios
+      .post("https://api-prana.prana24.in/api/auth/login", data)
+      .then((response) => {
+        toast.success("Login success");
+        localStorage.setItem("accessToken", response.data.token);
+        localStorage.setItem("refreshToken", response.data.refresh_token);
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
+      })
+      .catch((err) => toast.error(err.response.data.message));
+  };
 
   return (
     <>
@@ -87,7 +89,6 @@ const Login = () => {
                       {...register("password", {
                         required: true,
                         min: 8,
-                        pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
                       })}
                       aria-invalid={errors.password ? "true" : "false"}
                     />

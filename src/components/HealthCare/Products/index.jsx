@@ -4,61 +4,49 @@ import InnerNav from "../../Home/Nav/innerNav";
 import World from "../../../assets/images/home/Arrivals/homeopathic_drops.jpg";
 import "./products.css";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { useParams } from "react-router-dom";
+import axiosInstance from "../../../libs/axios";
+import { useQuery } from "@tanstack/react-query";
+import ProductItem from "./ProductItem";
 
 const Products = () => {
-  const products = [
-    {
-      id: 1,
-      name: "shampoo",
-      mrp: 222,
-      price: 200,
-    },
-    {
-      id: 2,
-      name: "soap",
-      mrp: 22,
-      price: 20,
-    },
-  ];
+  const { id } = useParams();
+
+  const fetchData = async () => {
+    const response = await axiosInstance.get(`filters/products/${id}`);
+    return response.data;
+  };
+
+  const { data, isLoading, error } = useQuery(["data"], fetchData);
+
   return (
     <div className="products-container">
       <Header />
       <InnerNav />
-      <div className="products-flexContainer">
-        <div className="products-leftContainer">
-          <div className="products-filtersContainer">
-            <h3>Categories</h3>
-            <div>
-              <h6>Brest Pumps</h6>
-              <h6>Incontennenci</h6>
-              <h6>Liners</h6>
+      {isLoading && <p>Loading..</p>}
+      {data && (
+        <div className="products-flexContainer">
+          <div className="products-leftContainer">
+            <div className="products-filtersContainer">
+              <h3>Categories</h3>
+              <div className="products-categoryContainer">
+                {data.items.map((category) => (
+                  <h6 key={category.uuid}>{category.name}</h6>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="products-rightContainer">
+            <h3>Products</h3>
+            <div className="products-productsContainer">
+              {data.products.map((product) => (
+                <ProductItem key={product.uuid} product={product} />
+              ))}
             </div>
           </div>
         </div>
-        <div className="products-rightContainer">
-          <h3>Products</h3>
-          <div className="products-productsContainer">
-            {products.map((product) => (
-              <div className="products-productsCard" key={product.id}>
-                <div className="products-Imagecenter">
-                  <img
-                    className="products-productsImage"
-                    src={World}
-                    alt="Sasasa"
-                  />
-                </div>
-                <p className="products-title">{product.name}</p>
-                <p className="products-mrpPrice">
-                  MRP:<span className="products-mrp"> {product.mrp}</span>
-                </p>
-                <p className="products-discountPrice">
-                  Our Price:{product.price}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      )}
+      {error && <p>Error fetching! Try again.</p>}
     </div>
   );
 };

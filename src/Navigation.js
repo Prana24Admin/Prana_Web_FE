@@ -57,7 +57,7 @@ const Navigation = () => {
         <Route path="/inner/healthCare" element={<HealthCareIndex />} />
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
         <Route path="/cart" element={<CartIndex />} />
-        <Route path="/Products" element={<Products />} />
+        <Route path="/categories/:id" element={<Products />} />
       </Routes>
     </Router>
   );

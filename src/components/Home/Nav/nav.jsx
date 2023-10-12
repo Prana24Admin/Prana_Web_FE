@@ -117,7 +117,7 @@ const Header = () => {
                     style={{ marginRight: "1rem" }}
                   />
                   <div class="dropdown-content">
-                    <a href="#">Your Profile</a>
+                    <a>Your Profile</a>
                     <a href="#">Your Orders</a>
                     <a href="#">Logout</a>
                   </div>

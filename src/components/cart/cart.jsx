@@ -4,7 +4,7 @@ import "../../assets/css/cart/cart.css";
 
 import axiosInstance from "../../libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Plus, Minus, Loader } from "lucide-react";
+import { Plus, Minus, Loader, IndianRupee } from "lucide-react";
 import { handleRefetchCartItems } from "../../libs/queryFunctions";
 import CartCard from "./CartCard";
 
@@ -47,27 +47,30 @@ const Cart = () => {
               </>
             ))}
           <div className="cart-rightContainer">
+            <div className="cart-savingsContainer">
+              <IndianRupee size={15} className="cart-ruppeIcon" />
+              <p className="savingsText">
+                Total savings of{" "}
+                <span style={{ fontWeight: "bold" }}>₹324</span> on this order
+              </p>
+            </div>
             <div className="cart-billContainer">
-              <h3 className="cart-titleText">Bill Summary</h3>
+              <p className="cart-titleText">Bill Summary</p>
               <div className="cart-flex">
                 <p className="cart-descriptionText">Total Mrp</p>
-                <p className="cart-descriptionText">324</p>
+                <p className="cart-descriptionText">₹324</p>
               </div>
               <div className="cart-flex">
                 <p className="cart-descriptionText">Delivery charges</p>
-                <p className="cart-descriptionText">324</p>
+                <p className="cart-descriptionText">₹324</p>
               </div>
               <div className="cart-flex">
                 <p className="cart-descriptionText">Discount</p>
-                <p className="cart-descriptionText">324</p>
+                <p className="cart-descriptionText">₹324</p>
               </div>
               <div className="cart-flex">
-                <p className="cart-descriptionText">Cart Value</p>
-                <p className="cart-descriptionText">324</p>
-              </div>
-              <div className="cart-flex">
-                <p className="cart-descriptionTextDark">Amount to be paid</p>
-                <p className="cart-descriptionTextDark">324</p>
+                <p className="cart-descriptionTextDark">Cart value</p>
+                <p className="cart-descriptionTextDark">₹324</p>
               </div>
             </div>
           </div>

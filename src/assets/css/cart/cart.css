@@ -39,8 +39,9 @@
   height: auto;
 }
 .cart-titleText {
-  /* font-size: 18px; */
+  font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: 0.65rem;
   text-transform: capitalize;
 }
 .cart-productDescription {
@@ -50,14 +51,20 @@
   font-size: 16px;
   font-weight: 400;
   color: #a3a3a3;
+  text-transform: capitalize;
 }
 .cart-descriptionTextDark {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 0.65rem;
+  text-transform: capitalize;
   color: #000;
 }
 .cart-rightContainer {
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   margin-top: 4rem;
 }
 .cart-billContainer {
@@ -73,18 +80,53 @@
   display: flex;
   justify-content: space-between;
 }
+.cart-priceText {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #a3a3a3;
+}
+.cart-discountText {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0e382c;
+  margin-left: 0.25rem;
+}
+.cart-linethrough {
+  text-decoration: line-through;
+}
+.cart-quantityContainerFlex {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 .cart-quantityContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1.5px solid #0e382c;
   border-radius: 5px;
-  width: 15%;
+  width: 100%;
   padding: 0.5rem 0.75rem;
   position: relative;
   cursor: pointer;
 }
-
+.cart-removeButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.cart-removeText {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: red;
+}
 .cart-quantity {
   font-weight: 500;
   font-size: 0.9rem;
@@ -126,3 +168,18 @@
   justify-content: center;
   align-items: center;
 }
+.cart-savingsContainer {
+  display: flex;
+  /* height:; */
+  border: 1px dotted rgb(32, 169, 32);
+  border-radius: 5px;
+  padding: 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgb(227, 255, 227);
+}
+/* .cart-rupeeIcon {
+  background-color: gold;
+  width: 50px;
+  height: 50px;
+} */

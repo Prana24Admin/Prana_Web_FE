@@ -27,6 +27,7 @@ import HealthBlogIndex from "./components/HealthBlog/index";
 import CartIndex from "./components/cart/index";
 import Login from "./components/Arrivals/Login/Login";
 import Products from "./components/HealthCare/Products";
+import Profile from "./components/Home/ProfileScreen";
 
 const Navigation = () => {
   return (
@@ -58,6 +59,7 @@ const Navigation = () => {
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
         <Route path="/cart" element={<CartIndex />} />
         <Route path="/categories/:id" element={<Products />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

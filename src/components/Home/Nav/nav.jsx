@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { BiCurrentLocation } from "react-icons/bi";
 import { UserCircle } from "lucide-react";
+import axiosInstance from "../../../libs/axios";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -29,6 +30,16 @@ const Header = () => {
   };
   const navigateCart = () => {
     navigate("/cart");
+  };
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("accessToken");
+    const response = await axiosInstance.post("/auth/logout", {
+      token: token,
+    });
+    if (response.status === 200) {
+      navigate("/login");
+    }
   };
 
   return (
@@ -114,9 +125,16 @@ const Header = () => {
                     style={{ marginRight: "1rem" }}
                   />
                   <div class="dropdown-content">
-                    <a className="dropdowntext">Your Profile</a>
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/profile")}
+                    >
+                      Your Profile
+                    </a>
                     <a className="dropdowntext">Your Orders</a>
-                    <a className="dropdowntext">Logout</a>
+                    <a className="dropdowntext" onClick={handleLogout}>
+                      Logout
+                    </a>
                   </div>
                 </div>
                 <div>

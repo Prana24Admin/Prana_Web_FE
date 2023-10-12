@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Loader, Trash, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Loader, Trash2 } from "lucide-react";
 import React, { useState } from "react";
 import axiosInstance from "../../libs/axios";
 import { handleRefetchCartItems } from "../../libs/queryFunctions";
@@ -22,6 +22,7 @@ const CartCard = ({ cartItem }) => {
   const removeItem = async (productId) => {
     const response = await axiosInstance.delete(`/cart/${productId}`);
     if (response.status === 200) {
+      toast.success("Product removed");
       handleRefetchCartItems();
     }
     return response.data;

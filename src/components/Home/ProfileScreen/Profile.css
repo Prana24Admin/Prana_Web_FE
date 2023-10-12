@@ -1,0 +1,86 @@
+.profile-container {
+  height: 100%;
+  width: 100%;
+  margin: 2rem 0;
+}
+.profile-marginContainer {
+  max-width: 1240px;
+  margin: auto;
+  display: flex;
+  gap: 2rem;
+}
+.profile-leftContainer {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.profile-rightContainer {
+  width: 70%;
+  height: 100%;
+  border: 2px solid rgb(230, 230, 230);
+}
+.profile-flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(237, 234, 234);
+}
+.profile-avatarContainer {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.profile-avatarImage {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+.profile-greeting {
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+.profile-username {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.profile-borderContainer {
+  border: 1px solid rgb(237, 234, 234);
+}
+.profile-optionsContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profile-optionsMainContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0rem;
+}
+.profile-optionsMainContainer:hover {
+  background-color: rgb(211, 255, 211);
+  border-radius: 5px;
+  color: rgb(12, 62, 12);
+  cursor: pointer;
+}
+.profile-optionsTitle {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: rgb(168, 162, 162);
+}
+.profile-innerOptions {
+  margin-top: 0.5rem;
+  width: 100%;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.profile-innerOptionsText {
+  font-weight: 500;
+  font-size: 0.95rem;
+}

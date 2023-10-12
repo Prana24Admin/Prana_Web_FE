@@ -1,11 +1,11 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 import "../../assets/css/cart/cart.css";
 
 import axiosInstance from "../../libs/axios";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Plus, Minus, Loader, IndianRupee } from "lucide-react";
-import { handleRefetchCartItems } from "../../libs/queryFunctions";
+import { useQuery } from "@tanstack/react-query";
+import { IndianRupee } from "lucide-react";
+
 import CartCard from "./CartCard";
 
 const Cart = () => {
@@ -16,15 +16,9 @@ const Cart = () => {
 
   const { data, isLoading, error } = useQuery(["cart"], fetchCart);
 
-  // const {
-  //   mutate,
-  //   isSuccess,
-  //   isLoading: isLoadingCart,
-  //   isError,
-  // } = useMutation(
-  //   useCallback((item) => handleQuantity(item), [])
-  //   // { onSuccess: () => handleRefetchCartItems() }
-  // );
+  const subTotal = data?.reduce((sum, product) => {
+    return sum + product.product.price * product.quantity;
+  }, 0);
 
   return (
     <section>
@@ -44,36 +38,37 @@ const Cart = () => {
                     <CartCard key={item.product.uuid} cartItem={item} />
                   ))}
                 </div>
+                <div className="cart-rightContainer">
+                  <div className="cart-savingsContainer">
+                    <IndianRupee size={15} className="cart-ruppeIcon" />
+                    <p className="savingsText">
+                      Total savings of{" "}
+                      <span style={{ fontWeight: "bold" }}>₹324</span> on this
+                      order
+                    </p>
+                  </div>
+                  <div className="cart-billContainer">
+                    <p className="cart-titleText">Bill Summary</p>
+                    <div className="cart-flex">
+                      <p className="cart-descriptionText">Total Mrp</p>
+                      <p className="cart-descriptionText">₹{subTotal}</p>
+                    </div>
+                    <div className="cart-flex">
+                      <p className="cart-descriptionText">Delivery charges</p>
+                      <p className="cart-descriptionText">₹324</p>
+                    </div>
+                    <div className="cart-flex">
+                      <p className="cart-descriptionText">Discount</p>
+                      <p className="cart-descriptionText">₹324</p>
+                    </div>
+                    <div className="cart-flex">
+                      <p className="cart-descriptionTextDark">Cart value</p>
+                      <p className="cart-descriptionTextDark">₹324</p>
+                    </div>
+                  </div>
+                </div>
               </>
             ))}
-          <div className="cart-rightContainer">
-            <div className="cart-savingsContainer">
-              <IndianRupee size={15} className="cart-ruppeIcon" />
-              <p className="savingsText">
-                Total savings of{" "}
-                <span style={{ fontWeight: "bold" }}>₹324</span> on this order
-              </p>
-            </div>
-            <div className="cart-billContainer">
-              <p className="cart-titleText">Bill Summary</p>
-              <div className="cart-flex">
-                <p className="cart-descriptionText">Total Mrp</p>
-                <p className="cart-descriptionText">₹324</p>
-              </div>
-              <div className="cart-flex">
-                <p className="cart-descriptionText">Delivery charges</p>
-                <p className="cart-descriptionText">₹324</p>
-              </div>
-              <div className="cart-flex">
-                <p className="cart-descriptionText">Discount</p>
-                <p className="cart-descriptionText">₹324</p>
-              </div>
-              <div className="cart-flex">
-                <p className="cart-descriptionTextDark">Cart value</p>
-                <p className="cart-descriptionTextDark">₹324</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       {error && <p>Error fetching! Try again</p>}

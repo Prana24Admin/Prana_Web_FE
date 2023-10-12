@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Home/Nav/header";
+import Header from "../Home/Nav/nav";
 import Image from "../../assets/images/career/image.jpg";
 import "../../assets/css/Career/career.css";
 import Footer from "../Home/innerHome/footer";

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../Home/Nav/header";
+import Header from "../../Home/Nav/nav";
 import InnerNav from "../../Home/Nav/innerNav";
 import World from "../../../assets/images/home/Arrivals/homeopathic_drops.jpg";
 import "./products.css";

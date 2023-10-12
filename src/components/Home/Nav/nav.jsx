@@ -4,6 +4,8 @@ import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { BiCurrentLocation } from "react-icons/bi";
+import { UserCircle } from "lucide-react";
+
 const Header = () => {
   const navigate = useNavigate();
   const navigateAbout = () => {
@@ -105,14 +107,29 @@ const Header = () => {
                     </li>
                   </Link>
                 </div>
-                <div>
-                  <li>
-                    <FloatingWhatsApp />
-                  </li>
+                {/* <div>
+                  
+                </div> */}
+                <div class="nav-dropdown">
+                  <UserCircle
+                    size={35}
+                    color="#fff"
+                    style={{ marginRight: "1rem" }}
+                  />
+                  <div class="dropdown-content">
+                    <a href="#">Your Profile</a>
+                    <a href="#">Your Orders</a>
+                    <a href="#">Logout</a>
+                  </div>
                 </div>
                 <div>
                   <li>
                     <button className="download">Download App</button>
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    <FloatingWhatsApp />
                   </li>
                 </div>
               </div>

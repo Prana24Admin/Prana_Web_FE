@@ -19,6 +19,14 @@ const CartCard = ({ cartItem }) => {
     return response.data;
   };
 
+  const removeItem = async (productId) => {
+    const response = await axiosInstance.delete(`/cart/${productId}`);
+    if (response.status === 200) {
+      handleRefetchCartItems();
+    }
+    return response.data;
+  };
+
   const { mutate, isLoading } = useMutation(
     (product) => {
       return handleQuantity(product);
@@ -52,7 +60,10 @@ const CartCard = ({ cartItem }) => {
             </p>
           </div>
           <div className="cart-quantityContainerFlex">
-            <div className="cart-removeButtonContainer">
+            <div
+              className="cart-removeButtonContainer"
+              onClick={() => removeItem(cartItem.uuid)}
+            >
               <Trash2 size={15} color="red" />
               <p className="cart-removeText">REMOVE</p>
             </div>

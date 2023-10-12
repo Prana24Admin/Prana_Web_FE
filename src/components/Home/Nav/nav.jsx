@@ -101,15 +101,12 @@ const Header = () => {
                 <div>
                   <Link to="/offers">
                     <li onClick={navigateofferScreen}>
-                      <a className="about" href="/contact">
+                      <a style={{ textDecoration: "none" }} className="about">
                         Offers
                       </a>
                     </li>
                   </Link>
                 </div>
-                {/* <div>
-                  
-                </div> */}
                 <div class="nav-dropdown">
                   <UserCircle
                     size={35}
@@ -117,9 +114,9 @@ const Header = () => {
                     style={{ marginRight: "1rem" }}
                   />
                   <div class="dropdown-content">
-                    <a>Your Profile</a>
-                    <a href="#">Your Orders</a>
-                    <a href="#">Logout</a>
+                    <a className="dropdowntext">Your Profile</a>
+                    <a className="dropdowntext">Your Orders</a>
+                    <a className="dropdowntext">Logout</a>
                   </div>
                 </div>
                 <div>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import "../../assets/css/cart/cart.css";
 
 import axiosInstance from "../../libs/axios";
-import { useQuery } from "@tanstack/react-query";
-import { Plus } from "lucide-react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { Plus, Minus, Loader } from "lucide-react";
+import { handleRefetchCartItems } from "../../libs/queryFunctions";
+import CartCard from "./CartCard";
 
 const Cart = () => {
   const fetchCart = async () => {
@@ -13,6 +15,16 @@ const Cart = () => {
   };
 
   const { data, isLoading, error } = useQuery(["cart"], fetchCart);
+
+  // const {
+  //   mutate,
+  //   isSuccess,
+  //   isLoading: isLoadingCart,
+  //   isError,
+  // } = useMutation(
+  //   useCallback((item) => handleQuantity(item), [])
+  //   // { onSuccess: () => handleRefetchCartItems() }
+  // );
 
   return (
     <section>
@@ -29,28 +41,7 @@ const Cart = () => {
                 <div className="cart-cardContainer">
                   <h3>Items in Your cart</h3>
                   {data.map((item) => (
-                    <div className="cart-Container">
-                      <div className="cart-card">
-                        <div className="cart-flexContainer">
-                          <img
-                            className="cart-Image"
-                            src={item.product.image}
-                            alt={item.product.name}
-                          />
-                          <div className="cart-productDescription">
-                            <p className="cart-titleText">
-                              {item.product.name}
-                            </p>
-                            <p className="cart-descriptionText">Quantity</p>
-                          </div>
-                          <div className="cart-quantity">
-                            <div>
-                              <Plus size={20} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <CartCard key={item.product.uuid} cartItem={item} />
                   ))}
                 </div>
               </>

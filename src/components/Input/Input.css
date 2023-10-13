@@ -1,0 +1,17 @@
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.labelText {
+  color: gray;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0rem;
+}
+.input {
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 5px;
+  padding: 0.4rem;
+}

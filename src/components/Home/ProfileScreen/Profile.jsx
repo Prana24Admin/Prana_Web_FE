@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Children } from "react";
 import "./Profile.css";
 import Avatar from "../../../assets/images/profile/avatar.jpg";
 import { ShoppingCart, User2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({ children }) => {
+  const navigate = useNavigate();
   return (
     <div className="profile-container">
       <div className="profile-marginContainer">
@@ -29,13 +31,19 @@ const Profile = () => {
                   <p className="profile-optionsTitle">Account Settings</p>
                 </div>
                 <div className="profile-innerOptions">
-                  <div className="profile-optionsMainContainer">
+                  <div
+                    onClick={() => navigate("/profile")}
+                    className="profile-optionsMainContainer"
+                  >
                     <div style={{ width: "10%" }} />
                     <p className="profile-innerOptionsText">
                       Profile Information
                     </p>
                   </div>
-                  <div className="profile-optionsMainContainer">
+                  <div
+                    onClick={() => navigate("/profile/address")}
+                    className="profile-optionsMainContainer"
+                  >
                     <div style={{ width: "10%" }} />
                     <p className="profile-innerOptionsText">Manage Addresses</p>
                   </div>
@@ -48,51 +56,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="profile-rightContainer">
-          <div className="profile-innerContainer">
-            <p className="profile-header">Profile Information</p>
-            <div className="profile-inputsContainer">
-              <label className="profile-labelContainer">
-                <p className="profile-labelText">First Name</p>
-                <input className="profile-input" type="text" name="name" />
-              </label>
-              <label className="profile-labelContainer">
-                <p className="profile-labelText">Last Name</p>
-                <input className="profile-input" type="text" name="name" />
-              </label>
-            </div>
-            <div className="profile-gapContainer">
-              <p style={{ color: "#000" }}>Gender</p>
-              <div className="profile-genderContainer">
-                <div className="profile-flexContainer">
-                  <input type="radio" />
-                  <p className="profile-labelText">Male</p>
-                </div>
-                <div className="profile-flexContainer">
-                  <input type="radio" />
-                  <p className="profile-labelText">Female</p>
-                </div>
-                <div className="profile-flexContainer">
-                  <input type="radio" />
-                  <p className="profile-labelText">Others</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="profile-inputsContainer">
-              <label className="profile-labelContainer">
-                <p className="profile-labelText">Email</p>
-                <input className="profile-input" type="email" name="name" />
-              </label>
-            </div>
-            <div className="profile-inputsContainer">
-              <label className="profile-labelContainer">
-                <p className="profile-labelText">Mobile Number</p>
-                <input className="profile-input" type="text" name="name" />
-              </label>
-            </div>
-          </div>
-        </div>
+        <div className="profile-rightContainer">{children}</div>
       </div>
     </div>
   );

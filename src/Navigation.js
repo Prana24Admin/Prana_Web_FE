@@ -27,7 +27,9 @@ import HealthBlogIndex from "./components/HealthBlog/index";
 import CartIndex from "./components/cart/index";
 import Login from "./components/Arrivals/Login/Login";
 import Products from "./components/HealthCare/Products";
-import Profile from "./components/Home/ProfileScreen";
+
+import AccountScreen from "./components/Home/ProfileScreen/AccountScreen";
+import AddressScreen from "./components/Home/ProfileScreen/AddressScreen";
 
 const Navigation = () => {
   return (
@@ -59,7 +61,8 @@ const Navigation = () => {
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
         <Route path="/cart" element={<CartIndex />} />
         <Route path="/categories/:id" element={<Products />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<AccountScreen />} />
+        <Route path="/profile/address" element={<AddressScreen />} />
       </Routes>
     </Router>
   );

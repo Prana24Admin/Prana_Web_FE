@@ -99,24 +99,8 @@
   gap: 2rem;
   width: 100%;
 }
-.profile-labelContainer {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-}
-.profile-labelText {
-  color: gray;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.25rem 0rem;
-}
-.profile-input {
-  border: 1px solid rgb(216, 216, 216);
-  border-radius: 5px;
-  padding: 0.4rem;
-}
-.profile-flexContainer {
+
+.profile-borderlessContainer {
   display: flex;
   border: none;
 }

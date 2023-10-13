@@ -36,7 +36,7 @@
   border: 1px solid #0f382c;
   padding: 1.25rem;
 }
-.address-flexTextAlingContainer {
+.address-flexTextAlignContainer {
   display: flex;
   justify-content: space-between;
 }

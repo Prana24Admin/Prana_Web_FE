@@ -4,9 +4,14 @@ import "../Profile.css";
 import "./Address.css";
 import { MoreVertical, Plus } from "lucide-react";
 import { ProfileContext } from "../../../../context/ProfileProvider";
+import AddressModal from "./AddressModal";
 
 const Address = () => {
   const [dropdown, setDropdown] = useState();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const { data } = useContext(ProfileContext);
 
@@ -14,13 +19,13 @@ const Address = () => {
     <Profile>
       <div className="address-mainContainer">
         <p className="address-header">Manage Addresses</p>
-        <div className="address-addContainer">
+        <button onClick={() => setShow(!show)} className="address-addContainer">
           <Plus size={20} color="#0f382c" />
           <p className="address-addText">Add A new address</p>
-        </div>
+        </button>
         {data && Object.keys(data.address).length > 1 ? (
           <div className="address-addressContainer">
-            <div className="address-flexTextAlingContainer">
+            <div className="address-flexTextAlignContainer">
               <p className="address-titleText">Home</p>
               <MoreVertical
                 style={{ cursor: "pointer", position: "relative" }}
@@ -47,6 +52,7 @@ const Address = () => {
           <p>No addresses</p>
         )}
       </div>
+      {show && <AddressModal show={show} handleClose={handleClose} />}
     </Profile>
   );
 };

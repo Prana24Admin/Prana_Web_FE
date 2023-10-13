@@ -61,6 +61,36 @@ const Profile = () => {
                 <input className="profile-input" type="text" name="name" />
               </label>
             </div>
+            <div className="profile-gapContainer">
+              <p style={{ color: "#000" }}>Gender</p>
+              <div className="profile-genderContainer">
+                <div className="profile-flexContainer">
+                  <input type="radio" />
+                  <p className="profile-labelText">Male</p>
+                </div>
+                <div className="profile-flexContainer">
+                  <input type="radio" />
+                  <p className="profile-labelText">Female</p>
+                </div>
+                <div className="profile-flexContainer">
+                  <input type="radio" />
+                  <p className="profile-labelText">Others</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="profile-inputsContainer">
+              <label className="profile-labelContainer">
+                <p className="profile-labelText">Email</p>
+                <input className="profile-input" type="email" name="name" />
+              </label>
+            </div>
+            <div className="profile-inputsContainer">
+              <label className="profile-labelContainer">
+                <p className="profile-labelText">Mobile Number</p>
+                <input className="profile-input" type="text" name="name" />
+              </label>
+            </div>
           </div>
         </div>
       </div>

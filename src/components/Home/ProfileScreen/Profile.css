@@ -85,7 +85,7 @@
   font-size: 0.95rem;
 }
 .profile-innerContainer {
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 .profile-header {
   font-size: 1.75rem;
@@ -102,15 +102,29 @@
 .profile-labelContainer {
   display: flex;
   flex-direction: column;
-  color: gray;
+  width: 30%;
 }
 .profile-labelText {
+  color: gray;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
   padding: 0.25rem 0rem;
 }
 .profile-input {
-  border: 1px solid rgb(169, 169, 169);
+  border: 1px solid rgb(216, 216, 216);
   border-radius: 5px;
+  padding: 0.4rem;
+}
+.profile-flexContainer {
+  display: flex;
+  border: none;
+}
+.profile-genderContainer {
+  display: flex;
+  gap: 2rem;
+}
+.profile-gapContainer {
+  padding: 0.75rem 0rem;
+  padding-bottom: 0rem;
 }

@@ -63,9 +63,9 @@
 .address-dropdownContainer {
   position: absolute;
   /* height: 8%; */
-  width: 5%;
-  right: 11%;
-  top: 39%;
+  width: 10%;
+  right: 4%;
+  top: 35%;
   border-radius: 5px;
   background-color: rgb(242, 241, 241);
   gap: 0.25rem;

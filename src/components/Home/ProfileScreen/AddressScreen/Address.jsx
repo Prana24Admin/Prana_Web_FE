@@ -7,7 +7,7 @@ import { ProfileContext } from "../../../../context/ProfileProvider";
 import AddressModal from "./AddressModal";
 
 const Address = () => {
-  const [dropdown, setDropdown] = useState();
+  const [selectedDropdown, setSelectedDropdown] = useState(null);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -28,14 +28,33 @@ const Address = () => {
               <p className="address-titleText">{data.address.place}</p>
               <MoreVertical
                 style={{ cursor: "pointer" }}
-                onClick={() => setDropdown(!dropdown)}
+                onClick={() => {
+                  selectedDropdown === null
+                    ? setSelectedDropdown(
+                        data.address.street +
+                          data.address.city +
+                          data.address.pinCode
+                      )
+                    : setSelectedDropdown(null);
+                }}
                 size={20}
               />
-              {dropdown && (
+              {selectedDropdown ===
+                data.address.street +
+                  data.address.city +
+                  data.address.pinCode && (
                 <div className="address-dropdownContainer">
-                  <p className="address-dropdownText">Edit</p>
-
-                  <p className="address-dropdownText">Delete</p>
+                  <p className="address-dropdownText" onClick={() => {}}>
+                    Edit
+                  </p>
+                  <p
+                    onClick={() => {
+                      setSelectedDropdown(null);
+                    }}
+                    className="address-dropdownText"
+                  >
+                    Delete
+                  </p>
                 </div>
               )}
             </div>
@@ -62,14 +81,35 @@ const Address = () => {
                 <p className="address-titleText">{address.place}</p>
                 <MoreVertical
                   style={{ cursor: "pointer", position: "relative" }}
-                  onClick={() => setDropdown(!dropdown)}
+                  onClick={() => {
+                    selectedDropdown === null
+                      ? setSelectedDropdown(
+                          address.street + address.city + address.pinCode
+                        )
+                      : setSelectedDropdown(null);
+                  }}
                   size={20}
                 />
-                {dropdown && (
+                {selectedDropdown ===
+                  address.street + address.city + address.pinCode && (
                   <div className="address-dropdownContainer">
-                    <p className="address-dropdownText">Edit</p>
+                    <p
+                      className="address-dropdownText"
+                      onClick={() => {
+                        setSelectedDropdown(null);
+                      }}
+                    >
+                      Edit
+                    </p>
 
-                    <p className="address-dropdownText">Delete</p>
+                    <p
+                      className="address-dropdownText"
+                      onClick={() => {
+                        setSelectedDropdown(null);
+                      }}
+                    >
+                      Delete
+                    </p>
                   </div>
                 )}
               </div>

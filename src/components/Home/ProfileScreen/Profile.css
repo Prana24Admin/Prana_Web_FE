@@ -84,3 +84,33 @@
   font-weight: 500;
   font-size: 0.95rem;
 }
+.profile-innerContainer {
+  padding: 1rem;
+}
+.profile-header {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: black;
+}
+.profile-inputsContainer {
+  padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+.profile-labelContainer {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+.profile-labelText {
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0rem;
+}
+.profile-input {
+  border: 1px solid rgb(169, 169, 169);
+  border-radius: 5px;
+}

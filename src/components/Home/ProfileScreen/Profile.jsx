@@ -48,7 +48,21 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className="profile-rightContainer">Form</div>
+        <div className="profile-rightContainer">
+          <div className="profile-innerContainer">
+            <p className="profile-header">Profile Information</p>
+            <div className="profile-inputsContainer">
+              <label className="profile-labelContainer">
+                <p className="profile-labelText">First Name</p>
+                <input className="profile-input" type="text" name="name" />
+              </label>
+              <label className="profile-labelContainer">
+                <p className="profile-labelText">Last Name</p>
+                <input className="profile-input" type="text" name="name" />
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

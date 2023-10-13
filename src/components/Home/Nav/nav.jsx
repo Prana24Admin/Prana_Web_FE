@@ -118,13 +118,13 @@ const Header = () => {
                     </li>
                   </Link>
                 </div>
-                <div class="nav-dropdown">
+                <div className="nav-dropdown">
                   <UserCircle
                     size={35}
                     color="#fff"
                     style={{ marginRight: "1rem" }}
                   />
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                     <a
                       className="dropdowntext"
                       onClick={() => navigate("/profile")}

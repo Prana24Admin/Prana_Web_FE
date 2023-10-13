@@ -4,10 +4,11 @@ import Footer from "../../innerHome/footer";
 
 import Header from "../../Nav/nav";
 import Address from "./Address";
+import ProfileProvider from "../../../../context/ProfileProvider";
 
 const AddressScreen = () => {
   return (
-    <>
+    <ProfileProvider>
       <div>
         <Header />
       </div>
@@ -17,7 +18,7 @@ const AddressScreen = () => {
       <div>
         <Footer />
       </div>
-    </>
+    </ProfileProvider>
   );
 };
 

@@ -1,11 +1,29 @@
-import React, { Children } from "react";
+import React, { Children, useContext } from "react";
 import "./Profile.css";
 import Avatar from "../../../assets/images/profile/avatar.jpg";
 import { ShoppingCart, User2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../libs/axios";
+import { useQuery } from "@tanstack/react-query";
+import { ProfileContext } from "../../../context/ProfileProvider";
 
 const Profile = ({ children }) => {
   const navigate = useNavigate();
+
+  const { setData } = useContext(ProfileContext);
+
+  const fetchProfileData = async () => {
+    const response = await axiosInstance.get("/users/profile");
+    setData(response.data);
+    return response.data;
+  };
+
+  const {
+    data: profileData,
+    isLoading,
+    error,
+  } = useQuery(["Profile"], fetchProfileData);
+
   return (
     <div className="profile-container">
       <div className="profile-marginContainer">

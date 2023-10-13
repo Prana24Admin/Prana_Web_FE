@@ -4,10 +4,11 @@ import Footer from "../../innerHome/footer";
 
 import Header from "../../Nav/nav";
 import Account from "./Account";
+import ProfileProvider from "../../../../context/ProfileProvider";
 
 const AccountScreen = () => {
   return (
-    <>
+    <ProfileProvider>
       <div>
         <Header />
       </div>
@@ -17,7 +18,7 @@ const AccountScreen = () => {
       <div>
         <Footer />
       </div>
-    </>
+    </ProfileProvider>
   );
 };
 

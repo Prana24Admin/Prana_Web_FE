@@ -19,13 +19,13 @@
 .profile-rightContainer {
   width: 70%;
   height: 100%;
-  border: 2px solid rgb(230, 230, 230);
+  border: 2px solid #0f382c;
 }
 .profile-flexContainer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid rgb(237, 234, 234);
+  border: 1px solid #0f382c;
 }
 .profile-avatarContainer {
   width: 5rem;
@@ -47,7 +47,7 @@
   font-size: 1rem;
 }
 .profile-borderContainer {
-  border: 1px solid rgb(237, 234, 234);
+  border: 1px solid #0f382c;
 }
 .profile-optionsContainer {
   display: flex;
@@ -87,6 +87,7 @@
 }
 .profile-innerContainer {
   padding: 1rem 2rem;
+  position: relative;
 }
 .profile-header {
   font-size: 1.75rem;
@@ -113,4 +114,29 @@
 .profile-gapContainer {
   padding: 1rem 0rem;
   padding-bottom: 0rem;
+}
+.profile-editButton {
+  position: absolute;
+  width: 14%;
+  right: 5%;
+  top: 5%;
+  padding: 0.25rem 1.25rem;
+  background-color: #0f382c;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.profile-saveButton {
+  width: 30%;
+  background-color: #0f382c;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 0.4rem 0;
+  margin-top: 1rem;
 }

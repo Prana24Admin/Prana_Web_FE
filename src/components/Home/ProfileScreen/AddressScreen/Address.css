@@ -1,0 +1,89 @@
+.address-mainContainer {
+  max-width: 1240px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.address-header {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: black;
+  padding-bottom: 0.75rem;
+}
+.address-addContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid #0f382c;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.75rem;
+}
+.address-addContainer:hover {
+  background-color: rgb(211, 255, 211);
+}
+.address-addText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f382c;
+}
+.address-addressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: 1px solid #0f382c;
+  padding: 1.25rem;
+}
+.address-flexTextAlingContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.address-titleText {
+  background-color: rgb(230, 229, 229);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+.address-flexContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 0.25rem 0rem;
+}
+.address-userName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f382c;
+}
+.address-addressText {
+  font-size: 0.95rem;
+}
+.address-dropdownContainer {
+  position: absolute;
+  /* height: 8%; */
+  width: 5%;
+  right: 11%;
+  top: 39%;
+  border-radius: 5px;
+  background-color: rgb(242, 241, 241);
+  gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  /* padding: 0.5rem 0rem; */
+}
+.address-dropdownText {
+  padding: 0.25rem 0rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.address-dropdownText:hover {
+  background-color: rgb(210, 210, 210);
+}

@@ -71,6 +71,7 @@
   font-weight: 600;
   font-size: 1.1rem;
   color: rgb(168, 162, 162);
+  color: #808080;
 }
 .profile-innerOptions {
   margin-top: 0.5rem;
@@ -103,12 +104,13 @@
 .profile-borderlessContainer {
   display: flex;
   border: none;
+  gap: 0.5rem;
 }
 .profile-genderContainer {
   display: flex;
   gap: 2rem;
 }
 .profile-gapContainer {
-  padding: 0.75rem 0rem;
+  padding: 1rem 0rem;
   padding-bottom: 0rem;
 }

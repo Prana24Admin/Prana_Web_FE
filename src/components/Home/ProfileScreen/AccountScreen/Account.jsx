@@ -14,7 +14,9 @@ const Account = () => {
         </div>
 
         <div className="profile-gapContainer">
-          <p style={{ color: "#000" }}>Gender</p>
+          <p style={{ color: "rgb(128,128,128", padding: "0.5rem 0rem" }}>
+            Gender
+          </p>
           <div className="profile-genderContainer">
             <div className="profile-borderlessContainer">
               <input type="radio" />

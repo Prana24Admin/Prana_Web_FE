@@ -1,49 +1,104 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./AddressModal.css";
 import Input from "../../../../Input";
 import { Building, CheckCircle, Home } from "lucide-react";
-import ProfileProvider, {
-  ProfileContext,
-} from "../../../../../context/ProfileProvider";
+import { ProfileContext } from "../../../../../context/ProfileProvider";
 import axiosInstance from "../../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../../libs/queryFunctions";
+import { v4 as uuidv4 } from "uuid";
 
-const AddressModal = ({ show, handleClose }) => {
+const AddressModal = ({ show, handleClose, method, additionalAddress }) => {
   const { data } = useContext(ProfileContext);
+
   const [addressData, setAddressData] = useState({
-    place: "",
-    name: "",
-    phoneNumber: "",
-    street: "",
-    city: "",
-    state: "",
-    pinCode: "",
+    id:
+      method === "add"
+        ? uuidv4()
+        : method === "edit"
+        ? data.uuid
+        : additionalAddress.id,
+    place:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.place
+        : additionalAddress.place,
+    name:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.name
+        : additionalAddress.name,
+    phoneNumber:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.phoneNumber
+        : additionalAddress.phoneNumber,
+    street:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.street
+        : additionalAddress.street,
+    city:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.city
+        : additionalAddress.city,
+    state:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.state
+        : additionalAddress.state,
+    pinCode:
+      method === "add"
+        ? ""
+        : method === "edit"
+        ? data.address.pinCode
+        : additionalAddress.pinCode,
   });
 
-  const saveAddress = async () => {
+  const saveAddress = async (data) => {
     let response;
-    if (Object.keys(data?.address) < 1) {
+    if (method === "add") {
+      if (Object.keys(data?.address) < 1) {
+        response = await axiosInstance.patch("/users/profile", {
+          address: addressData,
+        });
+      } else {
+        response = await axiosInstance.patch("/users/profile", {
+          additional_address: [...data?.additional_address, addressData],
+        });
+      }
+    } else if (method === "edit") {
       response = await axiosInstance.patch("/users/profile", {
         address: addressData,
       });
-      handleRefetchProfileData();
-      handleClose();
-      return response.data;
     } else {
-      response = await axiosInstance.patch("/users/profile", {
-        additional_address: [...data?.additional_address, addressData],
-      });
-      handleRefetchProfileData();
-      handleClose();
-      return response.data;
+      const index = data?.additional_address.findIndex(
+        (address) => address.id === additionalAddress.id
+      );
+      if (index !== -1) {
+        const updatedAddress = [...data?.additional_address];
+        updatedAddress[index] = { ...updatedAddress[index], ...addressData };
+        response = await axiosInstance.patch("/users/profile", {
+          additional_address: updatedAddress,
+        });
+      }
     }
+    handleRefetchProfileData();
+    handleClose();
+    return response.data;
   };
 
   return (
     <Modal show={show} onHide={handleClose} centered size="lg">
       <Modal.Header closeButton>
-        <Modal.Title className="modal-title">Add an address</Modal.Title>
+        <Modal.Title className="modal-title">{method} an address</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="modal-bodyContainer">
@@ -124,7 +179,7 @@ const AddressModal = ({ show, handleClose }) => {
             <button className="modal-button" onClick={handleClose}>
               Close
             </button>
-            <button className="modal-button" onClick={saveAddress}>
+            <button className="modal-button" onClick={() => saveAddress(data)}>
               Save
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, { Children, useContext } from "react";
+import React, { useContext, useRef } from "react";
 import "./Profile.css";
 import Avatar from "../../../assets/images/profile/avatar.jpg";
 import { ShoppingCart, User2 } from "lucide-react";
@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { ProfileContext } from "../../../context/ProfileProvider";
+import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 
 const Profile = ({ children }) => {
   const navigate = useNavigate();
+  const imageRef = useRef(null);
 
-  const { setData } = useContext(ProfileContext);
+  const { setData, data } = useContext(ProfileContext);
 
   const fetchProfileData = async () => {
     const response = await axiosInstance.get("/users/profile");
@@ -24,17 +26,66 @@ const Profile = ({ children }) => {
     error,
   } = useQuery(["Profile"], fetchProfileData);
 
+  const imageUpload = async () => {
+    if (!imageRef.current || !imageRef.current.files[0]) {
+      console.log("No file selected.");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("image", imageRef.current.files[0]);
+
+    const response = await axiosInstance.post(
+      "https://api-prana.prana24.in/api/users/profile/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    handleRefetchProfileData();
+    return response.data;
+  };
+
   return (
     <div className="profile-container">
       <div className="profile-marginContainer">
         <div className="profile-leftContainer">
           <div className="profile-flexContainer">
             <div className="profile-avatarContainer">
-              <img className="profile-avatarImage" src={Avatar} alt="avatar" />
+              {data && data.image !== null ? (
+                <img
+                  className="profile-avatarImage"
+                  src={data.image}
+                  alt="avatar"
+                />
+              ) : (
+                <img
+                  className="profile-avatarImage"
+                  src={Avatar}
+                  alt="avatar"
+                />
+              )}
+              <div className="middle">
+                <input
+                  className="image-upload"
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  ref={imageRef}
+                  onChange={imageUpload}
+                />
+                <div className="text">Edit</div>
+              </div>
             </div>
             <div>
               <p className="profile-greeting ">Hello,</p>
-              <p className="profile-username">Hitesh Kumar</p>
+              {data && (
+                <p className="profile-username">
+                  {data.first_name + " " + data.last_name}
+                </p>
+              )}
             </div>
           </div>
           <div className="profile-borderContainer">

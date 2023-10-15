@@ -30,6 +30,7 @@ import Products from "./components/HealthCare/Products";
 
 import AccountScreen from "./components/Home/ProfileScreen/AccountScreen";
 import AddressScreen from "./components/Home/ProfileScreen/AddressScreen";
+import Orders from "./components/Home/Orders";
 
 const Navigation = () => {
   return (
@@ -63,6 +64,7 @@ const Navigation = () => {
         <Route path="/categories/:id" element={<Products />} />
         <Route path="/profile" element={<AccountScreen />} />
         <Route path="/profile/address" element={<AddressScreen />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </Router>
   );

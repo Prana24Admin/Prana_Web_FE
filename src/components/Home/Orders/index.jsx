@@ -22,7 +22,7 @@ const Orders = () => {
                   <p className="orders-header">Item anme</p>
                   <p className="orders-quantityText">Quantity:</p>
                 </div>
-                <div>₹3773</div>
+                <div>₹ 3773</div>
                 <div>Rating</div>
               </div>
             </div>

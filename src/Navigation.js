@@ -31,6 +31,7 @@ import Products from "./components/HealthCare/Products";
 import AccountScreen from "./components/Home/ProfileScreen/AccountScreen";
 import AddressScreen from "./components/Home/ProfileScreen/AddressScreen";
 import Orders from "./components/Home/Orders";
+import Product from "./components/Home/ProductScreen";
 
 const Navigation = () => {
   return (
@@ -65,6 +66,7 @@ const Navigation = () => {
         <Route path="/profile" element={<AccountScreen />} />
         <Route path="/profile/address" element={<AddressScreen />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/productscreen" element={<Product />} />
       </Routes>
     </Router>
   );

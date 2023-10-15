@@ -2,8 +2,10 @@ import React from "react";
 import "./products.css";
 import axiosInstance from "../../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const ProductItem = ({ product }) => {
+  const navigate = useNavigate();
   const addToCart = async (productId) => {
     const response = await axiosInstance.post("/cart", {
       quantity: 1,
@@ -18,7 +20,10 @@ const ProductItem = ({ product }) => {
   });
 
   return (
-    <div className="products-productsCard">
+    <div
+      className="products-productsCard"
+      onClick={() => navigate("/ProductScreen")}
+    >
       <div className="products-ImageCenter">
         <img
           className="products-productsImage"

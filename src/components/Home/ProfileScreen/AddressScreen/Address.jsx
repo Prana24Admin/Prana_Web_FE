@@ -9,14 +9,21 @@ import axiosInstance from "../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
 
 const Address = () => {
+  const { data } = useContext(ProfileContext);
+
   const [selectedDropdown, setSelectedDropdown] = useState(null);
   const [show, setShow] = useState(false);
   const [method, setMethod] = useState();
   const [additionalAddress, setAdditionalAddress] = useState(null);
 
   const handleClose = () => setShow(false);
-
-  const { data } = useContext(ProfileContext);
+  const handleDropDown = (id) => {
+    if (selectedDropdown === id) {
+      setSelectedDropdown(null);
+    } else {
+      setSelectedDropdown(id);
+    }
+  };
 
   const handleDeleteAddress = async () => {
     const response = await axiosInstance.patch("/users/profile", {
@@ -62,11 +69,7 @@ const Address = () => {
               <p className="address-titleText">{data.address.place}</p>
               <MoreVertical
                 style={{ cursor: "pointer" }}
-                onClick={() => {
-                  selectedDropdown === null
-                    ? setSelectedDropdown(data.address.id)
-                    : setSelectedDropdown(null);
-                }}
+                onClick={() => handleDropDown(data.address.id)}
                 size={20}
               />
               {selectedDropdown === data.address.id && (
@@ -110,11 +113,7 @@ const Address = () => {
                 <p className="address-titleText">{address.place}</p>
                 <MoreVertical
                   style={{ cursor: "pointer", position: "relative" }}
-                  onClick={() => {
-                    selectedDropdown === null
-                      ? setSelectedDropdown(address.id)
-                      : setSelectedDropdown(null);
-                  }}
+                  onClick={() => handleDropDown(address.id)}
                   size={20}
                 />
                 {selectedDropdown === address.id && (

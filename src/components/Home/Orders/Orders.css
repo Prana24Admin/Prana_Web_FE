@@ -1,0 +1,60 @@
+.orders-mainContainer {
+  height: 100%;
+  width: 100%;
+  margin: 2rem 0;
+}
+.orders-container {
+  max-width: 1240px;
+  margin: auto;
+  display: flex;
+  gap: 2rem;
+}
+.orders-leftContainer {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: 1px solid #f1f1f1;
+  padding: 1rem 2rem;
+}
+.orders-rightContainer {
+  width: 70%;
+  height: 100%;
+  border: 2px solid #0f382c;
+  padding: 1rem 2rem;
+}
+.orders-Header {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+.orders-flexContainer {
+  display: flex;
+  gap: 1.75rem;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.orders-image {
+  width: 9%;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+.orders-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f382c;
+}
+.orders-quantityText {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #747474;
+}
+.orders-justifyContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

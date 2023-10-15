@@ -131,7 +131,12 @@ const Header = () => {
                     >
                       Your Profile
                     </a>
-                    <a className="dropdowntext">Your Orders</a>
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/orders")}
+                    >
+                      Your Orders
+                    </a>
                     <a className="dropdowntext" onClick={handleLogout}>
                       Logout
                     </a>

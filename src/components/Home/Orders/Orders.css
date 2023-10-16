@@ -27,40 +27,99 @@
 .orders-Header {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
 }
-.orders-flexContainer {
-  display: flex;
-  gap: 1.75rem;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  border: 1px solid #0f382c;
-  padding: 2rem 1.5rem;
+.orders-borderContainer {
+  border: 1px solid #c1c1c1;
   border-radius: 5px;
-  background-color: rgb(235, 235, 235);
-}
-.orders-flexContainer:hover {
-}
-.orders-image {
-  width: 10%;
-  height: 70px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-.orders-header {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0f382c;
-}
-.orders-quantityText {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: #747474;
 }
 .orders-justifyContainer {
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #efefef;
+  border-bottom: 1px solid #c1c1c1;
+  padding: 0.75rem 1rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.orders-flexContainer {
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.orders-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: black;
+  text-transform: uppercase;
+}
+.orders-date {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: black;
+}
+.orders-bill {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: black;
+  display: flex;
+  gap: 1rem;
+}
+.orders-idText {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: black;
+  display: flex;
+  gap: 1rem;
+}
+.orders-details {
+  padding: 1.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.orders-detailsFlex {
+  display: flex;
+  /* align-items: center; */
+  gap: 2rem;
+}
+.orders-image {
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+}
+.orders-productName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+.orders-button {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  background-color: #0f382c;
+  border-radius: 5px;
+  border: none;
+}
+.orders-gapContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.orders-buttonsRight {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f382c;
+  padding: 0.25rem 0.75rem;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #c1c1c1;
+}
+.orders-buttonsRight:hover {
+  color: white;
+  background-color: #0f382c;
+  /* border-radius: 5px; */
+  border: 1px solid #0f382c;
 }

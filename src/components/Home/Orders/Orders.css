@@ -23,11 +23,13 @@
   height: 100%;
   /* border: 1px solid #0f382c; */
   padding: 1rem 2rem;
+  flex-direction: column;
+  display: flex;
+  gap: 1rem;
 }
 .orders-Header {
   font-size: 2rem;
   font-weight: 500;
-  padding-bottom: 1rem;
 }
 .orders-borderContainer {
   border: 1px solid #c1c1c1;
@@ -37,7 +39,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #efefef;
+  background-color: #f1f2f3;
   border-bottom: 1px solid #c1c1c1;
   padding: 0.75rem 1rem;
   border-top-left-radius: 5px;
@@ -52,25 +54,25 @@
 .orders-text {
   font-size: 0.85rem;
   font-weight: 500;
-  color: black;
+  color: #787c7d;
   text-transform: uppercase;
 }
 .orders-date {
   font-size: 0.95rem;
   font-weight: 500;
-  color: black;
+  color: #787c7d;
 }
 .orders-bill {
   font-size: 0.95rem;
   font-weight: 500;
-  color: black;
+  color: #787c7d;
   display: flex;
   gap: 1rem;
 }
 .orders-idText {
   font-size: 0.85rem;
   font-weight: 500;
-  color: black;
+  color: #787c7d;
   display: flex;
   gap: 1rem;
 }

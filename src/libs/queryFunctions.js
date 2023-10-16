@@ -5,3 +5,6 @@ export const handleRefetchCartItems = () =>
 
 export const handleRefetchProfileData = () =>
   queryClient.refetchQueries(["Profile"]);
+
+export const handleRefetchWishlistData = () =>
+  queryClient.refetchQueries(["Wishlist"]);

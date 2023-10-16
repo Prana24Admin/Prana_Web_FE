@@ -4,6 +4,8 @@ import image from "../../../assets/images/home/Beautynew.jpg";
 import { Heart } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../libs/axios";
+import toast from "react-hot-toast";
+import { handleRefetchWishlistData } from "../../../libs/queryFunctions";
 
 const FavoritesScreen = () => {
   const fetchWishlist = async () => {
@@ -11,6 +13,15 @@ const FavoritesScreen = () => {
     return response.data;
   };
   const { data, isLoading, error } = useQuery(["Wishlist"], fetchWishlist);
+
+  const removeFromWishlist = async (id) => {
+    const response = await axiosInstance.delete(`/wishlist/${id}`);
+    if (response.status === 200) {
+      toast.success("Removed");
+      handleRefetchWishlistData();
+    }
+    return response.data;
+  };
 
   return (
     <div className="favorites-mainContainer">
@@ -21,6 +32,7 @@ const FavoritesScreen = () => {
             <div key={item.uuid} className="favorites-cardContainer">
               <img className="favorites-image" src={image} alt="imge" />
               <Heart
+                onClick={() => removeFromWishlist(item.uuid)}
                 fill="red"
                 color="red"
                 className="favorites-heartIcon"

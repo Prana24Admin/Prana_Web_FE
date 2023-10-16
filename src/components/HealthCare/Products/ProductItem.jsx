@@ -23,12 +23,12 @@ const ProductItem = ({ product }) => {
     return addToCart(productId);
   });
 
-  const addToWishlist = async (productId, quantity) => {
+  const addToWishlist = async (productId) => {
     const response = await axiosInstance.post("/wishlist", {
       product_id: productId,
-      quantity: quantity,
+      quantity: 1,
     });
-    if (response.status === 200) {
+    if (response.status === 201) {
       toast.success("Added to wishlist");
     }
     return response.data;
@@ -49,13 +49,9 @@ const ProductItem = ({ product }) => {
           </p>
         </div>
       </div>
-
-      <Heart
-        onClick={() => addToWishlist(product.uuid, 1)}
-        className="favorites-heartIcon"
-        size={35}
-      />
-
+      <div onClick={() => addToWishlist(product.uuid)}>
+        <Heart className="favorites-heartIcon" size={35} />
+      </div>
       <button
         onClick={() => mutate(product.uuid)}
         className={isSuccess ? "products-successButton" : "products-addButton"}

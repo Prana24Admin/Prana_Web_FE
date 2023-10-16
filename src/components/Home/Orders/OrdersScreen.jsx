@@ -1,6 +1,6 @@
 import React from "react";
 import OrderLayout from "./OrderLayout";
-import image from "../../../assets/images/profile/avatar.jpg";
+import Image from "../../../assets/images/profile/avatar.png";
 
 const OrdersScreen = () => {
   return (
@@ -36,7 +36,7 @@ const OrdersScreen = () => {
           </div>
           <div className="orders-details">
             <div className="orders-detailsFlex">
-              <img className="orders-image" src={image} alt="sanju" />
+              <img className="orders-image" src={Image} alt="sanju" />
               <div className="orders-gapContainer">
                 <p className="orders-productName">Orders Name</p>
                 <button className="orders-button">View your Item</button>

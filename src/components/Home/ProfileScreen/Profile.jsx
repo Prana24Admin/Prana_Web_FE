@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from "react";
 import "./Profile.css";
-import Avatar from "../../../assets/images/profile/avatar.jpg";
+import Avatar from "../../../assets/images/profile/avatar.png";
 import { ShoppingCart, User2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../libs/axios";

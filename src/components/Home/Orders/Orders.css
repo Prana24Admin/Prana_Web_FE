@@ -87,7 +87,7 @@
 .orders-image {
   width: 120px;
   height: 120px;
-  border: 1px solid black;
+  object-fit: cover;
 }
 .orders-productName {
   font-size: 1rem;

@@ -1,23 +1,32 @@
 import React, { useState } from "react";
-import Image from "../../../assets/images/profile/avatar.jpg";
-import {
-  ChevronDown,
-  IndianRupee,
-  Loader,
-  Minus,
-  Plus,
-  ShoppingBag,
-  Truck,
-} from "lucide-react";
+import { ChevronDown, ShoppingBag, Truck } from "lucide-react";
 import "./ProductScreen.css";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../libs/axios";
 import toast from "react-hot-toast";
 import { handleRefetchCartItems } from "../../../libs/queryFunctions";
+import { useParams } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 const ProductScreen = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false);
+  const { id } = useParams();
+
+  const fetchProduct = async () => {
+    const response = await axiosInstance.get(`/products/${id}`);
+    return response.data;
+  };
+
+  const {
+    data: productData,
+    isLoading,
+    error,
+  } = useQuery(["Product"], fetchProduct);
+
   const handleQuantity = async (product) => {
+    if (product.quantity === localStorage.getItem("cartQuantity")) {
+      return toast.error("Product in cart");
+    }
     const response = await axiosInstance.post("/cart", {
       quantity: product.quantity,
       product_id: product.productId,
@@ -25,9 +34,11 @@ const ProductScreen = () => {
     if (response.status === 400) {
       toast.error("Try again");
     }
+    localStorage.setItem("cartQuantity", product.quantity);
+    toast.success("Added to cart");
     return response.data;
   };
-  const { mutate, isLoading } = useMutation(
+  const { mutate, isLoading: quantityLoading } = useMutation(
     (product) => {
       return handleQuantity(product);
     },
@@ -40,93 +51,123 @@ const ProductScreen = () => {
 
   return (
     <div className="product-mainContainer">
-      <div className="product-leftContainer">
-        <div className="product-leftImage">
-          <img className="product-img" src={Image} alt={"sa"} />
-        </div>
-      </div>
-      <div className="product-rightContainer">
-        <div className="product-detailsContainer">
-          <p className="product-productTitle">Sanju</p>
-          <p className="product-productDescription">
-            Everherb Karela Jamun Juice - Helps Maintains Healthy Sugar Levels
-            -Helps In Weight Management - 1ly
-          </p>
-        </div>
-        <div className="product-flexContainer">
-          <div>
-            <div className="product-priceContainer">
-              <IndianRupee size={15} strokeWidth={2.5} />
-              <p className="product-amountText">900</p>
-              <p className="product-mrpDescriptionText">
-                MRP:<span className="product-mrpDescription">₹222</span>
+      {productData && (
+        <>
+          <div className="product-leftContainer">
+            <div className="product-leftImage">
+              <img
+                className="product-img"
+                src={productData.image}
+                alt={productData.name}
+              />
+            </div>
+          </div>
+          <div className="product-rightContainer">
+            <div className="product-detailsContainer">
+              <p className="product-productTitle">{productData.name}</p>
+              <p className="product-productDescription">
+                {productData.description}
               </p>
             </div>
-            <p className="product-mrpDescriptionText">Inclusive of all Taxes</p>
-          </div>
-          <div
-            className="cart-quantityContainer"
-            onClick={() => setToggleDropDown(!toggleDropDown)}
-          >
-            {isLoading ? (
-              <div className="cart-loaderContainer">
-                <Loader />
-              </div>
-            ) : (
-              <>
-                <p className="cart-quantity">
-                  Qty:
-                  <span style={{ fontWeight: "bold" }}>1</span>
+            <div className="product-flexContainer">
+              <div>
+                <div className="product-priceContainer">
+                  <p className="product-amountText">₹{productData.discount}</p>
+                  <p className="product-mrpDescriptionText">
+                    MRP:
+                    <span className="product-mrpDescription">
+                      ₹{productData.price}
+                    </span>
+                  </p>
+                </div>
+                <p className="product-mrpDescriptionText">
+                  Inclusive of all Taxes
                 </p>
-                <div className="cart-chevronIcon">
+              </div>
+              <div
+                className="product-quantityContainer"
+                onClick={() => setToggleDropDown(!toggleDropDown)}
+              >
+                <p className="product-quantity">
+                  Qty:
+                  <span style={{ fontWeight: "bold" }}>
+                    {localStorage.getItem(productData.uuid) ?? 1}
+                  </span>
+                </p>
+                <div className="product-chevronIcon">
                   <ChevronDown size={18} strokeWidth={2.5} color="#0e382c" />
                 </div>
-              </>
-            )}
-            {toggleDropDown && (
-              <div className="cart-dropdown">
-                {Array.from({ length: 20 }, (_, index) => index + 1).map(
-                  (number) => (
-                    <div key={number} className="cart-dropDownQuantity">
-                      <p>{number}</p>
-                    </div>
-                  )
+
+                {toggleDropDown && (
+                  <div className="product-dropdown">
+                    {Array.from({ length: 20 }, (_, index) => index + 1).map(
+                      (number) => (
+                        <div
+                          onClick={() =>
+                            localStorage.setItem(productData.uuid, number)
+                          }
+                          key={number}
+                          className="product-dropDownQuantity"
+                        >
+                          <p>{number}</p>
+                        </div>
+                      )
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
-        </div>
-        <div className="">
-          <p>
-            Only <span style={{ color: "#e50f0f" }}>1 items </span> left! Don't
-            miss it
-          </p>
-        </div>
-        <div className="product-buttonsContainer">
-          <button className="product-buyButton">
-            <p>Buy Now</p>
-          </button>
-          <button className="product-cartButton">Add to Cart</button>
-        </div>
-        <div className="product-deliveryContainer">
-          <div className="product-deliveryBody">
-            <div className="product-footerContainer">
-              <Truck size={20} />
-              <p className="product-footerText">Fast Delivery</p>
             </div>
-            <p className="product-footerDescriptionText">Delivery in 3days.</p>
-          </div>
-          <div className="product-deliveryBody">
-            <div className="product-footerContainer">
-              <ShoppingBag size={20} />
-              <p className="product-footerText">Return Delivery</p>
+            <div className="">
+              <p>
+                Only <span style={{ color: "#e50f0f" }}>1 items </span> left!
+                Don't miss it
+              </p>
             </div>
-            <p className="product-footerDescriptionText">
-              Free 10days Delivery Returns.
-            </p>
+            <div className="product-buttonsContainer">
+              <button className="product-buyButton">
+                <p>Buy Now</p>
+              </button>
+              <button
+                className="product-cartButton"
+                onClick={() => {
+                  mutate({
+                    quantity: localStorage.getItem(productData.uuid),
+                    productId: productData.uuid,
+                  });
+                }}
+              >
+                {quantityLoading ? (
+                  <Spinner animation="border" size="sm" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Add to Cart"
+                )}
+              </button>
+            </div>
+            <div className="product-deliveryContainer">
+              <div className="product-deliveryBody">
+                <div className="product-footerContainer">
+                  <Truck size={20} />
+                  <p className="product-footerText">Fast Delivery</p>
+                </div>
+                <p className="product-footerDescriptionText">
+                  Delivery in 3days.
+                </p>
+              </div>
+              <div className="product-deliveryBody">
+                <div className="product-footerContainer">
+                  <ShoppingBag size={20} />
+                  <p className="product-footerText">Return Delivery</p>
+                </div>
+                <p className="product-footerDescriptionText">
+                  Free 10days Delivery Returns.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

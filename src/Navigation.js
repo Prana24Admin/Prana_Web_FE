@@ -66,7 +66,7 @@ const Navigation = () => {
         <Route path="/profile" element={<AccountScreen />} />
         <Route path="/profile/address" element={<AddressScreen />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/productscreen" element={<Product />} />
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
     </Router>
   );

@@ -22,7 +22,7 @@ const ProductItem = ({ product }) => {
   return (
     <div
       className="products-productsCard"
-      onClick={() => navigate("/ProductScreen")}
+      onClick={() => navigate(`/product/${product.uuid}`)}
     >
       <div className="products-ImageCenter">
         <img

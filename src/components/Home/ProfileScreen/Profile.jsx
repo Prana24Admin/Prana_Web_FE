@@ -14,18 +14,6 @@ const Profile = ({ children }) => {
 
   const { data } = useContext(ProfileContext);
 
-  // const fetchProfileData = async () => {
-  //   const response = await axiosInstance.get("/users/profile");
-  //   setData(response.data);
-  //   return response.data;
-  // };
-
-  // const {
-  //   data: profileData,
-  //   isLoading,
-  //   error,
-  // } = useQuery(["Profile"], fetchProfileData);
-
   const imageUpload = async () => {
     if (!imageRef.current || !imageRef.current.files[0]) {
       console.log("No file selected.");

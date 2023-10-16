@@ -19,15 +19,17 @@
   gap: 1.25rem;
 }
 .favorites-cardContainer {
+  height: 370px;
   padding: 0.75rem;
   border-radius: 5px;
   border: 1px solid #e0e0e0;
   cursor: pointer;
   background-color: #f0efef;
   position: relative;
+  transition: 0.1s;
 }
 .favorites-cardContainer:hover {
-  scale: 1.02;
+  scale: 1.034;
 }
 .favorites-image {
   height: 220px;
@@ -63,23 +65,7 @@
   background-color: #0e382c;
   color: white;
 }
-/* .favorites-buttonDark {
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 0.5rem 0.5rem;
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  margin: 0.5rem 0;
-  margin-bottom: 0.25rem;
-  background-color: #0e382c;
-  color: white;
-}
-.favorites-buttonDark:hover {
-  background-color: white;
-  color: black;
-} */
+
 .favorites-heartIcon {
   position: absolute;
   bottom: 9rem;
@@ -88,6 +74,7 @@
   border-radius: 50%;
   background-color: #f0efef;
   color: black;
+  cursor: pointer;
 }
 .favorites-flexContainer {
   display: flex;

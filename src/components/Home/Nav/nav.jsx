@@ -136,15 +136,27 @@ const Header = () => {
                 </div>
                 <div className="nav-dropdown">
                   {data ? (
-                    <img
-                      src={data?.image}
-                      style={{
-                        width: "40px",
-                        height: "40px",
-                        objectFit: "cover",
-                        borderRadius: "50px",
-                      }}
-                    />
+                    data.image !== null ? (
+                      <img
+                        src={data?.image}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          objectFit: "cover",
+                          borderRadius: "50px",
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={Avatar}
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          objectFit: "cover",
+                          borderRadius: "50px",
+                        }}
+                      />
+                    )
                   ) : (
                     <img
                       src={Avatar}

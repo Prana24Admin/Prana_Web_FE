@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../../assets/css/Home/nav.css";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { BiCurrentLocation } from "react-icons/bi";
-import { UserCircle } from "lucide-react";
 import axiosInstance from "../../../libs/axios";
+import { ProfileContext } from "../../../context/ProfileProvider";
+import { useQuery } from "@tanstack/react-query";
+import Avatar from "../../../assets/images/profile/avatar.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -31,6 +33,20 @@ const Header = () => {
   const navigateCart = () => {
     navigate("/cart");
   };
+
+  const { setData, data } = useContext(ProfileContext);
+
+  const fetchProfileData = async () => {
+    const response = await axiosInstance.get("/users/profile");
+    setData(response.data);
+    return response.data;
+  };
+
+  const {
+    data: profileData,
+    isLoading,
+    error,
+  } = useQuery(["Profile"], fetchProfileData);
 
   const handleLogout = async () => {
     const token = localStorage.getItem("accessToken");
@@ -119,11 +135,28 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="nav-dropdown">
-                  <UserCircle
-                    size={35}
-                    color="#fff"
-                    style={{ marginRight: "1rem" }}
-                  />
+                  {data ? (
+                    <img
+                      src={data?.image}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        objectFit: "cover",
+                        borderRadius: "50px",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={Avatar}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        objectFit: "cover",
+                        borderRadius: "50px",
+                      }}
+                    />
+                  )}
+
                   <div className="dropdown-content">
                     <a
                       className="dropdowntext"
@@ -137,16 +170,20 @@ const Header = () => {
                     >
                       Your Orders
                     </a>
-                    <a className="dropdowntext" onClick={handleLogout}>
-                      Logout
-                    </a>
+                    <div className="dropdowntext">
+                      {data ? (
+                        <a onClick={handleLogout}>Logout</a>
+                      ) : (
+                        <a onClick={() => navigate("/login")}>Login</a>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div>
+                {/* <div>
                   <li>
                     <button className="download">Download App</button>
                   </li>
-                </div>
+                </div> */}
                 <div>
                   <li>
                     <FloatingWhatsApp />

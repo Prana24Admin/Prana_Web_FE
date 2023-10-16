@@ -12,19 +12,19 @@ const Profile = ({ children }) => {
   const navigate = useNavigate();
   const imageRef = useRef(null);
 
-  const { setData, data } = useContext(ProfileContext);
+  const { data } = useContext(ProfileContext);
 
-  const fetchProfileData = async () => {
-    const response = await axiosInstance.get("/users/profile");
-    setData(response.data);
-    return response.data;
-  };
+  // const fetchProfileData = async () => {
+  //   const response = await axiosInstance.get("/users/profile");
+  //   setData(response.data);
+  //   return response.data;
+  // };
 
-  const {
-    data: profileData,
-    isLoading,
-    error,
-  } = useQuery(["Profile"], fetchProfileData);
+  // const {
+  //   data: profileData,
+  //   isLoading,
+  //   error,
+  // } = useQuery(["Profile"], fetchProfileData);
 
   const imageUpload = async () => {
     if (!imageRef.current || !imageRef.current.files[0]) {

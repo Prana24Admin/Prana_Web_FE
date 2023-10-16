@@ -1,0 +1,102 @@
+.favorites-mainContainer {
+  width: 100%;
+  height: 100%;
+  max-width: 1240px;
+  margin: auto;
+}
+.favorites-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-top: 1rem;
+}
+.favorites-gridContainer {
+  display: grid;
+  /* margin-left: 0.75rem;
+  margin-right: 0.75rem; */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 1.25rem 0;
+  /* padding-bottom: 2rem; */
+  gap: 1.25rem;
+}
+.favorites-cardContainer {
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  background-color: #f0efef;
+  position: relative;
+}
+.favorites-cardContainer:hover {
+  scale: 1.02;
+}
+.favorites-image {
+  height: 220px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+}
+.favorites-productName {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black;
+  padding: 0 0.5rem;
+}
+.favorites-productPrice {
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500px;
+  color: black;
+}
+.favorites-button {
+  width: 100%;
+  border: 2px solid #0e382c;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+  margin-bottom: 0.25rem;
+}
+.favorites-button:hover {
+  background-color: #0e382c;
+  color: white;
+}
+/* .favorites-buttonDark {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+  margin-bottom: 0.25rem;
+  background-color: #0e382c;
+  color: white;
+}
+.favorites-buttonDark:hover {
+  background-color: white;
+  color: black;
+} */
+.favorites-heartIcon {
+  position: absolute;
+  bottom: 9rem;
+  right: 1.1rem;
+  padding: 0.4rem;
+  border-radius: 50%;
+  background-color: #f0efef;
+  color: black;
+}
+.favorites-flexContainer {
+  display: flex;
+  /* gap: 1rem; */
+  align-items: center;
+}
+.favorites-mrpPrice {
+  font-size: 0.9rem;
+  font-weight: 500px;
+  color: #676767;
+  text-decoration: line-through;
+}

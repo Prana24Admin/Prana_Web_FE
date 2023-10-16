@@ -21,7 +21,7 @@
 .orders-rightContainer {
   width: 70%;
   height: 100%;
-  border: 2px solid #0f382c;
+  /* border: 1px solid #0f382c; */
   padding: 1rem 2rem;
 }
 .orders-Header {

@@ -170,6 +170,12 @@ const Header = () => {
                     >
                       Your Orders
                     </a>
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/Favorites")}
+                    >
+                      Favorites
+                    </a>
                     <div className="dropdowntext">
                       {data ? (
                         <a onClick={handleLogout}>Logout</a>

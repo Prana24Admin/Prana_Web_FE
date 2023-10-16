@@ -3,6 +3,7 @@ import "./products.css";
 import axiosInstance from "../../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { Heart } from "lucide-react";
 
 const ProductItem = ({ product }) => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const ProductItem = ({ product }) => {
           src={product.image}
           alt={product.name}
         />
+        <Heart className="products-heartIcon" size={35} />
       </div>
       <p className="products-title">{product.name}</p>
       <p className="products-mrpPrice">

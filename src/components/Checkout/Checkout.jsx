@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./checkout.css";
 import { Accordion, Dropdown, DropdownButton } from "react-bootstrap";
-import { ChevronDown, Radio, Trash2 } from "lucide-react";
+import { ChevronDown, IndianRupee, Radio, Trash2 } from "lucide-react";
 import image from "../../assets/images/lab/med/innermed-img1.png";
 import Loader from "../loader";
 import { useMutation } from "@tanstack/react-query";
@@ -219,7 +219,28 @@ const Checkout = () => {
           )}
         </div>
       </div>
-      <div className="checkout-boxRightContainer"></div>
+      <div className="checkout-boxRightContainer">
+        <div className="cart-billContainer">
+          <p className="cart-titleText">Bill Summary</p>
+          <div className="cart-flex">
+            <p className="cart-descriptionText">Total Mrp</p>
+            <p className="cart-descriptionText">₹123</p>
+          </div>
+          <div className="cart-flex">
+            <p className="cart-descriptionText">Delivery charges</p>
+            <p className="cart-descriptionText">₹324</p>
+          </div>
+          <div className="cart-flex">
+            <p className="cart-descriptionText">Discount</p>
+            <p className="cart-descriptionText">₹324</p>
+          </div>
+          <div className="checkout-line" />
+          <div className="cart-flex">
+            <p className="cart-descriptionTextDark">Cart value</p>
+            <p className="cart-descriptionTextDark">₹324</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

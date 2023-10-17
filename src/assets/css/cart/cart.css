@@ -56,7 +56,7 @@
 .cart-descriptionTextDark {
   font-size: 1.25rem;
   font-weight: 500;
-  margin: 0.65rem 0;
+  margin-top: 0.65rem;
   text-transform: capitalize;
   color: #000;
 }

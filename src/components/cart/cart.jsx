@@ -64,6 +64,8 @@ const Cart = () => {
                       <p className="cart-descriptionText">Discount</p>
                       <p className="cart-descriptionText">₹324</p>
                     </div>
+                    <div className="checkout-line" />
+
                     <div className="cart-flex">
                       <p className="cart-descriptionTextDark">Cart value</p>
                       <p className="cart-descriptionTextDark">₹324</p>

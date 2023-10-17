@@ -3,19 +3,78 @@ import "./checkout.css";
 import { ChevronDown, Trash2 } from "lucide-react";
 import image from "../../assets/images/lab/med/innermed-img1.png";
 import Loader from "../loader";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { handleRefetchCartItems } from "../../libs/queryFunctions";
 import { ProfileContext } from "../../context/ProfileProvider";
 import { CartContext } from "../../context/CartProvider";
+import toast from "react-hot-toast";
+import axiosInstance from "../../libs/axios";
 
 const Checkout = () => {
   const { data, setData } = useContext(ProfileContext);
-  const { cartData } = useContext(CartContext);
+
+  const fetchCartData = async () => {
+    const response = await axiosInstance.get("/cart");
+    return response.data;
+  };
+
+  const {
+    data: cartData,
+
+    error,
+  } = useQuery(["Cart"], fetchCartData);
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
   const [addressDropdown, setAddressDropdown] = useState(false);
   const [orderDropdown, setOrderDropdown] = useState(false);
   const [paymentDropdown, setPaymentDropdown] = useState(false);
+
+  const [address, setAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+
+  const handleAddressContinue = () => {
+    if (!address) return toast.error("Select delivery address");
+    else {
+      setAddressDropdown(false);
+      setPaymentDropdown(false);
+      setOrderDropdown(true);
+    }
+  };
+
+  const placeOrder = async () => {
+    if (!address) return toast.error("Select delivery address");
+    if (!paymentMethod) return toast.error("Select payment method");
+    else {
+      let completeAddress;
+      const products = cartData.map((item) => {
+        return item.product.uuid;
+      });
+      if (address === data.address.id) completeAddress = data.address;
+      else {
+        const index = data?.additional_address.findIndex(
+          (additionalAddress) => additionalAddress.id === address
+        );
+        if (index !== -1) completeAddress = data?.additional_address[index];
+      }
+      const shippingAddress = `${completeAddress.street}, ${completeAddress.city}, ${completeAddress.state}, ${completeAddress.pinCode}`;
+      const billingAddress = shippingAddress;
+
+      const formData = new FormData();
+
+      formData.append("product_ids", JSON.stringify(products));
+      formData.append("shipping_address", shippingAddress);
+      formData.append("billing_address", billingAddress);
+      formData.append("payment_method", paymentMethod);
+
+      const response = await axiosInstance.post("/orders", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return response.data;
+    }
+  };
 
   const handleQuantity = async (product) => {
     // const response = await axiosInstance.post("/cart", {
@@ -23,7 +82,7 @@ const Checkout = () => {
     //   product_id: product.productId,
     // });
     // if (response.status === 400) {
-    //   toast.error("Try again");
+    //   toast.error("Try again");\
     // }
     // return response.data;
   };
@@ -63,7 +122,9 @@ const Checkout = () => {
                       type="radio"
                       name="checkout-address"
                       style={{ width: "1.1rem" }}
-                      checked
+                      value={data.address.id}
+                      checked={address === data.address.id}
+                      onChange={(e) => setAddress(e.target.value)}
                     />
                     <div className="checkout-addressFlexCol">
                       <p className="checkout-addressHeading">
@@ -82,24 +143,30 @@ const Checkout = () => {
               )}
               {data &&
                 data.additional_address.length > 0 &&
-                data.additional_address.map((address) => (
-                  <div className="checkout-addressContainer">
+                data.additional_address.map((addressItem) => (
+                  <div
+                    key={addressItem.id}
+                    className="checkout-addressContainer"
+                  >
                     <div className="checkout-addressFlex">
                       <input
                         type="radio"
                         name="checkout-address"
                         style={{ width: "1.1rem" }}
+                        value={addressItem.id}
+                        checked={address === addressItem.id}
+                        onChange={(e) => setAddress(e.target.value)}
                       />
                       <div className="checkout-addressFlexCol">
                         <p className="checkout-addressHeading">
-                          {address.name} {address.phoneNumber}{" "}
+                          {addressItem.name} {addressItem.phoneNumber}{" "}
                           <span className="checkout-placeBadge">
-                            {address.place}
+                            {addressItem.place}
                           </span>
                         </p>
                         <p className="checkout-subAddress">
-                          {address.street}, {address.city} - {address.pinCode},{" "}
-                          {address.state}
+                          {addressItem.street}, {addressItem.city} -{" "}
+                          {addressItem.pinCode}, {addressItem.state}
                         </p>
                       </div>
                     </div>
@@ -110,14 +177,7 @@ const Checkout = () => {
                 data.additional_address.length < 1 && (
                   <p>No addresses! Add one right now</p>
                 )}
-              <p
-                onClick={() => {
-                  setAddressDropdown(false);
-                  setPaymentDropdown(false);
-                  setOrderDropdown(true);
-                }}
-                className="checkout-button"
-              >
+              <p onClick={handleAddressContinue} className="checkout-button">
                 Continue Checkout
               </p>
             </div>
@@ -140,7 +200,10 @@ const Checkout = () => {
               {cartData &&
                 cartData.length > 0 &&
                 cartData.map((cartItem) => (
-                  <div className="checkout-justifyContainer">
+                  <div
+                    key={cartItem.uuid}
+                    className="checkout-justifyContainer"
+                  >
                     <div className="checkout-flex">
                       <img
                         className="checkout-orderImage"
@@ -260,10 +323,18 @@ const Checkout = () => {
           {paymentDropdown && (
             <div className="checkout-dropdownContainer">
               <label className="checkout-flex">
-                <input type="radio" />
+                <input
+                  type="radio"
+                  name="paymentMode"
+                  value="COD"
+                  checked={paymentMethod === "COD"}
+                  onChange={(e) => setPaymentMethod(e.target.value)}
+                />
                 Cash on delivery
               </label>
-              <p className="checkout-button">Cofirm Order</p>
+              <p className="checkout-button" onClick={placeOrder}>
+                Confirm Order
+              </p>
             </div>
           )}
         </div>

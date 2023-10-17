@@ -23,6 +23,7 @@ const CartCard = ({ cartItem }) => {
     const response = await axiosInstance.delete(`/cart/${productId}`);
     if (response.status === 200) {
       toast.success("Product removed");
+      localStorage.removeItem(productId);
       handleRefetchCartItems();
     }
     return response.data;

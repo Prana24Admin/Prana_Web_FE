@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "../../assets/css/cart/cart.css";
 
@@ -8,12 +8,15 @@ import { IndianRupee } from "lucide-react";
 
 import CartCard from "./CartCard";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartProvider";
 
 const Cart = () => {
   const navigate = useNavigate();
+  const { setCartData } = useContext(CartContext);
 
   const fetchCart = async () => {
     const response = await axiosInstance.get("/cart");
+    if (response.status === 200) setCartData(response.data);
     return response.data;
   };
 

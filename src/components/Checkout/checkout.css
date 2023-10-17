@@ -4,7 +4,7 @@
   max-width: 1240px;
   margin: 2rem auto;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 .checkout-boxLeftContainer {
   width: 70%;
@@ -24,7 +24,7 @@
   /* align-items: center; */
   /* justify-content: space-between; */
   /* background-color: #e3ffe3; */
-  border: 1px solid #0f382c;
+  border: 1px solid #c1c1c1;
   border-radius: 5px;
   /* padding: 0.75rem 1rem; */
   cursor: pointer;
@@ -33,8 +33,9 @@
 .checkout-accordianHeader {
   font-size: 1rem;
   font-weight: 600;
-  color: black;
+  color: rgb(84, 82, 82);
   text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .checkout-flexContainer {
   display: flex;
@@ -49,25 +50,27 @@
 .checkout-dropdownContainer {
   padding: 1rem 1rem;
 }
+
 .checkout-flex {
   display: flex;
   /* align-items: center; */
   gap: 0.75rem;
 }
 .checkout-button {
-  width: 30%;
+  width: 25%;
   background-color: #0e382c;
   color: #ffffff;
   border: 2px solid #0e382c;
   border-radius: 5px;
   font-weight: 600;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   align-self: center;
   justify-content: center;
   margin: 1rem 0;
   margin-bottom: 0rem;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .checkout-button:hover {
   opacity: 0.9;
@@ -81,6 +84,7 @@
   display: flex;
   /* align-items: center; */
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 .checkout-flexCenter {
   display: flex;
@@ -93,4 +97,38 @@
   border: 1px solid #d8d8d8;
   margin: 2rem 0;
   margin-bottom: 0;
+}
+.checkout-addressContainer {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #c1c1c1;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+.checkout-addressFlex {
+  display: flex;
+  gap: 1.5rem;
+}
+.checkout-addressFlexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.checkout-placeBadge {
+  padding: 0.3rem;
+  background-color: #d1d1d1;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.checkout-addressHeading {
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.checkout-subAddress {
+  font-weight: 400;
+  font-size: 0.9rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

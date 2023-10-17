@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { handleRefetchCartItems } from "../../../libs/queryFunctions";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import image from "../../../assets/images/health/Safety.jpg";
 
 const ProductScreen = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -57,8 +58,10 @@ const ProductScreen = () => {
             <div className="product-leftImage">
               <img
                 className="product-img"
-                src={productData.image}
-                alt={productData.name}
+                // src={productData.image}
+                // alt={productData.name}
+                src={image}
+                alt="Sanju"
               />
             </div>
           </div>

@@ -7,8 +7,11 @@ import { useQuery } from "@tanstack/react-query";
 import { IndianRupee } from "lucide-react";
 
 import CartCard from "./CartCard";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
+
   const fetchCart = async () => {
     const response = await axiosInstance.get("/cart");
     return response.data;
@@ -65,6 +68,12 @@ const Cart = () => {
                       <p className="cart-descriptionTextDark">Cart value</p>
                       <p className="cart-descriptionTextDark">₹324</p>
                     </div>
+                    <p
+                      className="cart-button"
+                      onClick={() => navigate("/checkout")}
+                    >
+                      Proceed To Checkout
+                    </p>
                   </div>
                 </div>
               </>

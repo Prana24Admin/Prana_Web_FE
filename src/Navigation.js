@@ -33,6 +33,8 @@ import AddressScreen from "./components/Home/ProfileScreen/AddressScreen";
 import Orders from "./components/Home/Orders";
 import Product from "./components/Home/ProductScreen";
 import Favorites from "./components/Home/Favorites";
+import Checkout from "./components/Checkout/Checkout";
+import CheckoutScreen from "./components/Checkout";
 
 const Navigation = () => {
   return (
@@ -69,6 +71,7 @@ const Navigation = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="/checkout" element={<CheckoutScreen />} />
       </Routes>
     </Router>
   );

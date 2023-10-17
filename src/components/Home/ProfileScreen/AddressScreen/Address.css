@@ -22,7 +22,7 @@
   padding: 0.75rem;
 }
 .address-addContainer:hover {
-  background-color: rgb(211, 255, 211);
+  background-color: #d3ffd3;
 }
 .address-addText {
   font-size: 1rem;

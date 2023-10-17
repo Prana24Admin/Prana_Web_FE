@@ -56,7 +56,7 @@
 .cart-descriptionTextDark {
   font-size: 1.25rem;
   font-weight: 500;
-  margin-top: 0.65rem;
+  margin: 0.65rem 0;
   text-transform: capitalize;
   color: #000;
 }
@@ -110,7 +110,7 @@
   justify-content: space-between;
   border: 1.5px solid #0e382c;
   border-radius: 5px;
-  width: 100%;
+  /* width: 100%; */
   padding: 0.5rem 0.75rem;
   position: relative;
   cursor: pointer;
@@ -176,10 +176,28 @@
   padding: 1rem;
   align-items: center;
   gap: 0.75rem;
-  background-color: rgb(227, 255, 227);
+  background-color: #e3ffe3;
 }
 /* .cart-rupeeIcon {
   background-color: gold;
   width: 50px;
   height: 50px;
 } */
+.cart-button {
+  width: 100%;
+  background-color: #0e382c;
+  color: white;
+  border: 2px solid #0e382c;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 0.5rem 0.5rem;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin: 1rem 0;
+  margin-bottom: 0rem;
+  cursor: pointer;
+}
+.cart-button:hover {
+  opacity: 0.9;
+}

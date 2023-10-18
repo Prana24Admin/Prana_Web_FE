@@ -15,6 +15,7 @@
   max-width: 840px;
   height: 100%;
   margin: auto;
+  background-color: var(--pearlWhite);
 }
 .innerNav-flexContainer {
   display: flex;

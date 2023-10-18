@@ -1,6 +1,7 @@
 .cart-mainContainer {
   display: flex;
   width: 100%;
+  background-color: var(--pearlWhite);
 }
 .cart-marginContainer {
   gap: 1.5rem;

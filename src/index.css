@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&display=swap");
+
+:root {
+  --white: #ffffff;
+  --pearlWhite: #fffefe;
+  --powderWhite: #f7f6f6;
+
+  --silverGray: #ebeaea;
+  --lightGray: #eeeeef;
+
+  --crimsonPink: #e11960;
+
+  --black: #000000;
+  --neutralBlack: #232223;
+
+  --azureBlue: #1c738c;
+}
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;

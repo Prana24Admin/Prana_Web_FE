@@ -70,7 +70,7 @@ const Header = () => {
               <div className="d-flex flex-column">
                 <div className="inner-form">
                   <span className="email">
-                    <BiCurrentLocation color="#000" />
+                    <BiCurrentLocation color="##232223" />
                   </span>
                   <input
                     className="input-field"

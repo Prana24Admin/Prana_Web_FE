@@ -6,14 +6,9 @@ import Home from "./components/Home/index";
 import Forgot from "./components/Arrivals/forgot";
 import OTP from "./components/Arrivals/otp";
 import PasswordChange from "./components/Arrivals/passwordchange";
-import AboutIn from "./components/About/index";
-import Contact from "./components/contact/index";
-import Career from "./components/career/index";
-import OfferScreen from "./components/Offers/index";
-import Payment from "./components/Offers/payment";
-import Medicine from "./components/Offers/medicine";
-import Diagnostic from "./components/Offers/disgnostic";
-import HealthCare from "./components/Offers/healthCare";
+
+import Contact from "./pages/Home/Contact";
+
 import Prescription from "./components/Home/innerHome/prescription";
 import InnerMed from "./components/Inner/Medicine/index";
 import InnerAyur from "./components/Inner/Ayurveda/index";
@@ -24,19 +19,27 @@ import Appointment from "./components/Doctor/findDoctor/appointment";
 import InnerLab from "./components/Lab/index";
 import HealthCareIndex from "./components/HealthCare/index";
 import HealthBlogIndex from "./components/HealthBlog/index";
-import CartIndex from "./components/cart/index";
 import Login from "./components/Arrivals/Login/Login";
 import Products from "./components/HealthCare/Products";
 
-import AccountScreen from "./components/Home/ProfileScreen/AccountScreen";
-import AddressScreen from "./components/Home/ProfileScreen/AddressScreen";
-import Orders from "./components/Home/Orders";
 import Product from "./components/Home/ProductScreen";
-import Favorites from "./components/Home/Favorites";
+import Wishlist from "./pages/Home/Wishlist";
 
-import CheckoutScreen from "./components/Checkout";
+import CheckoutScreen from "./pages/Home/Checkout/Checkout";
 
-import OrderDetailsScreen from "./components/Home/Orders/OrderDetails";
+import Cart from "./pages/Home/Cart";
+import Careers from "./pages/Home/Careers";
+import AboutIndex from "./pages/Home/About";
+
+import Payment from "./pages/Home/Offers/Payment";
+import Diagnostic from "./pages/Home/Offers/Diagnostic";
+import Medicine from "./pages/Home/Offers/Medicine";
+import HealthCare from "./pages/Home/Offers/HealthCare";
+import OffersTab from "./pages/Home/Offers/OffersTab";
+import OrderDetails from "./pages/Home/Orders/OrderDetails";
+import Orders from "./pages/Home/Orders";
+import ProfileAddress from "./pages/Home/Profile/ProfileAddress";
+import ProfileAccount from "./pages/Home/Profile/ProfileAccount";
 
 const Navigation = () => {
   return (
@@ -48,10 +51,10 @@ const Navigation = () => {
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/otp" element={<OTP />} />
         <Route path="/Password" element={<PasswordChange />} />
-        <Route path="/about" element={<AboutIn />} />
+        <Route path="/about" element={<AboutIndex />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/offers" element={<OfferScreen />} />
+        <Route path="/career" element={<Careers />} />
+        <Route path="/offers" element={<OffersTab />} />
         <Route path="/offers/payment" element={<Payment />} />
         <Route path="/offers/medicine" element={<Medicine />} />
         <Route path="/offers/diagnostic" element={<Diagnostic />} />
@@ -66,15 +69,15 @@ const Navigation = () => {
         <Route path="/inner/doctor/appointment" element={<Appointment />} />
         <Route path="/inner/healthCare" element={<HealthCareIndex />} />
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
-        <Route path="/cart" element={<CartIndex />} />
         <Route path="/categories/:id" element={<Products />} />
-        <Route path="/profile" element={<AccountScreen />} />
-        <Route path="/profile/address" element={<AddressScreen />} />
+        <Route path="/profile" element={<ProfileAccount />} />
+        <Route path="/profile/address" element={<ProfileAddress />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:id" element={<OrderDetails />} />
         <Route path="/product/:id" element={<Product />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/favorites" element={<Wishlist />} />
         <Route path="/checkout" element={<CheckoutScreen />} />
-        <Route path="/orderdetails" element={<OrderDetailsScreen />} />
       </Routes>
     </Router>
   );

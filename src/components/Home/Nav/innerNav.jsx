@@ -1,61 +1,81 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../../assets/css/Home/innerNav.css'
-import {useNavigate} from 'react-router-dom';
-const InnerNav = () =>{
-    const navigate = useNavigate();
-    const navigateDoctor = () => {
-        navigate('/inner/doctor');
-      };
-      const navigateMedicine = () => {
-        navigate('/inner/innerMed');
-      };
-      const navigateLab = () => {
-        navigate('/inner/lab');
-      };
-      const navigateHealthCare = () => {
-        navigate('/inner/healthCare');
-      };
-      const navigateHealthBlog = () => {
-        navigate('/inner/healthBlog');
-      };
-      const navigateOfferScreen = () => {
-        navigate('/offers');
-      };
-      const navigateAyurveda = () => {
-        navigate('/inner/innerAyur');
-      };
-      
-    return(
-        <>
-        
-            <div className='d-flex flex-row inner-nav-row'>
-                <div className='d-flex flex-column inner-nav' >
-                    <p onClick={navigateMedicine} className='med-row'>Medicine</p>
-                </div>
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateLab} className='med-row'>Lab Tests</p>
-                </div>
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateHealthCare} className='med-row'>Health Care</p>
-                </div>
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateHealthBlog} className='med-row'>Health Blogs</p>
-                </div>
-                
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateDoctor} className='med-row'>Doctor</p>
-                </div>
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateAyurveda} className='med-row'>Ayurveda</p>
-                </div>
-                <div className='d-flex flex-column inner-nav'>
-                    <p onClick={navigateOfferScreen} className='med-row'>Offers</p>
-                </div>
-               
-            </div>
-           
-        </>
-    )
-}
-export default InnerNav
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../../assets/css/Home/innerNav.css";
+import { useNavigate } from "react-router-dom";
+import {
+  Activity,
+  BadgePercent,
+  FlaskConical,
+  Newspaper,
+  Percent,
+  Pill,
+  Sprout,
+  Stethoscope,
+  Syringe,
+} from "lucide-react";
+const InnerNav = () => {
+  const navigate = useNavigate();
+
+  const navElements = [
+    {
+      id: 1,
+      name: "Medicine",
+      icon: <Pill />,
+      path: "/inner/innerMed",
+    },
+    {
+      id: 2,
+      name: "Lab Tests",
+      icon: <FlaskConical />,
+      path: "/inner/lab",
+    },
+    {
+      id: 3,
+      name: "Health Care",
+      icon: <Syringe />,
+      path: "/inner/healthCare",
+    },
+    {
+      id: 4,
+      name: "Health Blogs",
+      icon: <Newspaper />,
+      path: "/inner/healthBlog",
+    },
+    {
+      id: 5,
+      name: "Doctor",
+      icon: <Stethoscope />,
+      path: "/inner/doctor",
+    },
+    {
+      id: 6,
+      name: "Ayurveda",
+      icon: <Sprout />,
+      path: "/inner/innerAyur",
+    },
+    {
+      id: 7,
+      name: "Offers",
+      icon: <BadgePercent />,
+      path: "/offers",
+    },
+  ];
+
+  return (
+    <div className="innerNav-mainContainer">
+      <div className="innerNav-flexContainer">
+        {navElements.map((navElement) => (
+          <div
+            className="innerNav-bodyContainer"
+            onClick={() => navigate(navElement.path)}
+            key={navElements.id}
+          >
+            <p> {navElement.icon} </p>
+            <p>{navElement.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+export default InnerNav;

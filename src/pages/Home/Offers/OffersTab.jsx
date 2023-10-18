@@ -1,8 +1,8 @@
 import React from "react";
-import Flat from "../../assets/images/offers/flat.jpg";
-import Plus from "../../assets/images/offers/plusoffer.jpg";
+import Flat from "../../../assets/images/offers/flat.jpg";
+import Plus from "../../../assets/images/offers/plusoffer.jpg";
 import Card from "react-bootstrap/Card";
-import "../../assets/css/Offers/offerInnerScreen.css";
+import "../../../assets/css/Offers/offerInnerScreen.css";
 import axiosInstance from "../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 const OffersTab = () => {

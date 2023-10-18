@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "../Home/Nav/nav";
-import "../../assets/css/About/about.css";
-import Connect from "../../assets/images/about/connect.png";
-import Transparency from "../../assets/images/about/transparency.png";
-import Trust from "../../assets/images/about/trust.png";
+
+import "./about.css";
+import Connect from "../../../assets/images/about/connect.png";
+import Transparency from "../../../assets/images/about/transparency.png";
+import Trust from "../../../assets/images/about/trust.png";
 import AboutInner from "./about-inner";
+import MainLayout from "../../../components/MainLayout";
+
 const AboutIndex = () => {
   const responsive = {
     superLargeDesktop: {
@@ -26,10 +28,7 @@ const AboutIndex = () => {
     },
   };
   return (
-    <>
-      <div>
-        <Header />
-      </div>
+    <MainLayout>
       <div style={{ marginTop: "30px" }}>
         <h2 style={{ textAlign: "center" }}>Our Mission</h2>
         <p className="par-txt">
@@ -95,7 +94,7 @@ const AboutIndex = () => {
       <div>
         <AboutInner />
       </div>
-    </>
+    </MainLayout>
   );
 };
 export default AboutIndex;

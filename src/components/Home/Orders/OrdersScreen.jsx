@@ -27,7 +27,7 @@ const OrdersScreen = () => {
       <p className="orders-Header">Your Orders</p>
       {ordersData &&
         ordersData.data.map((order) => (
-          <div>
+          <div key={order.uuid}>
             <div className="orders-borderContainer">
               <div className="orders-justifyContainer">
                 <div className="orders-flexContainer">
@@ -54,7 +54,7 @@ const OrdersScreen = () => {
                   <div className="orders-bill">
                     <p
                       className="orders-billText"
-                      onClick={() => navigate("/orderdetails")}
+                      onClick={() => navigate(`/orders/${order.uuid}`)}
                     >
                       View order details
                     </p>

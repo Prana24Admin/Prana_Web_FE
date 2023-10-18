@@ -1,13 +1,14 @@
 import React from "react";
-import Flat from "../../assets/images/offers/flat.jpg";
-import Plus from "../../assets/images/offers/plusoffer.jpg";
+import Flat from "../../../assets/images/offers/flat.jpg";
+import Plus from "../../../assets/images/offers/plusoffer.jpg";
 import Card from "react-bootstrap/Card";
-import "../../assets/css/Offers/offerInnerScreen.css";
-import Header from "../Home/Nav/nav";
-import InnerSearch from "../Home/Nav/innerSearch";
+import "./offerInnerScreen.css";
+
+import InnerSearch from "../../Home/Nav/innerSearch";
 import OfferScreen from "./offers";
-import Footer from "../Home/innerHome/footer";
-const HealthCare = () => {
+
+import MainLayout from "../../../components/MainLayout";
+const Diagnostic = () => {
   const OfferArr = [
     {
       Text: "Flat 15% OFF + 5% Cashback + Free Plus Membership",
@@ -54,10 +55,7 @@ const HealthCare = () => {
   ];
 
   return (
-    <>
-      <div>
-        <Header />
-      </div>
+    <MainLayout>
       <div>
         <InnerSearch />
       </div>
@@ -134,10 +132,7 @@ const HealthCare = () => {
           })}
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </MainLayout>
   );
 };
-export default HealthCare;
+export default Diagnostic;

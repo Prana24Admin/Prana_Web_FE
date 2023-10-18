@@ -1,6 +1,5 @@
 import React from "react";
 import "./products.css";
-import "../../Home/Favorites/Favorites.css";
 import axiosInstance from "../../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";

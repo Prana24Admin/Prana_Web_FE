@@ -1,13 +1,10 @@
 import React from "react";
-import Header from "../Home/Nav/nav";
-import Footer from "../Home/innerHome/footer";
-import "../../assets/css/contact/contact.css";
+
+import "./contact.css";
+import MainLayout from "../../../components/MainLayout";
 const Contact = () => {
   return (
-    <>
-      <div>
-        <Header />
-      </div>
+    <MainLayout>
       <div className="contact-form">
         <div className="d-flex flex-row">
           <div className="d-flex flex-column contact-col">
@@ -46,10 +43,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </MainLayout>
   );
 };
 export default Contact;

@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   margin: 2rem 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .orders-container {
   max-width: 1240px;
@@ -54,18 +55,18 @@
 .orders-text {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #787c7d;
+  color: #5b5e5f;
   text-transform: uppercase;
 }
 .orders-date {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #787c7d;
+  color: #4b4e50;
 }
 .orders-bill {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #787c7d;
+  color: #5b5e5f;
   display: flex;
   gap: 1rem;
 }
@@ -127,6 +128,6 @@
 }
 .orders-billText:hover {
   cursor: pointer;
-  color: #0f382c;
-  font-weight: 600;
+  color: rgb(17, 113, 148);
+  text-decoration: underline;
 }

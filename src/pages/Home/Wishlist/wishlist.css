@@ -36,6 +36,7 @@
   width: 100%;
   border-radius: 5px;
   margin-bottom: 0.75rem;
+  object-fit: cover;
 }
 .favorites-productName {
   font-size: 1.25rem;

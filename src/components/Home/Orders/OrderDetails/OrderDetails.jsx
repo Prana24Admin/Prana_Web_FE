@@ -1,0 +1,123 @@
+import React from "react";
+import "./OrderDetails.css";
+import { ChevronDown } from "lucide-react";
+import image from "../../../../assets/images/profile/avatar.png";
+
+const OrderDetails = () => {
+  return (
+    <div className="orderdetails-mainContainer">
+      <div>
+        <p className="orderdetails-title">Order Details</p>
+        <div className="orderdetails-justifyContainer">
+          <div className="orderdetails-flexContainer">
+            <p> Ordered on 10 may 2023</p>
+            <div className="orderdetails-line" />
+            <p>ORDER ID:#12345678900</p>
+          </div>
+          <div className="orderdetails-hoverFlexContainer">
+            <p>Invoice</p>
+            <ChevronDown size={15} />
+          </div>
+        </div>
+        <div className="orderdetails-borderContainer">
+          <div className="orderdetails-justifyContainer">
+            <div className="orderdetails-borderFlexContainer">
+              <div>
+                <p className="orderdetails-header">Shipping address</p>
+                <p className="orderdetails-bodyText">
+                  Name <br /> address <br /> city,state,pincode
+                  <br />
+                </p>
+              </div>
+              <div>
+                <p className="orderdetails-header">payment method</p>
+                <p className="orderdetails-bodyText">UPI</p>
+              </div>
+            </div>
+            <div>
+              <p className="orderdetails-header">Order summary</p>
+              <div className="orderdetails-bodyText">
+                <div className="orderdetails-billJustifyContainer">
+                  <p>items subtotal:</p>
+                  <p>₹399.00</p>
+                </div>
+                <div className="orderdetails-billJustifyContainer">
+                  <p>Shipping:</p>
+                  <p>₹399.00</p>
+                </div>
+                <div className="orderdetails-billJustifyContainer">
+                  <p>total:</p>
+                  <p>₹399.00</p>
+                </div>
+                <div
+                  className="orderdetails-billJustifyContainer"
+                  style={{ fontWeight: "800" }}
+                >
+                  <p>grand total:</p>
+                  <p>₹399.00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="orderdetails-hoverFlexContainer">
+            <ChevronDown size={15} />
+            <p>Trancaction</p>
+          </div>
+        </div>
+        <div className="orderdetails-borderContainer">
+          <div className="orderdetails-justifyContainer">
+            <div className="orderdetails-borderFlexContainer">
+              <img className="orderdetails-image" src={image} alt="sanju" />
+              <div>
+                <p className="orderdetails-header">Order name</p>
+                <p>₹399.00</p>
+                <button className="orderdetails-button">View your Item</button>
+              </div>
+            </div>
+            <div>
+              <div className="orderdetails-bodyText">
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    flexDirection: "column",
+                  }}
+                >
+                  <button className="orderdetails-buttonsRight">
+                    Customer support
+                  </button>
+                  <button className="orderdetails-buttonsRight">
+                    Write a review
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="orderdetails-borderContainer">
+          <div className="orders-details">
+            <div className="orders-detailsFlex">
+              <img className="orders-image" src={Image} alt="sanju" />
+              <div className="orders-gapContainer">
+                <p className="orders-productName">Orders Name</p>
+                <button className="orders-button">View your Item</button>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                flexDirection: "column",
+              }}
+            >
+              <button className="orders-buttonsRight">Customer support</button>
+              <button className="orders-buttonsRight">Write a review</button>
+            </div>
+          </div>
+        </div> */}
+      </div>
+    </div>
+  );
+};
+
+export default OrderDetails;

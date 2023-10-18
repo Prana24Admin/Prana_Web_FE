@@ -5,8 +5,10 @@ import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import format from "date-fns/format";
+import { useNavigate } from "react-router-dom";
 
 const OrdersScreen = () => {
+  const navigate = useNavigate();
   const fetchAllOrders = async () => {
     const response = await axiosInstance.get("/orders");
     return response.data;
@@ -50,7 +52,12 @@ const OrdersScreen = () => {
                     <p>{order.order_id}</p>
                   </div>
                   <div className="orders-bill">
-                    <p>View order details</p>
+                    <p
+                      className="orders-billText"
+                      onClick={() => navigate("/orderdetails")}
+                    >
+                      View order details
+                    </p>
                   </div>
                 </div>
               </div>

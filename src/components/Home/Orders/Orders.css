@@ -125,3 +125,8 @@
   /* border-radius: 5px; */
   border: 1px solid #0f382c;
 }
+.orders-billText:hover {
+  cursor: pointer;
+  color: #0f382c;
+  font-weight: 600;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import "./offers.css";
 import { Link } from "react-router-dom";
-import MainLayout from "../../../components/MainLayout";
+// import MainLayout from "../../../components/MainLayout";
 const Offers = () => {
   return (
-    <MainLayout>
+    <>
       <div style={{ marginTop: "20px" }}>
         <p className="pharm">Pana24 Offers & Coupon Codes</p>
         <p className="prana">
@@ -50,7 +50,7 @@ const Offers = () => {
           </Link>
         </div>
       </div>
-    </MainLayout>
+    </>
   );
 };
 export default Offers;

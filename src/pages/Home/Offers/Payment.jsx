@@ -1,12 +1,13 @@
 import React from "react";
-import Flat from "../../assets/images/offers/flat.jpg";
-import Plus from "../../assets/images/offers/plusoffer.jpg";
+import Flat from "../../../assets/images/offers/flat.jpg";
+import Plus from "../../../assets/images/offers/plusoffer.jpg";
 import Card from "react-bootstrap/Card";
-import "../../assets/css/Offers/offerInnerScreen.css";
-import Header from "../Home/Nav/nav";
-import InnerSearch from "../Home/Nav/innerSearch";
-import OfferScreen from "./offers";
-import Footer from "../Home/innerHome/footer";
+import "./offerInnerScreen.css";
+
+import InnerSearch from "../../../components/Home/Nav/innerSearch";
+import OfferScreen from "./Offers";
+
+import MainLayout from "../../../components/MainLayout";
 const Payment = () => {
   const OfferArr = [
     {
@@ -54,10 +55,7 @@ const Payment = () => {
   ];
 
   return (
-    <>
-      <div>
-        <Header />
-      </div>
+    <MainLayout>
       <div>
         <InnerSearch />
       </div>
@@ -134,10 +132,7 @@ const Payment = () => {
           })}
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </MainLayout>
   );
 };
 export default Payment;

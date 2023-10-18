@@ -4,8 +4,8 @@ import Plus from "../../../assets/images/offers/plusoffer.jpg";
 import Card from "react-bootstrap/Card";
 import "./offerInnerScreen.css";
 
-import InnerSearch from "../../Home/Nav/innerSearch";
-import OfferScreen from "./offers";
+import InnerSearch from "../../../components/Home/Nav/innerSearch";
+import OfferScreen from "./Offers";
 
 import MainLayout from "../../../components/MainLayout";
 const HealthCare = () => {

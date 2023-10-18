@@ -7,7 +7,7 @@ import { ProfileContext } from "../../../context/ProfileProvider";
 import format from "date-fns/format";
 import { useNavigate } from "react-router-dom";
 
-const OrdersScreen = () => {
+const Orders = () => {
   const navigate = useNavigate();
   const fetchAllOrders = async () => {
     const response = await axiosInstance.get("/orders");
@@ -91,4 +91,4 @@ const OrdersScreen = () => {
   );
 };
 
-export default OrdersScreen;
+export default Orders;

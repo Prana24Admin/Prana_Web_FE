@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./AddressModal.css";
-import Input from "../../../../Input";
+import Input from "../../../../../components/Input";
 import { Building, CheckCircle, Home } from "lucide-react";
 import { ProfileContext } from "../../../../../context/ProfileProvider";
 import axiosInstance from "../../../../../libs/axios";

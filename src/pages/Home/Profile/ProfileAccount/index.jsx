@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import "../Profile.css";
-import Profile from "../Profile";
-import Input from "../../../Input";
+import Profile from "..";
+import Input from "../../../../components/Input";
 import { ProfileContext } from "../../../../context/ProfileProvider";
-import { FileEdit, Save, X } from "lucide-react";
+import { FileEdit, X } from "lucide-react";
 import axiosInstance from "../../../../libs/axios";
 
-const Account = () => {
+const ProfileAccount = () => {
   const { data } = useContext(ProfileContext);
   const [edit, setEdit] = useState(false);
 
@@ -107,4 +107,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default ProfileAccount;

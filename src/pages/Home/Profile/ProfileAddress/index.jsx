@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Profile from "../Profile";
+
 import "../Profile.css";
 import "./Address.css";
 import { MoreVertical, Plus } from "lucide-react";
@@ -7,8 +7,9 @@ import { ProfileContext } from "../../../../context/ProfileProvider";
 import AddressModal from "./AddressModal";
 import axiosInstance from "../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
+import Profile from "..";
 
-const Address = () => {
+const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
 
   const [selectedDropdown, setSelectedDropdown] = useState(null);
@@ -170,4 +171,4 @@ const Address = () => {
   );
 };
 
-export default Address;
+export default ProfileAddress;

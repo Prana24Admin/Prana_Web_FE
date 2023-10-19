@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../../libs/axios";
 import { handleRefetchWishlistData } from "../../../libs/queryFunctions";
 import MainLayout from "../../../components/MainLayout";
+import ProductItem from "../../../components/ProductItem";
 
 const Wishlist = () => {
   const fetchWishlist = async () => {
@@ -28,27 +29,28 @@ const Wishlist = () => {
   return (
     <MainLayout>
       <div className="favorites-mainContainer">
-        <p className="favorites-title">Favorites</p>
+        <p className="wishlist-title">Favorites</p>
         <div className="favorites-gridContainer">
           {data &&
             data.map((item) => (
-              <div key={item.uuid} className="favorites-cardContainer">
-                <img className="favorites-image" src={image} alt="imge" />
-                <Heart
-                  onClick={() => removeFromWishlist(item.uuid)}
-                  fill="red"
-                  color="red"
-                  className="favorites-heartIcon"
-                  size={35}
-                />
-                <p className="favorites-productName">{item.product.name}</p>
-                <div className="favorites-flexContainer">
-                  <p className="favorites-productPrice">
-                    ₹{item.product.price}
-                  </p>
-                </div>
-                <p className="favorites-button">Add to cart</p>
-              </div>
+              // <div key={item.uuid} className="wishlist-cardContainer">
+              //   <img className="favorites-image" src={image} alt="imge" />
+              //   <Heart
+              //     onClick={() => removeFromWishlist(item.uuid)}
+              //     fill="red"
+              //     color="red"
+              //     className="favorites-heartIcon"
+              //     size={35}
+              //   />
+              //   <p className="favorites-productName">{item.product.name}</p>
+              //   <div className="favorites-flexContainer">
+              //     <p className="favorites-productPrice">
+              //       ₹{item.product.price}
+              //     </p>
+              //   </div>
+              //   <p className="favorites-button">Add to cart</p>
+              // </div>
+              <ProductItem product={item.product} key={item.product.uuid} />
             ))}
         </div>
       </div>

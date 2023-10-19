@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../Home/Nav/nav";
-import InnerNav from "../../Home/Nav/innerNav";
 import MedicineSlider from "./medicineSlider";
 import Popular from "./popular";
 import Seller from "./seller";
@@ -10,16 +8,12 @@ import Picks from "./picks";
 import Health from "./health";
 import Medicine from "./medicine";
 import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 
 const MedicineIndex = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <InnerNav />
-      </div>
+      <Navbar />
       <div>
         <MedicineSlider />
       </div>

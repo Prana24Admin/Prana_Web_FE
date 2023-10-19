@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../../Home/Nav/nav";
-import InnerNav from "../../Home/Nav/innerNav";
 
 import "./products.css";
 
@@ -8,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductItem from "./ProductItem";
+import Navbar from "../../Navbar";
 
 const Products = () => {
   const { id } = useParams();
@@ -21,8 +20,7 @@ const Products = () => {
 
   return (
     <div className="products-container">
-      <Header />
-      <InnerNav />
+      <Navbar />
       {isLoading && <p>Loading..</p>}
       {data && (
         <div className="products-flexContainer">

@@ -1,17 +1,16 @@
 import React from "react";
-import Header from "../../Home/Nav/nav";
+
 import DoctorNav from "../../Home/Nav/doctorNav";
 import Video from "./video";
 import HealthConcern from "./healthConcern";
 import Customers from "./customers";
 import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 
 const Index = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
+      <Navbar />
       <div>
         <DoctorNav />
       </div>

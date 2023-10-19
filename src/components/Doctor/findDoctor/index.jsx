@@ -1,20 +1,14 @@
 import React from "react";
-import Header from "../../Home/Nav/nav";
-import InnerNav from "../../Home/Nav/innerNav";
 
 import RightDoctor from "./rightDoctor";
 import Filter from "./filter";
 import Available from "./available";
 import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 const FindDoctorIndex = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <InnerNav />
-      </div>
+      <Navbar />
       <div>
         <RightDoctor />
       </div>

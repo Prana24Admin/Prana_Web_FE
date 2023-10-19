@@ -1,6 +1,4 @@
 import React from "react";
-import Nav from "../Home/Nav/nav";
-import InnerNav from "../Home/Nav/innerNav";
 import LabSlide from "./labSlide";
 import Booking from "./booking";
 import Slider from "../Inner/Medicine/medicineSlider";
@@ -10,16 +8,12 @@ import Package from "./package";
 import Happy from "./happyCustomers";
 import Download from "../Home/innerHome/homeDownload";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const LabIndex = () => {
   return (
     <>
-      <div>
-        <Nav />
-      </div>
-      <div>
-        <InnerNav />
-      </div>
+      <Navbar />
       <div>
         <LabSlide />
       </div>

@@ -1,6 +1,4 @@
 import React from "react";
-import Header from "../Home/Nav/nav";
-import InnerNav from "../Home/Nav/innerNav";
 import HealthSlide from "./healthSlide";
 import Health from "./health";
 
@@ -8,15 +6,11 @@ import Video from "./video";
 import HealthTxt from "./healthTxt";
 import Categories from "./Categories";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 const HealthCareIndex = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <InnerNav />
-      </div>
+      <Navbar />
       <div>
         <Categories />
       </div>

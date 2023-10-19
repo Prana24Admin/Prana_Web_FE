@@ -1,6 +1,4 @@
 import React from "react";
-import Nav from "./Nav/nav";
-import InnerNav from "./Nav/innerNav";
 // import SearchBar from "./Nav/search";
 import HomeSlide from "./innerHome/homeslide";
 import HomeCard from "./innerHome/homeCard";
@@ -18,16 +16,12 @@ import FeatureBrand from "./innerHome/featureBrands";
 import HomeChoose from "./innerHome/homeChoose";
 import Download from "./innerHome/homeDownload";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const HomeIndex = () => {
   return (
     <>
-      <div>
-        <Nav />
-      </div>
-      {/* <div>
-        <InnerNav />
-      </div> */}
+      <Navbar />
       {/* <div>
         <SearchBar />
       </div> */}

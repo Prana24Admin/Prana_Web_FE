@@ -17,7 +17,11 @@ const App = () => {
           <CartProvider>
             <Navigation />
             <ReactQueryDevtools initialIsOpen={false} />
-            <Toaster />
+            <Toaster
+              containerStyle={{
+                zIndex: 1000000000,
+              }}
+            />
           </CartProvider>
         </ProfileProvider>
       </QueryClientProvider>

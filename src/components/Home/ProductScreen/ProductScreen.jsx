@@ -25,18 +25,14 @@ const ProductScreen = () => {
   } = useQuery(["Product"], fetchProduct);
 
   const handleQuantity = async (product) => {
-    if (product.quantity === localStorage.getItem("cartQuantity")) {
-      return toast.error("Product in cart");
-    }
     const response = await axiosInstance.post("/cart", {
-      quantity: product.quantity,
+      quantity: product.quantity ?? 1,
       product_id: product.productId,
     });
-    if (response.status === 400) {
-      toast.error("Try again");
-    }
-    localStorage.setItem("cartQuantity", product.quantity);
-    toast.success("Added to cart");
+    if (response.status === 400) toast.error("Try again");
+
+    if (response.status === 201 || response.status === 200)
+      toast.success("Added to cart");
     return response.data;
   };
   const { mutate, isLoading: quantityLoading } = useMutation(

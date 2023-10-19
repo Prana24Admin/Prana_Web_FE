@@ -3,11 +3,11 @@ import React from "react";
 import "./products.css";
 
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../../libs/axios";
+import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import ProductItem from "./ProductItem";
-import Navbar from "../../Navbar";
 
+import MainLayout from "../../../../components/MainLayout";
+import ProductItem from "../../../../components/ProductItem";
 const Products = () => {
   const { id } = useParams();
 
@@ -16,11 +16,10 @@ const Products = () => {
     return response.data;
   };
 
-  const { data, isLoading, error } = useQuery(["data"], fetchData);
+  const { data, isLoading, error } = useQuery(["All Products"], fetchData);
 
   return (
-    <div>
-      <Navbar />
+    <MainLayout>
       <div className="products-container">
         {isLoading && <p>Loading..</p>}
         {data && (
@@ -49,7 +48,7 @@ const Products = () => {
         )}
         {error && <p>Error fetching! Try again.</p>}
       </div>
-    </div>
+    </MainLayout>
   );
 };
 

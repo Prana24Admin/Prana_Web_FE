@@ -4,9 +4,11 @@ import Health from "./health";
 
 import Video from "./video";
 import HealthTxt from "./healthTxt";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 import Categories from "./Categories";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+// import Categories from "./Categories";
+
 const HealthCareIndex = () => {
   return (
     <>

@@ -10,7 +10,7 @@
   /* height: 70px; */
   /* border-bottom: 1px solid #e3e3e3; */
   position: fixed;
-  z-index: 1000000;
+  z-index: 10000;
   width: 100%;
 }
 .headerFlex {

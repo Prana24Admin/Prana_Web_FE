@@ -17,10 +17,10 @@ import InnerDoctor from "./components/Doctor/inner/index";
 import FindDoctor from "./components/Doctor/findDoctor/index";
 import Appointment from "./components/Doctor/findDoctor/appointment";
 import InnerLab from "./components/Lab/index";
-import HealthCareIndex from "./components/HealthCare/index";
+import HealthCareIndex from "./pages/Home/HealthCare/index";
 import HealthBlogIndex from "./components/HealthBlog/index";
 import Login from "./components/Arrivals/Login/Login";
-import Products from "./components/HealthCare/Products";
+import Products from "./pages/Home/HealthCare/Products";
 
 import Product from "./components/Home/ProductScreen";
 import Wishlist from "./pages/Home/Wishlist";

@@ -2,12 +2,12 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import Card from "react-bootstrap/Card";
 import "react-multi-carousel/lib/styles.css";
-import Lupus from "../../assets/images/health/lupus.jpg";
-import Digestive from "../../assets/images/health/digestive.jpg";
-import Menstrual from "../../assets/images/health/menstrual.jpg";
-import MothersDay from "../../assets/images/health/mothersDay.jpg";
-import World from "../../assets/images/health/world.jpg";
-import "../../assets/css/Health/healthCare.css";
+import Lupus from "../../../assets/images/health/lupus.jpg";
+import Digestive from "../../../assets/images/health/digestive.jpg";
+import Menstrual from "../../../assets/images/health/menstrual.jpg";
+import MothersDay from "../../../assets/images/health/mothersDay.jpg";
+import World from "../../../assets/images/health/world.jpg";
+import "./healthCare.css";
 
 const InnerHealthBlog = () => {
   const responsive = {

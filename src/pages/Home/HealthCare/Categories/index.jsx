@@ -4,7 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 
 // import "../../../assets/css/Health/healthCare.css";
 import "./categories.css";
-import axiosInstance from "../../../libs/axios";
+import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 

@@ -29,70 +29,89 @@ const AboutIndex = () => {
   };
   return (
     <MainLayout>
-      <div style={{ marginTop: "30px" }}>
-        <h2 style={{ textAlign: "center" }}>Our Mission</h2>
-        <p className="par-txt">
-          Practo is on a mission to make quality healthcare affordable and
-          accessible for over a billion+ Indians. We believe in empowering our
-          users with the most accurate, comprehensive, and curated information
-          and care, enabling them to make better healthcare decisions.
-        </p>
-      </div>
-      <div style={{ marginTop: "20px" }}>
-        <h2 style={{ textAlign: "center" }}>Our approach to healthcare </h2>
-        <p style={{ textAlign: "center" }}>
-          Providing high-quality, trusted, and accessible healthcare is our
-          reason for being
-        </p>
-      </div>
-      <div className="d-flex flex-row justify-content-center">
-        <div className="d-flex flex-column col-2"></div>
-        <div className="d-flex flex-column col-3">
-          <img className="about-img" src={Connect} alt="" />
-          <h3 className="connect">Connect</h3>
+      <div className="about-mainContainer">
+        <div className="about-detailsContainer">
+          <p className="about-detailsHeader">Our Mission</p>
+          <p className="about-par-txt">
+            Practo is on a mission to make quality healthcare affordable and
+            accessible for over a billion+ Indians. We believe in empowering our
+            users with the most accurate, comprehensive, and curated information
+            and care, enabling them to make better healthcare decisions.
+          </p>
         </div>
-        <div className="d-flex flex-column col-3">
-          <img className="about-img" src={Transparency} alt="" />
-          <h3 className="transparency">Transparency</h3>
+        <div
+          className="about-detailsContainer"
+          style={{
+            marginTop: "1.5rem",
+          }}
+        >
+          <p className="about-detailsHeader">Our approach to healthcare </p>
+          <p className="about-par-txt">
+            Providing high-quality, trusted, and accessible healthcare is our
+            reason for being
+          </p>
         </div>
-        <div className="d-flex flex-column col-3">
-          <img className="about-img" src={Trust} alt="" />
-          <h3 className="connect">Trust</h3>
+        <div
+          // className="d-flex flex-row justify-content-center"
+          style={{
+            // justifyContent: "space-between",
+            display: "flex",
+            alignItems: "center",
+            margin: "auto",
+            marginLeft: "15rem",
+          }}
+        >
+          <div
+            className="d-flex flex-column col-3 "
+            style={{ alignItems: "center" }}
+          >
+            <img className="about-img" src={Connect} alt="" />
+            <h3 className="connect">Connect</h3>
+          </div>
+          <div
+            className="d-flex flex-column col-3"
+            style={{ alignItems: "center" }}
+          >
+            <img className="about-img" src={Transparency} alt="" />
+            <h3 className="transparency">Transparency</h3>
+          </div>
+          <div
+            className="d-flex flex-column col-3"
+            style={{ alignItems: "center" }}
+          >
+            <img className="about-img" src={Trust} alt="" />
+            <h3 className="connect">Trust</h3>
+          </div>
         </div>
-      </div>
-      <div className="prana">
-        <h3 className="pra">What is Prana 24?</h3>
-        <p>
-          <i>
-            <b>Prana24 is a consumer healthcare “super app”.</b>
-          </i>
-        </p>
-        <p className="prana-par">
-          Prana 24 is a consumer healthcare “super app” that provides consumers
-          with on-demand, home delivered access to a wide range of prescription,
-          OTC pharmaceutical, other consumer healthcare products, comprehensive
-          diagnostic test services, and teleconsultations thereby serving their
-          healthcare needs.
-        </p>
-      </div>
-      <div className="par-mid">
-        <p className="ultimate">
-          Our ultimate goal is to provide affordable healthcare to one and all.
-        </p>
-      </div>
-      <div>
-        <h3 className="yout">Get to know us better</h3>
-        <div className="youtub">
+        <div className="prana">
+          <p className="pra">What is Prana24 ?</p>
+          <p className="about-par-txt">
+            Prana24 is a consumer healthcare “super app”.
+          </p>
+          <p className="about-par-txt">
+            Prana 24 is a consumer healthcare “super app” that provides
+            consumers with on-demand, home delivered access to a wide range of
+            prescription, OTC pharmaceutical, other consumer healthcare
+            products, comprehensive diagnostic test services, and
+            teleconsultations thereby serving their healthcare needs.
+          </p>
+        </div>
+        <div className="par-mid">
+          <p className="ultimate">
+            Our ultimate goal is to provide affordable healthcare to one and
+            all.
+          </p>
+        </div>
+        <div className="about-alingCenter">
+          <p className="about-knownText">Get to know us better</p>
           <iframe
-            style={{ marginLeft: "150px" }}
-            width="1000"
-            height="400"
+            className="youtube"
             src="https://www.youtube.com/embed/Kk-POoUQAoA"
-          ></iframe>
+          />
         </div>
-      </div>
-      <div>
-        <AboutInner />
+        <div>
+          <AboutInner />
+        </div>
       </div>
     </MainLayout>
   );

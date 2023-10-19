@@ -101,29 +101,35 @@ const AboutInner = () => {
     },
   ];
   return (
-    <>
+    <div className="about-mainContainer" style={{ marginBottom: "2rem" }}>
       <div className="home-labs-img">
-        <p className="lab">What Our Customers have to say?</p>
+        <p className="pra" style={{ marginBottom: "0rem" }}>
+          What Our Customers have to say?
+        </p>
       </div>
       <div>
         <Carousel responsive={responsive}>
           {aboutArr.map((item) => {
             return (
-              <>
+              <div
+                style={{ display: "flex", gap: "3rem", alignItems: "center" }}
+              >
                 <div className="trend-col">
-                  <p className="about-inner-par">{item.par}</p>
-                  <p className="about-inner-par1">{item.paragraph}</p>
+                  <p className="about-inner-par">
+                    {item.par}
+                    <span className="about-inner-par1">
+                      {"  "},{item.paragraph}
+                    </span>
+                  </p>
+                  <p></p>
                   <p className="about-inner-par2">{item.Text} </p>
                 </div>
-              </>
+              </div>
             );
           })}
         </Carousel>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </div>
   );
 };
 export default AboutInner;

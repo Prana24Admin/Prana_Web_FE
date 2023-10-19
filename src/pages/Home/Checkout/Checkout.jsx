@@ -112,7 +112,7 @@ const Checkout = () => {
               }}
             >
               <p className="checkout-accordianHeader">delivery address</p>
-              <ChevronDown size={25} />
+              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {addressDropdown && (
               <div className="checkout-dropdownContainer">
@@ -194,7 +194,7 @@ const Checkout = () => {
               }}
             >
               <p className="checkout-accordianHeader">order</p>
-              <ChevronDown size={25} />
+              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {orderDropdown && (
               <div className="checkout-dropdownContainer">
@@ -227,7 +227,7 @@ const Checkout = () => {
                               style={{
                                 fontSize: "0.75rem",
                                 fontWeight: "400",
-                                color: "#7b7b7b",
+                                color: "var(--coinGray)",
                                 textDecoration: "line-through",
                               }}
                             >
@@ -237,7 +237,7 @@ const Checkout = () => {
                               style={{
                                 fontSize: "1rem",
                                 fontWeight: "400",
-                                color: "#000",
+                                color: "var(--neutralBlack)",
                               }}
                             >
                               ₹{cartItem.product.price}
@@ -272,7 +272,7 @@ const Checkout = () => {
                                 <ChevronDown
                                   size={18}
                                   strokeWidth={2.5}
-                                  color="#0e382c"
+                                  color="var(--neutralBlack)"
                                 />
                               </div>
                             </>
@@ -319,7 +319,7 @@ const Checkout = () => {
               }}
             >
               <p className="checkout-accordianHeader">Payment</p>
-              <ChevronDown size={25} />
+              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {paymentDropdown && (
               <div className="checkout-dropdownContainer">

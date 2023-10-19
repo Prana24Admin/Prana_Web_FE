@@ -28,7 +28,7 @@
 .main-head-title {
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: "Nunito Sans";
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-flexContainer {
   display: flex;
@@ -54,17 +54,17 @@
 .cart-descriptionText {
   font-size: 16px;
   font-weight: 400;
-  color: #a3a3a3;
+  color: var(--coinGray);
   text-transform: capitalize;
-  font-family: "Nunito Sans";
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-descriptionTextDark {
   font-size: 1.25rem;
   font-weight: 500;
   margin-top: 0.65rem;
   text-transform: capitalize;
-  color: #000;
-  font-family: "Nunito Sans";
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-rightContainer {
   width: 30%;
@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid var(--cloudGray);
   border-radius: 5px;
 }
 .cart-flex {
@@ -92,15 +92,15 @@
   text-transform: uppercase;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #a3a3a3;
-  font-family: "Nunito Sans";
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-discountText {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #0e382c;
+  color: var(--neutralBlack);
   margin-left: 0.25rem;
-  font-family: "Nunito Sans";
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-linethrough {
   text-decoration: line-through;
@@ -116,7 +116,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1.5px solid #0e382c;
+  border: 1.5px solid var(--cloudGray);
   border-radius: 5px;
   /* width: 100%; */
   padding: 0.5rem 0.75rem;
@@ -139,6 +139,7 @@
 .cart-quantity {
   font-weight: 500;
   font-size: 0.9rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .cart-chevronIcon {
@@ -155,20 +156,20 @@
   overflow-y: scroll;
   top: 110%;
   right: 1%;
-  background-color: white;
+  background-color: var(--white);
   z-index: 50;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid var(--cloudGray);
   border-radius: 5px;
 }
 
 .cart-dropDownQuantity {
   width: 100%;
-  border-bottom: 1px solid rgb(243, 243, 243);
+  border-bottom: 1px solid var(--cloudGray);
   padding: 0.25rem 0.5rem;
 }
 
 .cart-dropDownQuantity:hover {
-  background-color: rgb(184, 255, 184);
+  background-color: var(--lightGray);
 }
 
 .cart-loaderContainer {
@@ -183,18 +184,18 @@
 .cart-savingsContainer {
   display: flex;
   /* height:; */
-  border: 1px dotted rgb(32, 169, 32);
+  border: 1px dotted #fe385d;
   border-radius: 5px;
   padding: 1rem;
   align-items: center;
   gap: 0.75rem;
-  background-color: #e3ffe3;
+  background-color: #fff0f3;
 }
 .cart-button {
   width: 100%;
-  background-color: #0e382c;
-  color: white;
-  border: 2px solid #0e382c;
+  background-color: var(--crimsonPink);
+  color: var(--white);
+  border: 2px solid var(--crimsonPink);
   border-radius: 5px;
   font-weight: 600;
   padding: 0.5rem 0.5rem;
@@ -204,7 +205,7 @@
   margin: 1rem 0;
   margin-bottom: 0rem;
   cursor: pointer;
-  font-family: "Nunito Sans";
+  font-family: Arial, Helvetica, sans-serif;
 }
 .cart-button:hover {
   opacity: 0.9;

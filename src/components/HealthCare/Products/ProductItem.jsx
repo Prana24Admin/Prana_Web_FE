@@ -43,7 +43,7 @@ const ProductItem = ({ product }) => {
         <p className="favorites-productName">{product.name}</p>
         <div className="favorites-flexContainer">
           <p className="favorites-productPrice">₹{product.discount}</p>
-          <p style={{ fontSize: "0.9rem", color: "#676767" }}>
+          <p style={{ fontSize: "0.85rem", color: "var(--neutralBlack)" }}>
             MRP:<span className="favorites-mrpPrice">₹{product.price}</span>
           </p>
         </div>
@@ -51,12 +51,12 @@ const ProductItem = ({ product }) => {
       <div onClick={() => addToWishlist(product.uuid)}>
         <Heart className="favorites-heartIcon" size={35} />
       </div>
-      <button
+      {/* <button
         onClick={() => mutate(product.uuid)}
         className={isSuccess ? "products-successButton" : "products-addButton"}
       >
         {isLoading ? "Loading" : isSuccess ? "Added to cart" : "Add to cart"}
-      </button>
+      </button> */}
     </div>
   );
 };

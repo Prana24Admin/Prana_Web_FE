@@ -77,7 +77,7 @@ const ProductScreen = () => {
                 <div className="product-priceContainer">
                   <p className="product-amountText">₹{productData.discount}</p>
                   <p className="product-mrpDescriptionText">
-                    MRP:
+                    MRP :
                     <span className="product-mrpDescription">
                       ₹{productData.price}
                     </span>

@@ -1,7 +1,9 @@
 .profile-container {
   height: 100%;
   width: 100%;
-  margin: 2rem 0;
+  margin: auto;
+  padding-top: 12rem;
+  margin-bottom: 2rem;
 }
 .profile-marginContainer {
   max-width: 1240px;
@@ -19,13 +21,15 @@
 .profile-rightContainer {
   width: 70%;
   height: 100%;
-  border: 2px solid #0f382c;
+  border: 2px solid var(--cloudGray);
+  border-radius: 5px;
 }
 .profile-flexContainer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid #0f382c;
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
 }
 .profile-avatarContainer {
   width: 8rem;
@@ -66,7 +70,7 @@
   align-content: center;
   width: 5.5rem;
   height: 5.5rem;
-  background-color: #000;
+  background-color: var(--neutralBlack);
   border-radius: 50%;
   display: flex;
 }
@@ -91,19 +95,22 @@
   height: 5.5rem;
   font-weight: 700;
   font-size: 1.25rem;
-  color: white;
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-greeting {
   font-weight: 400;
   font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-username {
   font-weight: 500;
   font-size: 1.25rem;
   text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-borderContainer {
-  border: 1px solid #0f382c;
+  border: 1px solid var(--cloudGray);
 }
 .profile-optionsContainer {
   display: flex;
@@ -117,17 +124,17 @@
   padding: 0.5rem 0rem;
 }
 .profile-optionsMainContainer:hover {
-  background-color: rgb(211, 255, 211);
+  background-color: var(--lightGray);
   border-radius: 5px;
-  color: rgb(12, 62, 12);
+  color: var(--neutralBlack);
   cursor: pointer;
 }
 .profile-optionsTitle {
   text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: rgb(168, 162, 162);
-  color: #808080;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--coinGray);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-innerOptions {
   margin-top: 0.5rem;
@@ -140,6 +147,7 @@
 .profile-innerOptionsText {
   font-weight: 500;
   font-size: 0.95rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-innerContainer {
   padding: 1rem 2rem;
@@ -148,7 +156,8 @@
 .profile-header {
   font-size: 1.75rem;
   font-weight: 500;
-  color: black;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-inputsContainer {
   padding: 1rem 0rem;
@@ -177,22 +186,25 @@
   right: 5%;
   top: 5%;
   padding: 0.25rem 1.25rem;
-  background-color: #0f382c;
-  color: white;
+  background-color: var(--crimsonPink);
+  color: var(--white);
   border-radius: 5px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .profile-saveButton {
   width: 30%;
-  background-color: #0f382c;
-  color: white;
-  font-weight: 500;
+  background-color: var(--crimsonPink);
+  color: var(--white);
+  border: none;
+  font-weight: 600;
   border-radius: 5px;
   padding: 0.4rem 0;
   margin-top: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

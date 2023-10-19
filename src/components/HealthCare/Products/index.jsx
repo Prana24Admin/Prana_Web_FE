@@ -19,32 +19,36 @@ const Products = () => {
   const { data, isLoading, error } = useQuery(["data"], fetchData);
 
   return (
-    <div className="products-container">
+    <div>
       <Navbar />
-      {isLoading && <p>Loading..</p>}
-      {data && (
-        <div className="products-flexContainer">
-          <div className="products-leftContainer">
-            <div className="products-filtersContainer">
-              <h3>Categories</h3>
-              <div className="products-categoryContainer">
-                {data.items.map((category) => (
-                  <h6 key={category.uuid}>{category.name}</h6>
+      <div className="products-container">
+        {isLoading && <p>Loading..</p>}
+        {data && (
+          <div className="products-flexContainer">
+            <div className="products-leftContainer">
+              <div className="products-filtersContainer">
+                <p className="main-header">Categories</p>
+                <div className="products-categoryContainer">
+                  {data.items.map((category) => (
+                    <p className="products-filterItems" key={category.uuid}>
+                      {category.name}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="products-rightContainer">
+              <p className="main-header">Products</p>
+              <div className="products-productsContainer">
+                {data.products.map((product) => (
+                  <ProductItem key={product.uuid} product={product} />
                 ))}
               </div>
             </div>
           </div>
-          <div className="products-rightContainer">
-            <h3>Products</h3>
-            <div className="products-productsContainer">
-              {data.products.map((product) => (
-                <ProductItem key={product.uuid} product={product} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      {error && <p>Error fetching! Try again.</p>}
+        )}
+        {error && <p>Error fetching! Try again.</p>}
+      </div>
     </div>
   );
 };

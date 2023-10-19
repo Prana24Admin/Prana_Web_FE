@@ -1,10 +1,11 @@
 import React from "react";
 import Header from "../../Home/Nav/nav";
 import InnerNav from "../../Home/Nav/innerNav";
-import Footer from "../../Home/innerHome/footer";
+
 import RightDoctor from "./rightDoctor";
 import Filter from "./filter";
 import Available from "./available";
+import Footer from "../../Footer";
 const FindDoctorIndex = () => {
   return (
     <>

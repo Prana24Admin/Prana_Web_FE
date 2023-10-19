@@ -15,14 +15,15 @@
   max-width: 840px;
   height: 100%;
   margin: auto;
-  padding: 5rem 0;
+
   background-color: var(--pearlWhite);
+  width: 100%;
 }
 .innerNav-flexContainer {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1rem 1rem;
+  padding: 0rem 0rem 0.5rem;
 }
 .innerNav-bodyContainer {
   display: flex;

@@ -2,7 +2,8 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./about.css";
-import Footer from "../../../components/Home/innerHome/footer";
+import Footer from "../../../components/Footer";
+
 const AboutInner = () => {
   const responsive = {
     superLargeDesktop: {

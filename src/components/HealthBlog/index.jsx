@@ -5,7 +5,8 @@ import HealthBlog from "./blogSlide";
 import Explore from "./explore";
 import Content from "./content";
 import Downlaod from "../Home/innerHome/homeDownload";
-import Footer from "../Home/innerHome/footer";
+import Footer from "../Footer";
+
 const HealthBlogIndex = () => {
   return (
     <>

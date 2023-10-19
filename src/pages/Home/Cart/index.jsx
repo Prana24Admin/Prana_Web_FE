@@ -40,7 +40,7 @@ const Cart = () => {
               ) : (
                 <>
                   <div className="cart-cardContainer">
-                    <h3>Items in Your cart</h3>
+                    <p className="main-head-title">Items in Your cart</p>
                     {data.map((item) => (
                       <CartCard key={item.product.uuid} cartItem={item} />
                     ))}
@@ -48,7 +48,7 @@ const Cart = () => {
                   <div className="cart-rightContainer">
                     <div className="cart-savingsContainer">
                       <IndianRupee size={15} className="cart-ruppeIcon" />
-                      <p className="savingsText">
+                      <p className="cart-savingsText">
                         Total savings of{" "}
                         <span style={{ fontWeight: "bold" }}>₹324</span> on this
                         order

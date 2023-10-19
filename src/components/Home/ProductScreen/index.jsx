@@ -1,8 +1,9 @@
 import React from "react";
 import Header from "../Nav/nav";
 import InnerNav from "../Nav/innerNav";
-import Footer from "../innerHome/footer";
+
 import ProductScreen from "./ProductScreen";
+import Footer from "../../Footer";
 
 const Product = () => {
   return (

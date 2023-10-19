@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Offers = () => {
   return (
     <>
-      <div style={{ marginTop: "20px" }}>
-        <p className="pharm">Pana24 Offers & Coupon Codes</p>
+      <div style={{ paddingTop: "8rem" }}>
+        <p className="pharm">Prana24 Offers & Coupon Codes</p>
         <p className="prana">
           Prana 24 is one of India’s leading online healthcare platforms that
           allows you to make great savings on your medicines and healthcare

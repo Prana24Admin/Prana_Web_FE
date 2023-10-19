@@ -4,7 +4,8 @@ import DoctorNav from "../../Home/Nav/doctorNav";
 import Video from "./video";
 import HealthConcern from "./healthConcern";
 import Customers from "./customers";
-import Footer from "../../Home/innerHome/footer";
+import Footer from "../../Footer";
+
 const Index = () => {
   return (
     <>

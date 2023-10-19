@@ -9,7 +9,8 @@ import HomeSlide from "../../Home/innerHome/homeslide";
 import Picks from "./picks";
 import Health from "./health";
 import Medicine from "./medicine";
-import Footer from "../../Home/innerHome/footer";
+import Footer from "../../Footer";
+
 const MedicineIndex = () => {
   return (
     <>

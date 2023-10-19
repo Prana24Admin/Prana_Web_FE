@@ -66,7 +66,7 @@ const CartCard = ({ cartItem }) => {
               className="cart-removeButtonContainer"
               onClick={() => removeItem(cartItem.uuid)}
             >
-              <Trash2 size={15} color="red" />
+              <Trash2 size={15} />
               <p className="cart-removeText">REMOVE</p>
             </div>
             <div

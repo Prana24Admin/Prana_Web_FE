@@ -10,7 +10,8 @@ import Hair from "./hair";
 import Skin from "./skin";
 import Digest from "./digestive";
 import Download from "../../Home/innerHome/homeDownload";
-import Footer from "../../Home/innerHome/footer";
+import Footer from "../../Footer";
+
 const AyurvedaIndex = () => {
   return (
     <>

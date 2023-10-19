@@ -17,7 +17,8 @@ import TrendingNear from "./innerHome/trendingNear";
 import FeatureBrand from "./innerHome/featureBrands";
 import HomeChoose from "./innerHome/homeChoose";
 import Download from "./innerHome/homeDownload";
-import Footer from "./innerHome/footer";
+import Footer from "../Footer";
+
 const HomeIndex = () => {
   return (
     <>

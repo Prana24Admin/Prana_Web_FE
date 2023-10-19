@@ -3,8 +3,8 @@ import { BsInstagram } from "react-icons/bs";
 import { BsFacebook } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
-import "../../../assets/css/Home/footer.css";
-function footer() {
+import "./footer.css";
+function Footer() {
   return (
     <>
       <div className="foot-col">
@@ -22,9 +22,9 @@ function footer() {
               </div>
               <div className="d-flex flex-column">
                 <div>
-                  <h5 className="footer-par1" id="footer-par1">
+                  <p className="footer-par1" id="footer-par1">
                     Company
-                  </h5>
+                  </p>
                   <p className="footer-par1-1">Home</p>
                   <p className="footer-par1-1">About Us</p>
                   <p className="footer-par1-1">Contact Us</p>
@@ -32,7 +32,7 @@ function footer() {
                 </div>
               </div>
               <div className="d-flex flex-column">
-                <h5 className="footer-par">Registration Office</h5>
+                <p className="footer-par1">Registration Office</p>
                 <p className="footer-par1-1">
                   Ayro Retail Solutions Private Limited
                   <br />
@@ -65,7 +65,8 @@ function footer() {
               </div>
             </div>
           </div>
-          <hr />
+          {/* <hr /> */}
+          <div className="separator" />
           <div>
             <p className="btm-par">
               Copyright © 2021 Biddano Pvt Ltd. All Rights Reserved.
@@ -77,4 +78,4 @@ function footer() {
   );
 }
 
-export default footer;
+export default Footer;

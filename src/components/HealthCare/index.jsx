@@ -3,10 +3,11 @@ import Header from "../Home/Nav/nav";
 import InnerNav from "../Home/Nav/innerNav";
 import HealthSlide from "./healthSlide";
 import Health from "./health";
-import Footer from "../Home/innerHome/footer";
+
 import Video from "./video";
 import HealthTxt from "./healthTxt";
 import Categories from "./Categories";
+import Footer from "../Footer";
 const HealthCareIndex = () => {
   return (
     <>

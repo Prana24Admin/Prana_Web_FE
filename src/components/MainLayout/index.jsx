@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   return (
     <main>
       <Nav />
-      <InnerNav />
+      {/* <InnerNav /> */}
       {children}
       <Footer />
     </main>

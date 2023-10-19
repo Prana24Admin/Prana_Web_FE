@@ -8,6 +8,7 @@ import axiosInstance from "../../../libs/axios";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../../assets/images/profile/avatar.png";
+import InnerNav from "./innerNav";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -63,14 +64,14 @@ const Header = () => {
       <div className="body">
         <div className="header">
           <div className="logo">
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row alingContainer">
               <div className="d-flex flex-column">
-                <p className="par-nav">Prana 24 | Pincode </p>
+                <p className="par-nav">Prana24 </p>
               </div>
               <div className="d-flex flex-column">
-                <div className="inner-form">
+                <div className="inner-form alingContainer">
                   <span className="email">
-                    <BiCurrentLocation color="##232223" />
+                    <BiCurrentLocation color="#232223" />
                   </span>
                   <input
                     className="input-field"
@@ -83,7 +84,7 @@ const Header = () => {
           </div>
           <div className="nav">
             <ul className="nav_links">
-              <div className="nav_child">
+              <div className="nav_child alingContainer">
                 <div>
                   <Link to="/home">
                     <li onClick={navigateHome}>Home</li>
@@ -125,7 +126,7 @@ const Header = () => {
                     </li>
                   </Link>
                 </div>
-                <div>
+                {/* <div>
                   <Link to="/offers">
                     <li onClick={navigateofferScreen}>
                       <a style={{ textDecoration: "none" }} className="about">
@@ -133,7 +134,7 @@ const Header = () => {
                       </a>
                     </li>
                   </Link>
-                </div>
+                </div> */}
                 <div className="nav-dropdown">
                   {data ? (
                     data.image !== null ? (
@@ -211,6 +212,7 @@ const Header = () => {
             </ul>
           </div>
         </div>
+        <InnerNav />
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "./Nav/nav";
 import InnerNav from "./Nav/innerNav";
-import SearchBar from "./Nav/search";
+// import SearchBar from "./Nav/search";
 import HomeSlide from "./innerHome/homeslide";
 import HomeCard from "./innerHome/homeCard";
 import HomeItems from "./innerHome/homeItems";
@@ -24,12 +24,12 @@ const HomeIndex = () => {
       <div>
         <Nav />
       </div>
-      <div>
+      {/* <div>
         <InnerNav />
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <SearchBar />
-      </div>
+      </div> */}
       <div>
         <HomeSlide />
       </div>

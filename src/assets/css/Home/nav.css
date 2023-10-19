@@ -8,6 +8,10 @@
   padding: 20px 0px;
   color: var(--neutralBlack);
   height: 70px;
+  border-bottom: 1px solid #e3e3e3;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
 }
 .sp-opt {
   margin-left: 20px;
@@ -15,7 +19,9 @@
 }
 .par-nav {
   font-size: 20px;
+  font-weight: bold;
   font-family: "Nunito sans";
+  color: var(--crimsonPink);
 }
 .nav_links {
   list-style: none;
@@ -26,7 +32,7 @@
   justify-content: space-around;
   align-items: center;
   color: var(--neutralBlack);
-  margin-top: 3px;
+  margin-top: 1rem;
 }
 .nav_child li {
   padding-right: 20px;
@@ -59,10 +65,19 @@ a:link {
   position: absolute;
   margin-right: 394px;
   margin-top: 0px;
+  /* left: 12; */
+  /* right: 20; */
 }
 .input-field {
   margin-left: 20px;
   width: 30vw;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--neutralBlack);
+}
+.alingContainer {
+  display: flex;
+  align-items: center;
 }
 /* a:active {
     background-color: yellow;
@@ -71,6 +86,8 @@ a:link {
 @media screen and (max-width: 768px) {
   .header {
     padding-left: 0px;
+    display: flex;
+    align-items: center;
   }
   .nav_child li {
     padding-right: 20px;

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Home/Nav/nav";
 import InnerNav from "../Home/Nav/innerNav";
-import SearchBar from "../Home/Nav/search";
 import HealthSlide from "./healthSlide";
 import Health from "./health";
 import Footer from "../Home/innerHome/footer";

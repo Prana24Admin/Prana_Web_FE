@@ -1,8 +1,5 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Header from "../../Home/Nav/nav";
-import InnerNav from "../../Home/Nav/innerNav";
 import AyurSlide from "./ayurslide";
 import Offers from "./offers";
 import Herbs from "./herbs";
@@ -11,16 +8,12 @@ import Skin from "./skin";
 import Digest from "./digestive";
 import Download from "../../Home/innerHome/homeDownload";
 import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 
 const AyurvedaIndex = () => {
   return (
     <>
-      <div>
-        <Header />
-      </div>
-      <div>
-        <InnerNav />
-      </div>
+      <Navbar />
       <div>
         <AyurSlide />
       </div>

@@ -1,11 +1,12 @@
 import React from "react";
-import Nav from "../Home/Nav/nav";
+
+import Navbar from "../Navbar";
 import Footer from "../Footer";
 
 const MainLayout = ({ children }) => {
   return (
     <main>
-      <Nav />
+      <Navbar />
       {/* <InnerNav /> */}
       {children}
       <Footer />

@@ -1,15 +1,13 @@
 import React from "react";
-import Header from "../Nav/nav";
-import InnerNav from "../Nav/innerNav";
 
 import ProductScreen from "./ProductScreen";
 import Footer from "../../Footer";
+import Navbar from "../../Navbar";
 
 const Product = () => {
   return (
     <div>
-      <Header />
-      <InnerNav />
+      <Navbar />
       <ProductScreen />
       <Footer />
     </div>

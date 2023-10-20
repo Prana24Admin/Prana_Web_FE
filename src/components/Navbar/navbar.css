@@ -22,7 +22,7 @@
   /* padding: 20px 0px; */
   color: var(--neutralBlack);
   height: 70px;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid var(--cloudGray);
   /* position: fixed; */
   /* z-index: 100; */
   width: 100%;
@@ -37,7 +37,8 @@
 .par-nav {
   font-size: 20px;
   font-weight: bold;
-  font-family: "Nunito sans";
+  /* font-family: "Nunito sans"; */
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--crimsonPink);
 }
 .nav_links {
@@ -56,6 +57,14 @@
   cursor: pointer;
   color: var(--neutralBlack);
   text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.nav_child li:hover {
+  /* padding-right: 20px; */
+  /* cursor: pointer; */
+  color: var(--crimsonPink);
+  scale: 1.05;
 }
 .download {
   background: var(--crimsonPink);
@@ -66,6 +75,10 @@
 }
 .about {
   color: var(--neutralBlack);
+}
+.about:hover {
+  color: var(--crimsonPink);
+  scale: 1.034;
 }
 a:link {
   color: var(--neutralBlack);

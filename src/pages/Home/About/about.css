@@ -110,8 +110,8 @@
 }
 .about-inner-par2 {
   margin: 0 1.5rem 0 0;
-  background-color: var(--crimsonPink);
-  color: var(--white);
+  background-color: var(--powderWhite);
+  color: var(--ashGray);
   padding: 1rem 1rem;
   border-radius: 5px;
   font-size: 1rem;

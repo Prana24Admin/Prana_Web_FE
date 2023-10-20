@@ -20,43 +20,43 @@ const CategoryNav = () => {
     {
       id: 1,
       name: "Medicine",
-      icon: <Pill />,
+      Icon: Pill,
       path: "/inner/innerMed",
     },
     {
       id: 2,
       name: "Lab Tests",
-      icon: <FlaskConical />,
+      Icon: FlaskConical,
       path: "/inner/lab",
     },
     {
       id: 3,
       name: "Health Care",
-      icon: <Syringe />,
+      Icon: Syringe,
       path: "/inner/healthCare",
     },
     {
       id: 4,
       name: "Health Blogs",
-      icon: <Newspaper />,
+      Icon: Newspaper,
       path: "/inner/healthBlog",
     },
     {
       id: 5,
       name: "Doctor",
-      icon: <Stethoscope />,
+      Icon: Stethoscope,
       path: "/inner/doctor",
     },
     {
       id: 6,
       name: "Ayurveda",
-      icon: <Sprout />,
+      Icon: Sprout,
       path: "/inner/innerAyur",
     },
     {
       id: 7,
       name: "Offers",
-      icon: <BadgePercent />,
+      Icon: BadgePercent,
       path: "/offers",
     },
   ];
@@ -70,7 +70,7 @@ const CategoryNav = () => {
             onClick={() => navigate(navElement.path)}
             key={navElements.id}
           >
-            <p> {navElement.icon} </p>
+            <navElement.Icon strokeWidth="1.25" />
             <p>{navElement.name}</p>
           </div>
         ))}

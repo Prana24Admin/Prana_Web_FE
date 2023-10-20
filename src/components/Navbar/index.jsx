@@ -9,6 +9,7 @@ import { ProfileContext } from "../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../assets/images/profile/avatar.png";
 import CategoryNav from "./CategoryNav";
+import { Search, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -61,15 +62,17 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="body">
-        <div className="header">
-          <div className="headerFlex">
-            <div className="logo">
-              <div className="d-flex flex-row alingContainer">
-                <div className="d-flex flex-column">
-                  <p className="par-nav">Prana24 </p>
-                </div>
-                <div className="d-flex flex-column">
+      <div className="header">
+        <div className="headerFlex">
+          <div className="logo">
+            <div className="d-flex flex-row alingContainer">
+              <div
+                className="d-flex flex-column"
+                onClick={() => navigate("/home")}
+              >
+                <p className="par-nav">Prana24 </p>
+              </div>
+              {/* <div className="d-flex flex-column">
                   <div className="inner-form alingContainer">
                     <span className="email">
                       <BiCurrentLocation color="#232223" />
@@ -80,18 +83,18 @@ const Navbar = () => {
                       placeholder="Panduranga classic, Vasanth Nagar Colony, Hyderabad"
                     />
                   </div>
-                </div>
-              </div>
+                </div> */}
             </div>
-            <div className="nav">
-              <ul className="nav_links">
-                <div className="nav_child alingContainer">
-                  <div>
+          </div>
+          <div className="nav">
+            <ul className="nav_links">
+              <div className="nav_child alingContainer">
+                {/* <div>
                     <Link to="/home">
                       <li onClick={navigateHome}>Home</li>
                     </Link>
-                  </div>
-                  <div>
+                  </div> */}
+                {/* <div>
                     <Link to="/about">
                       <li onClick={navigateAbout}>
                         <a className="about" href="/about">
@@ -117,17 +120,57 @@ const Navbar = () => {
                         </a>
                       </li>
                     </Link>
-                  </div>
-                  <div>
-                    <Link to="/cart">
-                      <li onClick={navigateCart}>
-                        <a className="about" href="/contact">
+                  </div> */}
+                <div
+                  style={{
+                    position: "relative",
+                    display: "flex",
+                    marginRight: "1rem",
+                  }}
+                >
+                  <Search
+                    size={18}
+                    style={{
+                      position: "absolute",
+                      display: "flex",
+                      top: "20%",
+                      left: "2%",
+                    }}
+                    color="#c1c1c1"
+                  />
+                  <input
+                    placeholder="Search for Medicine, Labs"
+                    type="text"
+                    className="search-field"
+                  />
+                </div>
+                <div>
+                  <Link to="/cart">
+                    {/* <li onClick={navigateCart}>
+                        <a
+                          className="about"
+                          href="/contact"
+                          style={{ alignItems: "center", gap: "1rem" }}
+                        >
+                          <ShoppingCart size={18} />
                           Cart
                         </a>
-                      </li>
-                    </Link>
-                  </div>
-                  {/* <div>
+                      </li> */}
+                    <div
+                      style={{
+                        display: "flex",
+                        marginRight: "1rem",
+                        // alignItems: "center",
+                        color: "var(--neutralBlack)",
+                        gap: "0.3rem",
+                      }}
+                    >
+                      <ShoppingCart size={20} />
+                      <p style={{ fontSize: "1.1rem" }}>Cart</p>
+                    </div>
+                  </Link>
+                </div>
+                {/* <div>
                   <Link to="/offers">
                     <li onClick={navigateofferScreen}>
                       <a style={{ textDecoration: "none" }} className="about">
@@ -136,32 +179,12 @@ const Navbar = () => {
                     </li>
                   </Link>
                 </div> */}
-                  <div className="nav-dropdown">
-                    {data ? (
-                      data.image !== null ? (
-                        <img
-                          src={data?.image}
-                          style={{
-                            width: "40px",
-                            height: "40px",
-                            objectFit: "cover",
-                            borderRadius: "50px",
-                          }}
-                        />
-                      ) : (
-                        <img
-                          src={Avatar}
-                          style={{
-                            width: "40px",
-                            height: "40px",
-                            objectFit: "cover",
-                            borderRadius: "50px",
-                          }}
-                        />
-                      )
-                    ) : (
+                <div className="nav-dropdown">
+                  {data ? (
+                    data.image !== null ? (
                       <img
-                        src={Avatar}
+                        src={data?.image}
+                        alt="avatar"
                         style={{
                           width: "40px",
                           height: "40px",
@@ -169,52 +192,74 @@ const Navbar = () => {
                           borderRadius: "50px",
                         }}
                       />
-                    )}
+                    ) : (
+                      <img
+                        src={Avatar}
+                        alt="avatar"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                          objectFit: "cover",
+                          borderRadius: "50px",
+                        }}
+                      />
+                    )
+                  ) : (
+                    <img
+                      src={Avatar}
+                      alt="avatar"
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        objectFit: "cover",
+                        borderRadius: "50px",
+                      }}
+                    />
+                  )}
 
-                    <div className="dropdown-content">
-                      <a
-                        className="dropdowntext"
-                        onClick={() => navigate("/profile")}
-                      >
-                        Your Profile
-                      </a>
-                      <a
-                        className="dropdowntext"
-                        onClick={() => navigate("/orders")}
-                      >
-                        Your Orders
-                      </a>
-                      <a
-                        className="dropdowntext"
-                        onClick={() => navigate("/Favorites")}
-                      >
-                        Favorites
-                      </a>
-                      <div className="dropdowntext">
-                        {data ? (
-                          <a onClick={handleLogout}>Logout</a>
-                        ) : (
-                          <a onClick={() => navigate("/login")}>Login</a>
-                        )}
-                      </div>
+                  <div className="dropdown-content">
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/profile")}
+                    >
+                      Your Profile
+                    </a>
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/orders")}
+                    >
+                      Your Orders
+                    </a>
+                    <a
+                      className="dropdowntext"
+                      onClick={() => navigate("/Favorites")}
+                    >
+                      Favorites
+                    </a>
+                    <div className="dropdowntext">
+                      {data ? (
+                        <a onClick={handleLogout}>Logout</a>
+                      ) : (
+                        <a onClick={() => navigate("/login")}>Login</a>
+                      )}
                     </div>
                   </div>
-                  {/* <div>
+                </div>
+                {/* <div>
                   <li>
                     <button className="download">Download App</button>
                   </li>
                 </div> */}
-                  <div>
-                    <li>
-                      <FloatingWhatsApp />
-                    </li>
-                  </div>
+                <div>
+                  <li>
+                    <FloatingWhatsApp />
+                  </li>
                 </div>
-              </ul>
-            </div>
+              </div>
+            </ul>
           </div>
-          <CategoryNav />
         </div>
+        <CategoryNav />
       </div>
     </>
   );

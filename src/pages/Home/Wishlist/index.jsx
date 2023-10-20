@@ -50,7 +50,12 @@ const Wishlist = () => {
               //   </div>
               //   <p className="favorites-button">Add to cart</p>
               // </div>
-              <ProductItem product={item.product} key={item.product.uuid} />
+              <ProductItem
+                wishlistItem={item}
+                key={item.uuid}
+                method={removeFromWishlist}
+                product={""}
+              />
             ))}
         </div>
       </div>

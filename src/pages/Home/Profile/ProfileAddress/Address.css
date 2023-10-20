@@ -9,72 +9,99 @@
 .address-header {
   font-size: 1.75rem;
   font-weight: 500;
-  color: black;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
   padding-bottom: 0.75rem;
 }
 .address-addContainer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid #0f382c;
+  border: 1px solid var(--cloudGray);
+  background-color: var(--pearlWhite);
   border-radius: 5px;
   cursor: pointer;
   padding: 0.75rem;
 }
 .address-addContainer:hover {
-  background-color: #d3ffd3;
+  background-color: var(--powderWhite);
 }
 .address-addText {
   font-size: 1rem;
   font-weight: 500;
-  color: #0f382c;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .address-addressContainer {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  border: 1px solid #0f382c;
+  border: 1px solid var(--cloudGray);
+  background: var(--pearlWhite);
   padding: 1.25rem;
   position: relative;
+  border-radius: 5px;
+  cursor: pointer;
 }
+.address-addressContainer:hover {
+  background-color: var(--powderWhite);
+}
+/* .address-addressContainer:hover {
+  background: linear-gradient(
+    to right,
+    var(--crimsonPink) 50%,
+    var(--rosePink) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  background-position: right left;
+} */
 .address-flexTextAlignContainer {
   display: flex;
   justify-content: space-between;
 }
 .address-titleText {
-  background-color: rgb(230, 229, 229);
+  background-color: var(--cloudGray);
+  color: var(--neutralBlack);
+  font-weight: 500;
   padding: 0.25rem 0.5rem;
   border-radius: 5px;
   font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .address-flexContainer {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   padding: 0.25rem 0rem;
 }
 .address-userName {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #0f382c;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .address-addressText {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ashGray);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .address-dropdownContainer {
   position: absolute;
   /* height: 8%; */
   width: 10%;
   right: 4%;
-
   top: 25%;
   border-radius: 5px;
-  background-color: rgb(242, 241, 241);
+  background-color: var(--pearlWhite);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   gap: 0.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   /* padding: 0.5rem 0rem; */
 }
 .address-dropdownText {
@@ -87,5 +114,5 @@
   border-radius: 5px;
 }
 .address-dropdownText:hover {
-  background-color: rgb(210, 210, 210);
+  background-color: var(--cloudGray);
 }

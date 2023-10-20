@@ -10,8 +10,9 @@
 .modal-title {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #0e382c;
+  color: var(--neutralBlack);
   text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .modal-iconContainer {
   display: flex;
@@ -23,24 +24,50 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background-color: #0e382c;
-  color: #fff;
+  background-color: var(--cloudGray);
+  color: var(--neutralBlack);
+  border: 1px solid var(--cloudGray);
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
+.modal-innerIconContainer:hover {
+  background-color: var(--crimsonPink);
+  border: 1px solid var(--crimsonPink);
+  color: var(--pearlWhite);
+}
+.address-paddingContainer {
+  margin-top: 3.5rem;
+}
 .modal-button {
   padding: 0.5rem 0.75rem;
   width: 45%;
-  color: #0e382c;
-  font-weight: 500;
+  color: var(--crimsonPink);
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
-  background-color: white;
-  border: 1px solid rgb(#0e382c, 216, 216);
+  background-color: var(--white);
+  border: 1px solid var(--crimsonPink);
 }
 .modal-button:hover {
-  background-color: #0e382c;
-  color: white;
+  background-color: var(--crimsonPink);
+  color: var(--white);
+}
+.modal-buttonClose {
+  padding: 0.5rem 0.75rem;
+  width: 45%;
+  color: var(--white);
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  background-color: var(--crimsonPink);
+  border: 1px solid var(--crimsonPink);
+}
+.modal-buttonClose:hover {
+  background-color: var(--white);
+  color: var(--crimsonPink);
 }
 .modal-flexContainer {
   display: flex;

@@ -4,14 +4,16 @@
   width: 45%;
 }
 .labelText {
-  color: gray;
+  color: var(--ashGray);
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 0.25rem 0rem;
+  padding-bottom: 0.5rem;
 }
 .input {
-  border: 1px solid rgb(216, 216, 216);
+  border: 1px solid var(--silverGray);
   border-radius: 5px;
   padding: 0.4rem;
 }

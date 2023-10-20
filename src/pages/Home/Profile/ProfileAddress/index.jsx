@@ -61,7 +61,7 @@ const ProfileAddress = () => {
           }}
           className="address-addContainer"
         >
-          <Plus size={20} color="#0f382c" />
+          <Plus size={20} color="var(--neutralBlack)" />
           <p className="address-addText">Add A new address</p>
         </button>
         {data && Object.keys(data.address).length > 1 && (

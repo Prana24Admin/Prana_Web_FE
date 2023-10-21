@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import ProfileProvider from "./context/ProfileProvider";
-import CartProvider from "./context/CartProvider";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export const queryClient = new QueryClient();
 
@@ -13,8 +13,8 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ProfileProvider>
-          <CartProvider>
+        <ChakraProvider>
+          <ProfileProvider>
             <Navigation />
             <ReactQueryDevtools initialIsOpen={false} />
             <Toaster
@@ -22,8 +22,8 @@ const App = () => {
                 zIndex: 1000000000,
               }}
             />
-          </CartProvider>
-        </ProfileProvider>
+          </ProfileProvider>
+        </ChakraProvider>
       </QueryClientProvider>
     </>
   );

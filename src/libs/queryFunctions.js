@@ -8,3 +8,6 @@ export const handleRefetchProfileData = () =>
 
 export const handleRefetchWishlistData = () =>
   queryClient.refetchQueries(["Wishlist"]);
+
+export const handleRefetchCouponsData = () =>
+  queryClient.refetchQueries(["Coupons"]);

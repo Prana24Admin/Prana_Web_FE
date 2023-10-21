@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import "./cart.css";
 
@@ -10,8 +10,36 @@ import { useNavigate } from "react-router-dom";
 
 import CartCard from "../../../components/CartCard";
 import MainLayout from "../../../components/MainLayout";
+import { Button, useDisclosure } from "@chakra-ui/react";
+import Slider from "../../../components/Slider";
+
+import Coupon from "../../../components/Coupon";
+
+const DrawerBody = () => {
+  const fetchCoupons = async () => {
+    const response = await axiosInstance.get("/coupons");
+    console.log(response.data);
+    return response.data;
+  };
+
+  const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
+
+  return (
+    // <div className="d-flex flex-row justify-content-center mt-5 mb-5">
+    <div className="coupon-container">
+      {data &&
+        data.data.map((item) => {
+          return <Coupon key={item.uuid} item={item} />;
+        })}
+    </div>
+    // </div>
+  );
+};
 
 const Cart = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
+
   const navigate = useNavigate();
 
   const fetchCart = async () => {
@@ -80,7 +108,17 @@ const Cart = () => {
                       >
                         Proceed To Checkout
                       </p>
+                      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+                        Open
+                      </Button>
                     </div>
+                    <Slider
+                      onClose={onClose}
+                      isOpen={isOpen}
+                      btnRef={btnRef}
+                      header={"Apply Coupon"}
+                      drawerBody={<DrawerBody />}
+                    />
                   </div>
                 </>
               ))}

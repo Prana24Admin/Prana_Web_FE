@@ -3,7 +3,6 @@ import "./navbar.css";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { BiCurrentLocation } from "react-icons/bi";
 import axiosInstance from "../../libs/axios";
 import { ProfileContext } from "../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
@@ -60,6 +59,8 @@ const Navbar = () => {
     }
   };
 
+  const getGeoLocation = () => {};
+
   return (
     <>
       <div className="header">
@@ -71,6 +72,9 @@ const Navbar = () => {
                 onClick={() => navigate("/home")}
               >
                 <p className="par-nav">Prana24 </p>
+              </div>
+              <div>
+                <p onClick={getGeoLocation}>Pincode</p>
               </div>
               {/* <div className="d-flex flex-column">
                   <div className="inner-form alingContainer">

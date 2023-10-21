@@ -156,15 +156,7 @@ const Navbar = () => {
                           Cart
                         </a>
                       </li> */}
-                    <div
-                      style={{
-                        display: "flex",
-                        marginRight: "1rem",
-                        // alignItems: "center",
-                        color: "var(--neutralBlack)",
-                        gap: "0.3rem",
-                      }}
-                    >
+                    <div className="navbar-cartContainer">
                       <ShoppingCart size={20} />
                       <p style={{ fontSize: "1.1rem" }}>Cart</p>
                     </div>
@@ -177,7 +169,7 @@ const Navbar = () => {
                         Offers
                       </a>
                     </li>
-                  </Link>
+                  </Link>2
                 </div> */}
                 <div className="nav-dropdown">
                   {data ? (
@@ -236,11 +228,18 @@ const Navbar = () => {
                     >
                       Favorites
                     </a>
-                    <div className="dropdowntext">
+                    <div>
                       {data ? (
-                        <a onClick={handleLogout}>Logout</a>
+                        <a className="dropdowntext" onClick={handleLogout}>
+                          Logout
+                        </a>
                       ) : (
-                        <a onClick={() => navigate("/login")}>Login</a>
+                        <a
+                          className="dropdowntext"
+                          onClick={() => navigate("/login")}
+                        >
+                          Login
+                        </a>
                       )}
                     </div>
                   </div>

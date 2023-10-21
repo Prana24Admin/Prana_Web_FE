@@ -159,6 +159,7 @@ a:link {
 }
 .dropdown-content a:hover {
   background-color: var(--powderWhite);
+  color: var(--crimsonPink);
   border-radius: 5px;
 }
 .nav-dropdown:hover .dropdown-content {
@@ -171,4 +172,16 @@ a:link {
   border-radius: 5px;
   font-size: 1rem;
   color: var(--neutralBlack);
+}
+.navbar-cartContainer {
+  display: flex;
+  margin-right: 1rem;
+  align-items: center;
+  color: var(--neutralBlack);
+  gap: 0.3rem;
+  transition: 0.2s ease-in;
+}
+.navbar-cartContainer:hover {
+  color: var(--crimsonPink);
+  scale: 1.05;
 }

@@ -2,24 +2,26 @@
   max-width: 940px;
   height: 100%;
   margin: auto;
-  padding: 2rem 0;
-  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 2rem;
+  padding-top: 10rem;
 }
 .orderdetails-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutralBlack);
 }
 .orderdetails-flexContainer {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutralBlack);
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 .orderdetails-line {
-  border: 2px solid #959595;
+  border: 2px solid var(--neutralBlack);
 }
 .orderdetails-justifyContainer {
   display: flex;
@@ -28,7 +30,7 @@
 }
 .orderdetails-borderContainer {
   margin: 1rem 0;
-  border: 1px solid #dcdcdc;
+  border: 1px solid var(--cloudGray);
   padding: 1rem 1rem;
   border-radius: 5px;
 }
@@ -41,13 +43,15 @@
 .orderdetails-header {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #000;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
 }
 .orderdetails-bodyText {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #000000;
+  color: var(--neutralBlack);
+  font-family: Arial, Helvetica, sans-serif;
 }
 .orderdetails-billJustifyContainer {
   display: flex;
@@ -58,14 +62,16 @@
 .orderdetails-hoverFlexContainer {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutralBlack);
   display: flex;
   align-items: center;
   gap: 0.25rem;
   cursor: pointer;
 }
 .orderdetails-hoverFlexContainer:hover {
-  color: #b6b6b6;
+  color: var(--azureBlue);
+  text-decoration: underline;
 }
 .orderdetails-image {
   height: 100px;
@@ -74,9 +80,10 @@
 .orderdetails-button {
   font-size: 0.85rem;
   font-weight: 600;
-  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
   padding: 0.25rem 0.75rem;
-  background-color: #0f382c;
+  background-color: var(--crimsonPink);
   border-radius: 5px;
   border: none;
   margin: 0.5rem 0;
@@ -84,15 +91,16 @@
 .orderdetails-buttonsRight {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #0f382c;
+  color: var(--crimsonPink);
+  font-family: Arial, Helvetica, sans-serif;
   padding: 0.25rem 0.75rem;
-  background-color: white;
+  background-color: var(--powderWhite);
   border-radius: 5px;
-  border: 1px solid #c1c1c1;
+  border: 1px solid var(--cloudGray);
 }
 .orderdetails-buttonsRight:hover {
-  color: white;
-  background-color: #0f382c;
+  color: var(--white);
+  background-color: var(--crimsonPink);
   /* border-radius: 5px; */
-  border: 1px solid #0f382c;
+  border: 1px solid var(--crimsonPink);
 }

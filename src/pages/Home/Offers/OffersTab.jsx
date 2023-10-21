@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../components/MainLayout";
 import InnerSearchBar from "../../../components/Home/Nav/innerSearch";
 import OfferScreen from "./Offers";
+import { format } from "date-fns";
 
 const OffersTab = () => {
   const OfferArr = [
@@ -47,37 +48,52 @@ const OffersTab = () => {
       <div>
         <OfferScreen />
       </div>
-      <div className="d-flex flex-row justify-content-center">
-        <div className="d-flex flex-column">
+      <div className="d-flex flex-row justify-content-center mt-5 mb-5">
+        <div className="coupon-container">
           {data &&
             data.data.map((item) => {
               return (
-                <Card key={item.uuid} className="cardScreen">
-                  <div className="trend-col">
-                    <div className="d-flex flex-row">
-                      <div className="d-flex flex-column offer-col1">
-                        <img className="offer-img" src={item.image} />
-                      </div>
-                      <div className="d-flex flex-column offer-col2 offer-inner-col">
-                        <p>{item.Text}</p>
-                      </div>
+                <div class="card">
+                  <div class="main">
+                    <div class="co-img">
+                      <img
+                        src="https://i.pinimg.com/originals/c7/84/67/c78467db9ff497393cb548a48f02d451.png"
+                        alt=""
+                        className="coupon-image"
+                      />
                     </div>
-                    <div className="d-flex flex-column offer-col2 offer-inner-col">
-                      <p className="offer-inner-par">{item.Par}</p>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="d-flex flex-row col-offer-inner-row">
-                    <div className="d-flex flex-column">
-                      <p className="coupon">
-                        Code:<span className="code">{item.code}</span>{" "}
+                    <div class="vertical"></div>
+                    <div class="content">
+                      <h2>{item.status}</h2>
+                      <h1>
+                        {item.discount}% <span>Coupon</span>
+                      </h1>
+                      <p>
+                        Valid till{" "}
+                        {format(new Date(item.expiry_date), "dd MMMM yyyy")}
                       </p>
                     </div>
-                    <div className="d-flex flex-column">
-                      <p className="copy-code">Copy Code</p>
-                    </div>
                   </div>
-                </Card>
+                  <div class="copy-button">
+                    <input
+                      id="copyvalue"
+                      type="text"
+                      readonly
+                      value={item.code}
+                      disabled
+                    />
+                    <button onclick="copyIt()" class="copybtn">
+                      COPY
+                    </button>
+                  </div>
+                  <div className="coupon-note">
+                    <p>
+                      *Get {item.discount}% off upto ₹{item.max_amount} on
+                      orders above ₹{item.min_value} Maximum discount ₹
+                      {item.max_value}
+                    </p>
+                  </div>
+                </div>
               );
             })}
         </div>

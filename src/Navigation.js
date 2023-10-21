@@ -16,7 +16,7 @@ import Doctor from "./components/Doctor/index";
 import InnerDoctor from "./components/Doctor/inner/index";
 import FindDoctor from "./components/Doctor/findDoctor/index";
 import Appointment from "./components/Doctor/findDoctor/appointment";
-import InnerLab from "./components/Lab/index";
+import InnerLab from "./pages/Home/Lab";
 import HealthCareIndex from "./pages/Home/HealthCare/index";
 import HealthBlogIndex from "./components/HealthBlog/index";
 import Login from "./components/Arrivals/Login/Login";

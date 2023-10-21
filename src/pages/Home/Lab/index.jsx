@@ -1,14 +1,15 @@
 import React from "react";
 import LabSlide from "./labSlide";
 import Booking from "./booking";
-import Slider from "../Inner/Medicine/medicineSlider";
+import Slider from "../../../components/Inner/Medicine/medicineSlider";
 import Test from "./test";
 import LabHealth from "./labHealth";
 import Package from "./package";
 import Happy from "./happyCustomers";
-import Download from "../Home/innerHome/homeDownload";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import Download from "../../../components/Home/innerHome/homeDownload";
+
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
 
 const LabIndex = () => {
   return (

@@ -32,13 +32,6 @@ const Slider = ({ isOpen, onClose, btnRef, drawerBody, header }) => {
         <DrawerBody backgroundColor={"var(--powderWhite)"}>
           {drawerBody}
         </DrawerBody>
-
-        <DrawerFooter backgroundColor={"var(--powderWhite)"}>
-          <Button variant="outline" mr={3} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button colorScheme="blue">Save</Button>
-        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

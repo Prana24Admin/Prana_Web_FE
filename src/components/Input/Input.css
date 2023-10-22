@@ -1,7 +1,7 @@
 .labelContainer {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 100%;
 }
 .labelText {
   color: var(--ashGray);
@@ -10,7 +10,7 @@
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0.25rem 0rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
 }
 .input {
   border: 1px solid var(--silverGray);

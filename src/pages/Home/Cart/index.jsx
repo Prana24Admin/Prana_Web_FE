@@ -4,7 +4,7 @@ import "./cart.css";
 
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import { IndianRupee } from "lucide-react";
+import { BadgePercent, IndianRupee } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,21 +18,18 @@ import Coupon from "../../../components/Coupon";
 const DrawerBody = () => {
   const fetchCoupons = async () => {
     const response = await axiosInstance.get("/coupons");
-    console.log(response.data);
     return response.data;
   };
 
   const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
 
   return (
-    // <div className="d-flex flex-row justify-content-center mt-5 mb-5">
-    <div className="coupon-container">
+    <div className="small-coupon-container">
       {data &&
         data.data.map((item) => {
-          return <Coupon key={item.uuid} item={item} />;
+          return <Coupon key={item.uuid} item={item} smallCoupon={true} />;
         })}
     </div>
-    // </div>
   );
 };
 
@@ -74,14 +71,17 @@ const Cart = () => {
                     ))}
                   </div>
                   <div className="cart-rightContainer">
-                    <div className="cart-savingsContainer">
-                      <IndianRupee size={15} className="cart-ruppeIcon" />
-                      <p className="cart-savingsText">
-                        Total savings of{" "}
-                        <span style={{ fontWeight: "bold" }}>₹324</span> on this
-                        order
-                      </p>
-                    </div>
+                    <Button
+                      ref={btnRef}
+                      borderColor={"var(--cloudGray)"}
+                      borderWidth={"1px"}
+                      colorScheme="teal"
+                      gap={"5px"}
+                      onClick={onOpen}
+                    >
+                      <BadgePercent size={18} />
+                      Apply Coupon
+                    </Button>
                     <div className="cart-billContainer">
                       <p className="cart-titleText">Bill Summary</p>
                       <div className="cart-flex">
@@ -97,20 +97,24 @@ const Cart = () => {
                         <p className="cart-descriptionText">₹324</p>
                       </div>
                       <div className="checkout-line" />
-
                       <div className="cart-flex">
                         <p className="cart-descriptionTextDark">Cart value</p>
                         <p className="cart-descriptionTextDark">₹324</p>
                       </div>
-                      <p
+                      <button
                         className="cart-button"
                         onClick={() => navigate("/checkout")}
                       >
                         Proceed To Checkout
+                      </button>
+                    </div>
+                    <div className="cart-savingsContainer">
+                      <IndianRupee size={15} className="cart-ruppeIcon" />
+                      <p className="cart-savingsText">
+                        Total savings of{" "}
+                        <span style={{ fontWeight: "bold" }}>₹324</span> on this
+                        order
                       </p>
-                      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-                        Open
-                      </Button>
                     </div>
                     <Slider
                       onClose={onClose}

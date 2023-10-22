@@ -186,7 +186,7 @@
   /* height:; */
   border: 1px dotted #fe385d;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   align-items: center;
   gap: 0.75rem;
   background-color: #fff0f3;

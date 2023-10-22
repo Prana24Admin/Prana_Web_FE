@@ -122,89 +122,125 @@
   color: var(--ashGray);
 }
 
-@media (max-width: 400px) {
-  .card {
-    width: 100%;
-    height: 180px;
-    padding: 1.5rem;
-  }
-  .card::after {
-    top: 70px;
-  }
+.small-coupon-container {
+  margin: auto;
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.small-card {
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--powderWhite);
+  position: relative;
+  border: 1px solid var(--cloudGray);
+  width: 100%;
+  height: 180px;
+  padding: 1rem;
+}
+.small-coupon-image {
+  mix-blend-mode: multiply;
+}
+.small-main,
+.small-copy-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+}
+.small-card::after {
+  position: absolute;
+  content: "";
+  height: 40px;
+  right: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: var(--pearlWhite);
+  width: 40px;
+  border-left: 1px solid var(--ashGray);
+}
 
-  .card::before {
-    position: absolute;
-    content: "";
-    height: 40px;
-    left: -20px;
-    border-radius: 40px;
-    z-index: 1;
-    top: 90px;
-    background-color: var(--pearlWhite);
-    width: 40px;
-    border-right: 1px solid var(--ashGray);
-  }
-  .co-img img {
-    width: 80px;
-    height: 80px;
-  }
-  .vertical {
-    border-left: 3px dotted var(--ashGray);
-    height: 50px;
-    left: 35%;
-  }
+.small-card::before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  left: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: var(--pearlWhite);
+  width: 40px;
+  border-right: 1px solid var(--ashGray);
+}
 
-  .content h1 {
-    font-size: 1rem;
-    margin-left: -20px;
-    color: #565656;
-  }
+.small-co-img img {
+  width: 70px;
+  height: 70px;
+}
+.small-vertical {
+  position: absolute;
+  border-left: 3px dotted var(--ashGray);
+  height: 50px;
+  left: 35%;
+}
 
-  .content h1 span {
-    font-size: 0.8rem;
-  }
-  .content h2 {
-    font-size: 1rem;
-    margin-left: -20px;
-    color: #565656;
-    text-transform: uppercase;
-  }
+.small-content h1 {
+  font-size: 1.25rem;
+  margin-left: -20px;
+  color: #565656;
+}
 
-  .content p {
-    font-size: 0.8rem;
-    color: #696969;
-    margin-left: -20px;
-  }
+.small-content h1 span {
+  font-size: 0.8rem;
+}
+.small-content h2 {
+  font-size: 1rem;
+  margin-left: -20px;
+  color: #565656;
+  text-transform: uppercase;
+}
 
-  .copy-button {
-    margin: 12px 0 -5px 0;
-    height: 40px;
-    border-radius: 4px;
-    padding: 0 5px;
-  }
+.small-content p {
+  font-size: 0.8rem;
+  color: #696969;
+  margin-left: -20px;
+}
 
-  .copy-button input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 600;
+.small-copy-button {
+  margin: 12px 0 -5px 0;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 5px;
+}
 
-    background-color: var(--pearlWhite);
-  }
+.small-copy-button input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 600;
 
-  .copy-button button {
-    padding: 2px 15px;
-    background-color: var(--crimsonPink);
-    border-radius: 5px;
-    color: #fff;
-    border: 1px solid transparent;
-  }
+  background-color: var(--pearlWhite);
+}
 
-  .coupon-note {
-    margin-top: 0.5rem;
+.small-copy-button button {
+  padding: 2px 15px;
+  background-color: var(--crimsonPink);
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid transparent;
+}
 
-    font-size: 0.7rem;
-  }
+.small-coupon-note {
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: var(--ashGray);
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
 }

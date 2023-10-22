@@ -4,20 +4,26 @@ import "../Profile.css";
 import "./Address.css";
 import { MoreVertical, Plus } from "lucide-react";
 import { ProfileContext } from "../../../../context/ProfileProvider";
-import AddressModal from "./AddressModal";
+// import AddressModal from "./AddressModal";
 import axiosInstance from "../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
 import Profile from "..";
+import { useDisclosure } from "@chakra-ui/react";
+import Slider from "../../../../components/Slider";
+import { AddressDrawer } from "../../../../components/Slider/AddressDrawer";
 
 const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
 
   const [selectedDropdown, setSelectedDropdown] = useState(null);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [method, setMethod] = useState();
   const [additionalAddress, setAdditionalAddress] = useState(null);
 
-  const handleClose = () => setShow(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
+
+  // const handleClose = () => setShow(false);
   const handleDropDown = (id) => {
     if (selectedDropdown === id) {
       setSelectedDropdown(null);
@@ -55,14 +61,16 @@ const ProfileAddress = () => {
       <div className="address-mainContainer">
         <p className="address-header">Manage Addresses</p>
         <button
+          ref={btnRef}
           onClick={() => {
+            onOpen();
             setMethod("add");
-            setShow(!show);
+            // setShow(!show);
           }}
           className="address-addContainer"
         >
           <Plus size={20} color="var(--neutralBlack)" />
-          <p className="address-addText">Add A new address</p>
+          <p className="address-addText">Add an address</p>
         </button>
         {data && Object.keys(data.address).length > 1 && (
           <div className="address-addressContainer">
@@ -79,7 +87,7 @@ const ProfileAddress = () => {
                     className="address-dropdownText"
                     onClick={() => {
                       setMethod("edit");
-                      setShow(!show);
+                      // setShow(!show);
                     }}
                   >
                     Edit
@@ -123,7 +131,7 @@ const ProfileAddress = () => {
                     <p
                       className="address-dropdownText"
                       onClick={() => {
-                        setShow(!show);
+                        // setShow(!show);
                         setAdditionalAddress(address);
                         setMethod("editAdditionalAddress");
                       }}
@@ -159,14 +167,27 @@ const ProfileAddress = () => {
             <p>No addresses! Add one right now</p>
           )}
       </div>
-      {show && (
+      {/* {show && (
         <AddressModal
           show={show}
           handleClose={handleClose}
           method={method}
           additionalAddress={additionalAddress}
         />
-      )}
+      )} */}
+      <Slider
+        isOpen={isOpen}
+        onClose={onClose}
+        btnRef={btnRef}
+        header={"Add an address"}
+        drawerBody={
+          <AddressDrawer
+            method={method}
+            additionalAddress={additionalAddress}
+            onClose={onClose}
+          />
+        }
+      />
     </Profile>
   );
 };

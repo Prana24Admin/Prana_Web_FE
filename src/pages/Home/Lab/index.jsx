@@ -15,7 +15,7 @@ const LabIndex = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div style={{ paddingTop: "12rem" }}>
         <LabSlide />
       </div>
       <div>

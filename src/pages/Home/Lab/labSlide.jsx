@@ -45,11 +45,11 @@ const LabSlide = () => {
   ];
   return (
     <>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} containerClass="labSlide-container">
         {newArr.map((item) => {
           return (
             <>
-              <div className="innerlab-med">
+              <div className="innerlab-med ">
                 <img className="innerLab-img" src={item.Image} alt="" />
               </div>
             </>

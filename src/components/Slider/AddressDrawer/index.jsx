@@ -195,11 +195,20 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
           />
         </div>
       </div>
-      <div style={{ marginTop: "1rem", width: "100%" }}>
-        <Button variant="outline" mr={3} onClick={onClose}>
+      <div className="addressDrawer-buttonsContainer">
+        <Button
+          className="addressDrawer-cancelButton"
+          variant="outline"
+          mr={3}
+          onClick={onClose}
+        >
           Cancel
         </Button>
-        <Button onClick={() => saveAddress(data)} colorScheme="blue">
+        <Button
+          onClick={() => saveAddress(data)}
+          colorScheme="var(--crimsonPink)"
+          className="addressDrawer-saveButton"
+        >
           Save
         </Button>
       </div>

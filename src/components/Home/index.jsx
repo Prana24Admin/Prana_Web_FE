@@ -31,9 +31,7 @@ const HomeIndex = () => {
       <div>
         <HomeCard />
       </div>
-      <div>
-        <HomeItems />
-      </div>
+      <div>{/* <HomeItems /> */}</div>
       <div>
         <HomeLabs />
       </div>

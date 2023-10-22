@@ -163,52 +163,54 @@ const Packages = () => {
   ];
   return (
     <>
-      <div>
-        <p className="testby-par">Popular Health Packages</p>
-      </div>
-      <div className="d-flex flex-row checkup-row">
-        <div className="d-flex flex-column checkup-col">
-          <p>Featured Checkups</p>
+      <div className="package-container">
+        <div>
+          <p className="testby-par">Popular Health Packages</p>
         </div>
-        <div className="d-flex flex-column checkup-col">
-          <p>Women's Health</p>
+        <div className="d-flex flex-row checkup-row">
+          <div className="d-flex flex-column checkup-col">
+            <p>Featured Checkups</p>
+          </div>
+          <div className="d-flex flex-column checkup-col">
+            <p>Women's Health</p>
+          </div>
+          <div className="d-flex flex-column checkup-col">
+            <p>Men's Health</p>
+          </div>
         </div>
-        <div className="d-flex flex-column checkup-col">
-          <p>Men's Health</p>
-        </div>
-      </div>
-      <Carousel responsive={responsive}>
-        {newArr.map((item) => {
-          return (
-            <>
-              <div style={{ marginTop: "40px", marginLeft: "40px" }}>
-                <Card className="card-img-health-pack" id="card-health">
-                  <img className="vitamin-img-lab" src={item.Image} alt="" />
-                  <p className="vitamin-par">{item.Title}</p>
-                  <p className="vitamin-par1" id="ayur-par-slide">
-                    {item.Text}
-                  </p>
-                  <p className="vitamin-par2">5 tests included</p>
-                  <div className="d-flex flex-row mark-row">
-                    <div className="d-flex flex-column">
-                      <p className="rate-mark">
-                        {item.Price}{" "}
-                        <strike className="stri-mark">{item.Price1}</strike>{" "}
-                        <span>{item.Offer}</span>
-                      </p>
+        <Carousel responsive={responsive}>
+          {newArr.map((item) => {
+            return (
+              <>
+                <div style={{ marginTop: "40px", marginLeft: "40px" }}>
+                  <Card className="card-img-health-pack" id="card-health">
+                    <img className="vitamin-img-lab" src={item.Image} alt="" />
+                    <p className="vitamin-par">{item.Title}</p>
+                    <p className="vitamin-par1" id="ayur-par-slide">
+                      {item.Text}
+                    </p>
+                    <p className="vitamin-par2">5 tests included</p>
+                    <div className="d-flex flex-row mark-row">
+                      <div className="d-flex flex-column">
+                        <p className="rate-mark">
+                          {item.Price}{" "}
+                          <strike className="stri-mark">{item.Price1}</strike>{" "}
+                          <span>{item.Offer}</span>
+                        </p>
+                      </div>
+                      <div className="d-flex flex-column">
+                        <p onClick={navigateAppointment} className="book-now">
+                          Book Now
+                        </p>
+                      </div>
                     </div>
-                    <div className="d-flex flex-column">
-                      <p onClick={navigateAppointment} className="book-now">
-                        Book Now
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </>
-          );
-        })}
-      </Carousel>
+                  </Card>
+                </div>
+              </>
+            );
+          })}
+        </Carousel>
+      </div>
     </>
   );
 };

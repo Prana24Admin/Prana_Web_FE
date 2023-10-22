@@ -45,6 +45,7 @@
   /* font-family: "Nunito sans"; */
   font-family: Arial, Helvetica, sans-serif;
   color: var(--crimsonPink);
+  cursor: pointer;
 }
 .nav_links {
   list-style: none;

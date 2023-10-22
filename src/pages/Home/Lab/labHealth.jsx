@@ -14,11 +14,11 @@ const LabHealth = () => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 6,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
+      items: 6,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -61,22 +61,24 @@ const LabHealth = () => {
   ];
   return (
     <>
-      <div>
-        <p className="testby-par">Find tests by health concern</p>
-      </div>
-      <div>
-        <Carousel responsive={responsive}>
-          {newArr.map((item) => {
-            return (
-              <>
-                <div className="offer-col1">
-                  <img className="testby" src={item.Image} alt="" />
-                  <p className="testbyimg-par">{item.Text}</p>
-                </div>
-              </>
-            );
-          })}
-        </Carousel>
+      <div className="testby-par">
+        <div>
+          <p>Find tests by health concern</p>
+        </div>
+        <div>
+          <Carousel responsive={responsive}>
+            {newArr.map((item) => {
+              return (
+                <>
+                  <div className="offer-col1">
+                    <img className="testby" src={item.Image} alt="" />
+                    <p className="testbyimg-par">{item.Text}</p>
+                  </div>
+                </>
+              );
+            })}
+          </Carousel>
+        </div>
       </div>
     </>
   );

@@ -79,3 +79,45 @@
   gap: 3rem;
   padding: 0.75rem 0rem;
 }
+.addressDrawer-buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+.addressDrawer-saveButton:hover {
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  border: none;
+  width: 100%;
+  scale: 1.02;
+  transition: 0.3s ease-in;
+}
+.addressDrawer-saveButton {
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.addressDrawer-cancelButton {
+  border: 1px solid var(--ashGray);
+  color: var(--neutralBlack);
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.addressDrawer-cancelButton:hover {
+  width: 100%;
+  border: 1px solid var(--ashGray);
+  color: var(--neutralBlack);
+  scale: 1.02;
+  transition: 0.3s ease-in;
+}

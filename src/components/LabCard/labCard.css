@@ -1,0 +1,68 @@
+.labCard-Container {
+  max-width: 1240px;
+  margin: auto;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.labCard-cardContainer {
+  width: 90%;
+  height: 20rem;
+  border-radius: 5px;
+  border: 1px solid var(--cloudGray);
+  padding: 1rem 1rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.labCard-cardContainer:hover {
+  border: 1px solid var(--crimsonPink);
+  background-color: var(--powderWhite);
+  scale: 1.02;
+}
+.labCard-cardImage {
+  height: 200px;
+  width: 230px;
+  mix-blend-mode: multiply;
+  object-fit: cover;
+  /* border: 1px solid var(--neutralBlack); */
+}
+.labCard-cardTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutralBlack);
+  padding-top: 1rem;
+}
+.labCard-cardPrice {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--neutralBlack);
+}
+.labCard-flexText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--coinGray);
+  margin-left: 0.5rem;
+}
+.labCard-descriptionText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--coinGray);
+}
+.labCard-flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.labCard-button {
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  color: var(--white);
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.labCard-cardContainer:hover .labCard-button {
+  border: 1px solid var(--crimsonPink);
+  background-color: var(--crimsonPink);
+  scale: 1.02;
+}

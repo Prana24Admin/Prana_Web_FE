@@ -66,7 +66,10 @@ const LabHealth = () => {
           <p>Find tests by health concern</p>
         </div>
         <div>
-          <Carousel responsive={responsive}>
+          <Carousel
+            responsive={responsive}
+            containerClass="medicineSlider-container"
+          >
             {newArr.map((item) => {
               return (
                 <>

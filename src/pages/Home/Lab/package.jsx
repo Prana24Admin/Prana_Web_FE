@@ -1,6 +1,5 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import Card from "react-bootstrap/Card";
 import "react-multi-carousel/lib/styles.css";
 import BasicWomen from "../../../assets/images/lab/package/basic-women.jpg";
 import CardiacBasic from "../../../assets/images/lab/package/cardiac-basic.jpg";
@@ -16,7 +15,11 @@ import Young from "../../../assets/images/lab/package/young-indian.jpg";
 import ThyroidBasic from "../../../assets/images/lab/package/thyroid-basic.jpg";
 import Tax from "../../../assets/images/lab/package/tax-saver.jpg";
 import "../../../assets/css/Lab/index.css";
+
+import LabCard from "../../../components/LabCard";
+
 import { useNavigate } from "react-router-dom";
+
 const Packages = () => {
   const navigate = useNavigate();
   const navigateAppointment = () => {
@@ -178,11 +181,14 @@ const Packages = () => {
             <p>Men's Health</p>
           </div>
         </div>
-        <Carousel responsive={responsive}>
+        <Carousel
+          responsive={responsive}
+          containerClass="medicineSlider-container"
+        >
           {newArr.map((item) => {
             return (
               <>
-                <div style={{ marginTop: "40px", marginLeft: "40px" }}>
+                {/* <div style={{ marginTop: "40px", marginLeft: "40px" }}>
                   <Card className="card-img-health-pack" id="card-health">
                     <img className="vitamin-img-lab" src={item.Image} alt="" />
                     <p className="vitamin-par">{item.Title}</p>
@@ -205,7 +211,8 @@ const Packages = () => {
                       </div>
                     </div>
                   </Card>
-                </div>
+                </div> */}
+                <LabCard />
               </>
             );
           })}

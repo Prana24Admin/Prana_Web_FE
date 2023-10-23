@@ -40,6 +40,9 @@ import OrderDetails from "./pages/Home/Orders/OrderDetails";
 import Orders from "./pages/Home/Orders";
 import ProfileAddress from "./pages/Home/Profile/ProfileAddress";
 import ProfileAccount from "./pages/Home/Profile/ProfileAccount";
+import PackageOrder from "./pages/Home/Packages/PackageOrder";
+import PackageCart from "./pages/Home/Packages/PackageCart";
+import LabTestCheckout from "./pages/Home/Packages/LabTestCheckout";
 
 const Navigation = () => {
   return (
@@ -78,6 +81,9 @@ const Navigation = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Wishlist />} />
         <Route path="/checkout" element={<CheckoutScreen />} />
+        <Route path="/packageorder" element={<PackageOrder />} />
+        <Route path="/packagecart" element={<PackageCart />} />
+        <Route path="/labtestcheckout" element={<LabTestCheckout />} />
       </Routes>
     </Router>
   );

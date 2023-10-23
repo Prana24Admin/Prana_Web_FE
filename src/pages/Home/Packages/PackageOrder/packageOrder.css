@@ -1,0 +1,65 @@
+.packageOrder-mainContainer {
+  max-width: 1240px;
+  margin: auto;
+  padding-top: 11rem;
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.packageOrder-borderContainer {
+  border: 1px solid var(--cloudGray);
+  padding: 1rem 2rem;
+  border-radius: 5px;
+}
+.packageOrder-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+}
+.packageOrder-description {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.packageOrder-flexContainer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.packageOrder-mrpText {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}
+.packageOrder-discountText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--coinGray);
+}
+.packageOrder-overLine {
+  text-decoration: line-through;
+}
+.packageOrder-separator {
+  border: 1px solid var(--cloudGray);
+  margin: 1rem 0;
+}
+.packageOrder-justifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.packageOrder-button {
+  background-color: var(--crimsonPink);
+  padding: 0.5rem 1rem;
+  color: var(--white);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+.packageOrder-button:hover {
+  scale: 1.02;
+  opacity: 0.9;
+}

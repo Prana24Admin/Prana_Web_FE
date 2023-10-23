@@ -16,6 +16,7 @@ const CartCard = ({ cartItem }) => {
     if (response.status === 400) {
       toast.error("Try again");
     }
+    // handleRefetchCartItems();
     return response.data;
   };
 

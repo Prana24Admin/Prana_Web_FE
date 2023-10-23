@@ -101,7 +101,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     return response.data;
   };
   return (
-    <div style={{ marginTop: "1.25rem" }}>
+    <div style={{ marginTop: "0.5rem" }}>
       <div className="modal-iconContainer">
         <button
           onClick={() => setAddressData({ ...addressData, place: "Home" })}
@@ -163,7 +163,13 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             })
           }
         />
-        <Input label={"House No/ Apartment No"} />
+        <Input
+          label={"House No/ Apartment No"}
+          value={addressData.houseNumber}
+          onChange={(e) =>
+            setAddressData({ ...addressData, houseNumber: e.target.value })
+          }
+        />
         <Input
           label="Street"
           value={addressData.street}

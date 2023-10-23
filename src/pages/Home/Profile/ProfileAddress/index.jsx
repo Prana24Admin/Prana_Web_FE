@@ -4,7 +4,6 @@ import "../Profile.css";
 import "./Address.css";
 import { MoreVertical, Plus } from "lucide-react";
 import { ProfileContext } from "../../../../context/ProfileProvider";
-// import AddressModal from "./AddressModal";
 import axiosInstance from "../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
 import Profile from "..";
@@ -16,14 +15,12 @@ const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
 
   const [selectedDropdown, setSelectedDropdown] = useState(null);
-  // const [show, setShow] = useState(false);
   const [method, setMethod] = useState();
   const [additionalAddress, setAdditionalAddress] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  // const handleClose = () => setShow(false);
   const handleDropDown = (id) => {
     if (selectedDropdown === id) {
       setSelectedDropdown(null);
@@ -65,7 +62,6 @@ const ProfileAddress = () => {
           onClick={() => {
             onOpen();
             setMethod("add");
-            // setShow(!show);
           }}
           className="address-addContainer"
         >
@@ -87,7 +83,7 @@ const ProfileAddress = () => {
                     className="address-dropdownText"
                     onClick={() => {
                       setMethod("edit");
-                      // setShow(!show);
+                      onOpen();
                     }}
                   >
                     Edit
@@ -109,8 +105,8 @@ const ProfileAddress = () => {
               <p className="address-userName">{data.address.phoneNumber}</p>
             </div>
             <div className="address-addressText">
-              {data.address.street}, {data.address.city}-{data.address.pinCode},{" "}
-              {data.address.state}
+              {data.address.houseNumber}, {data.address.street},{" "}
+              {data.address.city}-{data.address.pinCode}, {data.address.state}
             </div>
           </div>
         )}
@@ -131,7 +127,7 @@ const ProfileAddress = () => {
                     <p
                       className="address-dropdownText"
                       onClick={() => {
-                        // setShow(!show);
+                        onOpen();
                         setAdditionalAddress(address);
                         setMethod("editAdditionalAddress");
                       }}
@@ -156,8 +152,8 @@ const ProfileAddress = () => {
                 <p className="address-userName">{address.phoneNumber}</p>
               </div>
               <div className="address-addressText">
-                {address.street}, {address.city}-{address.pinCode},{" "}
-                {address.state}
+                {address.houseNumber}, {address.street}, {address.city}-
+                {address.pinCode}, {address.state}
               </div>
             </div>
           ))}
@@ -167,14 +163,6 @@ const ProfileAddress = () => {
             <p>No addresses! Add one right now</p>
           )}
       </div>
-      {/* {show && (
-        <AddressModal
-          show={show}
-          handleClose={handleClose}
-          method={method}
-          additionalAddress={additionalAddress}
-        />
-      )} */}
       <Slider
         isOpen={isOpen}
         onClose={onClose}

@@ -9,6 +9,7 @@ import { ProfileContext } from "../../../context/ProfileProvider";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../libs/axios";
 import MainLayout from "../../../components/MainLayout";
+import CartCard from "../../../components/CartCard";
 
 const Checkout = () => {
   const { data, setData } = useContext(ProfileContext);
@@ -18,13 +19,8 @@ const Checkout = () => {
     return response.data;
   };
 
-  const {
-    data: cartData,
+  const { data: cartData, error } = useQuery(["cart"], fetchCartData);
 
-    error,
-  } = useQuery(["Cart"], fetchCartData);
-
-  const [toggleDropDown, setToggleDropDown] = useState(false);
   const [addressDropdown, setAddressDropdown] = useState(false);
   const [orderDropdown, setOrderDropdown] = useState(false);
   const [paymentDropdown, setPaymentDropdown] = useState(false);
@@ -76,28 +72,6 @@ const Checkout = () => {
     }
   };
 
-  const handleQuantity = async (product) => {
-    // const response = await axiosInstance.post("/cart", {
-    //   quantity: product.quantity,
-    //   product_id: product.productId,
-    // });
-    // if (response.status === 400) {
-    //   toast.error("Try again");\
-    // }
-    // return response.data;
-  };
-
-  const { mutate, isLoading } = useMutation(
-    (product) => {
-      return handleQuantity(product);
-    },
-    {
-      onSuccess: () => {
-        return handleRefetchCartItems();
-      },
-    }
-  );
-
   return (
     <MainLayout>
       <div className="checkout-mainContainer">
@@ -135,8 +109,9 @@ const Checkout = () => {
                           </span>
                         </p>
                         <p className="checkout-subAddress">
-                          {data.address.street}, {data.address.city} -{" "}
-                          {data.address.pinCode}, {data.address.state}
+                          {data.address.houseNumber}, {data.address.street},{" "}
+                          {data.address.city} - {data.address.pinCode},{" "}
+                          {data.address.state}
                         </p>
                       </div>
                     </div>
@@ -166,8 +141,9 @@ const Checkout = () => {
                             </span>
                           </p>
                           <p className="checkout-subAddress">
-                            {addressItem.street}, {addressItem.city} -{" "}
-                            {addressItem.pinCode}, {addressItem.state}
+                            {addressItem.houseNumber}, {addressItem.street},{" "}
+                            {addressItem.city} - {addressItem.pinCode},{" "}
+                            {addressItem.state}
                           </p>
                         </div>
                       </div>
@@ -203,97 +179,9 @@ const Checkout = () => {
                   cartData.map((cartItem) => (
                     <div
                       key={cartItem.uuid}
-                      className="checkout-justifyContainer"
+                      style={{ marginBottom: "0.75rem" }}
                     >
-                      <div className="checkout-flex">
-                        <img
-                          className="checkout-orderImage"
-                          src={image}
-                          alt="sasa"
-                        />
-                        <div>
-                          <p className="checkout-accordianHeader">
-                            {cartItem.product.name}
-                          </p>
-
-                          <div
-                            style={{
-                              display: "flex",
-                              gap: "0.25rem",
-                              alignItems: "center",
-                            }}
-                          >
-                            <p
-                              style={{
-                                fontSize: "0.75rem",
-                                fontWeight: "400",
-                                color: "var(--coinGray)",
-                                textDecoration: "line-through",
-                              }}
-                            >
-                              ₹300
-                            </p>
-                            <p
-                              style={{
-                                fontSize: "1rem",
-                                fontWeight: "400",
-                                color: "var(--neutralBlack)",
-                              }}
-                            >
-                              ₹{cartItem.product.price}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="checkout-flexCenter">
-                          <Trash2 size={15} />
-                          <p style={{ fontSize: "0.9rem", fontWeight: "500" }}>
-                            Remove
-                          </p>
-                        </div>
-                        <div
-                          className="cart-quantityContainer"
-                          onClick={() => setToggleDropDown(!toggleDropDown)}
-                        >
-                          {isLoading ? (
-                            <div className="cart-loaderContainer">
-                              <Loader />
-                            </div>
-                          ) : (
-                            <>
-                              <p className="cart-quantity">
-                                Qty:
-                                <span style={{ fontWeight: "bold" }}>
-                                  {cartItem.quantity}
-                                </span>
-                              </p>
-                              <div className="cart-chevronIcon">
-                                <ChevronDown
-                                  size={18}
-                                  strokeWidth={2.5}
-                                  color="var(--neutralBlack)"
-                                />
-                              </div>
-                            </>
-                          )}
-                          {toggleDropDown && (
-                            <div className="cart-dropdown">
-                              {Array.from(
-                                { length: 20 },
-                                (_, index) => index + 1
-                              ).map((number) => (
-                                <div
-                                  key={number}
-                                  className="cart-dropDownQuantity"
-                                >
-                                  <p>{number}</p>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
+                      <CartCard cartItem={cartItem} />
                     </div>
                   ))}
                 <p

@@ -18,7 +18,7 @@ const HomeItems = () => {
     navigate("/inner/innerMed");
   };
   const navigateLab = () => {
-    navigate("/inner/lab");
+    navigate("/lab");
   };
   const navigateHealthCare = () => {
     navigate("/inner/healthCare");

@@ -43,6 +43,7 @@ import ProfileAccount from "./pages/Home/Profile/ProfileAccount";
 import PackageOrder from "./pages/Home/Packages/PackageOrder";
 import PackageCart from "./pages/Home/Packages/PackageCart";
 import LabTestCheckout from "./pages/Home/Packages/LabTestCheckout";
+import LabTests from "./pages/Home/Lab/LabTests";
 
 const Navigation = () => {
   return (
@@ -66,7 +67,7 @@ const Navigation = () => {
         <Route path="/inner/innerMed" element={<InnerMed />} />
         <Route path="/inner/innerAyur" element={<InnerAyur />} />
         <Route path="/inner/doctor" element={<Doctor />} />
-        <Route path="/inner/lab" element={<InnerLab />} />
+        <Route path="/lab" element={<InnerLab />} />
         <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
         <Route path="/inner/doctor/finddoctor" element={<FindDoctor />} />
         <Route path="/inner/doctor/appointment" element={<Appointment />} />
@@ -81,6 +82,7 @@ const Navigation = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Wishlist />} />
         <Route path="/checkout" element={<CheckoutScreen />} />
+        <Route path="/lab/all-tests" element={<LabTests />} />
         <Route path="/packageorder" element={<PackageOrder />} />
         <Route path="/packagecart" element={<PackageCart />} />
         <Route path="/labtestcheckout" element={<LabTestCheckout />} />

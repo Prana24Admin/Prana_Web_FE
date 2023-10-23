@@ -27,7 +27,7 @@ const CategoryNav = () => {
       id: 2,
       name: "Lab Tests",
       Icon: FlaskConical,
-      path: "/inner/lab",
+      path: "/lab",
     },
     {
       id: 3,

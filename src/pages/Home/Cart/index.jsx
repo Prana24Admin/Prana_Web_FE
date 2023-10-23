@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import "./cart.css";
 
@@ -13,25 +13,7 @@ import MainLayout from "../../../components/MainLayout";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../components/Slider";
 
-import Coupon from "../../../components/Coupon";
-
-const DrawerBody = () => {
-  const fetchCoupons = async () => {
-    const response = await axiosInstance.get("/coupons");
-    return response.data;
-  };
-
-  const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
-
-  return (
-    <div className="small-coupon-container">
-      {data &&
-        data.data.map((item) => {
-          return <Coupon key={item.uuid} item={item} smallCoupon={true} />;
-        })}
-    </div>
-  );
-};
+import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
 
 const Cart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -41,7 +23,6 @@ const Cart = () => {
 
   const fetchCart = async () => {
     const response = await axiosInstance.get("/cart");
-
     return response.data;
   };
 
@@ -121,7 +102,7 @@ const Cart = () => {
                       isOpen={isOpen}
                       btnRef={btnRef}
                       header={"Apply Coupon"}
-                      drawerBody={<DrawerBody />}
+                      drawerBody={<CouponDrawer />}
                     />
                   </div>
                 </>

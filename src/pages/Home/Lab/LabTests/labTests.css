@@ -1,0 +1,43 @@
+.labTests-container {
+  padding-top: 12rem;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  max-width: 1140px;
+  margin: auto;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 5rem;
+}
+.labTests-leftContainer {
+  width: 65%;
+}
+.labTests-rightContainer {
+  width: 35%;
+}
+.labTests-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+}
+.labTests-innerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.labTests-orderTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  padding-bottom: 0.5rem;
+}
+.labTests-orderItems {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.labTests-orderItemsPrice {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}

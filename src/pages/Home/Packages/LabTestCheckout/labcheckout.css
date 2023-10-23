@@ -3,4 +3,66 @@
   margin: auto;
   padding-top: 11rem;
   margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.labCheckout-flexContainer {
+  display: flex;
+  gap: 2rem;
+}
+.labCheckout-leftContainer {
+  width: 65%;
+  height: auto;
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
+  padding: 1rem 2rem;
+}
+.labCheckout-rightContainer {
+  border-radius: 5px;
+  border: 1px solid var(--cloudGray);
+  width: 35%;
+  height: auto;
+  padding: 1rem 2rem;
+}
+.labCheckout-gap {
+  display: flex;
+  gap: 0.5rem;
+}
+.labCheckout-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+  margin-bottom: 1rem;
+}
+.labCheckout-description {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+  margin: 0.25rem 0;
+}
+.labCheckout-justifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.25rem 0;
+}
+.labCheckout-mrp {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.labCheckout-discount {
+  text-decoration: line-through;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--coinGray);
+}
+.labCheckout-line {
+  border: 1px solid var(--cloudGray);
+  margin: 1rem 0;
+}
+.labCheckout-savingsContainer {
+  margin-top: 1rem;
 }

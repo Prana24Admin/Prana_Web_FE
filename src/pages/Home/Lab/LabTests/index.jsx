@@ -4,6 +4,7 @@ import "./labTests.css";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import LabTestCard from "../../../../components/LabTestCard";
+import { Trash2 } from "lucide-react";
 
 const LabTests = () => {
   const [selectedTest, setSelectedTest] = useState(

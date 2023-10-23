@@ -17,6 +17,10 @@ const LabTests = () => {
   };
   const { data, isLoading, error } = useQuery(["LabTests"], fetchAllLabTests);
 
+  const total = selectedTest.reduce((sum, test) => {
+    return sum + parseFloat(test.price);
+  }, 0);
+
   return (
     <MainLayout>
       <div className="labTests-container">
@@ -55,6 +59,18 @@ const LabTests = () => {
             ))}
           </div>
           <div className="separator" />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "0.5rem",
+            }}
+          >
+            <p className="labTests-orderTotalItemsPrice">Total</p>
+            <p className="labTests-orderTotalItemsPrice">₹{total.toFixed(2)}</p>
+          </div>
+          <button className="labTests-viewCartButton">view cart</button>
         </div>
       </div>
     </MainLayout>

@@ -28,7 +28,7 @@
 .labTests-orderTitle {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--ashGray);
+  color: var(--neutralBlack);
   padding-bottom: 0.5rem;
 }
 .labTests-orderItems {
@@ -40,4 +40,20 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--ashGray);
+}
+.labTests-orderTotalItemsPrice {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}
+.labTests-viewCartButton {
+  width: 100%;
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  text-transform: capitalize;
 }

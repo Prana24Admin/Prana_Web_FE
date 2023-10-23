@@ -6,7 +6,20 @@ import Loader from "../loader";
 
 const LabTestCard = ({ test, selectedTest, setSelectedTest }) => {
   const handleAddToLabCart = async (test) => {
-    setSelectedTest([...selectedTest, test]);
+    let isObjectFound = false;
+    if (selectedTest.length < 1) {
+      setSelectedTest([...selectedTest, test]);
+    } else {
+      for (let i = 0; i < selectedTest.length; i++) {
+        if (JSON.stringify(test) === JSON.stringify(selectedTest[i])) {
+          isObjectFound = true;
+          break;
+        }
+      }
+    }
+    if (!isObjectFound) {
+      setSelectedTest([...selectedTest, test]);
+    }
     const response = await axiosInstance.post("/cart/labcart", {
       lab_test_id: test.uuid,
     });
@@ -38,9 +51,15 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest }) => {
         </div>
         <p className="testCard-price">₹{test.price}</p>
       </div>
-      <button onClick={() => mutate(test)} className="testCard-selectButton">
-        {isLoading ? <Loader /> : "Select"}
-      </button>
+      {selectedTest.includes(test) ? (
+        <button onClick={() => mutate(test)} className="testCard-selectButton">
+          {isLoading ? <Loader /> : "Remove"}
+        </button>
+      ) : (
+        <button onClick={() => mutate(test)} className="testCard-selectButton">
+          {isLoading ? <Loader /> : "Select"}
+        </button>
+      )}
     </div>
   );
 };

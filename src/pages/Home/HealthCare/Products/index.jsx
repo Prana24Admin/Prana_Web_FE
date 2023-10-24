@@ -1,5 +1,5 @@
 import React from "react";
-
+import Error from "../../../../assets/images/ErrorPages/404 Error.png";
 import "./products.css";
 
 import { useParams } from "react-router-dom";
@@ -62,7 +62,7 @@ const Products = () => {
             </div>
           </div>
         )}
-        {error && <p>Error fetching! Try again.</p>}
+        {error && <img className="error-image" src={Error} alt="Error" />}
       </div>
     </MainLayout>
   );

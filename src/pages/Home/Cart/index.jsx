@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./cart.css";
+import Error from "../../../assets/images/ErrorPages/404 Error.png";
 
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
@@ -109,7 +110,7 @@ const Cart = () => {
               ))}
           </div>
         </div>
-        {error && <p>Error fetching! Try again</p>}
+        {error && <img className="error-image" src={Error} alt="Error" />}
       </section>
     </MainLayout>
   );

@@ -119,3 +119,10 @@
   bottom: 3%;
   left: 5%;
 }
+.error-image {
+  margin-top: 0rem;
+  max-width: 1240px;
+  height: 600px;
+  margin: auto;
+  /* object-fit: contain; */
+}

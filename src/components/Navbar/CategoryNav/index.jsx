@@ -68,7 +68,7 @@ const CategoryNav = () => {
           <div
             className="innerNav-bodyContainer"
             onClick={() => navigate(navElement.path)}
-            key={navElements.id}
+            key={navElement.id}
           >
             <navElement.Icon strokeWidth="1.25" />
             <p>{navElement.name}</p>

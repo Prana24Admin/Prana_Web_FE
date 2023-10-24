@@ -17,6 +17,7 @@ import { Button, useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../components/Slider";
 
 import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
+import Bill from "../../../components/Bill";
 
 const Cart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,6 +33,16 @@ const Cart = () => {
   const { data, isLoading, error } = useQuery(["cart"], fetchCart);
 
   const [selectedCoupon, setSelectedCoupon] = useState(null);
+
+  useEffect(() => {
+    const coupon = JSON.parse(localStorage.getItem("appliedCoupon"));
+    if (coupon) {
+      setSelectedCoupon(coupon);
+    } else {
+      setSelectedCoupon(null);
+    }
+  }, []);
+
   const [couponValue, setCouponValue] = useState(null);
 
   const subTotal = data?.reduce((sum, product) => {
@@ -56,7 +67,13 @@ const Cart = () => {
     if (selectedCoupon) {
       couponDiscount();
     }
-  });
+  }, [subTotal, selectedCoupon]);
+
+  const handleRemoveCoupon = () => {
+    localStorage.removeItem("appliedCoupon");
+    setSelectedCoupon(null);
+    setCouponValue(null);
+  };
 
   return (
     <MainLayout>
@@ -86,66 +103,47 @@ const Cart = () => {
                     ))}
                   </div>
                   <div className="cart-rightContainer">
-                    <Button
-                      ref={btnRef}
-                      borderColor={"var(--cloudGray)"}
-                      borderWidth={"1px"}
-                      colorScheme="teal"
-                      gap={"5px"}
-                      onClick={onOpen}
-                    >
-                      <BadgePercent size={18} />
-                      {selectedCoupon
-                        ? selectedCoupon.code + " Applied"
-                        : "Apply Coupon"}
-                    </Button>
-                    <div className="cart-billContainer">
-                      <p className="cart-titleText">Bill Summary</p>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">Total Mrp</p>
-                        <p className="cart-descriptionText">
-                          ₹{subTotal.toFixed(2)}
-                        </p>
-                      </div>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">Delivery charges</p>
-                        <p className="cart-descriptionText">
-                          ₹{Math.ceil(subTotal * 0.1).toFixed(2)}
-                        </p>
-                      </div>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">Discount</p>
-                        <p className="cart-descriptionText">
-                          ₹{subTotal.toFixed(2)}
-                        </p>
-                      </div>
-                      {selectedCoupon && (
-                        <div className="cart-flex">
-                          <p className="cart-descriptionText">Coupon</p>
-                          <p className="cart-selectedCouponText">
-                            ₹{couponValue?.toFixed(2)}
-                          </p>
-                        </div>
-                      )}
-                      <div className="checkout-line" />
-                      <div className="cart-flex">
-                        <p className="cart-descriptionTextDark">Cart value</p>
-                        <p className="cart-descriptionTextDark">
-                          ₹
-                          {(
-                            subTotal -
-                            couponValue +
-                            Math.ceil(subTotal * 0.1)
-                          ).toFixed(2)}
-                        </p>
-                      </div>
-                      <button
-                        className="cart-button"
-                        onClick={() => navigate("/checkout")}
+                    <div style={{ position: "relative" }}>
+                      <Button
+                        ref={btnRef}
+                        borderColor={"var(--cloudGray)"}
+                        borderWidth={"1px"}
+                        colorScheme="teal"
+                        justifyContent={"space-between"}
+                        onClick={onOpen}
+                        width={"100%"}
                       >
-                        Proceed To Checkout
-                      </button>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.3rem",
+                          }}
+                        >
+                          <BadgePercent size={18} />
+                          {selectedCoupon
+                            ? selectedCoupon.code
+                            : "Apply Coupon"}
+                        </div>
+                      </Button>
+
+                      {selectedCoupon && (
+                        <button
+                          onClick={handleRemoveCoupon}
+                          className="cart-couponRemoveButton"
+                        >
+                          Remove
+                        </button>
+                      )}
                     </div>
+
+                    {/* Bill */}
+                    <Bill
+                      subTotal={subTotal}
+                      couponValue={couponValue}
+                      selectedCoupon={selectedCoupon}
+                    />
+
                     <div className="cart-savingsContainer">
                       <IndianRupee size={15} className="cart-ruppeIcon" />
                       <p className="cart-savingsText">

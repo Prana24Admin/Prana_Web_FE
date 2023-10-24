@@ -101,7 +101,6 @@
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--ashGray);
-  margin-left: 0.25rem;
   font-family: Arial, Helvetica, sans-serif;
 }
 .cart-linethrough {
@@ -217,4 +216,19 @@
   color: var(--ashGray);
   font-size: 1rem;
   font-weight: 600;
+}
+.cart-couponRemoveButton {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  background-color: var(--powderWhite);
+  padding: 0.09rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+.cart-couponRemoveButton:hover {
+  opacity: 0.9;
 }

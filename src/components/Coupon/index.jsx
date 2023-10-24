@@ -11,20 +11,21 @@ const Coupon = ({
 }) => {
   const handleCouponSelect = (coupon) => {
     setSelectedCoupon(coupon);
+    localStorage.setItem("appliedCoupon", JSON.stringify(coupon));
     onClose();
   };
   return (
-    <div class={smallCoupon ? "small-card" : "card"}>
-      <div class={smallCoupon ? "small-main" : "main"}>
-        <div class={smallCoupon ? "small-co-img" : "co-img"}>
+    <div className={smallCoupon ? "small-card" : "card"}>
+      <div className={smallCoupon ? "small-main" : "main"}>
+        <div className={smallCoupon ? "small-co-img" : "co-img"}>
           <img
             src="https://i.pinimg.com/originals/c7/84/67/c78467db9ff497393cb548a48f02d451.png"
             alt={"coupon"}
             className={smallCoupon ? "coupon-image" : "coupon-image"}
           />
         </div>
-        <div class={smallCoupon ? "small-vertical" : "vertical"}></div>
-        <div class={smallCoupon ? "small-content" : "content"}>
+        <div className={smallCoupon ? "small-vertical" : "vertical"}></div>
+        <div className={smallCoupon ? "small-content" : "content"}>
           <h2>{item.status}</h2>
           <h1>
             {item.discount}% <span>Coupon</span>
@@ -32,11 +33,11 @@ const Coupon = ({
           <p>Valid till {format(new Date(item.expiry_date), "dd MMMM yyyy")}</p>
         </div>
       </div>
-      <div class={smallCoupon ? "small-copy-button" : "copy-button"}>
-        <input id="copyvalue" type="text" readonly value={item.code} disabled />
+      <div className={smallCoupon ? "small-copy-button" : "copy-button"}>
+        <input id="copyvalue" type="text" readOnly value={item.code} disabled />
         <button
           onClick={() => handleCouponSelect(item)}
-          class={smallCoupon ? "small-copybtn" : "copybtn"}
+          className={smallCoupon ? "small-copybtn" : "copybtn"}
         >
           {smallCoupon ? "SELECT" : "COPY"}
         </button>

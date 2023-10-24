@@ -74,7 +74,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
                 ? labItem.lab_test.name
                 : cartItem.product.name}
             </p>
-            <p className="cart-priceText">
+            <div className="cart-priceText">
               <p className="cart-discountText">
                 ₹
                 {pathName === "/lab/cart"
@@ -90,7 +90,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
                   ? labItem.lab_test.price
                   : cartItem.product.price}
               </span>
-            </p>
+            </div>
           </div>
           <div className="cart-quantityContainerFlex">
             <div

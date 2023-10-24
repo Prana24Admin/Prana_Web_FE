@@ -10,9 +10,16 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../../libs/axios";
 import MainLayout from "../../../components/MainLayout";
 import CartCard from "../../../components/CartCard";
+import Bill from "../../../components/Bill";
+import Slider from "../../../components/Slider";
+import { AddressDrawer } from "../../../components/Slider/AddressDrawer";
+import { useDisclosure } from "@chakra-ui/react";
 
 const Checkout = () => {
   const { data, setData } = useContext(ProfileContext);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
   const fetchCartData = async () => {
     const response = await axiosInstance.get("/cart");
@@ -21,21 +28,32 @@ const Checkout = () => {
 
   const { data: cartData, error } = useQuery(["cart"], fetchCartData);
 
-  const [addressDropdown, setAddressDropdown] = useState(false);
+  const [addressDropdown, setAddressDropdown] = useState(true);
   const [orderDropdown, setOrderDropdown] = useState(false);
   const [paymentDropdown, setPaymentDropdown] = useState(false);
 
   const [address, setAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
 
+  const [confirmation, setConfirmation] = useState({
+    address: false,
+    order: false,
+    payment: false,
+  });
+
+  const handleDropdowns = (dropdown) => {};
+
   const handleAddressContinue = () => {
     if (!address) return toast.error("Select delivery address");
     else {
       setAddressDropdown(false);
+      setConfirmation({ ...confirmation, address: true });
       setPaymentDropdown(false);
       setOrderDropdown(true);
     }
   };
+
+  const handleOrderContinue = () => {};
 
   const placeOrder = async () => {
     if (!address) return toast.error("Select delivery address");
@@ -85,8 +103,8 @@ const Checkout = () => {
                 setPaymentDropdown(false);
               }}
             >
+              <div className="checkout-numberContainer">1</div>
               <p className="checkout-accordianHeader">delivery address</p>
-              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {addressDropdown && (
               <div className="checkout-dropdownContainer">
@@ -154,23 +172,48 @@ const Checkout = () => {
                   data.additional_address.length < 1 && (
                     <p>No addresses! Add one right now</p>
                   )}
-                <p onClick={handleAddressContinue} className="checkout-button">
+                <button
+                  ref={btnRef}
+                  onClick={() => {
+                    onOpen();
+                  }}
+                  className="checkout-button"
+                >
+                  Add address
+                </button>
+                <button
+                  onClick={handleAddressContinue}
+                  className="checkout-button"
+                >
                   Continue Checkout
-                </p>
+                </button>
               </div>
+            )}
+            {confirmation.address && (
+              <button
+                onClick={() => {
+                  setAddressDropdown(true);
+                  setConfirmation({ ...confirmation, address: false });
+                }}
+                className="checkout-changeButton"
+              >
+                Change
+              </button>
             )}
           </div>
           <div className="checkout-borderContainer">
             <div
               className="checkout-flexContainer"
               onClick={() => {
-                setOrderDropdown(!orderDropdown);
-                setAddressDropdown(false);
-                setPaymentDropdown(false);
+                if (confirmation.address) {
+                  setOrderDropdown(!orderDropdown);
+                  setAddressDropdown(false);
+                  setPaymentDropdown(false);
+                }
               }}
             >
+              <div className="checkout-numberContainer">2</div>
               <p className="checkout-accordianHeader">order</p>
-              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {orderDropdown && (
               <div className="checkout-dropdownContainer">
@@ -186,6 +229,7 @@ const Checkout = () => {
                   ))}
                 <p
                   onClick={() => {
+                    setConfirmation({ ...confirmation, order: true });
                     setPaymentDropdown(true);
                     setAddressDropdown(false);
                     setOrderDropdown(false);
@@ -196,18 +240,31 @@ const Checkout = () => {
                 </p>
               </div>
             )}
+            {confirmation.order && (
+              <button
+                onClick={() => {
+                  setOrderDropdown(true);
+                  setConfirmation({ ...confirmation, order: false });
+                }}
+                className="checkout-changeButton"
+              >
+                Change
+              </button>
+            )}
           </div>
           <div className="checkout-borderContainer">
             <div
               className="checkout-flexContainer"
               onClick={() => {
-                setPaymentDropdown(!paymentDropdown);
-                setOrderDropdown(false);
-                setAddressDropdown(false);
+                if (confirmation.order) {
+                  setPaymentDropdown(!paymentDropdown);
+                  setOrderDropdown(false);
+                  setAddressDropdown(false);
+                }
               }}
             >
+              <div className="checkout-numberContainer">3</div>
               <p className="checkout-accordianHeader">Payment</p>
-              <ChevronDown size={25} color="var(--neutralBlack)" />
             </div>
             {paymentDropdown && (
               <div className="checkout-dropdownContainer">
@@ -229,28 +286,25 @@ const Checkout = () => {
           </div>
         </div>
         <div className="checkout-boxRightContainer">
-          <div className="cart-billContainer">
-            <p className="cart-titleText">Bill Summary</p>
-            <div className="cart-flex">
-              <p className="cart-descriptionText">Total Mrp</p>
-              <p className="cart-descriptionText">₹123</p>
-            </div>
-            <div className="cart-flex">
-              <p className="cart-descriptionText">Delivery charges</p>
-              <p className="cart-descriptionText">₹324</p>
-            </div>
-            <div className="cart-flex">
-              <p className="cart-descriptionText">Discount</p>
-              <p className="cart-descriptionText">₹324</p>
-            </div>
-            <div className="checkout-line" />
-            <div className="cart-flex">
-              <p className="cart-descriptionTextDark">Cart value</p>
-              <p className="cart-descriptionTextDark">₹324</p>
-            </div>
-          </div>
+          <Bill
+            couponValue={JSON.parse(localStorage.getItem("bill")).couponValue}
+            subTotal={JSON.parse(localStorage.getItem("bill")).subTotal}
+          />
         </div>
       </div>
+      <Slider
+        isOpen={isOpen}
+        onClose={onClose}
+        btnRef={btnRef}
+        header={"Add an address"}
+        drawerBody={
+          <AddressDrawer
+            method={"add"}
+            // additionalAddress={additionalAddress}
+            onClose={onClose}
+          />
+        }
+      />
     </MainLayout>
   );
 };

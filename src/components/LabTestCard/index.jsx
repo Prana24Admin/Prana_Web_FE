@@ -5,7 +5,12 @@ import { useMutation } from "@tanstack/react-query";
 import Loader from "../loader";
 import { handleRefetchLabCartData } from "../../libs/queryFunctions";
 
-const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
+const LabTestCard = ({
+  test,
+  selectedTests,
+  setSelectedTests,
+  labCartData,
+}) => {
   //Adding lab test to cart
   const handleAddToLabCart = async (test) => {
     // let isObjectFound = false;
@@ -35,7 +40,7 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
     },
     {
       onSuccess: () => {
-        // localStorage.setItem("selectedTestIds", JSON.stringify(selectedTest));
+        localStorage.setItem("selectedTestIds", test.uuid);
         handleRefetchLabCartData();
       },
     }
@@ -64,7 +69,7 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
     },
     {
       onSuccess: () => {
-        return handleRefetchLabCartData();
+        handleRefetchLabCartData();
       },
     }
   );
@@ -82,7 +87,7 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
         </div>
         <p className="testCard-price">₹{test.price}</p>
       </div>
-      {labCartData.includes(test) ? (
+      {labCartData && selectedTests?.includes(test) ? (
         <button
           onClick={() => mutateLabRemove(test)}
           className="testCard-selectButton"

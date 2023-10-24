@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../../../../components/MainLayout";
 import "./labTests.css";
 import axiosInstance from "../../../../libs/axios";
@@ -7,9 +7,7 @@ import LabTestCard from "../../../../components/LabTestCard";
 import { Trash2 } from "lucide-react";
 
 const LabTests = () => {
-  // const [selectedTest, setSelectedTest] = useState(
-  //   JSON.parse(localStorage.getItem("selectedTestIds")) ?? []
-  // );
+  const [selectedTests, setSelectedTests] = useState([]);
 
   const fetchAllLabTests = async () => {
     const response = await axiosInstance.get("/lab/test");
@@ -31,6 +29,16 @@ const LabTests = () => {
     return sum + parseFloat(test.lab_test.price);
   }, 0);
 
+  useEffect(() => {
+    // Use localStorage to get the saved count value
+    const selectedIds = localStorage.getItem("selectedTestIds");
+
+    // If a value is found in localStorage, set the count to that value
+    if (selectedIds) {
+      setSelectedTests(selectedIds);
+    }
+  }, []);
+
   return (
     <MainLayout>
       <div className="labTests-container">
@@ -42,8 +50,8 @@ const LabTests = () => {
                 <LabTestCard
                   key={test.uuid}
                   test={test}
-                  // selectedTest={selectedTest}
-                  // setSelectedTest={setSelectedTest}
+                  selectedTest={selectedTests}
+                  setSelectedTest={setSelectedTests}
                   labCartData={labCartData?.data}
                 />
               ))}
@@ -54,22 +62,23 @@ const LabTests = () => {
           <p className="labTests-orderTitle">Order Summary</p>
           <div className="separator" />
           <div style={{ marginBottom: "2rem" }}>
-            {labCartData.data.map((test) => (
-              <div
-                key={test.uuid}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                <p className="labTests-orderItems">{test.lab_test.name}</p>
-                <p className="labTests-orderItemsPrice">
-                  ₹{test.lab_test.price}
-                </p>
-              </div>
-            ))}
+            {labCartData &&
+              labCartData?.data.map((test) => (
+                <div
+                  key={test.uuid}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  <p className="labTests-orderItems">{test.lab_test.name}</p>
+                  <p className="labTests-orderItemsPrice">
+                    ₹{test.lab_test.price}
+                  </p>
+                </div>
+              ))}
           </div>
           <div className="separator" />
           <div
@@ -81,7 +90,7 @@ const LabTests = () => {
             }}
           >
             <p className="labTests-orderTotalItemsPrice">Total</p>
-            <p className="labTests-orderTotalItemsPrice">₹{total.toFixed(2)}</p>
+            <p className="labTests-orderTotalItemsPrice">₹{total}</p>
           </div>
           <button className="labTests-viewCartButton">view cart</button>
         </div>

@@ -7,19 +7,15 @@ import LabTestCard from "../../../../components/LabTestCard";
 import { Trash2 } from "lucide-react";
 
 const LabTests = () => {
-  const [selectedTest, setSelectedTest] = useState(
-    JSON.parse(localStorage.getItem("selectedTestIds")) ?? []
-  );
+  // const [selectedTest, setSelectedTest] = useState(
+  //   JSON.parse(localStorage.getItem("selectedTestIds")) ?? []
+  // );
 
   const fetchAllLabTests = async () => {
     const response = await axiosInstance.get("/lab/test");
     return response.data;
   };
   const { data, isLoading, error } = useQuery(["LabTests"], fetchAllLabTests);
-
-  const total = selectedTest.reduce((sum, test) => {
-    return sum + parseFloat(test.price);
-  }, 0);
 
   const fetchLabTestsCart = async () => {
     const response = await axiosInstance.get("/cart/labcart");
@@ -30,6 +26,10 @@ const LabTests = () => {
     isLoading: isLoadingCart,
     error: errorLabCart,
   } = useQuery(["LabCart"], fetchLabTestsCart);
+
+  const total = labCartData?.data.reduce((sum, test) => {
+    return sum + parseFloat(test.lab_test.price);
+  }, 0);
 
   return (
     <MainLayout>
@@ -42,8 +42,8 @@ const LabTests = () => {
                 <LabTestCard
                   key={test.uuid}
                   test={test}
-                  selectedTest={selectedTest}
-                  setSelectedTest={setSelectedTest}
+                  // selectedTest={selectedTest}
+                  // setSelectedTest={setSelectedTest}
                   labCartData={labCartData?.data}
                 />
               ))}
@@ -54,7 +54,7 @@ const LabTests = () => {
           <p className="labTests-orderTitle">Order Summary</p>
           <div className="separator" />
           <div style={{ marginBottom: "2rem" }}>
-            {selectedTest.map((test) => (
+            {labCartData.data.map((test) => (
               <div
                 key={test.uuid}
                 style={{
@@ -64,8 +64,10 @@ const LabTests = () => {
                   marginBottom: "0.5rem",
                 }}
               >
-                <p className="labTests-orderItems">{test.name}</p>
-                <p className="labTests-orderItemsPrice">₹{test.price}</p>
+                <p className="labTests-orderItems">{test.lab_test.name}</p>
+                <p className="labTests-orderItemsPrice">
+                  ₹{test.lab_test.price}
+                </p>
               </div>
             ))}
           </div>

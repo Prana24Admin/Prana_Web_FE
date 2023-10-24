@@ -3,24 +3,25 @@ import "./labTestCard.css";
 import axiosInstance from "../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
 import Loader from "../loader";
+import { handleRefetchLabCartData } from "../../libs/queryFunctions";
 
 const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
   //Adding lab test to cart
   const handleAddToLabCart = async (test) => {
-    let isObjectFound = false;
-    if (selectedTest.length < 1) {
-      setSelectedTest([...selectedTest, test]);
-    } else {
-      for (let i = 0; i < selectedTest.length; i++) {
-        if (JSON.stringify(test) === JSON.stringify(selectedTest[i])) {
-          isObjectFound = true;
-          break;
-        }
-      }
-    }
-    if (!isObjectFound) {
-      setSelectedTest([...selectedTest, test]);
-    }
+    // let isObjectFound = false;
+    // if (selectedTest.length < 1) {
+    //   setSelectedTest([...selectedTest, test]);
+    // } else {
+    //   for (let i = 0; i < selectedTest.length; i++) {
+    //     if (JSON.stringify(test) === JSON.stringify(selectedTest[i])) {
+    //       isObjectFound = true;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (!isObjectFound) {
+    //   setSelectedTest([...selectedTest, test]);
+    // }
     const response = await axiosInstance.post("/cart/labcart", {
       lab_test_id: test.uuid,
     });
@@ -34,23 +35,23 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
     },
     {
       onSuccess: () => {
-        localStorage.setItem("selectedTestIds", JSON.stringify(selectedTest));
+        // localStorage.setItem("selectedTestIds", JSON.stringify(selectedTest));
+        handleRefetchLabCartData();
       },
     }
   );
 
   //Removing Lab test from cart
   const handleRemoveFromLabCart = async (test) => {
-    let filteredSelectedTest;
-    if (selectedTest.includes(test)) {
-      filteredSelectedTest = labCartData.filter(
-        (testItem) => testItem.lab_test.uuid === test.uuid
-      );
-      let newSelectedTest = selectedTest.filter(
-        (testItem) => testItem.uuid !== test.uuid
-      );
-      setSelectedTest(newSelectedTest);
-    }
+    let filteredSelectedTest = labCartData.filter(
+      (testItem) => testItem.lab_test.uuid === test.uuid
+    );
+    // let newSelectedTest = selectedTest.filter(
+    //   (testItem) => testItem.uuid !== test.uuid
+    // );
+    // setSelectedTest(newSelectedTest);
+    // localStorage.setItem("selectedTestIds", JSON.stringify(newSelectedTest));
+
     const response = await axiosInstance.delete(
       `/cart/labcart/${filteredSelectedTest[0].uuid}`
     );
@@ -60,6 +61,11 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
   const { mutate: mutateLabRemove, isLoading: isRemoveLoading } = useMutation(
     (test) => {
       return handleRemoveFromLabCart(test);
+    },
+    {
+      onSuccess: () => {
+        return handleRefetchLabCartData();
+      },
     }
   );
 
@@ -76,7 +82,7 @@ const LabTestCard = ({ test, selectedTest, setSelectedTest, labCartData }) => {
         </div>
         <p className="testCard-price">₹{test.price}</p>
       </div>
-      {selectedTest.includes(test) ? (
+      {labCartData.includes(test) ? (
         <button
           onClick={() => mutateLabRemove(test)}
           className="testCard-selectButton"

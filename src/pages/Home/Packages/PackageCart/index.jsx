@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import "../../Cart/cart.css";
 import "./packageCart.css";
-
+import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { BadgePercent, Delete, IndianRupee, Trash2 } from "lucide-react";
@@ -60,8 +60,12 @@ const PackageCart = () => {
           <div className="cart-marginContainer">
             {data &&
               (data.length < 1 ? (
-                <div>
-                  <p>No products in cart</p>
+                <div style={{ margin: "auto" }}>
+                  <img
+                    className="vector-image"
+                    src={EmptyCart}
+                    alt="cartEmpty"
+                  />
                 </div>
               ) : (
                 <>

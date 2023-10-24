@@ -30,10 +30,10 @@
 .testCard-report {
   padding: 0.5rem 1rem;
   background-color: rgb(255, 235, 240);
-  width: 40%;
+  width: 100%;
   border-radius: 5px;
   text-align: center;
-  margin-bottom: 0.3rem;
+  margin: 0.75rem 0;
 }
 .testCard-reportText {
   font-size: 0.9rem;
@@ -47,7 +47,6 @@
   margin-top: 0.5rem;
 }
 .testCard-selectButton {
-  position: absolute;
   padding: 0.5rem 1rem;
   background-color: var(--crimsonPink);
   color: var(--pearlWhite);
@@ -59,4 +58,9 @@
 }
 .testCard-selectButton:hover {
   opacity: 0.9;
+}
+.testCard-justifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

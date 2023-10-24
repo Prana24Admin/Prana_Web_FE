@@ -42,23 +42,21 @@ const LabTests = () => {
   return (
     <MainLayout>
       <div className="labTests-container">
-        <div className="labTests-leftContainer">
-          <p className="labTests-title">Lab Tests</p>
-          <div className="labTests-innerContainer">
-            {data &&
-              data.data.map((test) => (
-                <LabTestCard
-                  key={test.uuid}
-                  test={test}
-                  selectedTest={selectedTests}
-                  setSelectedTest={setSelectedTests}
-                  labCartData={labCartData?.data}
-                />
-              ))}
-          </div>
+        <p className="labTests-title">Lab Tests</p>
+        <div className="labTests-gridContainer">
+          {data &&
+            data.data.map((test) => (
+              <LabTestCard
+                key={test.uuid}
+                test={test}
+                selectedTest={selectedTests}
+                setSelectedTest={setSelectedTests}
+                labCartData={labCartData?.data}
+              />
+            ))}
         </div>
 
-        <div className="labTests-rightContainer">
+        {/* <div className="labTests-rightContainer">
           <p className="labTests-orderTitle">Order Summary</p>
           <div className="separator" />
           <div style={{ marginBottom: "2rem" }}>
@@ -93,7 +91,7 @@ const LabTests = () => {
             <p className="labTests-orderTotalItemsPrice">₹{total}</p>
           </div>
           <button className="labTests-viewCartButton">view cart</button>
-        </div>
+        </div> */}
       </div>
     </MainLayout>
   );

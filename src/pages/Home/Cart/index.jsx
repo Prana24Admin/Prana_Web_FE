@@ -1,5 +1,7 @@
 import React from "react";
 
+import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
+
 import "./cart.css";
 import Error from "../../../assets/images/ErrorPages/404 Error.png";
 
@@ -41,8 +43,12 @@ const Cart = () => {
           <div className="cart-marginContainer">
             {data &&
               (data.length < 1 ? (
-                <div>
-                  <p>No products in cart</p>
+                <div style={{ margin: "auto" }}>
+                  <img
+                    className="vector-image"
+                    src={EmptyCart}
+                    alt="cartEmpty"
+                  />
                 </div>
               ) : (
                 <>
@@ -110,7 +116,7 @@ const Cart = () => {
               ))}
           </div>
         </div>
-        {error && <img className="error-image" src={Error} alt="Error" />}
+        {error && <img className="vector-image" src={Error} alt="Error" />}
       </section>
     </MainLayout>
   );

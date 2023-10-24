@@ -85,23 +85,16 @@ const LabTestCard = ({
             {test.report_tat_unit.toLowerCase()}
           </p>
         </div>
-        <p className="testCard-price">₹{test.price}</p>
+        <div className="testCard-justifyContainer">
+          <p className="testCard-price">₹{test.price}</p>
+          <button
+            onClick={() => mutateLabAdd(test)}
+            className="testCard-selectButton"
+          >
+            Book
+          </button>
+        </div>
       </div>
-      {labCartData && selectedTests?.includes(test) ? (
-        <button
-          onClick={() => mutateLabRemove(test)}
-          className="testCard-selectButton"
-        >
-          {isAddLoading ? <Loader /> : "Remove"}
-        </button>
-      ) : (
-        <button
-          onClick={() => mutateLabAdd(test)}
-          className="testCard-selectButton"
-        >
-          {isRemoveLoading ? <Loader /> : "Select"}
-        </button>
-      )}
     </div>
   );
 };

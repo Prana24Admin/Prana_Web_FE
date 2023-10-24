@@ -21,6 +21,16 @@ const LabTests = () => {
     return sum + parseFloat(test.price);
   }, 0);
 
+  const fetchLabTestsCart = async () => {
+    const response = await axiosInstance.get("/cart/labcart");
+    return response.data;
+  };
+  const {
+    data: labCartData,
+    isLoading: isLoadingCart,
+    error: errorLabCart,
+  } = useQuery(["LabCart"], fetchLabTestsCart);
+
   return (
     <MainLayout>
       <div className="labTests-container">
@@ -34,6 +44,7 @@ const LabTests = () => {
                   test={test}
                   selectedTest={selectedTest}
                   setSelectedTest={setSelectedTest}
+                  labCartData={labCartData?.data}
                 />
               ))}
           </div>

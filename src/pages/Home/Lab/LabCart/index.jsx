@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import "../../Cart/cart.css";
-import "./packageCart.css";
+import "./labCart.css";
 import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import { BadgePercent, Delete, IndianRupee, Trash2 } from "lucide-react";
+import { BadgePercent, IndianRupee } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,52 +14,41 @@ import MainLayout from "../../../../components/MainLayout";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
 
-import Coupon from "../../../../components/Coupon";
+import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";
 
-const DrawerBody = () => {
-  const fetchCoupons = async () => {
-    const response = await axiosInstance.get("/coupons");
-    return response.data;
-  };
-
-  const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
-
-  return (
-    <div className="small-coupon-container">
-      {data &&
-        data.data.map((item) => {
-          return <Coupon key={item.uuid} item={item} smallCoupon={true} />;
-        })}
-    </div>
-  );
-};
-
-const PackageCart = () => {
+const LabCart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
   const navigate = useNavigate();
 
-  const fetchCart = async () => {
-    const response = await axiosInstance.get("/cart");
-
+  const fetchLabCart = async () => {
+    const response = await axiosInstance.get("/cart/labcart");
     return response.data;
   };
 
-  const { data, isLoading, error } = useQuery(["cart"], fetchCart);
+  const { data, isLoading, error } = useQuery(["LabCart"], fetchLabCart);
 
-  const subTotal = data?.reduce((sum, product) => {
-    return sum + product.product.price * product.quantity;
+  const subTotal = data?.data.reduce((sum, test) => {
+    return sum + parseFloat(test.lab_test.price);
+  }, 0);
+  const sampleCollectionCharges = data?.data.reduce((sum, test) => {
+    return sum + parseFloat(test.lab_test.home_sample_charge);
+  }, 0);
+  const totalDiscount = data?.data.reduce((sum, test) => {
+    return (
+      sum + parseFloat(test.lab_test.price * (test.lab_test.discount / 100))
+    );
   }, 0);
 
   return (
     <MainLayout>
-      <section className="packageCart-mainContainer">
+      <section>
         {isLoading && <p>Loading..</p>}
         <div className="cart-mainContainer">
           <div className="cart-marginContainer">
             {data &&
-              (data.length < 1 ? (
+              (data.data.length < 1 ? (
                 <div style={{ margin: "auto" }}>
                   <img
                     className="vector-image"
@@ -70,31 +59,10 @@ const PackageCart = () => {
               ) : (
                 <>
                   <div className="cart-cardContainer">
-                    <p className="main-head-title">Lab Tests cart</p>
-                    <div className="packageCart-borderContainer">
-                      <div className="packageCart-justifyContainer">
-                        <p className="packageCart-Title">
-                          Vitamin D & B12 Combo
-                        </p>
-                        <p className="packageCart-flexContainer">
-                          <Trash2 size={15} />
-                          <span className="packageCart-removeButton">
-                            Remove
-                          </span>
-                        </p>
-                      </div>
-                      <div className="packageCart-justifyContainer">
-                        <div>
-                          <p className="packageCart-mrp">
-                            MRP:
-                            <span className="packageCart-lineThrough">
-                              ₹123
-                            </span>
-                          </p>
-                          <p className="packageCart-discount">₹123</p>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="main-head-title">Items in Your cart</p>
+                    {data.data.map((test) => (
+                      <CartCard key={test.uuid} labItem={test} />
+                    ))}
                   </div>
                   <div className="cart-rightContainer">
                     <Button
@@ -111,25 +79,40 @@ const PackageCart = () => {
                     <div className="cart-billContainer">
                       <p className="cart-titleText">Bill Summary</p>
                       <div className="cart-flex">
-                        <p className="cart-descriptionText">Total Mrp</p>
-                        <p className="cart-descriptionText">₹{subTotal}</p>
+                        <p className="cart-descriptionText">Sub Total</p>
+                        <p className="cart-descriptionText">
+                          ₹{subTotal.toFixed(2)}
+                        </p>
                       </div>
                       <div className="cart-flex">
-                        <p className="cart-descriptionText">Delivery charges</p>
-                        <p className="cart-descriptionText">₹324</p>
+                        <p className="cart-descriptionText">
+                          Sample collection charges
+                        </p>
+                        <p className="cart-descriptionText">
+                          ₹{sampleCollectionCharges.toFixed(2)}
+                        </p>
                       </div>
                       <div className="cart-flex">
                         <p className="cart-descriptionText">Discount</p>
-                        <p className="cart-descriptionText">₹324</p>
+                        <p className="cart-descriptionText">
+                          ₹{totalDiscount.toFixed(2)}
+                        </p>
                       </div>
                       <div className="checkout-line" />
                       <div className="cart-flex">
                         <p className="cart-descriptionTextDark">Cart value</p>
-                        <p className="cart-descriptionTextDark">₹324</p>
+                        <p className="cart-descriptionTextDark">
+                          ₹
+                          {(
+                            subTotal +
+                            sampleCollectionCharges -
+                            totalDiscount
+                          ).toFixed(2)}
+                        </p>
                       </div>
                       <button
                         className="cart-button"
-                        onClick={() => navigate("/labtestcheckout")}
+                        onClick={() => navigate("/checkout")}
                       >
                         Proceed To Checkout
                       </button>
@@ -138,8 +121,10 @@ const PackageCart = () => {
                       <IndianRupee size={15} className="cart-ruppeIcon" />
                       <p className="cart-savingsText">
                         Total savings of{" "}
-                        <span style={{ fontWeight: "bold" }}>₹324</span> on this
-                        order
+                        <span style={{ fontWeight: "bold" }}>
+                          ₹{totalDiscount}
+                        </span>{" "}
+                        on this order
                       </p>
                     </div>
                     <Slider
@@ -147,16 +132,16 @@ const PackageCart = () => {
                       isOpen={isOpen}
                       btnRef={btnRef}
                       header={"Apply Coupon"}
-                      drawerBody={<DrawerBody />}
+                      drawerBody={<CouponDrawer />}
                     />
                   </div>
                 </>
               ))}
           </div>
         </div>
-        {error && <p>Error fetching! Try again</p>}
+        {error && <img className="vector-image" src={Error} alt="Error" />}
       </section>
     </MainLayout>
   );
 };
-export default PackageCart;
+export default LabCart;

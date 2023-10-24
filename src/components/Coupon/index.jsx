@@ -2,7 +2,17 @@ import { format } from "date-fns";
 import React from "react";
 import "./coupon.css";
 
-const Coupon = ({ item, smallCoupon = false }) => {
+const Coupon = ({
+  item,
+  smallCoupon = false,
+  selectedCoupon,
+  setSelectedCoupon,
+  onClose,
+}) => {
+  const handleCouponSelect = (coupon) => {
+    setSelectedCoupon(coupon);
+    onClose();
+  };
   return (
     <div class={smallCoupon ? "small-card" : "card"}>
       <div class={smallCoupon ? "small-main" : "main"}>
@@ -25,10 +35,10 @@ const Coupon = ({ item, smallCoupon = false }) => {
       <div class={smallCoupon ? "small-copy-button" : "copy-button"}>
         <input id="copyvalue" type="text" readonly value={item.code} disabled />
         <button
-          onclick="copyIt()"
+          onClick={() => handleCouponSelect(item)}
           class={smallCoupon ? "small-copybtn" : "copybtn"}
         >
-          COPY
+          {smallCoupon ? "SELECT" : "COPY"}
         </button>
       </div>
       <div className={smallCoupon ? "small-coupon-note" : "coupon-note"}>

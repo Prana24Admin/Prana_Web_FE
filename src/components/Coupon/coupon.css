@@ -159,7 +159,7 @@
   border-radius: 40px;
   z-index: 1;
   top: 70px;
-  background-color: var(--pearlWhite);
+  background-color: var(--powderWhite);
   width: 40px;
   border-left: 1px solid var(--ashGray);
 }
@@ -172,7 +172,7 @@
   border-radius: 40px;
   z-index: 1;
   top: 70px;
-  background-color: var(--pearlWhite);
+  background-color: var(--powderWhite);
   width: 40px;
   border-right: 1px solid var(--ashGray);
 }

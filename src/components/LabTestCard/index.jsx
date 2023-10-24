@@ -4,6 +4,7 @@ import axiosInstance from "../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
 import Loader from "../loader";
 import { handleRefetchLabCartData } from "../../libs/queryFunctions";
+import { useNavigate } from "react-router-dom";
 
 const LabTestCard = ({
   test,
@@ -11,6 +12,7 @@ const LabTestCard = ({
   setSelectedTests,
   labCartData,
 }) => {
+  const navigate = useNavigate();
   //Adding lab test to cart
   const handleAddToLabCart = async (test) => {
     // let isObjectFound = false;
@@ -75,7 +77,10 @@ const LabTestCard = ({
   );
 
   return (
-    <div className="testCard-container">
+    <div
+      className="testCard-container"
+      onClick={() => navigate(`/lab/test/${test.uuid}`)}
+    >
       <div onClick={() => console.log("click")}>
         <p className="testCard-testName">{test.name}</p>
         <p className="testCard-description">{test.content}</p>

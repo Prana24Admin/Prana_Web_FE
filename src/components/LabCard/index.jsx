@@ -7,7 +7,10 @@ const LabCard = () => {
   const navigate = useNavigate();
   return (
     <div className="labCard-Container">
-      <div className="labCard-cardContainer">
+      <div
+        className="labCard-cardContainer"
+        onClick={() => navigate("/packageorder")}
+      >
         <img className="labCard-cardImage" src={Image} alt="sanju" />
         <p className="labCard-cardTitle">Title</p>
         <div className="labCard-flexContainer">
@@ -18,12 +21,7 @@ const LabCard = () => {
             </p>
           </div>
           <div>
-            <button
-              className="labCard-button"
-              onClick={() => navigate("/packageorder")}
-            >
-              Book Now
-            </button>
+            <button className="labCard-button">Book Now</button>
           </div>
         </div>
       </div>

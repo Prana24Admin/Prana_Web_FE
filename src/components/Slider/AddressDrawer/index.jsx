@@ -1,6 +1,6 @@
 import { Building, CheckCircle, Home } from "lucide-react";
 import Input from "../../Input";
-import "../../../pages/Home/Profile/ProfileAddress/AddressModal/AddressModal.css";
+import "./addressDrawer.css";
 import axiosInstance from "../../../libs/axios";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import { useContext, useState } from "react";
@@ -102,22 +102,21 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   };
   return (
     <div style={{ marginTop: "0.5rem" }}>
-      <div className="modal-iconContainer">
+      <div className="addressDrawer-iconContainer">
         <button
           onClick={() => setAddressData({ ...addressData, place: "Home" })}
-          className="modal-innerIconContainer"
+          className="addressDrawer-innerIconContainer"
         >
           {addressData.place === "Home" ? (
             <CheckCircle size={16} strokeWidth={2.5} />
           ) : (
             <Home size={16} />
           )}
-
           <p>Home</p>
         </button>
         <button
           onClick={() => setAddressData({ ...addressData, place: "Work" })}
-          className="modal-innerIconContainer"
+          className="addressDrawer-innerIconContainer"
         >
           {addressData.place === "Work" ? (
             <CheckCircle size={16} strokeWidth={2.5} />
@@ -128,7 +127,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
         </button>
         <button
           onClick={() => setAddressData({ ...addressData, place: "Other" })}
-          className="modal-innerIconContainer"
+          className="addressDrawer-innerIconContainer"
         >
           {addressData.place === "Other" ? (
             <CheckCircle size={16} strokeWidth={2.5} />

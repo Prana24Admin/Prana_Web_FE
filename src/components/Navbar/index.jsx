@@ -228,7 +228,7 @@ const Navbar = () => {
                     </a>
                     <a
                       className="dropdowntext"
-                      onClick={() => navigate("/Favorites")}
+                      onClick={() => navigate("/wishlist")}
                     >
                       Favorites
                     </a>

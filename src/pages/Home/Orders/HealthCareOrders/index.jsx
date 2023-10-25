@@ -23,7 +23,7 @@ const HealthCareOrders = () => {
       <p className="orders-Header">Healthcare Orders</p>
       {ordersData &&
         ordersData.data.map((order) => (
-          <OrderCard order={order} key={order.uuid} />
+          <OrderCard order={order} key={order.uuid} screen={"healthCare"} />
         ))}
     </Profile>
   );

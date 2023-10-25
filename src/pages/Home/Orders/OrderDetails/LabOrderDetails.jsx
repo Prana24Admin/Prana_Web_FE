@@ -1,21 +1,19 @@
 import React from "react";
-import "./OrderDetails.css";
-import { ChevronDown } from "lucide-react";
-import image from "../../../../assets/images/profile/avatar.png";
+import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import format from "date-fns/format";
 import MainLayout from "../../../../components/MainLayout";
+import { format } from "date-fns";
+import image from "../../../../assets/images/profile/avatar.png";
 
-const HealthCareOrderDetails = () => {
+const LabOrderDetails = () => {
   const { id } = useParams();
   const fetchOrderById = async () => {
-    const response = await axiosInstance.get(`/orders/${id}`);
+    const response = await axiosInstance.get(`/orders/laborders/${id}`);
     return response.data;
   };
 
-  const { data, isLoading, error } = useQuery(["OrderById"], fetchOrderById);
+  const { data, isLoading, error } = useQuery(["LabOrderById"], fetchOrderById);
 
   return (
     <MainLayout>
@@ -30,7 +28,7 @@ const HealthCareOrderDetails = () => {
                   Ordered on {format(new Date(data.createdAt), "dd MMMM yyyy")}
                 </p>
                 <div className="orderdetails-line" />
-                <p>ORDER ID: {data.order_id}</p>
+                <p>ORDER ID: {data.lab_order_id}</p>
               </div>
             </div>
             <div className="orderdetails-borderContainer">
@@ -91,24 +89,6 @@ const HealthCareOrderDetails = () => {
                     </button>
                   </div>
                 </div>
-                <div>
-                  <div className="orderdetails-bodyText">
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <button className="orderdetails-buttonsRight">
-                        Customer support
-                      </button>
-                      <button className="orderdetails-buttonsRight">
-                        Write a review
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -118,4 +98,4 @@ const HealthCareOrderDetails = () => {
   );
 };
 
-export default HealthCareOrderDetails;
+export default LabOrderDetails;

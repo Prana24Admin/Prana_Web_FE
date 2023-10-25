@@ -1,10 +1,12 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useContext } from "react";
 import Image from "../../assets/images/profile/avatar.png";
 import { useNavigate } from "react-router-dom";
 import "../../pages/Home/Orders/Orders.css";
+import { ProfileContext } from "../../context/ProfileProvider";
 
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, screen }) => {
+  const { data } = useContext(ProfileContext);
   const navigate = useNavigate();
   return (
     <div className="orders-borderContainer">
@@ -20,20 +22,30 @@ const OrderCard = ({ order }) => {
             <p className="orders-text">Total</p>
             <p className="orders-date">₹{order.total_amount}</p>
           </div>
-          <div>
-            <p className="orders-text">Ship To</p>
-            {/* <p className="orders-date">{data.first_name}</p> */}
-          </div>
+          {screen === "healthCare" && (
+            <div>
+              <p className="orders-text">Ship To</p>
+              <p className="orders-shipToText">{data.first_name}</p>
+            </div>
+          )}
         </div>
         <div>
           <div className="orders-idText">
-            <p>Order:</p>
-            <p>{order.order_id}</p>
+            <p>
+              Order:{" "}
+              <span style={{ fontWeight: "600" }}>
+                {screen === "lab" ? order.lab_order_id : order.order_id}
+              </span>
+            </p>
           </div>
           <div className="orders-bill">
             <p
               className="orders-billText"
-              onClick={() => navigate(`/orders/${order.uuid}`)}
+              onClick={() => {
+                screen === "lab"
+                  ? navigate(`/lab/orders/${order.uuid}`)
+                  : navigate(`/healthcare/orders/${order.uuid}`);
+              }}
             >
               View order details
             </p>
@@ -48,16 +60,6 @@ const OrderCard = ({ order }) => {
             <button className="orders-button">View your Item</button>
           </div>
         </div>
-        {/* <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            flexDirection: "column",
-          }}
-        >
-          <button className="orders-buttonsRight">Customer support</button>
-          <button className="orders-buttonsRight">Write a review</button>
-        </div> */}
       </div>
     </div>
   );

@@ -8,22 +8,22 @@ import axiosInstance from "../../../../libs/axios";
 
 const LabTestOrders = () => {
   const fetchAllOrders = async () => {
-    const response = await axiosInstance.get("/orders");
+    const response = await axiosInstance.get("/orders/laborders/");
     return response.data;
   };
 
   const {
-    data: ordersData,
+    data: labOrdersData,
     isLoading,
     error,
-  } = useQuery(["Orders"], fetchAllOrders);
+  } = useQuery(["LabOrders"], fetchAllOrders);
 
   return (
     <Profile>
       <p className="orders-Header">Lab test Orders</p>
-      {ordersData &&
-        ordersData.data.map((order) => (
-          <OrderCard order={order} key={order.uuid} />
+      {labOrdersData &&
+        labOrdersData.data.map((order) => (
+          <OrderCard order={order} key={order.uuid} screen={"lab"} />
         ))}
     </Profile>
   );

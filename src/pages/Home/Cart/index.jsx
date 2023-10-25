@@ -56,10 +56,10 @@ const Cart = () => {
         subTotal >= selectedCoupon.min_value
       ) {
         const couponPrice = subTotal * (selectedCoupon.discount / 100);
-        if (couponPrice > selectedCoupon.max_amount) {
-          setCouponValue(selectedCoupon.max_amount);
-        } else {
+        if (selectedCoupon.max_amount >= couponPrice) {
           setCouponValue(couponPrice);
+        } else {
+          setCouponValue(selectedCoupon.max_amount);
         }
       }
       return;

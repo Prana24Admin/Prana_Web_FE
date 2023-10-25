@@ -28,9 +28,11 @@ const Checkout = () => {
 
   const { data: cartData, error } = useQuery(["cart"], fetchCartData);
 
-  const [addressDropdown, setAddressDropdown] = useState(true);
-  const [orderDropdown, setOrderDropdown] = useState(false);
-  const [paymentDropdown, setPaymentDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState({
+    addressDropdown: true,
+    orderDropdown: false,
+    paymentDropdown: false,
+  });
 
   const [address, setAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
@@ -41,15 +43,16 @@ const Checkout = () => {
     payment: false,
   });
 
-  const handleDropdowns = (dropdown) => {};
-
   const handleAddressContinue = () => {
     if (!address) return toast.error("Select delivery address");
     else {
-      setAddressDropdown(false);
       setConfirmation({ ...confirmation, address: true });
-      setPaymentDropdown(false);
-      setOrderDropdown(true);
+      setDropdown({
+        addressDropdown: false,
+        orderDropdown: true,
+        paymentDropdown: false,
+      });
+      console.log(JSON.parse(address));
     }
   };
 
@@ -59,18 +62,13 @@ const Checkout = () => {
     if (!address) return toast.error("Select delivery address");
     if (!paymentMethod) return toast.error("Select payment method");
     else {
-      let completeAddress;
+      let completeAddress = JSON.parse(address);
+      let coupon_code = JSON.parse(localStorage.getItem("bill")).selectedCoupon
+        .code;
       const products = cartData.map((item) => {
         return item.product.uuid;
       });
-      if (address === data.address.id) completeAddress = data.address;
-      else {
-        const index = data?.additional_address.findIndex(
-          (additionalAddress) => additionalAddress.id === address
-        );
-        if (index !== -1) completeAddress = data?.additional_address[index];
-      }
-      const shippingAddress = `${completeAddress.street}, ${completeAddress.city}, ${completeAddress.state}, ${completeAddress.pinCode}`;
+      const shippingAddress = `${completeAddress.houseNumber}, ${completeAddress.street}, ${completeAddress.city}, ${completeAddress.state}, ${completeAddress.pinCode}`;
       const billingAddress = shippingAddress;
 
       const formData = new FormData();
@@ -79,6 +77,7 @@ const Checkout = () => {
       formData.append("shipping_address", shippingAddress);
       formData.append("billing_address", billingAddress);
       formData.append("payment_method", paymentMethod);
+      // formData.append("coupon_code", coupon_code);
 
       const response = await axiosInstance.post("/orders", formData, {
         headers: {
@@ -95,18 +94,29 @@ const Checkout = () => {
       <div className="checkout-mainContainer">
         <div className="checkout-boxLeftContainer">
           <div className="checkout-borderContainer">
-            <div
-              className="checkout-flexContainer"
-              onClick={() => {
-                setAddressDropdown(!addressDropdown);
-                setOrderDropdown(false);
-                setPaymentDropdown(false);
-              }}
-            >
-              <div className="checkout-numberContainer">1</div>
-              <p className="checkout-accordianHeader">delivery address</p>
+            <div>
+              <div
+                className="checkout-flexContainer"
+                onClick={() => {
+                  setDropdown({
+                    addressDropdown: !dropdown.addressDropdown,
+                    orderDropdown: false,
+                    paymentDropdown: false,
+                  });
+                }}
+              >
+                <div className="checkout-numberContainer">1</div>
+                <p className="checkout-accordianHeader">delivery address</p>
+              </div>
+              {confirmation.address && address && (
+                <p>{`${JSON.parse(address).houseNumber}, ${
+                  JSON.parse(address).street
+                }, ${JSON.parse(address).city}, ${JSON.parse(address).state}, ${
+                  JSON.parse(address).pinCode
+                }`}</p>
+              )}
             </div>
-            {addressDropdown && (
+            {dropdown.addressDropdown && (
               <div className="checkout-dropdownContainer">
                 {data && Object.keys(data.address).length > 0 && (
                   <div className="checkout-addressContainer">
@@ -115,9 +125,12 @@ const Checkout = () => {
                         type="radio"
                         name="checkout-address"
                         style={{ width: "1.1rem" }}
-                        value={data.address.id}
-                        checked={address === data.address.id}
-                        onChange={(e) => setAddress(e.target.value)}
+                        value={JSON.stringify(data.address)}
+                        checked={address === JSON.stringify(data.address)}
+                        onChange={(e) => {
+                          setAddress(e.target.value);
+                          // console.log(address);
+                        }}
                       />
                       <div className="checkout-addressFlexCol">
                         <p className="checkout-addressHeading">
@@ -147,8 +160,8 @@ const Checkout = () => {
                           type="radio"
                           name="checkout-address"
                           style={{ width: "1.1rem" }}
-                          value={addressItem.id}
-                          checked={address === addressItem.id}
+                          value={JSON.stringify(addressItem)}
+                          checked={address === JSON.stringify(addressItem)}
                           onChange={(e) => setAddress(e.target.value)}
                         />
                         <div className="checkout-addressFlexCol">
@@ -194,7 +207,11 @@ const Checkout = () => {
             {confirmation.address && (
               <button
                 onClick={() => {
-                  setAddressDropdown(true);
+                  setDropdown({
+                    addressDropdown: true,
+                    orderDropdown: false,
+                    paymentDropdown: false,
+                  });
                   setConfirmation({ ...confirmation, address: false });
                 }}
                 className="checkout-changeButton"
@@ -208,16 +225,18 @@ const Checkout = () => {
               className="checkout-flexContainer"
               onClick={() => {
                 if (confirmation.address) {
-                  setOrderDropdown(!orderDropdown);
-                  setAddressDropdown(false);
-                  setPaymentDropdown(false);
+                  setDropdown({
+                    orderDropdown: !dropdown.orderDropdown,
+                    addressDropdown: false,
+                    paymentDropdown: false,
+                  });
                 }
               }}
             >
               <div className="checkout-numberContainer">2</div>
               <p className="checkout-accordianHeader">order</p>
             </div>
-            {orderDropdown && (
+            {dropdown.orderDropdown && (
               <div className="checkout-dropdownContainer">
                 {cartData &&
                   cartData.length > 0 &&
@@ -232,9 +251,11 @@ const Checkout = () => {
                 <p
                   onClick={() => {
                     setConfirmation({ ...confirmation, order: true });
-                    setPaymentDropdown(true);
-                    setAddressDropdown(false);
-                    setOrderDropdown(false);
+                    setDropdown({
+                      paymentDropdown: true,
+                      addressDropdown: false,
+                      orderDropdown: false,
+                    });
                   }}
                   className="checkout-button"
                 >
@@ -245,7 +266,11 @@ const Checkout = () => {
             {confirmation.order && (
               <button
                 onClick={() => {
-                  setOrderDropdown(true);
+                  setDropdown({
+                    orderDropdown: true,
+                    addressDropdown: false,
+                    paymentDropdown: false,
+                  });
                   setConfirmation({ ...confirmation, order: false });
                 }}
                 className="checkout-changeButton"
@@ -259,16 +284,18 @@ const Checkout = () => {
               className="checkout-flexContainer"
               onClick={() => {
                 if (confirmation.order) {
-                  setPaymentDropdown(!paymentDropdown);
-                  setOrderDropdown(false);
-                  setAddressDropdown(false);
+                  setDropdown({
+                    paymentDropdown: !dropdown.paymentDropdown,
+                    orderDropdown: false,
+                    addressDropdown: false,
+                  });
                 }
               }}
             >
               <div className="checkout-numberContainer">3</div>
               <p className="checkout-accordianHeader">Payment</p>
             </div>
-            {paymentDropdown && (
+            {dropdown.paymentDropdown && (
               <div className="checkout-dropdownContainer">
                 <label className="checkout-flex">
                   <input

@@ -45,7 +45,7 @@ const Coupon = ({
       <div className={smallCoupon ? "small-coupon-note" : "coupon-note"}>
         <p>
           *Get {item.discount}% off upto ₹{item.max_amount} on orders above ₹
-          {item.min_value} Maximum discount ₹{item.max_value}
+          {item.min_value}
         </p>
       </div>
     </div>

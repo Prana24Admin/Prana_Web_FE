@@ -1,0 +1,47 @@
+.cartBox-container {
+  max-width: 1240px;
+  margin: auto;
+  padding-top: 12rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cartBox-borderContainer {
+  /* border: 1px solid var(--crimsonPink); */
+  background-color: var(--rosePink);
+  padding: 1rem 1rem;
+  border-radius: 5px;
+}
+.cartBox-flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cartBox-iconContainer {
+  display: flex;
+  background-color: var(--rosePink);
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.cartBox-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.cartBox-justifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cartBox-button {
+  background-color: var(--pearlWhite);
+  color: var(--ashGray);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+.cartBox-button:hover {
+  opacity: 0.9;
+}

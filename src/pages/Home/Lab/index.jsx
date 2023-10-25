@@ -10,18 +10,20 @@ import Download from "../../../components/Home/innerHome/homeDownload";
 
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
+import CartBox from "./CartBox/CartBox";
 
 const LabIndex = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "12rem" }}>
+      <CartBox />
+      <div style={{ paddingTop: "2rem" }}>
         <LabSlide />
       </div>
       <div>
         <Booking />
       </div>
-      <div style={{ margin: "20px 60px" }}>
+      <div style={{ margin: "20px 0px" }}>
         <Slider />
       </div>
       <div>

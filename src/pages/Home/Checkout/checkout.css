@@ -156,3 +156,11 @@
   gap: 1rem;
   align-items: center;
 }
+.checkout-addressDescription {
+  padding: 0.25rem 4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--neutralBlack);
+  text-transform: capitalize;
+}

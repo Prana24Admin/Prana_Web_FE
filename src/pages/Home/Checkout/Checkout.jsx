@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import "./checkout.css";
-import { ChevronDown, Trash2 } from "lucide-react";
+import { Check, ChevronDown, Trash2 } from "lucide-react";
 import image from "../../../assets/images/lab/med/innermed-img1.png";
 import Loader from "../../../components/loader";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -14,9 +14,15 @@ import Bill from "../../../components/Bill";
 import Slider from "../../../components/Slider";
 import { AddressDrawer } from "../../../components/Slider/AddressDrawer";
 import { useDisclosure } from "@chakra-ui/react";
+import SuccessModal from "../../../components/Modals/SucessModal";
 
 const Checkout = () => {
   const { data, setData } = useContext(ProfileContext);
+  const {
+    isOpen: successIsOpen,
+    onOpen: successOnOpen,
+    onClose: successOnClose,
+  } = useDisclosure();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -36,6 +42,7 @@ const Checkout = () => {
 
   const [address, setAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);
+  const [successOrderId, setSuccessOrderId] = useState(null);
 
   const [confirmation, setConfirmation] = useState({
     address: false,
@@ -63,8 +70,7 @@ const Checkout = () => {
     if (!paymentMethod) return toast.error("Select payment method");
     else {
       let completeAddress = JSON.parse(address);
-      let coupon_code = JSON.parse(localStorage.getItem("bill")).selectedCoupon
-        .code;
+      // let coupon_code = JSON.parse(localStorage.getItem("bill"))?.selectedCoupon.code;
       const products = cartData.map((item) => {
         return item.product.uuid;
       });
@@ -84,6 +90,11 @@ const Checkout = () => {
           "Content-Type": "multipart/form-data",
         },
       });
+
+      if (response.status === 200) {
+        setSuccessOrderId(response.data.uuid);
+        successOnOpen();
+      }
 
       return response.data;
     }
@@ -107,11 +118,20 @@ const Checkout = () => {
               >
                 <div className="checkout-numberContainer">1</div>
                 <p className="checkout-accordianHeader">delivery address</p>
+                {address && (
+                  <Check
+                    size={20}
+                    color="var(--crimsonPink)"
+                    strokeWidth={2.5}
+                  />
+                )}
               </div>
               {confirmation.address && address && (
-                <p>{`${JSON.parse(address).houseNumber}, ${
-                  JSON.parse(address).street
-                }, ${JSON.parse(address).city}, ${JSON.parse(address).state}, ${
+                <p className="checkout-addressDescription">{`${
+                  JSON.parse(address).houseNumber
+                }, ${JSON.parse(address).street}, ${
+                  JSON.parse(address).city
+                }, ${JSON.parse(address).state}, ${
                   JSON.parse(address).pinCode
                 }`}</p>
               )}
@@ -235,6 +255,9 @@ const Checkout = () => {
             >
               <div className="checkout-numberContainer">2</div>
               <p className="checkout-accordianHeader">order</p>
+              {confirmation.order && (
+                <Check size={20} color="var(--crimsonPink)" strokeWidth={2.5} />
+              )}
             </div>
             {dropdown.orderDropdown && (
               <div className="checkout-dropdownContainer">
@@ -333,6 +356,12 @@ const Checkout = () => {
             onClose={onClose}
           />
         }
+      />
+      <SuccessModal
+        isOpen={successIsOpen}
+        onClose={successOnClose}
+        onOpen={successOnOpen}
+        id={successOrderId}
       />
     </MainLayout>
   );

@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  border: 1px solid var(--cloudGray);
+  /* border: 1px solid var(--cloudGray); */
   padding: 1rem 2rem;
 }
 .orders-rightContainer {
@@ -29,14 +29,16 @@
   gap: 1rem;
 }
 .orders-Header {
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.75rem;
+  font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
-  color: var(--neutralBlack);
+  color: var(--ashGray);
+  margin-bottom: 1rem;
 }
 .orders-borderContainer {
   border: 1px solid var(--cloudGray);
   border-radius: 5px;
+  margin-bottom: 1rem;
 }
 .orders-justifyContainer {
   width: 100%;

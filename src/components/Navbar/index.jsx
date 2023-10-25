@@ -225,7 +225,7 @@ const Navbar = () => {
                     </a>
                     <a
                       className="dropdowntext"
-                      onClick={() => navigate("/orders")}
+                      onClick={() => navigate("/healthcare/orders")}
                     >
                       Your Orders
                     </a>

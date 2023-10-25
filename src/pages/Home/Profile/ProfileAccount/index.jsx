@@ -56,26 +56,6 @@ const ProfileAccount = () => {
           />
         </div>
 
-        {/* <div className="profile-gapContainer">
-          <p style={{ color: "rgb(128,128,128", padding: "0.5rem 0rem" }}>
-            Gender
-          </p>
-          <div className="profile-genderContainer">
-            <div className="profile-borderlessContainer">
-              <input type="radio" />
-              <p className="profile-labelText">Male</p>
-            </div>
-            <div className="profile-borderlessContainer">
-              <input type="radio" />
-              <p className="profile-labelText">Female</p>
-            </div>
-            <div className="profile-borderlessContainer">
-              <input type="radio" />
-              <p className="profile-labelText">Others</p>
-            </div>
-          </div>
-        </div> */}
-
         <div className="profile-inputsContainer">
           <Input
             label={"Email"}

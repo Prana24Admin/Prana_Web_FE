@@ -21,7 +21,7 @@
 .profile-rightContainer {
   width: 70%;
   height: 100%;
-  border: 2px solid var(--cloudGray);
+  /* border: 2px solid var(--cloudGray); */
   border-radius: 5px;
 }
 .profile-flexContainer {

@@ -37,13 +37,14 @@ import Medicine from "./pages/Home/Offers/Medicine";
 import HealthCare from "./pages/Home/Offers/HealthCare";
 import OffersTab from "./pages/Home/Offers/OffersTab";
 import OrderDetails from "./pages/Home/Orders/OrderDetails";
-import Orders from "./pages/Home/Orders";
 import ProfileAddress from "./pages/Home/Profile/ProfileAddress";
 import ProfileAccount from "./pages/Home/Profile/ProfileAccount";
 import PackageOrder from "./pages/Home/Packages/PackageOrder";
 import LabTestCheckout from "./pages/Home/Packages/LabTestCheckout";
 import LabTests from "./pages/Home/Lab/LabTests";
 import LabCart from "./pages/Home/Lab/LabCart";
+import HealthcareOrders from "./pages/Home/Orders/HealthCareOrders";
+import LabTestOrders from "./pages/Home/Orders/LabTestsOrders";
 
 const Navigation = () => {
   return (
@@ -91,8 +92,9 @@ const Navigation = () => {
         <Route path="/profile/address" element={<ProfileAddress />} />
         <Route path="/wishlist" element={<Wishlist />} />
 
-        <Route path="/orders" element={<Orders />} />
         <Route path="/orders/:id" element={<OrderDetails />} />
+        <Route path="/healthcare/orders" element={<HealthcareOrders />} />
+        <Route path="/lab/orders" element={<LabTestOrders />} />
 
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutScreen />} />

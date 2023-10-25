@@ -114,6 +114,24 @@ const Profile = ({ children }) => {
                   <ShoppingCart style={{ width: "10%" }} size={24} />
                   <p className="profile-optionsTitle">My Orders</p>
                 </div>
+                <div className="profile-innerOptions">
+                  <div
+                    onClick={() => navigate("/healthcare/orders")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">
+                      Healthcare Orders
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/lab/orders")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Lab test Orders</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

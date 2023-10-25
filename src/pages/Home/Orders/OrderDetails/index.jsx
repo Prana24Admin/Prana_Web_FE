@@ -43,12 +43,11 @@ const OrderDetails = () => {
                   <div>
                     <p className="orderdetails-header">Shipping address</p>
                     <p className="orderdetails-bodyText">
-                      Name <br /> address <br />{" "}
-                      {data.shipping_address.split(",")[0]},
-                      {data.shipping_address.split(",")[1]},
-                      {data.shipping_address.split(",")[2]},
+                      {data.shipping_address.split(",")[0]}, <br />{" "}
+                      {data.shipping_address.split(",")[1]},<br />
+                      {data.shipping_address.split(",")[2]},{" "}
+                      {data.shipping_address.split(",")[4]} <br />
                       {data.shipping_address.split(",")[3]}
-                      <br /> India
                     </p>
                   </div>
                   <div>

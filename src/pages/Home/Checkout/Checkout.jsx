@@ -172,21 +172,23 @@ const Checkout = () => {
                   data.additional_address.length < 1 && (
                     <p>No addresses! Add one right now</p>
                   )}
-                <button
-                  ref={btnRef}
-                  onClick={() => {
-                    onOpen();
-                  }}
-                  className="checkout-button"
-                >
-                  Add address
-                </button>
-                <button
-                  onClick={handleAddressContinue}
-                  className="checkout-button"
-                >
-                  Continue Checkout
-                </button>
+                <div className="checkout-flexButton">
+                  <button
+                    ref={btnRef}
+                    onClick={() => {
+                      onOpen();
+                    }}
+                    className="checkout-button"
+                  >
+                    Add address
+                  </button>
+                  <button
+                    onClick={handleAddressContinue}
+                    className="checkout-button"
+                  >
+                    Continue Checkout
+                  </button>
+                </div>
               </div>
             )}
             {confirmation.address && (

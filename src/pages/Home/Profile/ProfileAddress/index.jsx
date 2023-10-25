@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import "../Profile.css";
 import "./Address.css";
-import { MoreVertical, Plus } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { ProfileContext } from "../../../../context/ProfileProvider";
 import axiosInstance from "../../../../libs/axios";
 import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
@@ -14,20 +14,11 @@ import { AddressDrawer } from "../../../../components/Slider/AddressDrawer";
 const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
 
-  const [selectedDropdown, setSelectedDropdown] = useState(null);
   const [method, setMethod] = useState();
   const [additionalAddress, setAdditionalAddress] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
-  const handleDropDown = (id) => {
-    if (selectedDropdown === id) {
-      setSelectedDropdown(null);
-    } else {
-      setSelectedDropdown(id);
-    }
-  };
 
   const handleDeleteAddress = async () => {
     const response = await axiosInstance.patch("/users/profile", {
@@ -72,33 +63,25 @@ const ProfileAddress = () => {
           <div className="address-addressContainer">
             <div className="address-flexTextAlignContainer">
               <p className="address-titleText">{data.address.place}</p>
-              <MoreVertical
-                style={{ cursor: "pointer" }}
-                onClick={() => handleDropDown(data.address.id)}
-                size={20}
-              />
-              {selectedDropdown === data.address.id && (
-                <div className="address-dropdownContainer">
-                  <p
-                    className="address-dropdownText"
+              <div className="address-dropdownContainer">
+                <div className="address-iconsContainer">
+                  <Pencil
+                    size={20}
                     onClick={() => {
                       setMethod("edit");
                       onOpen();
                     }}
-                  >
-                    Edit
-                  </p>
-                  <p
+                  />
+                </div>
+                <div className="address-iconsContainer">
+                  <Trash2
+                    size={20}
                     onClick={() => {
                       handleDeleteAddress();
-                      setSelectedDropdown(null);
                     }}
-                    className="address-dropdownText"
-                  >
-                    Delete
-                  </p>
+                  />
                 </div>
-              )}
+              </div>
             </div>
             <div className="address-flexContainer">
               <p className="address-userName">{data.address.name}</p>
@@ -116,36 +99,26 @@ const ProfileAddress = () => {
             <div key={address.id} className="address-addressContainer">
               <div className="address-flexTextAlignContainer">
                 <p className="address-titleText">{address.place}</p>
-                <MoreVertical
-                  style={{ cursor: "pointer", position: "relative" }}
-                  onClick={() => handleDropDown(address.id)}
-                  size={20}
-                />
-
-                {selectedDropdown === address.id && (
-                  <div className="address-dropdownContainer">
-                    <p
-                      className="address-dropdownText"
+                <div className="address-dropdownContainer">
+                  <div className="address-iconsContainer">
+                    <Pencil
+                      size={20}
                       onClick={() => {
                         onOpen();
                         setAdditionalAddress(address);
                         setMethod("editAdditionalAddress");
                       }}
-                    >
-                      Edit
-                    </p>
-
-                    <p
-                      className="address-dropdownText"
+                    />
+                  </div>
+                  <div className="address-iconsContainer">
+                    <Trash2
+                      size={20}
                       onClick={() => {
                         handleDeleteAdditionalAddress(address.id);
-                        setSelectedDropdown(null);
                       }}
-                    >
-                      Delete
-                    </p>
+                    />
                   </div>
-                )}
+                </div>
               </div>
               <div className="address-flexContainer">
                 <p className="address-userName">{address.name}</p>

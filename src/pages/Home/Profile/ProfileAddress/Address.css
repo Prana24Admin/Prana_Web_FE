@@ -43,20 +43,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.address-addressContainer:hover {
-  background-color: var(--powderWhite);
-}
-/* .address-addressContainer:hover {
-  background: linear-gradient(
-    to right,
-    var(--crimsonPink) 50%,
-    var(--rosePink) 50%
-  );
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 0.5s ease-out;
-  background-position: right left;
-} */
+
 .address-flexTextAlignContainer {
   display: flex;
   justify-content: space-between;
@@ -89,30 +76,27 @@
 }
 .address-dropdownContainer {
   position: absolute;
-  /* height: 8%; */
-  width: 10%;
   right: 4%;
-  top: 25%;
+  top: 15%;
   border-radius: 5px;
-  background-color: var(--pearlWhite);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  gap: 0.25rem;
+  gap: 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  /* padding: 0.5rem 0rem; */
 }
-.address-dropdownText {
-  padding: 0.25rem 0rem;
-  width: 100%;
+.address-iconsContainer {
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 5px;
-}
-.address-dropdownText:hover {
   background-color: var(--cloudGray);
+  border-radius: 50%;
+  color: var(--ashGray);
+}
+.address-iconsContainer:hover {
+  background-color: var(--rosePink);
+  color: var(--crimsonPink);
 }

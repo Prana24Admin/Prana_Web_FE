@@ -15,12 +15,11 @@ import { Button, useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
 
 import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";
+import Bill from "../../../../components/Bill";
 
 const LabCart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
-  const navigate = useNavigate();
 
   const fetchLabCart = async () => {
     const response = await axiosInstance.get("/cart/labcart");
@@ -76,47 +75,12 @@ const LabCart = () => {
                       <BadgePercent size={18} />
                       Apply Coupon
                     </Button>
-                    <div className="cart-billContainer">
-                      <p className="cart-titleText">Bill Summary</p>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">Sub Total</p>
-                        <p className="cart-descriptionText">
-                          ₹{subTotal.toFixed(2)}
-                        </p>
-                      </div>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">
-                          Sample collection charges
-                        </p>
-                        <p className="cart-descriptionText">
-                          ₹{sampleCollectionCharges.toFixed(2)}
-                        </p>
-                      </div>
-                      <div className="cart-flex">
-                        <p className="cart-descriptionText">Discount</p>
-                        <p className="cart-descriptionText">
-                          ₹{totalDiscount.toFixed(2)}
-                        </p>
-                      </div>
-                      <div className="checkout-line" />
-                      <div className="cart-flex">
-                        <p className="cart-descriptionTextDark">Cart value</p>
-                        <p className="cart-descriptionTextDark">
-                          ₹
-                          {(
-                            subTotal +
-                            sampleCollectionCharges -
-                            totalDiscount
-                          ).toFixed(2)}
-                        </p>
-                      </div>
-                      <button
-                        className="cart-button"
-                        onClick={() => navigate("/checkout")}
-                      >
-                        Proceed To Checkout
-                      </button>
-                    </div>
+
+                    <Bill
+                      subTotal={subTotal}
+                      sampleCollectionCharges={sampleCollectionCharges}
+                      discount={totalDiscount}
+                    />
                     <div className="cart-savingsContainer">
                       <IndianRupee size={15} className="cart-ruppeIcon" />
                       <p className="cart-savingsText">

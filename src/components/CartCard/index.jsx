@@ -63,21 +63,21 @@ const CartCard = ({ cartItem, labItem = null }) => {
             className="cart-Image"
             src={Image}
             alt={
-              pathName === "/lab/cart"
+              pathName.includes("/lab")
                 ? labItem.lab_test.name
                 : cartItem.product.name
             }
           />
           <div className="cart-productDescription">
             <p className="cart-titleText">
-              {pathName === "/lab/cart"
+              {pathName.includes("lab")
                 ? labItem.lab_test.name
                 : cartItem.product.name}
             </p>
             <div className="cart-priceText">
               <p className="cart-discountText">
                 ₹
-                {pathName === "/lab/cart"
+                {pathName.includes("/lab")
                   ? (
                       labItem.lab_test.price -
                       labItem.lab_test.price * (labItem.lab_test.discount / 100)
@@ -86,7 +86,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
               </p>
               <span className="cart-linethrough">
                 ₹
-                {pathName === "/lab/cart"
+                {pathName.includes("/lab")
                   ? labItem.lab_test.price
                   : cartItem.product.price}
               </span>
@@ -96,7 +96,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
             <div
               className="cart-removeButtonContainer"
               onClick={() =>
-                pathName === "/lab/cart"
+                pathName.includes("/lab")
                   ? removeLabCartItem(labItem.uuid)
                   : removeCartItem(cartItem.uuid)
               }

@@ -1,68 +1,32 @@
 import React from "react";
-import MainLayout from "../../../../components/MainLayout";
+
 import "./labcheckout.css";
+import CheckoutLayout from "../../../../components/CheckoutLayout";
+import axiosInstance from "../../../../libs/axios";
+import { useQuery } from "@tanstack/react-query";
+import CartCard from "../../../../components/CartCard";
 
 const LabTestCheckout = () => {
+  const fetchLabCart = async () => {
+    const response = await axiosInstance.get("/cart/labcart");
+    return response.data;
+  };
+
+  const {
+    data: labCartData,
+    isLoading,
+    error,
+  } = useQuery(["LabCart"], fetchLabCart);
   return (
-    <MainLayout>
-      <div className="labCheckout-mainContainer">
-        <div className="labCheckout-flexContainer">
-          <div className="labCheckout-leftContainer">
-            <p className="labCheckout-title">Payment Method</p>
-            <label className="labCheckout-gap">
-              <input type="radio" />
-              <p className="labCheckout-description">
-                Pay Cash at the time of sample collection{" "}
-              </p>
-            </label>
-            <label className="labCheckout-gap">
-              <input type="radio" />
-              <p className="labCheckout-description">
-                Pay Online at the time of sample collection{" "}
-              </p>
-            </label>
+    <CheckoutLayout cartData={labCartData.data}>
+      {labCartData &&
+        labCartData.data.length > 0 &&
+        labCartData.data.map((test) => (
+          <div key={test.uuid} style={{ marginBottom: "0.75rem" }}>
+            <CartCard key={test.uuid} labItem={test} />
           </div>
-          <div className="labCheckout-rightContainer">
-            <p className="labCheckout-title">Bill Summary</p>
-            <div className="labCheckout-justifyContainer">
-              <p className="labCheckout-description">Item Total</p>
-              <p className="labCheckout-mrp">
-                <span className="labCheckout-discount">₹123.00</span>
-                ₹123.00
-              </p>
-            </div>
-            <div className="labCheckout-justifyContainer">
-              <p className="labCheckout-description">Coupon Applied</p>
-              <p className="labCheckout-mrp">₹1234.00</p>
-            </div>
-            <div className="labCheckout-justifyContainer">
-              <p className="labCheckout-description">Home Collection Charges</p>
-              <p className="labCheckout-mrp">
-                <span className="labCheckout-discount">₹123.00</span>
-                FREE
-              </p>
-            </div>
-            <div className="labCheckout-line" />
-            <div className="labCheckout-justifyContainer">
-              <p
-                className="labCheckout-description"
-                style={{ fontWeight: "600" }}
-              >
-                Order Total
-              </p>
-              <p className="labCheckout-mrp">₹123.00</p>
-            </div>
-            <button className="cart-button">Proceed To Checkout</button>
-            <div className="cart-savingsContainer labCheckout-savingsContainer">
-              <p className="cart-savingsText">
-                Total savings of{" "}
-                <span style={{ fontWeight: "bold" }}>₹324</span> on this order
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </MainLayout>
+        ))}
+    </CheckoutLayout>
   );
 };
 

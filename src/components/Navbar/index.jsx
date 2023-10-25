@@ -11,6 +11,7 @@ import CategoryNav from "./CategoryNav";
 import { Search, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
 const Navbar = () => {
+  const pathName = window.location.pathname;
   const navigate = useNavigate();
   const navigateAbout = () => {
     navigate("/about");
@@ -148,9 +149,10 @@ const Navbar = () => {
                     className="search-field"
                   />
                 </div>
-                <div>
-                  <Link to="/cart">
-                    {/* <li onClick={navigateCart}>
+                {!pathName.includes("/lab") && (
+                  <div>
+                    <Link to="/cart">
+                      {/* <li onClick={navigateCart}>
                         <a
                           className="about"
                           href="/contact"
@@ -160,12 +162,13 @@ const Navbar = () => {
                           Cart
                         </a>
                       </li> */}
-                    <div className="navbar-cartContainer">
-                      <ShoppingCart size={20} />
-                      <p style={{ fontSize: "1.1rem" }}>Cart</p>
-                    </div>
-                  </Link>
-                </div>
+                      <div className="navbar-cartContainer">
+                        <ShoppingCart size={20} />
+                        <p style={{ fontSize: "1.1rem" }}>Cart</p>
+                      </div>
+                    </Link>
+                  </div>
+                )}
                 {/* <div>
                   <Link to="/offers">
                     <li onClick={navigateofferScreen}>

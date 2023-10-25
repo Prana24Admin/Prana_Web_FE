@@ -75,7 +75,7 @@ const Navigation = () => {
         <Route path="/lab/all-tests" element={<LabTests />} />
         <Route path="/lab/test/:id" element={<PackageOrder />} />
         <Route path="/lab/cart" element={<LabCart />} />
-        <Route path="/labtestcheckout" element={<LabTestCheckout />} />
+        <Route path="/lab/checkout" element={<LabTestCheckout />} />
 
         <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
         <Route path="/inner/doctor/finddoctor" element={<FindDoctor />} />

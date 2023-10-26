@@ -1,12 +1,20 @@
-.innermed {
-  /* margin-top: 30px; */
-  max-width: 1240px;
+.medicineSlider-carouselContainer {
+  margin: auto;
+  padding-top: 12rem;
+  margin-bottom: 2rem;
+  display: flex;
+  z-index: 1;
+  width: 100%;
+}
+.medicineSlider-innermed {
   margin: auto;
   z-index: 1;
+  width: 95%;
 }
-.innermedicine-img {
-  width: 100%;
+.medicineSlider-img {
+  width: 90%;
   height: 300px;
+  margin: auto;
   border-radius: 5px;
 }
 .innerMed-popular {
@@ -42,7 +50,4 @@
   width: 96px;
   height: 96px;
   margin-left: 30px;
-}
-.medicineSlider-container {
-  z-index: 1;
 }

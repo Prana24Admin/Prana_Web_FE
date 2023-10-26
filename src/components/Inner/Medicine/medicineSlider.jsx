@@ -56,22 +56,20 @@ const MedicineSlider = () => {
     },
   ];
   return (
-    <>
-      <Carousel
-        responsive={responsive}
-        containerClass="medicineSlider-container"
-      >
-        {SlideArr.map((item) => {
-          return (
-            <>
-              <div className="innermed">
-                <img className="innermedicine-img" src={item.Image} alt="" />
-              </div>
-            </>
-          );
-        })}
-      </Carousel>
-    </>
+    <Carousel
+      responsive={responsive}
+      containerClass="medicineSlider-carouselContainer"
+    >
+      {SlideArr.map((item) => {
+        return (
+          <>
+            <div className="medicineSlider-innermed">
+              <img className="medicineSlider-img" src={item.Image} alt="" />
+            </div>
+          </>
+        );
+      })}
+    </Carousel>
   );
 };
 export default MedicineSlider;

@@ -1,6 +1,6 @@
-.doctor-img{
-    width: 1000px;
-    height: 345px;
-    margin-top:30px;
-   margin-left:200px
+.doctor-img {
+  max-width: 1240px;
+  margin: auto;
+  padding-top: 12rem;
+  object-fit: cover;
 }

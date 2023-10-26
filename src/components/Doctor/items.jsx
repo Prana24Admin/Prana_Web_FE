@@ -5,7 +5,6 @@ import Surgery from "../../assets/images/doctor/items/surgery.jpg";
 import Lab from "../../assets/images/doctor/items/lab.jpg";
 import Medicine from "../../assets/images/doctor/items/medicine.jpg";
 import "../../assets/css/Doctor/items.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const DoctorItem = () => {
   const navigate = useNavigate();
@@ -24,18 +23,63 @@ const DoctorItem = () => {
   const navigateLab = () => {
     navigate("/lab");
   };
+
+  const doctorCards = [
+    {
+      id: 1,
+      Image: Video,
+      header: "Video Consultation",
+      description: "connect within 60sec",
+    },
+    {
+      id: 2,
+      Image: Near,
+      header: "Doctors near you",
+      description: "confirmed appointments",
+    },
+    {
+      id: 3,
+      Image: Surgery,
+      header: "Surgeries",
+      description: "Safe and trusted surgery centers",
+    },
+    {
+      id: 4,
+      Image: Lab,
+      header: "Lab Tests",
+      description: "Sample pickup at your home",
+    },
+    {
+      id: 5,
+      Image: Medicine,
+      header: "Medicines",
+      description: "Essentials at your door steps",
+    },
+  ];
+
   return (
     <>
-      <div className="d-flex flex-row justify-content-center prac-row">
-        <div
-          className="d-flex flex-column prac-col col-lg-2"
-          onClick={navigateVideoConsultant}
-        >
-          <img className="prac-img" src={Video} alt="" />
-          <p className="prac-par"> Video Consultation</p>
-          <p className="prac-par1">connect within 60sec</p>
-        </div>
-        <div
+      <div className="items-consultationContainer">
+        {doctorCards.map((doctorCard) => {
+          return (
+            <div
+              key={doctorCard.id}
+              className="items-boxContainer"
+              onClick={navigateVideoConsultant}
+            >
+              <img
+                className="items-img"
+                src={doctorCard.Image}
+                alt={doctorCard.header}
+              />
+              <p className="items-header"> {doctorCard.header}</p>
+              <p className="items-description">{doctorCard.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* <div
           className="d-flex flex-column prac-col col-lg-2"
           onClick={navigateVideo}
         >
@@ -66,8 +110,7 @@ const DoctorItem = () => {
           <img className="prac-img" src={Medicine} alt="" />
           <p className="prac-par"> Medicines</p>
           <p className="prac-par1">Essentials at your door steps</p>
-        </div>
-      </div>
+        </div> */}
     </>
   );
 };

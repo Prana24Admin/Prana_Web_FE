@@ -12,6 +12,7 @@ import Pediatrician from "../../assets/images/doctor/clinic/pediatrician.jpg";
 import Physiotherapist from "../../assets/images/doctor/clinic/physiotherapist.jpg";
 import "../../assets/css/Doctor/clinic.css";
 import { useNavigate } from "react-router-dom";
+import { Button, Card, Stack } from "react-bootstrap";
 const Clinic = () => {
   const navigate = useNavigate();
   const navigateDoctor = () => {
@@ -36,83 +37,104 @@ const Clinic = () => {
       items: 1,
     },
   };
-  const newArr = [
+  const Specializations = [
     {
+      id: 1,
       Image: Dentist,
       Title: "Dentist",
       Text: "Teething troubles?Schedule a dental checkup",
     },
     {
+      id: 2,
       Image: Dietitian,
       Title: "Dietitian",
       Text: "Get guidence on eating right food",
     },
     {
+      id: 3,
       Image: Gas,
       Title: "Gas",
       Text: "Explore for issues related to digestive system",
     },
     {
+      id: 4,
       Image: GeneralDoctor,
       Title: "GeneralDoctor",
       Text: "Explore the right family doctor",
     },
     {
+      id: 5,
       Image: GeneralSurgeon,
       Title: "GeneralSurgeon",
       Text: "Need to get operated?Find the best surgeon",
     },
     {
+      id: 6,
       Image: Gynecologist,
       Title: "Gynecologist",
       Text: "Explore for women's Health and Pregnancy.",
     },
     {
+      id: 7,
       Image: Orthopedist,
       Title: "Orthopedist",
       Text: "For bone and joint issues,Spinal card and more",
     },
     {
+      id: 8,
       Image: Pediatrician,
       Title: "Pediatrician",
       Text: "Child specialists and doctors for infant",
     },
     {
+      id: 9,
       Image: Physiotherapist,
       Title: "Physiotherapist",
       Text: "Get it treated by trained physiotherapist",
     },
   ];
   return (
-    <>
+    <div className="clinic-mainContainer">
       <div className="clinic">
-        <p className="book">
+        <p className="clinic-title">
           Book an appointment for an in-clinic consultation
         </p>
-        <p className="experience">
+        <p className="clinic-description">
           Find experienced doctors across all specialities
         </p>
       </div>
       <div>
-        <Carousel responsive={responsive}>
-          {newArr.map((item) => {
+        <Carousel
+          responsive={responsive}
+          partialVisible={false}
+          renderButtonGroupOutside={true}
+          // className="clinic-carouselContainer"
+        >
+          {Specializations.map((Specialization) => {
             return (
-              <>
+              <div key={Specialization.id} className="clinic-cardContainer">
                 <div
+                  key={Specialization.id}
                   style={{ cursor: "pointer" }}
-                  className="clinic-col"
+                  className="clinic-cardWidth"
                   onClick={navigateDoctor}
                 >
-                  <img className="clinic-img" src={item.Image} alt="" />
-                  <p className="clinic-par">{item.Title}</p>
-                  <p className="clinic-par1">{item.Text}</p>
+                  <img
+                    className="clinic-cardImage"
+                    src={Specialization.Image}
+                    alt=""
+                  />
+                  <p className="clinic-header">{Specialization.Title}</p>
+                  <p className="clinic-imageDescription">
+                    {Specialization.Text}
+                  </p>
                 </div>
-              </>
+              </div>
             );
           })}
         </Carousel>
       </div>
-    </>
+    </div>
   );
 };
 export default Clinic;

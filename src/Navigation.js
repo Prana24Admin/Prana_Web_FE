@@ -12,10 +12,13 @@ import Contact from "./pages/Home/Contact";
 import Prescription from "./components/Home/innerHome/prescription";
 import InnerMed from "./components/Inner/Medicine/index";
 import InnerAyur from "./components/Inner/Ayurveda/index";
+
 import Doctor from "./components/Doctor/index";
 import InnerDoctor from "./components/Doctor/inner/index";
+
 import FindDoctor from "./components/Doctor/findDoctor/index";
 import Appointment from "./components/Doctor/findDoctor/appointment";
+
 import InnerLab from "./pages/Home/Lab";
 import HealthCareIndex from "./pages/Home/HealthCare/index";
 import HealthBlogIndex from "./components/HealthBlog/index";

@@ -12,35 +12,26 @@ const Video = () => {
     navigate("/inner/doctor/appointment");
   };
   return (
-    <>
-      <div className="d-flex flex-row video-row">
-        <div className="d-flex flex-column video-col">
-          <p className="private">
+    <div className="video-mainContainer">
+      <div className="video-flexContainer">
+        {/* <div className="d-flex flex-column video-col"> */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <p className="video-title">
             Private Consultation + Audio calls just Rs.199
           </p>
-          <div className="d-flex flex-row">
-            <div className="d-flex flex-column">
-              <img className="per" src={Per} alt="" />
-            </div>
-            <div className="d-flex flex-column">
-              <img className="per" id="per" src={Per1} alt="" />
-            </div>
-            <div className="d-flex flex-column">
-              <img className="per" id="per" src={Per2} alt="" />
-            </div>
-            <div className="d-flex flex-column">
-              <p className="vid-par">+ 142 doctors are in online</p>
-            </div>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+            <img className="video-doctorImage" src={Per} alt="" />
+            <img className="video-doctorImage" id="per" src={Per1} alt="" />
+            <img className="video-doctorImage" id="per" src={Per2} alt="" />
+            <p className="vid-par">+ 142 doctors are in online</p>
           </div>
-          <p onClick={navigateAppointment} className="video-btn">
+          <p onClick={navigateAppointment} className="video-button">
             Consult Now
           </p>
         </div>
-        <div className="d-flex flex-column">
-          <img className="sofa" src={Sofa} alt="" />
-        </div>
+        <img className="sofa" src={Sofa} alt="" />
       </div>
-    </>
+    </div>
   );
 };
 export default Video;

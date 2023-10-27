@@ -38,6 +38,7 @@ const Navbar = () => {
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [location, setLocation] = useState(null);
 
   const { setData, data } = useContext(ProfileContext);
   const [searchText, setSearchText] = useState("");
@@ -65,26 +66,33 @@ const Navbar = () => {
     }
   };
 
-  // useEffect(() => {
-  // Fetch geolocation data when the component mounts
-
-  // }, []);
-
   const getGeoLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-      });
-      console.log(latitude, longitude);
-      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-      fetch(url)
-        .then((data) => data.json())
-        .then((data) => console.log(data));
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        function (error) {
+          console.error("Error getting location: " + error.message);
+        }
+      );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
   };
+
+  useEffect(() => {
+    if (latitude !== null && longitude !== null) {
+      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          setLocation(data);
+          console.log(data);
+        });
+    }
+  }, [latitude, longitude]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,8 +121,14 @@ const Navbar = () => {
               >
                 <p className="par-nav">Prana24 </p>
               </div>
-              <div>
-                <p onClick={getGeoLocation}>Pincode</p>
+              <div onClick={() => getGeoLocation()}>
+                <p>
+                  {location && location.address.city
+                    ? location.address.city
+                    : location.address.town
+                    ? location.address.town
+                    : "Pincode"}
+                </p>
               </div>
             </div>
           </div>

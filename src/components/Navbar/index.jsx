@@ -38,11 +38,11 @@ const Navbar = () => {
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({});
 
   const { setData, data } = useContext(ProfileContext);
   const [searchText, setSearchText] = useState("");
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState();
 
   const fetchProfileData = async () => {
     const response = await axiosInstance.get("/users/profile");
@@ -88,8 +88,8 @@ const Navbar = () => {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          setLocation(data);
-          console.log(data);
+          setLocation(data.address);
+          console.log(location);
         });
     }
   }, [latitude, longitude]);
@@ -121,12 +121,12 @@ const Navbar = () => {
               >
                 <p className="par-nav">Prana24 </p>
               </div>
-              <div onClick={() => getGeoLocation()}>
+              <div onClick={getGeoLocation}>
                 <p>
-                  {location && location.address.city
-                    ? location.address.city
-                    : location.address.town
-                    ? location.address.town
+                  {Object.keys(location) > 0 && location && location.city
+                    ? location.city
+                    : location.town
+                    ? location.town
                     : "Pincode"}
                 </p>
               </div>

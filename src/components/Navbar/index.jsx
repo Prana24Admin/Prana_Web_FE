@@ -36,6 +36,9 @@ const Navbar = () => {
     navigate("/cart");
   };
 
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
   const { setData, data } = useContext(ProfileContext);
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState(null);
@@ -62,7 +65,26 @@ const Navbar = () => {
     }
   };
 
-  const getGeoLocation = () => {};
+  // useEffect(() => {
+  // Fetch geolocation data when the component mounts
+
+  // }, []);
+
+  const getGeoLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      });
+      console.log(latitude, longitude);
+      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+      fetch(url)
+        .then((data) => data.json())
+        .then((data) => console.log(data));
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {

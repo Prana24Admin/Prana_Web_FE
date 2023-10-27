@@ -2,6 +2,7 @@ import React from "react";
 import Person from "../../../assets/images/lab/call-order1.png";
 import { IoCallSharp } from "react-icons/io5";
 import "../../../assets/css/Lab/index.css";
+
 const BookingTest = () => {
   return (
     <>

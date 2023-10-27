@@ -186,3 +186,36 @@ a:link {
   color: var(--crimsonPink);
   scale: 1.05;
 }
+.navbar-searchResultBox {
+  width: 24rem;
+  height: auto;
+  max-height: 15rem;
+  position: absolute;
+  background-color: var(--powderWhite);
+  z-index: 100;
+  top: 2.5rem;
+  border-radius: 5px;
+  overflow-y: scroll;
+  padding: 0.5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.navbar-searchResultItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.navbar-searchResultItem:hover {
+  background-color: var(--cloudGray);
+}
+.navbar-searchResultItemName {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.navbar-searchResultItemCategory {
+  font-size: 0.75rem;
+  font-weight: 400;
+}

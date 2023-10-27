@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./navbar.css";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import { ProfileContext } from "../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../assets/images/profile/avatar.png";
 import CategoryNav from "./CategoryNav";
-import { Search, ShoppingCart, ShoppingCartIcon } from "lucide-react";
+import { Search, ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -37,6 +37,8 @@ const Navbar = () => {
   };
 
   const { setData, data } = useContext(ProfileContext);
+  const [searchText, setSearchText] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
 
   const fetchProfileData = async () => {
     const response = await axiosInstance.get("/users/profile");
@@ -62,6 +64,21 @@ const Navbar = () => {
 
   const getGeoLocation = () => {};
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axiosInstance.get(`/home?search=${searchText}`);
+      setSearchResult(response.data);
+      console.log(searchResult);
+    };
+    const delay = 800;
+    const debounce = setTimeout(() => {
+      fetchData();
+    }, delay);
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [searchText]);
+
   return (
     <>
       <div className="header">
@@ -77,55 +94,11 @@ const Navbar = () => {
               <div>
                 <p onClick={getGeoLocation}>Pincode</p>
               </div>
-              {/* <div className="d-flex flex-column">
-                  <div className="inner-form alingContainer">
-                    <span className="email">
-                      <BiCurrentLocation color="#232223" />
-                    </span>
-                    <input
-                      className="input-field"
-                      type="text"
-                      placeholder="Panduranga classic, Vasanth Nagar Colony, Hyderabad"
-                    />
-                  </div>
-                </div> */}
             </div>
           </div>
           <div className="nav">
             <ul className="nav_links">
               <div className="nav_child alingContainer">
-                {/* <div>
-                    <Link to="/home">
-                      <li onClick={navigateHome}>Home</li>
-                    </Link>
-                  </div> */}
-                {/* <div>
-                    <Link to="/about">
-                      <li onClick={navigateAbout}>
-                        <a className="about" href="/about">
-                          About Us
-                        </a>
-                      </li>
-                    </Link>
-                  </div>
-                  <div>
-                    <Link to="/contact">
-                      <li onClick={navigateContact}>
-                        <a className="about" href="/contact">
-                          Contact Us
-                        </a>
-                      </li>
-                    </Link>
-                  </div>
-                  <div>
-                    <Link to="/career">
-                      <li onClick={navigateCareer}>
-                        <a className="about" href="/career">
-                          Career
-                        </a>
-                      </li>
-                    </Link>
-                  </div> */}
                 <div
                   style={{
                     position: "relative",
@@ -147,21 +120,48 @@ const Navbar = () => {
                     placeholder="Search for Medicine, Labs"
                     type="text"
                     className="search-field"
+                    onChange={(e) => setSearchText(e.target.value)}
                   />
+                  {searchText && searchResult && (
+                    <div className="navbar-searchResultBox">
+                      {searchResult.products.rows.length > 0 &&
+                        searchResult.products.rows.length < 8 &&
+                        searchResult.products?.rows.map((product) => (
+                          <div
+                            className="navbar-searchResultItem"
+                            key={product.uuid}
+                            onClick={() => navigate(`/product/${product.uuid}`)}
+                          >
+                            <p className="navbar-searchResultItemName">
+                              {product.name}
+                            </p>
+                            <p className="navbar-searchResultItemCategory">
+                              in Products
+                            </p>
+                          </div>
+                        ))}
+                      {searchResult.tests.rows.length > 0 &&
+                        searchResult.tests.rows.length < 8 &&
+                        searchResult.tests.rows.map((test) => (
+                          <div
+                            className="navbar-searchResultItem"
+                            key={test.uuid}
+                            onClick={() => navigate(`/lab/test/${test.uuid}`)}
+                          >
+                            <p className="navbar-searchResultItemName">
+                              {test.name}
+                            </p>
+                            <p className="navbar-searchResultItemCategory">
+                              in Lab Tests
+                            </p>
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 </div>
                 {!pathName.includes("/lab") && (
                   <div>
                     <Link to="/cart">
-                      {/* <li onClick={navigateCart}>
-                        <a
-                          className="about"
-                          href="/contact"
-                          style={{ alignItems: "center", gap: "1rem" }}
-                        >
-                          <ShoppingCart size={18} />
-                          Cart
-                        </a>
-                      </li> */}
                       <div className="navbar-cartContainer">
                         <ShoppingCart size={20} />
                         <p style={{ fontSize: "1.1rem" }}>Cart</p>
@@ -169,15 +169,7 @@ const Navbar = () => {
                     </Link>
                   </div>
                 )}
-                {/* <div>
-                  <Link to="/offers">
-                    <li onClick={navigateofferScreen}>
-                      <a style={{ textDecoration: "none" }} className="about">
-                        Offers
-                      </a>
-                    </li>
-                  </Link>2
-                </div> */}
+
                 <div className="nav-dropdown">
                   {data ? (
                     data.image !== null ? (
@@ -251,11 +243,7 @@ const Navbar = () => {
                     </div>
                   </div>
                 </div>
-                {/* <div>
-                  <li>
-                    <button className="download">Download App</button>
-                  </li>
-                </div> */}
+
                 <div>
                   <li>
                     <FloatingWhatsApp />

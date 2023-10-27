@@ -123,7 +123,7 @@ const Navbar = () => {
               </div>
               <div onClick={getGeoLocation}>
                 <p>
-                  {Object.keys(location) > 0 && location && location.city
+                  {location && location.city
                     ? location.city
                     : location.town
                     ? location.town

@@ -1,34 +1,177 @@
-.filter{
-    margin-top: 30px;
-    background-color: #434ea2;
-    height:66px;
-    cursor: pointer;
+.filters-mainContainer {
+  max-width: 1240px;
+  margin: auto;
+  padding-top: 10rem;
 }
-.video-filter{
-    margin-top:20px;
-    margin-left:50px
+.filters-justifyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.type{
-    text-align: center;
-    color:black !important;
-    font-weight: bold;
-    font-size: 16px;
+.filters-flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--powderWhite);
+  border: 1px solid var(--cloudGray);
+  color: var(--ashGray);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.aliment{
-    width:100%;
-    padding:20px;
-    border-radius: 5px;
-    border: 1px solid grey;
-    margin:10px 0px
+.filters-content {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
 }
-.form-doctor{
-    margin:20px 40px
+.filters-dropdown {
+  background: transparent;
+  border: 1px solid var(--silverGray);
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
 }
-.get{
-    background-color: #434ea2;
-    padding: 10px;
-    color:white;
-    margin-top: 20px;
-    text-align: center;
-    border-radius: 5px;
+.filters-dropdownContent {
+  background: var(--ashGray);
+}
+.filters-input {
+  display: flex;
+  align-items: center;
+  /* gap: 1rem; */
+  border: 1px solid var(--silverGray);
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  width: 28%;
+  margin-left: 16.2rem;
+}
+.filters-inputText {
+  background-color: transparent;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 500;
+  /* color: var(--lightGary); */
+}
+.available-mainContainer {
+  max-width: 1240px;
+  margin: 1rem auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.available-flexContainer {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+.available-leftContainer {
+  width: 70%;
+  /* border: 1px solid var(--ashGray); */
+}
+.available-doctorsTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  text-transform: capitalize;
+  /* margin: 0.5rem 0; */
+}
+.available-doctorsDescription {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.available-flexCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border: 1px solid var(--cloudGray);
+  padding: 1rem 0rem;
+  border-radius: 5px;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+.available-doctorImage {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  margin: 0.5rem 1rem;
+}
+.available-cardContainer {
+  display: flex;
+  gap: 1rem;
+}
+.available-doctorName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}
+.available-doctorDetails {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.available-storiesText {
+  font-weight: "600";
+  font-size: 1rem;
+  color: var(--ashGray);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.available-storiesText:hover {
+  color: var(--azureBlue);
+}
+.available-button {
+  color: var(--crimsonPink);
+  border: 1px solid var(--crimsonPink);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  margin-right: 2rem;
+  transition: 0.3s ease-in-out;
+}
+.available-button:hover {
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+}
+.available-rightContainer {
+  width: 30%;
+  height: 52%;
+  padding: 1rem 1rem;
+  border: 1px solid var(--cloudGray);
+  background-color: var(--powderWhite);
+  border-radius: 5px;
+  /* position: fixed;
+  right: 6rem; */
+}
+.type {
+  text-align: center;
+  color: black !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+.aliment {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--cloudGray);
+  margin: 0.5rem 0px;
+  /* background-color: transparent; */
+}
+.form-doctor {
+  /* margin: 20px 40px; */
+}
+.available-formButton {
+  color: var(--crimsonPink);
+  border: 1px solid var(--crimsonPink);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  transition: 0.3s ease-in-out;
+}
+.available-formButton:hover {
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
 }

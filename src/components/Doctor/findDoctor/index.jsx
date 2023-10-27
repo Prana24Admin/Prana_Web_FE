@@ -9,9 +9,7 @@ const FindDoctorIndex = () => {
   return (
     <>
       <Navbar />
-      <div>
-        <RightDoctor />
-      </div>
+      <div>{/* <RightDoctor /> */}</div>
       <div>
         <Filter />
       </div>

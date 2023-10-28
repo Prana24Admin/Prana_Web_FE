@@ -10,6 +10,7 @@ import { banners2 } from "../../../utils/banners";
 import Prescription from "../../../components/Home/innerHome/prescription";
 import { catagories } from "../../../utils/categories";
 import Rating from "../../../components/Home/innerHome/homeChoose";
+import BannerCarousel from "../../../components/CarouselLayout/BannerCarousel";
 
 const Main = () => {
   return (
@@ -45,7 +46,7 @@ const Main = () => {
         {/* ----------------------Banners-------------------------- */}
         <div>
           <p className="main-title">Offers Just For You</p>
-          <MultiItemCarousel multiData={banners2} />
+          <BannerCarousel multiData={banners2} />
         </div>
 
         {/* -------------------------Payment Offers--------------------- */}
@@ -61,6 +62,7 @@ const Main = () => {
 
         {/* -----------------------Catagories----------------------- */}
         <div>
+          <p className="main-title">Offers Just For You</p>
           <MultiItemCarousel multiData={catagories} />
         </div>
       </div>

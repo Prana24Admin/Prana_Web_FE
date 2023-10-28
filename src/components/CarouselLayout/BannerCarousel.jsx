@@ -2,11 +2,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
+// import { data, multiData } from "./data";
 
 import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-let slidesToShow = 5;
+let slidesToShow = 3;
 
 const PreviousBtn = (props) => {
   console.log(props);
@@ -40,12 +41,15 @@ const carouselProperties = {
   nextArrow: <NextBtn />,
   slidesToShow: slidesToShow,
   slidesToScroll: 1,
-  infinite: false,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  pauseOnHover: true,
   responsive: [
     {
       breakpoint: 426,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 3,
         centerMode: false,
       },
     },
@@ -59,7 +63,7 @@ const carouselProperties = {
     {
       breakpoint: 1025,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 3,
         centerMode: false,
         slidesToScroll: 2,
       },
@@ -67,7 +71,7 @@ const carouselProperties = {
   ],
 };
 
-const MultiItemCarousel = ({ multiData }) => {
+const BannerCarousel = ({ multiData }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -101,11 +105,10 @@ const MultiItemCarousel = ({ multiData }) => {
 
 const CarouselCard = ({ item }) => {
   return (
-    <div className="card-borderContainer">
-      <img className="card-image" src={item.Image} alt="" />
-      {item.Text && <p className="card-title">{item.Text}</p>}
+    <div>
+      <img className="banner-image" src={item.Image} alt="banner" />
     </div>
   );
 };
 
-export default MultiItemCarousel;
+export default BannerCarousel;

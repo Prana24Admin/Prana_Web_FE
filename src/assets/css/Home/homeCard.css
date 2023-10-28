@@ -1,34 +1,85 @@
-.card-container{
-    justify-content: space-around;
-    margin-top:50px
+.homeCard-consultationContainer {
+  max-width: 1240px;
+  /* display: flex; */
+  gap: 2rem;
+  /* align-items: center;
+    justify-content: center; */
+  margin: 3rem auto;
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.card-con{
-    margin:30px 20px
+
+.homeCard-boxContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  align-items: center;
+  /* flex-direction: column; */
+  padding: 1rem 1.4rem;
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  background-color: var(--powderWhite);
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.medicine{
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    margin-top: 15px;
+.homeCard-boxContainer:hover {
+  border: 1px solid var(--crimsonPink);
+  scale: 1.03;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.card-card{
-    height:75px;
-    cursor: pointer;
+.homeCard-img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 5px;
+  mix-blend-mode: multiply;
 }
-.car-par{
-    font-weight: bold;
-    font-size: 18px;
+.homeCard-header {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--ashGray);
 }
-.card-par1{
-    color:#0e382c
+.homeCard-description {
+  font-size: 0.9rem;
+  width: 100%;
+  font-weight: 500;
+  color: var(--coinGray);
+  text-transform: capitalize;
 }
-.card-col{
-    margin-left:40px;
-    line-height: 1px;
-    margin-top:20px
+
+.card-container {
+  justify-content: space-around;
+  margin-top: 50px;
 }
-.card-char{
-    float: right;
-    margin-top: 10px;
-    margin-left: 70px;
+.card-con {
+  margin: 30px 20px;
+}
+.medicine {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+.card-card {
+  height: 75px;
+  cursor: pointer;
+}
+.car-par {
+  font-weight: bold;
+  font-size: 18px;
+}
+.card-par1 {
+  color: #0e382c;
+}
+.card-col {
+  margin-left: 40px;
+  line-height: 1px;
+  margin-top: 20px;
+}
+.card-char {
+  float: right;
+  margin-top: 10px;
+  margin-left: 70px;
 }

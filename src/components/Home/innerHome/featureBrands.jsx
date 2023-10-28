@@ -14,6 +14,7 @@ import Johnson from "../../../assets/images/home/featurebrands/johnson.jpg";
 import Teddy from "../../../assets/images/home/featurebrands/teddy.jpg";
 import "../../../assets/css/Home/featureBrand.css";
 import { useNavigate } from "react-router-dom";
+import CarouselLayout from "../../CarouselLayout";
 const Feature = () => {
   const navigate = useNavigate();
   const navigateMedicine = () => {
@@ -90,23 +91,8 @@ const Feature = () => {
         <div className="trending">
           <p className="lab">Trending Brands</p>
           <p className="lab-test">Pick from our favourite brands</p>
-          <div>
-            <Carousel responsive={responsive}>
-              {HomePayArr.map((item) => {
-                return (
-                  <>
-                    <div
-                      style={{ cursor: "pointer" }}
-                      className="trend-col"
-                      onClick={navigateMedicine}
-                    >
-                      <img className="slide-img" src={item.Image} alt="" />
-                      <p style={{ marginLeft: "50px" }}>{item.Text}</p>
-                    </div>
-                  </>
-                );
-              })}
-            </Carousel>
+          <div style={{ marginTop: "2rem", marginBottom: "2rem" }}>
+            <CarouselLayout multiData={HomePayArr} />
           </div>
         </div>
       </div>

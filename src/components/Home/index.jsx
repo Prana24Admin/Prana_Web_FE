@@ -25,48 +25,50 @@ const HomeIndex = () => {
       {/* <div>
         <SearchBar />
       </div> */}
-      <div>
-        <HomeSlide />
-      </div>
-      <div>
-        <HomeCard />
-      </div>
-      <div>{/* <HomeItems /> */}</div>
-      <div>
-        <HomeLabs />
-      </div>
-      <div>
-        <HomeOffers />
-      </div>
-      <div>
-        <Slider />
-      </div>
-      <div>
-        <HomePaymentOffers />
-      </div>
-      <div>
-        <Prescription />
-      </div>
-      <div>
-        <Trending />
-      </div>
-      <div>
-        <Shop />
-      </div>
-      <div>
-        <NewArrivals />
-      </div>
-      <div>
-        <TrendingNear />
-      </div>
-      <div>
-        <FeatureBrand />
-      </div>
-      <div>
-        <HomeChoose />
-      </div>
-      <div>
-        <Download />
+      <div className="max-w-container">
+        <div>
+          <HomeSlide />
+        </div>
+        <div>
+          <HomeCard />
+        </div>
+        <div>{/* <HomeItems /> */}</div>
+        <div>
+          <HomeLabs />
+        </div>
+        <div>
+          <HomeOffers />
+        </div>
+        <div>
+          <Slider />
+        </div>
+        <div>
+          <HomePaymentOffers />
+        </div>
+        <div>
+          <Prescription />
+        </div>
+        <div>
+          <Trending />
+        </div>
+        <div>
+          <Shop />
+        </div>
+        <div>
+          <NewArrivals />
+        </div>
+        <div>
+          <TrendingNear />
+        </div>
+        <div>
+          <FeatureBrand />
+        </div>
+        <div>
+          <HomeChoose />
+        </div>
+        <div>
+          <Download />
+        </div>
       </div>
       <div>
         <Footer />

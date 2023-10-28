@@ -8,7 +8,7 @@ import { ProfileContext } from "../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../assets/images/profile/avatar.png";
 import CategoryNav from "./CategoryNav";
-import { Search, ShoppingCart } from "lucide-react";
+import { ChevronDown, Search, ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -38,7 +38,7 @@ const Navbar = () => {
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
-  const [location, setLocation] = useState({});
+  const [location, setLocation] = useState("Select location");
 
   const { setData, data } = useContext(ProfileContext);
   const [searchText, setSearchText] = useState("");
@@ -88,11 +88,23 @@ const Navbar = () => {
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          setLocation(data.address);
-          console.log(location);
+          setLocation(
+            data.address.city ? data.address.city : data.address.town
+          );
+          localStorage.setItem(
+            "location",
+            data.address.city ? data.address.city : data.address.town
+          );
         });
     }
   }, [latitude, longitude]);
+
+  useEffect(() => {
+    const locationData = localStorage.getItem("location");
+    if (locationData) {
+      setLocation(locationData);
+    }
+  }, [location]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -121,13 +133,24 @@ const Navbar = () => {
               >
                 <p className="par-nav">Prana24 </p>
               </div>
-              <div onClick={getGeoLocation}>
-                <p>
-                  {location && location.city
-                    ? location.city
-                    : location.town
-                    ? location.town
-                    : "Pincode"}
+              <div className="navbar-location" onClick={getGeoLocation}>
+                <p className="navbar-deliverTo">Deliver to</p>
+                <p className="navbar-locationText">
+                  {location && location !== "Select location" ? (
+                    location
+                  ) : (
+                    <span
+                      style={{
+                        display: "flex",
+                        gap: "0.25rem",
+                        alignItems: "center",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Select location
+                      <ChevronDown size={15} strokeWidth={2.5} />
+                    </span>
+                  )}
                 </p>
               </div>
             </div>

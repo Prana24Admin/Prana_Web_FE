@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import "../../../assets/css/Home/homeCard.css";
+// import "../../../assets/css/Home/homeCard.css";
 import Med from "../../../assets/images/home/med.jpg";
 import Beauty from "../../../assets/images/home/Beautynew.jpg";
 import Well from "../../../assets/images/home/well.jpg";

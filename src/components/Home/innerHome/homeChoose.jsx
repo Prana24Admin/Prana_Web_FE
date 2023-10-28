@@ -4,7 +4,7 @@ import Location from "../../../assets/images/home/choose/location.jpg";
 import Family from "../../../assets/images/home/choose/family.jpg";
 import Delivery from "../../../assets/images/home/choose/deliveryBoy.jpg";
 import "../../../assets/css/Home/homeChoose.css";
-const Choose = () => {
+const Rating = () => {
   return (
     <>
       <div className="choose">
@@ -59,4 +59,4 @@ const Choose = () => {
     </>
   );
 };
-export default Choose;
+export default Rating;

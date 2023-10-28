@@ -10,7 +10,7 @@ import Huggy from "../assets/images/home/featurebrands/huggy.jpg";
 import Johnson from "../assets/images/home/featurebrands/johnson.jpg";
 import Teddy from "../assets/images/home/featurebrands/teddy.jpg";
 
-export const Brands = [
+export const brands = [
   {
     Image: Accusugar,
     Text: "Accu-Check",

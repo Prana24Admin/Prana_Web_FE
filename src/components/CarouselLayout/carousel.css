@@ -1,6 +1,6 @@
 .carousel .slick-arrow.slick-prev,
 .carousel .slick-arrow.slick-next {
-  background: #fcfcfc;
+  background: var(--pearlWhite);
   width: 2rem;
   height: 2rem;
   display: flex;
@@ -11,13 +11,13 @@
 }
 .carousel .slick-prev {
   left: 0;
-  top: 33%;
+  top: 50%;
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }
 .carousel .slick-next {
   right: 0;
-  top: 33%;
+  top: 50%;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
 }
@@ -40,3 +40,32 @@
   transform: scale(1.1);
   transition: 500ms;
 } */
+.card-borderContainer {
+  width: 15rem;
+  height: 17rem;
+  border: 1px solid var(--cloudGray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  background-color: var(--powderWhite);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.card-image {
+  width: 13rem;
+  height: 11rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  mix-blend-mode: multiply;
+  border-radius: 5px;
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}

@@ -90,7 +90,7 @@ const MultiItemCarousel = ({ multiData }) => {
   }
 
   return (
-    <div style={{ margin: "30px" }} className="carousel">
+    <div style={{ margin: "10px 0" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
           <CarouselCard item={item} />
@@ -103,31 +103,27 @@ const MultiItemCarousel = ({ multiData }) => {
 const CarouselCard = ({ item }) => {
   return (
     <div
-      style={{
-        textAlign: "center",
-        margin: "0rem 0.5rem",
-        borderWidth: 1,
-        borderColor: "black",
-      }}
+      className="card-borderContainer"
+      // style={{
+      //   textAlign: "center",
+      //   margin: "0rem 0.5rem",
+      //   borderWidth: 1,
+      //   borderColor: "black",
+      // }}
     >
       <img
-        className="multi__image"
+        className="card-image"
         src={item.Image}
         alt=""
-        style={{
-          width: "100%",
-          height: "170px",
-          objectFit: "contain",
-          marginBottom: "10px",
-        }}
+
+        // style={{
+        //   width: "100%",
+        //   height: "170px",
+        //   objectFit: "contain",
+        //   marginBottom: "10px",
+        // }}
       />
-      <p style={{ fontSize: "14px", padding: "5px 0" }}>TOP TRNDING TVs</p>
-      <p style={{ fontSize: "16px", padding: "5px 0", color: "green" }}>
-        {item.name}
-      </p>
-      <p style={{ fontSize: "14px", padding: "5px 0", color: "gray" }}>
-        Up To ₹ 5,000 Off on HDFC
-      </p>
+      <p className="card-title">{item.Text}</p>
     </div>
   );
 };

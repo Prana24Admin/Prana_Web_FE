@@ -1,10 +1,6 @@
 .homeCard-consultationContainer {
-  max-width: 1240px;
-  /* display: flex; */
   gap: 2rem;
-  /* align-items: center;
-    justify-content: center; */
-  margin: 3rem auto;
+  margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -31,8 +27,8 @@
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .homeCard-img {
-  width: 7rem;
-  height: 7rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 5px;
   mix-blend-mode: multiply;
 }

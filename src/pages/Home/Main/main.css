@@ -1,0 +1,6 @@
+.max-w-container {
+  padding-top: 12rem;
+  width: 100%;
+  max-width: 1340px;
+  margin: auto;
+}

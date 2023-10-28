@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Arrivals/Register";
 import Home from "./components/Home/index";
@@ -50,10 +50,14 @@ import HealthcareOrders from "./pages/Home/Orders/HealthCareOrders";
 import LabTestOrders from "./pages/Home/Orders/LabTestsOrders";
 import HealthCareOrderDetails from "./pages/Home/Orders/OrderDetails";
 import LabOrderDetails from "./pages/Home/Orders/OrderDetails/LabOrderDetails";
+import ScrollToTop from "./libs/scrollToTop";
+import Main from "./pages/Home/Main";
+// import ScrollToTop from "./libs/scrollToTop";
 
 const Navigation = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -62,6 +66,8 @@ const Navigation = () => {
         <Route path="/Password" element={<PasswordChange />} />
 
         <Route path="/home" element={<Home />} />
+        <Route path="/main" element={<Main />} />
+
         <Route path="/about" element={<AboutIndex />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/career" element={<Careers />} />

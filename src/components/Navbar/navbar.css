@@ -40,7 +40,7 @@
   font-size: 16px !important;
 }
 .par-nav {
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   font-weight: bold;
   /* font-family: "Nunito sans"; */
   font-family: Arial, Helvetica, sans-serif;
@@ -218,4 +218,20 @@ a:link {
 .navbar-searchResultItemCategory {
   font-size: 0.75rem;
   font-weight: 400;
+}
+.navbar-location {
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  /* gap: -0.15rem; */
+}
+.navbar-deliverTo {
+  color: rgb(116, 114, 114);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.navbar-locationText {
+  color: var(--ashGray);
+  font-size: 1.05rem;
+  font-weight: 600;
 }

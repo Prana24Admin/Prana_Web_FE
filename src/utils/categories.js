@@ -5,41 +5,43 @@ import Harpic from "../assets/images/home/shop/harpic.jpg";
 import HealthCondition from "../assets/images/home/shop/healthCondition.jpg";
 import HealthDevices from "../assets/images/home/shop/healthDevices.jpg";
 import Honey from "../assets/images/home/shop/honey.jpg";
+import SeeAll from "../assets/images/VectorImages/More.png";
 
 export const catagories = [
   {
     id: 1,
     Text: "Ayurvedic Care",
     Image: AyurvedicCare,
+    path: "/inner/innerAyur",
   },
   {
     id: 2,
     Text: "Sexual Wellness",
     Image: Durex,
+    path: "/categories/96400832-461f-4df3-b2f0-0501d5c96ead",
   },
   {
     id: 3,
     Text: "Fitness Supplements",
     Image: Evion,
+    path: "/categories/85658ba3-4b0f-4568-a5e3-d993a1227da9",
   },
   {
     id: 4,
     Text: "Home Care",
     Image: Harpic,
+    path: "/categories/8e33ee75-ad8a-4664-a0a9-451a84244be1",
   },
   {
     id: 5,
     Text: "Health Condition",
     Image: HealthCondition,
+    path: "/categories/5ca71f2e-adf6-40b9-b780-ac8c5fa2ce57",
   },
   {
     id: 6,
-    Text: "HealthCare Devices",
-    Image: HealthDevices,
-  },
-  {
-    id: 7,
-    Text: "Health food and drinks",
-    Image: Honey,
+    // Text: "HealthCare Devices",
+    Image: SeeAll,
+    seeAll: "view all",
   },
 ];

@@ -7,9 +7,7 @@ import "./carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-let slidesToShow = 3;
+let slidesToShow = 1;
 
 const PreviousBtn = (props) => {
   console.log(props);
@@ -51,21 +49,21 @@ const carouselProperties = {
     {
       breakpoint: 426,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         centerMode: false,
       },
     },
     {
       breakpoint: 769,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         centerMode: false,
       },
     },
     {
       breakpoint: 1025,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 1,
         centerMode: false,
         slidesToScroll: 2,
       },
@@ -73,7 +71,7 @@ const carouselProperties = {
   ],
 };
 
-const BannerCarousel = ({ multiData }) => {
+const MainBannerCarousel = ({ multiData }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -106,12 +104,21 @@ const BannerCarousel = ({ multiData }) => {
 };
 
 const CarouselCard = ({ item }) => {
-  const navigate = useNavigate();
   return (
-    <div onClick={() => navigate(item.path)}>
-      <img className="banner-image" src={item.Image} alt="banner" />
+    <div>
+      <img
+        // className="banner-image"
+        style={{
+          width: "99%",
+          height: "17rem",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+        src={item.Image}
+        alt="banner"
+      />
     </div>
   );
 };
 
-export default BannerCarousel;
+export default MainBannerCarousel;

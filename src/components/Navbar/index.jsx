@@ -8,7 +8,7 @@ import { ProfileContext } from "../../context/ProfileProvider";
 import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../assets/images/profile/avatar.png";
 import CategoryNav from "./CategoryNav";
-import { ChevronDown, Search, ShoppingCart } from "lucide-react";
+import { ChevronDown, MapPin, Search, ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -133,25 +133,31 @@ const Navbar = () => {
               >
                 <p className="par-nav">Prana24 </p>
               </div>
+
               <div className="navbar-location" onClick={getGeoLocation}>
-                <p className="navbar-deliverTo">Deliver to</p>
-                <p className="navbar-locationText">
-                  {location && location !== "Select location" ? (
-                    location
-                  ) : (
-                    <span
-                      style={{
-                        display: "flex",
-                        gap: "0.25rem",
-                        alignItems: "center",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Select location
-                      <ChevronDown size={15} strokeWidth={2.5} />
-                    </span>
-                  )}
-                </p>
+                <div>
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <p className="navbar-deliverTo">Deliver to</p>
+                  <p className="navbar-locationText">
+                    {location && location !== "Select location" ? (
+                      location
+                    ) : (
+                      <span
+                        style={{
+                          display: "flex",
+                          gap: "0.25rem",
+                          alignItems: "center",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Select location
+                        <ChevronDown size={15} strokeWidth={2.5} />
+                      </span>
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

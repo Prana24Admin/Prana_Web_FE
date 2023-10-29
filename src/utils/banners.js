@@ -19,25 +19,31 @@ export const banners2 = [
   {
     id: 1,
     Image: Flat15,
+    path: "/offers",
   },
   {
     id: 2,
     Image: LabTest,
+    path: "/offers",
   },
   {
     id: 3,
     Image: Liveasy,
+    path: "/offers",
   },
   {
     id: 4,
     Image: Pharm,
+    path: "/offers",
   },
   {
     id: 5,
     Image: Ixigo,
+    path: "/offers",
   },
   {
     id: 6,
     Image: Toothsi,
+    path: "/offers",
   },
 ];

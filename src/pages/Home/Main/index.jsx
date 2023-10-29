@@ -6,16 +6,22 @@ import { brands } from "../../../utils/brands";
 import { quickLinks } from "../../../utils/quickLinks";
 import QuickLinkCard from "../../../components/QuickLinkCard";
 import { quickLabTests } from "../../../utils/quickLabTests";
-import { banners2 } from "../../../utils/banners";
+import { banners1, banners2 } from "../../../utils/banners";
 import Prescription from "../../../components/Home/innerHome/prescription";
 import { catagories } from "../../../utils/categories";
-import Rating from "../../../components/Home/innerHome/homeChoose";
 import BannerCarousel from "../../../components/CarouselLayout/BannerCarousel";
+import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
+import HighLights from "../../../components/Home/innerHome/highLights";
 
 const Main = () => {
   return (
     <MainLayout>
       <div className="max-w-container">
+        {/* ----------------------Banners-------------------------- */}
+        <div>
+          <MainBannerCarousel multiData={banners1} />
+        </div>
+
         {/* ---------------------QuickLinks-------------------- */}
         <div className="homeCard-consultationContainer">
           {quickLinks.map((link) => (
@@ -62,8 +68,13 @@ const Main = () => {
 
         {/* -----------------------Catagories----------------------- */}
         <div>
-          <p className="main-title">Offers Just For You</p>
+          <p className="main-title">Shop By catagories</p>
           <MultiItemCarousel multiData={catagories} />
+        </div>
+
+        {/* ---------------------------Highlights---------------------- */}
+        <div>
+          <HighLights />
         </div>
       </div>
     </MainLayout>

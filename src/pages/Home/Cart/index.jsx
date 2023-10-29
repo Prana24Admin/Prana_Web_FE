@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
 
 import "./cart.css";
-import Error from "../../../assets/images/ErrorPages/404 Error.png";
+// import Error from "../../../assets/images/ErrorPages/404 Error.png";
 
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";

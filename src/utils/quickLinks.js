@@ -8,17 +8,20 @@ export const quickLinks = [
     Image: Med,
     header: "Order Medicine",
     description: "Save upto 25% OFF",
+    path: "/inner/innerMed",
   },
   {
     id: 2,
     Image: Beauty,
     header: "Doctors near you",
     description: "confirmed appointments",
+    path: "/inner/doctor",
   },
   {
     id: 3,
     Image: Well,
-    header: "Surgeries",
-    description: "Safe and trusted surgery centers",
+    header: "Lab Tests",
+    description: "Get your lab tests within a day",
+    path: "/lab",
   },
 ];

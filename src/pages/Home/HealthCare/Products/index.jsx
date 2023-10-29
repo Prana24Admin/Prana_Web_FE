@@ -1,5 +1,5 @@
 import React from "react";
-import Error from "../../../../assets/images/ErrorPages/404 Error.png";
+// import Error from "../../../../assets/images/ErrorPages/404 Error.png";
 import "./products.css";
 
 import { useParams } from "react-router-dom";

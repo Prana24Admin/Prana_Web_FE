@@ -1,13 +1,12 @@
 import React from "react";
 
 import "./quickLinkCard.css";
+import { useNavigate } from "react-router-dom";
 
 const QuickLinkCard = ({ Card }) => {
+  const navigate = useNavigate();
   return (
-    <div
-      className="homeCard-boxContainer"
-      // onClick={navigateVideoConsultant}
-    >
+    <div className="homeCard-boxContainer" onClick={() => navigate(Card.path)}>
       <img className="homeCard-img" src={Card.Image} alt={Card.header} />
       <div
       // style={{ display: "flex", alignItems: "center" }}

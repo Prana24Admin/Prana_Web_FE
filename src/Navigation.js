@@ -52,6 +52,7 @@ import HealthCareOrderDetails from "./pages/Home/Orders/OrderDetails";
 import LabOrderDetails from "./pages/Home/Orders/OrderDetails/LabOrderDetails";
 import ScrollToTop from "./libs/scrollToTop";
 import Main from "./pages/Home/Main";
+import NotFound from "./pages/404";
 // import ScrollToTop from "./libs/scrollToTop";
 
 const Navigation = () => {
@@ -65,8 +66,8 @@ const Navigation = () => {
         <Route path="/otp" element={<OTP />} />
         <Route path="/Password" element={<PasswordChange />} />
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/main" element={<Main />} />
+        {/* <Route path="/home" element={<Home />} /> */}
+        <Route path="/home" element={<Main />} />
 
         <Route path="/about" element={<AboutIndex />} />
         <Route path="/contact" element={<Contact />} />
@@ -114,6 +115,8 @@ const Navigation = () => {
 
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutScreen />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

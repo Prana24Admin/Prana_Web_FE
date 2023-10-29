@@ -4,55 +4,20 @@ import EasyLive from "../assets/images/home/featurebrands/easyLive.png";
 import EasyPharm from "../assets/images/home/featurebrands/easyPharm.jpg";
 import Friend from "../assets/images/home/featurebrands/Friend.jpg";
 import Glucon from "../assets/images/home/featurebrands/Glucon.jpg";
-import Groviva from "../assets/images/home/featurebrands/groviva.jpg";
-import Herb from "../assets/images/home/featurebrands/herbever.png";
-import Huggy from "../assets/images/home/featurebrands/huggy.jpg";
-import Johnson from "../assets/images/home/featurebrands/johnson.jpg";
-import Teddy from "../assets/images/home/featurebrands/teddy.jpg";
 
 export const brands = [
   {
+    id: 1,
     Image: Accusugar,
     Text: "Accu-Check",
   },
   {
+    id: 2,
     Image: Dettol,
     Text: "Dettol",
   },
-  {
-    Image: EasyLive,
-    Text: "LivEasy",
-  },
-  {
-    Image: EasyPharm,
-    Text: "Pharmeasy",
-  },
-  {
-    Image: Friend,
-    Text: "Friends",
-  },
-  {
-    Image: Glucon,
-    Text: "Glucon-D",
-  },
-  {
-    Image: Groviva,
-    Text: "Groviva",
-  },
-  {
-    Image: Herb,
-    Text: "Ever Herb",
-  },
-  {
-    Image: Huggy,
-    Text: "Huggies",
-  },
-  {
-    Image: Johnson,
-    Text: "Johnson baby",
-  },
-  {
-    Image: Teddy,
-    Text: "Teddy",
-  },
+  { id: 3, Image: EasyLive, Text: "LivEasy" },
+  { id: 4, Image: EasyPharm, Text: "Pharmeasy" },
+  { id: 5, Image: Friend, Text: "Friends" },
+  { id: 6, Image: Glucon, Text: "See all" },
 ];

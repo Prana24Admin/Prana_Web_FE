@@ -23,7 +23,10 @@ const Prescription = () => {
               Upload prescription and we will deliver your medicines
             </p>
             <input
-              style={{ margin: "0.5rem 0" }}
+              style={{
+                margin: "0.5rem 0",
+                // backgroundColor: "var(--crimsonPink)",
+              }}
               type="file"
               onChange={handleChange}
             />

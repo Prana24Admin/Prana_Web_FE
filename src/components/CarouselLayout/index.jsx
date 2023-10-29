@@ -6,6 +6,7 @@ import "./carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 let slidesToShow = 5;
 
 const PreviousBtn = (props) => {
@@ -100,10 +101,13 @@ const MultiItemCarousel = ({ multiData }) => {
 };
 
 const CarouselCard = ({ item }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="card-borderContainer">
+    <div className="card-borderContainer" onClick={() => navigate(item.path)}>
       <img className="card-image" src={item.Image} alt="" />
       {item.Text && <p className="card-title">{item.Text}</p>}
+      {item.seeAll && <p className="card-seeAll">{item.seeAll}</p>}
     </div>
   );
 };

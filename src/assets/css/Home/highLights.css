@@ -1,0 +1,27 @@
+.highLights-mainContainer {
+  margin: auto;
+  background-color: var(--powderWhite);
+  padding: 1rem 0;
+}
+.highLights-flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.highLights-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  text-align: center;
+}
+.highLights-image {
+  width: 8rem;
+  height: 7rem;
+  mix-blend-mode: multiply;
+}
+.highLights-description {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  margin-top: 0.5rem;
+}

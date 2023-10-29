@@ -1,7 +1,7 @@
 .max-w-container {
-  padding-top: 12rem;
+  padding-top: 10rem;
   width: 100%;
-  max-width: 1340px;
+  max-width: 1240px;
   margin: auto;
   display: flex;
   flex-direction: column;

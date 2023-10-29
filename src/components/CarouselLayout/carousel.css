@@ -71,8 +71,8 @@
   color: var(--ashGray);
 }
 .banner-image {
-  width: 25rem;
-  height: 13rem;
+  width: 97%;
+  height: 14rem;
   border-radius: 5px;
   cursor: pointer;
 }

@@ -77,7 +77,7 @@ const Navigation = () => {
         <Route path="/offers/payment" element={<Payment />} />
         <Route path="/offers/medicine" element={<Medicine />} />
         <Route path="/offers/diagnostic" element={<Diagnostic />} />
-        <Route path="/offers/healthCare" element={<HealthCare />} />
+        <Route path="/offers/healthcare" element={<HealthCare />} />
 
         <Route path="/prescription" element={<Prescription />} />
         <Route path="/inner/innerMed" element={<InnerMed />} />
@@ -94,8 +94,8 @@ const Navigation = () => {
         <Route path="/inner/doctor/finddoctor" element={<FindDoctor />} />
         <Route path="/inner/doctor/appointment" element={<Appointment />} />
 
-        <Route path="/inner/healthCare" element={<HealthCareIndex />} />
-        <Route path="/categories/:id" element={<Products />} />
+        <Route path="/healthcare" element={<HealthCareIndex />} />
+        <Route path="/healthcare/categories/:id" element={<Products />} />
         <Route path="/product/:id" element={<Product />} />
 
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />

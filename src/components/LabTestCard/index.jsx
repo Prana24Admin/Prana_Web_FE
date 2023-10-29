@@ -62,7 +62,7 @@ const LabTestCard = ({
     const response = await axiosInstance.delete(
       `/cart/labcart/${filteredSelectedTest[0].uuid}`
     );
-    console.log(response.data);
+
     return response.data;
   };
   const { mutate: mutateLabRemove, isLoading: isRemoveLoading } = useMutation(
@@ -81,7 +81,7 @@ const LabTestCard = ({
       className="testCard-container"
       onClick={() => navigate(`/lab/test/${test.uuid}`)}
     >
-      <div onClick={() => console.log("click")}>
+      <div>
         <p className="testCard-testName">{test.name}</p>
         <p className="testCard-description">{test.content}</p>
         <div className="testCard-report">

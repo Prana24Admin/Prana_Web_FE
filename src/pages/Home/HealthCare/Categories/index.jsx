@@ -29,7 +29,9 @@ const Categories = () => {
                 <div
                   key={category.id}
                   className="categories-card"
-                  onClick={() => navigate(`/categories/${category.uuid}`)}
+                  onClick={() =>
+                    navigate(`/healthcare/categories/${category.uuid}`)
+                  }
                 >
                   <div className="categories-innerContainer">
                     <div>

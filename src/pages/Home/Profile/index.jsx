@@ -17,7 +17,6 @@ const Profile = ({ children }) => {
 
   const imageUpload = async () => {
     if (!imageRef.current || !imageRef.current.files[0]) {
-      console.log("No file selected.");
       return;
     }
     const formData = new FormData();

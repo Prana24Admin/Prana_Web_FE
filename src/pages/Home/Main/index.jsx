@@ -8,7 +8,7 @@ import QuickLinkCard from "../../../components/QuickLinkCard";
 import { quickLabTests } from "../../../utils/quickLabTests";
 import { banners1, banners2 } from "../../../utils/banners";
 import Prescription from "../../../components/Home/innerHome/prescription";
-import { catagories } from "../../../utils/categories";
+import { categories } from "../../../utils/categories";
 import BannerCarousel from "../../../components/CarouselLayout/BannerCarousel";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import HighLights from "../../../components/Home/innerHome/highLights";
@@ -68,8 +68,8 @@ const Main = () => {
 
         {/* -----------------------Catagories----------------------- */}
         <div>
-          <p className="main-title">Shop By catagories</p>
-          <MultiItemCarousel multiData={catagories} />
+          <p className="main-title">Shop By categories</p>
+          <MultiItemCarousel multiData={categories} />
         </div>
 
         {/* ---------------------------Highlights---------------------- */}

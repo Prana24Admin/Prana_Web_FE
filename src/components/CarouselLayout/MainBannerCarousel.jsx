@@ -10,7 +10,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 let slidesToShow = 1;
 
 const PreviousBtn = (props) => {
-  console.log(props);
   const { className, onClick, currentSlide } = props;
   return (
     <>
@@ -24,7 +23,7 @@ const PreviousBtn = (props) => {
 };
 const NextBtn = (props) => {
   const { className, onClick, slideCount, currentSlide } = props;
-  console.log(props);
+
   return (
     <>
       {currentSlide !== slideCount - slidesToShow && (

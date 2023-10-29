@@ -64,8 +64,6 @@ export const placeLabCartOrder = async (
       return test.lab_test.uuid;
     });
 
-    console.log(tests);
-
     const formData = new FormData();
 
     formData.append("lab_test_ids", JSON.stringify(tests));

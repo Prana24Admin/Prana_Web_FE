@@ -110,7 +110,6 @@ const Navbar = () => {
     const fetchData = async () => {
       const response = await axiosInstance.get(`/home?search=${searchText}`);
       setSearchResult(response.data);
-      console.log(searchResult);
     };
     const delay = 800;
     const debounce = setTimeout(() => {
@@ -274,41 +273,28 @@ const Navbar = () => {
                   )}
 
                   <div className="dropdown-content">
-                    <a
-                      className="dropdowntext"
-                      onClick={() => navigate("/profile")}
-                    >
+                    <Link className="dropdowntext" to={"/profile"}>
                       Your Profile
-                    </a>
-                    <a
-                      className="dropdowntext"
-                      onClick={() => navigate("/healthcare/orders")}
-                    >
+                    </Link>
+                    <Link className="dropdowntext" to={"/healthcare/orders"}>
                       Your Orders
-                    </a>
-                    <a
-                      className="dropdowntext"
-                      onClick={() => navigate("/wishlist")}
-                    >
+                    </Link>
+                    <Link className="dropdowntext" to={"/wishlist"}>
                       Favorites
-                    </a>
+                    </Link>
                     <div>
                       {data ? (
                         <a className="dropdowntext" onClick={handleLogout}>
                           Logout
                         </a>
                       ) : (
-                        <a
-                          className="dropdowntext"
-                          onClick={() => navigate("/login")}
-                        >
+                        <Link className="dropdowntext" to={"/login"}>
                           Login
-                        </a>
+                        </Link>
                       )}
                     </div>
                   </div>
                 </div>
-
                 <div>
                   <li>
                     <FloatingWhatsApp />

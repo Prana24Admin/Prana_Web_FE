@@ -21,7 +21,7 @@ const HomeItems = () => {
     navigate("/lab");
   };
   const navigateHealthCare = () => {
-    navigate("/inner/healthCare");
+    navigate("/healthcare");
   };
   const navigateHealthBlog = () => {
     navigate("/inner/healthBlog");

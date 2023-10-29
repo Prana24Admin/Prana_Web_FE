@@ -140,7 +140,7 @@ const ProfileAddress = () => {
         isOpen={isOpen}
         onClose={onClose}
         btnRef={btnRef}
-        header={"Add an address"}
+        header={method === "add" ? "Add address" : "Edit address"}
         drawerBody={
           <AddressDrawer
             method={method}

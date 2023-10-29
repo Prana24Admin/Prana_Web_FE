@@ -44,7 +44,7 @@ const Offers = () => {
           </Link>
         </div>
         <div className="d-flex flex-column col-offer">
-          <Link to="/offers/healthCare">
+          <Link to="/offers/healthcare">
             {" "}
             <p className="col-term">Health Care</p>
           </Link>

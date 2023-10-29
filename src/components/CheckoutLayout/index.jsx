@@ -51,7 +51,6 @@ const CheckoutLayout = ({ children, cartData }) => {
         orderDropdown: true,
         paymentDropdown: false,
       });
-      console.log(JSON.parse(address));
     }
   };
 
@@ -125,7 +124,6 @@ const CheckoutLayout = ({ children, cartData }) => {
                         checked={address === JSON.stringify(data.address)}
                         onChange={(e) => {
                           setAddress(e.target.value);
-                          // console.log(address);
                         }}
                       />
                       <div className="checkout-addressFlexCol">

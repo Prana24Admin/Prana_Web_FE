@@ -5,6 +5,8 @@
   position: fixed;
   z-index: 100;
   width: 100%;
+  /* max-width: 1340px; */
+  /* margin: auto; */
   font-family: Arial, Helvetica, sans-serif;
 }
 .headerFlex {
@@ -21,7 +23,7 @@
   position: fixed;
 }
 .sp-opt {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   font-size: 16px !important;
 }
 .par-nav {
@@ -105,16 +107,7 @@ a:link {
     background-color: yellow;
     color:black
   } */
-@media screen and (max-width: 768px) {
-  .header {
-    padding-left: 0px;
-    display: flex;
-    align-items: center;
-  }
-  .nav_child li {
-    padding-right: 20px;
-  }
-}
+
 .nav-dropdown {
   position: relative;
   display: inline-block;

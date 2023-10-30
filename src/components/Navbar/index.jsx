@@ -9,6 +9,9 @@ import { useQuery } from "@tanstack/react-query";
 import Avatar from "../../assets/images/profile/avatar.png";
 import CategoryNav from "./CategoryNav";
 import { ChevronDown, MapPin, Search, ShoppingCart } from "lucide-react";
+import { useDisclosure } from "@chakra-ui/react";
+import Slider from "../Slider";
+import ZipCodeDrawer from "../Slider/ZipCodeDrawer";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -35,6 +38,9 @@ const Navbar = () => {
   const navigateCart = () => {
     navigate("/cart");
   };
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
@@ -133,7 +139,7 @@ const Navbar = () => {
                 <p className="par-nav">Prana24 </p>
               </div>
 
-              <div className="navbar-location" onClick={getGeoLocation}>
+              <div className="navbar-location" onClick={onOpen}>
                 <div>
                   <MapPin size={20} />
                 </div>
@@ -306,6 +312,13 @@ const Navbar = () => {
         </div>
         <CategoryNav />
       </div>
+      <Slider
+        isOpen={isOpen}
+        onClose={onClose}
+        btnRef={btnRef}
+        header={"Choose your Location"}
+        drawerBody={<ZipCodeDrawer />}
+      />
     </>
   );
 };

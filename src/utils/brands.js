@@ -4,6 +4,7 @@ import EasyLive from "../assets/images/home/featurebrands/easyLive.png";
 import EasyPharm from "../assets/images/home/featurebrands/easyPharm.jpg";
 import Friend from "../assets/images/home/featurebrands/Friend.jpg";
 import Glucon from "../assets/images/home/featurebrands/Glucon.jpg";
+import SeeAll from "../assets/images/VectorImages/More.png";
 
 export const brands = [
   {
@@ -19,5 +20,6 @@ export const brands = [
   { id: 3, Image: EasyLive, Text: "LivEasy" },
   { id: 4, Image: EasyPharm, Text: "Pharmeasy" },
   { id: 5, Image: Friend, Text: "Friends" },
-  { id: 6, Image: Glucon, Text: "See all" },
+  { id: 6, Image: Glucon, Text: "Glucon D" },
+  { id: 7, Image: SeeAll, seeAll: "view more" },
 ];

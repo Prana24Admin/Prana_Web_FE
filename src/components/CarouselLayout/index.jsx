@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-let slidesToShow = 5;
+let slidesToShow = 6;
 
 const PreviousBtn = (props) => {
   const { className, onClick, currentSlide } = props;

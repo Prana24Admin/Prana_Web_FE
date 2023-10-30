@@ -35,10 +35,10 @@
   cursor: pointer;
   background-color: var(--white);
   position: relative;
-  transition: 0.1s;
+  transition: 0.3s ease-in-out;
 }
 .wishlist-cardContainer {
-  /* height: 200px; */
+  height: 200px;
   /* padding: 0.75rem; */
   border-radius: 5px;
   border: 1px solid var(--cloudGray);
@@ -46,10 +46,10 @@
   background-color: var(--white);
   position: relative;
   z-index: 100;
-  transition: 0.1s;
+  transition: 0.3s ease-in-out;
 }
 .favorites-cardContainer:hover {
-  scale: 1.034;
+  scale: 1.03;
 }
 .favorites-image {
   height: 100%;

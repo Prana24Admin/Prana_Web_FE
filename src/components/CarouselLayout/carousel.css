@@ -62,6 +62,36 @@
 .card-borderContainer:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+.productCard-borderContainer {
+  width: 90%;
+  height: 20rem;
+  border: 1px solid var(--lightGray);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 0.5rem;
+  border-radius: 5px;
+  padding: 0.75rem;
+  /* gap: 1rem; */
+  /* background-color: var(--powderWhite); */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Libre Franklin";
+
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+}
+.productCard-borderContainer:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.productCard-selectButton {
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  border-radius: 5px;
+  padding: 0.25rem 1rem;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .card-image {
   /* width: 13rem; */
   width: 100%;

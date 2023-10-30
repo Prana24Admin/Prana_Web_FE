@@ -10,7 +10,7 @@ const Prescription = () => {
   return (
     <>
       <div className="prescription-mainContainer">
-        <p className="main-title">Order with prescription</p>
+        {/* <p className="main-title">Order with prescription</p> */}
         <div className="prescription-flexContainer">
           <div>
             <img className="prescription-image" src={Upload} alt="Pres" />

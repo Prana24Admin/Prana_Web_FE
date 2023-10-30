@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Upload from "../../../assets/images/home/upload.jpg";
 import "../../../assets/css/Home/homePaymentOffers.css";
+
 const Prescription = () => {
   const [file, setFile] = useState();
   function handleChange(e) {

@@ -19,7 +19,7 @@ const MedicineIndex = () => {
         style={{
           maxWidth: "1240px",
           margin: "auto",
-          paddingTop: "10rem",
+          paddingTop: "12rem",
         }}
       >
         <div>

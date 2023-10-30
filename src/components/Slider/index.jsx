@@ -9,7 +9,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const Slider = ({ isOpen, onClose, btnRef, drawerBody, header }) => {
+const Slider = ({ isOpen, onClose, btnRef, drawerBody, header, css }) => {
   return (
     <Drawer
       isOpen={isOpen}
@@ -19,7 +19,7 @@ const Slider = ({ isOpen, onClose, btnRef, drawerBody, header }) => {
       size={"sm"}
     >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent {...css}>
         <DrawerCloseButton />
         <DrawerHeader
           borderBottom={"1px"}

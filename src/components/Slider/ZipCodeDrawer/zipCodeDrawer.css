@@ -1,0 +1,35 @@
+.zipCodeContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.zipCodeInput {
+  padding: 0.75rem;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 100%;
+  border: 1px solid var(--cloudGray);
+}
+
+.zipCodeInput:placeholder-shown {
+  padding-left: 1rem;
+}
+
+.checkButton {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  background-color: var(--crimsonPink);
+  border-radius: 0px 5px 5px 0;
+  padding: 0.75rem 2rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.tagLineContainer {
+  background-color: var(--rosePink);
+  padding: 1rem;
+  border-radius: 5px;
+}

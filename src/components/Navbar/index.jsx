@@ -42,8 +42,8 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  // const [latitude, setLatitude] = useState(null);
+  // const [longitude, setLongitude] = useState(null);
   const [location, setLocation] = useState("Select location");
 
   const { setData, data } = useContext(ProfileContext);
@@ -72,38 +72,38 @@ const Navbar = () => {
     }
   };
 
-  const getGeoLocation = () => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-        },
-        function (error) {
-          console.error("Error getting location: " + error.message);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  };
+  // const getGeoLocation = () => {
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       function (position) {
+  //         setLatitude(position.coords.latitude);
+  //         setLongitude(position.coords.longitude);
+  //       },
+  //       function (error) {
+  //         console.error("Error getting location: " + error.message);
+  //       }
+  //     );
+  //   } else {
+  //     console.error("Geolocation is not supported by this browser.");
+  //   }
+  // };
 
-  useEffect(() => {
-    if (latitude !== null && longitude !== null) {
-      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          setLocation(
-            data.address.city ? data.address.city : data.address.town
-          );
-          localStorage.setItem(
-            "location",
-            data.address.city ? data.address.city : data.address.town
-          );
-        });
-    }
-  }, [latitude, longitude]);
+  // useEffect(() => {
+  //   if (latitude !== null && longitude !== null) {
+  //     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+  //     fetch(url)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         setLocation(
+  //           data.address.city ? data.address.city : data.address.town
+  //         );
+  //         localStorage.setItem(
+  //           "location",
+  //           data.address.city ? data.address.city : data.address.town
+  //         );
+  //       });
+  //   }
+  // }, [latitude, longitude]);
 
   useEffect(() => {
     const locationData = localStorage.getItem("location");
@@ -317,7 +317,18 @@ const Navbar = () => {
         onClose={onClose}
         btnRef={btnRef}
         header={"Choose your Location"}
-        drawerBody={<ZipCodeDrawer />}
+        css={{
+          height: "40vh",
+          margin: "auto 0.5rem",
+        }}
+        drawerBody={
+          <ZipCodeDrawer
+            isOpen
+            onClose={onClose}
+            setLocation={setLocation}
+            location={location}
+          />
+        }
       />
     </>
   );

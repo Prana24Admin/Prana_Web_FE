@@ -1,6 +1,4 @@
 import React from "react";
-import LabSlide from "./labSlide";
-import Booking from "./booking";
 import Slider from "../../../components/Inner/Medicine/medicineSlider";
 import Test from "./test";
 import LabHealth from "./labHealth";
@@ -8,42 +6,32 @@ import Package from "./package";
 import Happy from "./happyCustomers";
 import Download from "../../../components/Home/innerHome/homeDownload";
 
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/Footer";
 import CartBox from "./CartBox/CartBox";
+import MainLayout from "../../../components/MainLayout";
+import MedicineSlider from "../../../components/Inner/Medicine/medicineSlider";
 
 const LabIndex = () => {
   return (
     <>
-      <Navbar />
-      <CartBox />
-      <div style={{ paddingTop: "2rem" }}>
-        <LabSlide />
-      </div>
-      <div>
-        <Booking />
-      </div>
-      <div style={{ margin: "20px 0px" }}>
-        <Slider />
-      </div>
-      <div>
-        <Test />
-      </div>
-      <div>
-        <LabHealth />
-      </div>
-      <div>
-        <Package />
-      </div>
-      <div>
-        <Happy />
-      </div>
-      <div>
-        <Download />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <MainLayout>
+        <div
+          style={{
+            maxWidth: "1240px",
+            margin: "auto",
+          }}
+        >
+          <div style={{ marginBottom: "1rem" }}>
+            <CartBox />
+          </div>
+          <MedicineSlider />
+          <Test />
+          <LabHealth />
+          <Package />
+          <div style={{ marginTop: "1.5rem" }}>
+            <Download />
+          </div>
+        </div>
+      </MainLayout>
     </>
   );
 };

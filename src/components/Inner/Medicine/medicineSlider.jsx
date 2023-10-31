@@ -6,7 +6,7 @@ import { MedicineBanner } from "../../../utils/banners";
 
 const MedicineSlider = () => {
   return (
-    <div style={{ paddingTop: "10rem", maxWidth: "1240px", margin: "auto" }}>
+    <div>
       <MainBannerCarousel multiData={MedicineBanner} />
     </div>
   );

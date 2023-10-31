@@ -1,7 +1,6 @@
 .categories-container {
   height: 100%;
   width: 100%;
-  padding-top: 12rem;
 }
 
 .categories-marginContainer {
@@ -34,11 +33,13 @@
 .categories-innerContainer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   height: 100%;
   width: 100%;
 }
-
+.categories-leftContainer {
+  width: 40%;
+}
 .categories-image {
   border-radius: 50%;
 }
@@ -52,4 +53,5 @@
   font-size: 1rem;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--ashGray);
 }

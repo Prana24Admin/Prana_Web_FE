@@ -8,8 +8,12 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Image from "../../assets/images/doctor/doctor.png";
+import { useNavigate } from "react-router-dom";
+import { useDisclosure } from "@chakra-ui/react";
 
-const CartCard = ({ cartItem, labItem = null }) => {
+const CartCard = ({ onOpen, cartItem, labItem = null }) => {
+  const navigate = useNavigate();
+
   const pathName = window.location.pathname;
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -95,11 +99,13 @@ const CartCard = ({ cartItem, labItem = null }) => {
           <div className="cart-quantityContainerFlex">
             <div
               className="cart-removeButtonContainer"
-              onClick={() =>
-                pathName.includes("/lab")
-                  ? removeLabCartItem(labItem.uuid)
-                  : removeCartItem(cartItem.uuid)
-              }
+              // onClick={() =>
+              //   pathName.includes("/lab")
+              //     ? removeLabCartItem(labItem.uuid)
+              //     : removeCartItem(cartItem.uuid)
+              // }
+              // onClick={()=>}
+              onClick={onOpen}
             >
               <Trash2 size={15} />
               <p className="cart-removeText">REMOVE</p>

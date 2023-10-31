@@ -285,9 +285,9 @@ const Navbar = () => {
                     <Link className="dropdowntext" to={"/healthcare/orders"}>
                       Your Orders
                     </Link>
-                    <Link className="dropdowntext" to={"/wishlist"}>
+                    {/* <Link className="dropdowntext" to={"/wishlist"}>
                       Favorites
-                    </Link>
+                    </Link> */}
                     <div>
                       {data ? (
                         <a className="dropdowntext" onClick={handleLogout}>

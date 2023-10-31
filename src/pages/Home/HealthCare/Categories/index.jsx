@@ -2,6 +2,8 @@ import React from "react";
 
 import "react-multi-carousel/lib/styles.css";
 
+import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
+
 // import "../../../assets/css/Health/healthCare.css";
 import "./categories.css";
 import axiosInstance from "../../../../libs/axios";
@@ -34,10 +36,11 @@ const Categories = () => {
                   }
                 >
                   <div className="categories-innerContainer">
-                    <div>
+                    <div className="categories-leftContainer">
                       <img
                         loading="lazy"
-                        src={category.image}
+                        // src={category.image}
+                        src={ImageP}
                         width="90"
                         height="90"
                         alt={category.name}

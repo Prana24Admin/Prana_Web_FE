@@ -34,7 +34,7 @@ const ProductItem = ({ product, method, wishlistItem = null }) => {
           </p>
         </div>
       </div>
-      <div
+      {/* <div
         onClick={() =>
           wishlistItem ? method(wishlistItem.uuid) : method(product.uuid)
         }
@@ -44,7 +44,7 @@ const ProductItem = ({ product, method, wishlistItem = null }) => {
           fill={wishlistItem ? "var(--crimsonPink)" : "var(--powderWhite)"}
           size={35}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

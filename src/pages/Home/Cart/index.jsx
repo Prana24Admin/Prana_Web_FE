@@ -7,7 +7,6 @@ import "./cart.css";
 
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import { BadgePercent, IndianRupee } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,12 +17,16 @@ import Slider from "../../../components/Slider";
 
 import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
 import Bill from "../../../components/Bill";
+import RemoveModal from "../../../components/Modals/RemoveModal";
 
 const Cart = () => {
+  const {
+    isOpen: removeIsOpen,
+    onOpen: removeOnOpen,
+    onClose: removeOnClose,
+  } = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
-  const navigate = useNavigate();
 
   const fetchCart = async () => {
     const response = await axiosInstance.get("/cart");
@@ -95,11 +98,20 @@ const Cart = () => {
                   <div className="cart-cardContainer">
                     <p className="main-head-title">Items in Your cart</p>
                     {data.map((item) => (
-                      <CartCard
-                        key={item.product.uuid}
-                        cartItem={item}
-                        labItem={null}
-                      />
+                      <>
+                        <CartCard
+                          key={item.product.uuid}
+                          cartItem={item}
+                          labItem={null}
+                          onOpen={removeOnOpen}
+                        />
+                        <RemoveModal
+                          product={item}
+                          isOpen={removeIsOpen}
+                          onClose={removeOnClose}
+                          onOpen={removeOnOpen}
+                        />
+                      </>
                     ))}
                   </div>
                   <div className="cart-rightContainer">

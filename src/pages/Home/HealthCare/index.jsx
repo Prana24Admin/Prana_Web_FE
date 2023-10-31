@@ -7,30 +7,29 @@ import HealthTxt from "./healthTxt";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 import Categories from "./Categories";
+import MainLayout from "../../../components/MainLayout";
+import MedicineSlider from "../../../components/Inner/Medicine/medicineSlider";
 // import Categories from "./Categories";
 
 const HealthCareIndex = () => {
   return (
     <>
-      <Navbar />
-      <div>
-        <Categories />
-      </div>
-      <div>
-        <HealthSlide />
-      </div>
-      <div>
-        <Health />
-      </div>
-      <div>
-        <Video />
-      </div>
-      <div>
-        <HealthTxt />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <MainLayout>
+        <div
+          style={{ maxWidth: "1240px", margin: "auto", paddingTop: "11rem" }}
+        >
+          <div style={{ marginBottom: "2rem" }}>
+            <MedicineSlider />
+          </div>
+          <div style={{ marginBottom: "2rem" }}>
+            <Categories />
+          </div>
+          {/* <HealthSlide /> */}
+          {/* <Health /> */}
+          {/* <Video /> */}
+          {/* <HealthTxt /> */}
+        </div>
+      </MainLayout>
     </>
   );
 };

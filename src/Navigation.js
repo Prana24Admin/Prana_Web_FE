@@ -53,6 +53,8 @@ import LabOrderDetails from "./pages/Home/Orders/OrderDetails/LabOrderDetails";
 import ScrollToTop from "./libs/scrollToTop";
 import Main from "./pages/Home/Main";
 import NotFound from "./pages/404";
+import DoctorNearMe from "./components/Doctor/DoctorNearMe";
+import DoctorProfile from "./pages/Home/Doctor/DoctorProfile";
 // import ScrollToTop from "./libs/scrollToTop";
 
 const Navigation = () => {
@@ -82,7 +84,7 @@ const Navigation = () => {
         <Route path="/prescription" element={<Prescription />} />
         <Route path="/inner/innerMed" element={<InnerMed />} />
         <Route path="/inner/innerAyur" element={<InnerAyur />} />
-        <Route path="/inner/doctor" element={<Doctor />} />
+        <Route path="/doctor" element={<Doctor />} />
 
         <Route path="/lab" element={<InnerLab />} />
         <Route path="/lab/all-tests" element={<LabTests />} />
@@ -91,7 +93,9 @@ const Navigation = () => {
         <Route path="/lab/checkout" element={<LabTestCheckout />} />
 
         <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
-        <Route path="/inner/doctor/finddoctor" element={<FindDoctor />} />
+        <Route path="/doctor/specialization/:id" element={<FindDoctor />} />
+        <Route path="/doctor/near-me" element={<DoctorNearMe />} />
+        <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
         <Route path="/inner/doctor/appointment" element={<Appointment />} />
 
         <Route path="/healthcare" element={<HealthCareIndex />} />

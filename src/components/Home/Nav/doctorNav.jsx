@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const DoctorNav = () => {
   const navigate = useNavigate();
   const navigateDoctor = () => {
-    navigate("/inner/doctor/finddoctor");
+    navigate("/doctor/finddoctor");
   };
   const navigateVideo = () => {
     navigate("/inner/doctor/consultant");

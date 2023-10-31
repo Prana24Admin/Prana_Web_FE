@@ -15,7 +15,7 @@ export const quickLinks = [
     Image: Beauty,
     header: "Doctors near you",
     description: "confirmed appointments",
-    path: "/inner/doctor",
+    path: "/doctor",
   },
   {
     id: 3,

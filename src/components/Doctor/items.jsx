@@ -15,7 +15,7 @@ const DoctorItem = () => {
     navigate("/inner/doctor/consultant");
   };
   const navigateDoctor = () => {
-    navigate("/inner/doctor/finddoctor");
+    navigate("/doctor/finddoctor");
   };
   const navigateMedicine = () => {
     navigate("/inner/innerMed");
@@ -30,30 +30,35 @@ const DoctorItem = () => {
       Image: Video,
       header: "Video Consultation",
       description: "connect within 60sec",
+      path: "/doctor",
     },
     {
       id: 2,
       Image: Near,
       header: "Doctors near you",
       description: "confirmed appointments",
+      path: "/doctor/near-me",
     },
     {
       id: 3,
       Image: Surgery,
       header: "Surgeries",
       description: "Safe and trusted surgery centers",
+      path: "/doctor",
     },
     {
       id: 4,
       Image: Lab,
       header: "Lab Tests",
       description: "Sample pickup at your home",
+      path: "/lab/all-tests",
     },
     {
       id: 5,
       Image: Medicine,
       header: "Medicines",
       description: "Essentials at your door steps",
+      path: "/medicine",
     },
   ];
 
@@ -65,7 +70,7 @@ const DoctorItem = () => {
             <div
               key={doctorCard.id}
               className="items-boxContainer"
-              onClick={navigateVideoConsultant}
+              onClick={() => navigate(doctorCard.path)}
             >
               <img
                 className="items-img"

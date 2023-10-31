@@ -50,7 +50,7 @@ const CategoryNav = () => {
       id: 5,
       name: "Doctor",
       Icon: Stethoscope,
-      path: "/inner/doctor",
+      path: "/doctor",
       active: pathName.includes("/doctor"),
     },
     {

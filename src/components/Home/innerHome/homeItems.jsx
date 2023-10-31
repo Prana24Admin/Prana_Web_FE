@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const HomeItems = () => {
   const navigate = useNavigate();
   const navigateDoctor = () => {
-    navigate("/inner/doctor");
+    navigate("/doctor");
   };
   const navigateMedicine = () => {
     navigate("/inner/innerMed");

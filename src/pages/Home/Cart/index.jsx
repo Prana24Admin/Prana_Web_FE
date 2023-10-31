@@ -103,72 +103,32 @@ const Cart = () => {
                     ))}
                   </div>
                   <div className="cart-rightContainer">
-                    <div style={{ position: "relative" }}>
-                      <Button
-                        ref={btnRef}
-                        borderColor={"var(--cloudGray)"}
-                        borderWidth={"1px"}
-                        colorScheme="teal"
-                        justifyContent={"space-between"}
-                        onClick={onOpen}
-                        width={"100%"}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.3rem",
-                          }}
-                        >
-                          <BadgePercent size={18} />
-                          {selectedCoupon
-                            ? selectedCoupon.code
-                            : "Apply Coupon"}
-                        </div>
-                      </Button>
-
-                      {selectedCoupon && (
-                        <button
-                          onClick={handleRemoveCoupon}
-                          className="cart-couponRemoveButton"
-                        >
-                          Remove
-                        </button>
-                      )}
-                    </div>
-
                     {/* Bill */}
                     <Bill
                       subTotal={subTotal}
                       couponValue={couponValue}
                       selectedCoupon={selectedCoupon}
-                    />
-
-                    <div className="cart-savingsContainer">
-                      <IndianRupee size={15} className="cart-ruppeIcon" />
-                      <p className="cart-savingsText">
-                        Total savings of{" "}
-                        <span style={{ fontWeight: "bold" }}>₹324</span> on this
-                        order
-                      </p>
-                    </div>
-                    <Slider
-                      onClose={onClose}
-                      isOpen={isOpen}
                       btnRef={btnRef}
-                      header={"Apply Coupon"}
-                      drawerBody={
-                        <CouponDrawer
-                          selectedCoupon={selectedCoupon}
-                          setSelectedCoupon={setSelectedCoupon}
-                          onClose={onClose}
-                        />
-                      }
+                      handleRemoveCoupon={handleRemoveCoupon}
+                      onOpen={onOpen}
                     />
                   </div>
                 </>
               ))}
           </div>
+          <Slider
+            onClose={onClose}
+            isOpen={isOpen}
+            btnRef={btnRef}
+            header={"Apply Coupon"}
+            drawerBody={
+              <CouponDrawer
+                selectedCoupon={selectedCoupon}
+                setSelectedCoupon={setSelectedCoupon}
+                onClose={onClose}
+              />
+            }
+          />
         </div>
         {error && <img className="vector-image" src={Error} alt="Error" />}
       </section>

@@ -9,7 +9,7 @@
 }
 .doctorProfile-leftContainer {
   width: 60%;
-  border: 1px solid var(--cloudGray);
+  /* border: 1px solid var(--cloudGray); */
   padding: 1rem 1rem;
 }
 .doctorProfile-flexContainer {
@@ -18,23 +18,73 @@
 }
 .doctorProfile-rightContainer {
   width: 40%;
-  border: 1px solid var(--cloudGray);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  /* border: 1px solid var(--cloudGray); */
 }
 .doctorProfile-header {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--neutralBlack);
   /* margin: 0.5rem 0; */
 }
 .doctorProfile-subheader {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   margin: 0.15rem 0;
   font-weight: 600;
   color: var(--ashGray);
 }
 .doctorProfile-description {
   /* margin: 0.5rem 0; */
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--ashGray);
+}
+.doctorProfile-boxContainer {
+  background-color: var(--powderWhite);
+  /* border: 1px solid var(--cloudGray); */
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+.doctorProfile-flexAppointment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cloudGray);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+}
+.doctorProfile-clinicDetails {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.doctorProfile-timeSlotContainer {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+.doctorProfile-timeText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.25rem;
+  background-color: var(--powderWhite);
+  color: var(--crimsonPink);
+  transition: 0.3s ease-in-out;
+  border: 1px solid var(--crimsonPink);
+  cursor: pointer;
+}
+.doctorProfile-timeText:hover {
+  border: 1px solid var(--crimsonPink);
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
 }

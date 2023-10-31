@@ -18,6 +18,21 @@ import InnerMed5 from "../assets/images/inner/med/innermed-img5.jpg";
 import InnerMed6 from "../assets/images/inner/med/innermed-img6.jpg";
 import InnerMed7 from "../assets/images/inner/med/innermed-img7.jpg";
 
+import HealthSlide from "../assets/images/blog/healthSlide.jpg";
+import HealthSlide1 from "../assets/images/blog/healthSlide1.jpg";
+import HealthSlide2 from "../assets/images/blog/healthSlide2.jpg";
+
+import ExploreSlide from "../assets/images/blog/category/category.jpg";
+import ExploreSlide2 from "../assets/images/blog/category/category2.jpg";
+import ExploreSlide1 from "../assets/images/blog/category/category1.jpg";
+import ExploreSlide3 from "../assets/images/blog/category/category3.jpg";
+import ExploreSlide4 from "../assets/images/blog/category/category4.jpg";
+
+import Slide1 from "../assets/images/inner/ayurveda/slide1.jpg";
+import Slide2 from "../assets/images/inner/ayurveda/slide2.jpg";
+import Slide3 from "../assets/images/inner/ayurveda/slide3.jpg";
+import Slide4 from "../assets/images/inner/ayurveda/slide4.jpg";
+
 export const banners1 = [
   { id: 1, Image: Taj },
   { id: 2, Image: Great },
@@ -59,27 +74,46 @@ export const banners2 = [
 
 export const MedicineBanner = [
   {
+    id: 1,
     Image: InnerMed,
   },
-  {
-    Image: InnerMed1,
-  },
-  {
-    Image: InnerMed2,
-  },
-  {
-    Image: InnerMed3,
-  },
-  {
-    Image: InnerMed4,
-  },
-  {
-    Image: InnerMed5,
-  },
-  {
-    Image: InnerMed6,
-  },
+  { id: 2, Image: InnerMed1 },
+  { id: 3, Image: InnerMed2 },
+  { id: 4, Image: InnerMed3 },
+  { id: 5, Image: InnerMed4 },
+  { id: 6, Image: InnerMed5 },
+  { id: 7, Image: InnerMed6 },
   {
     Image: InnerMed7,
   },
+];
+
+export const blogSlider = [
+  {
+    id: 1,
+    Image: HealthSlide,
+  },
+  { id: 2, Image: HealthSlide1 },
+  { id: 3, Image: HealthSlide2 },
+];
+
+export const blogSlideBanner = [
+  {
+    id: 1,
+    Image: ExploreSlide,
+  },
+  { id: 2, Image: ExploreSlide1 },
+  { id: 3, Image: ExploreSlide2 },
+  { id: 4, Image: ExploreSlide3 },
+  { id: 5, Image: ExploreSlide4 },
+];
+
+export const ayurvedaSlider = [
+  {
+    id: 1,
+    Image: Slide1,
+  },
+  { id: 2, Image: Slide2 },
+  { id: 3, Image: Slide3 },
+  { id: 4, Image: Slide4 },
 ];

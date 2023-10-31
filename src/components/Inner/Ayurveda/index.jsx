@@ -9,35 +9,42 @@ import Digest from "./digestive";
 import Download from "../../Home/innerHome/homeDownload";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
+import MainLayout from "../../MainLayout";
 
 const AyurvedaIndex = () => {
   return (
     <>
-      <Navbar />
-      <div>
-        <AyurSlide />
-      </div>
-      <div>
-        <Offers />
-      </div>
-      <div>
-        <Herbs />
-      </div>
-      <div>
-        <Hair />
-      </div>
-      <div>
-        <Skin />
-      </div>
-      <div>
-        <Digest />
-      </div>
-      <div>
-        <Download />
-      </div>
-      <div>
-        <Footer />
-      </div>
+      <MainLayout>
+        <div
+          style={{
+            paddingTop: "10rem",
+            maxWidth: "1240px",
+            margin: "auto",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          <div>
+            <AyurSlide />
+          </div>
+          <div>
+            <Herbs />
+          </div>
+          <div>
+            <Hair />
+          </div>
+          <div>
+            <Skin />
+          </div>
+          <div>
+            <Digest />
+          </div>
+          <div>
+            <Download />
+          </div>
+        </div>
+      </MainLayout>
     </>
   );
 };

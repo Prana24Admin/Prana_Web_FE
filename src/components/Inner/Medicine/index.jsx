@@ -10,42 +10,44 @@ import Medicine from "./medicine";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import Prescription from "../../Home/innerHome/prescription";
+import MainLayout from "../../MainLayout";
 
 const MedicineIndex = () => {
   return (
     <>
-      <Navbar />
-      <div
-        style={{
-          maxWidth: "1240px",
-          margin: "auto",
-          paddingTop: "12rem",
-        }}
-      >
-        <div>
-          <Prescription />
+      <MainLayout>
+        <div
+          style={{
+            maxWidth: "1240px",
+            margin: "auto",
+            paddingTop: "10rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+          }}
+        >
+          <div>
+            <Prescription />
+          </div>
+          <div>
+            <Popular />
+          </div>
+          <div>
+            <Seller />
+          </div>
+          <div>
+            <Deals />
+          </div>
+          <div>{/* <HomeSlide /> */}</div>
+          <div>{/* <Picks /> */}</div>
+          <div style={{ marginBottom: "0" }}>
+            <Health />
+          </div>
+          <div>
+            <Medicine />
+          </div>
         </div>
-        <div>
-          <Popular />
-        </div>
-        <div>
-          <Seller />
-        </div>
-        <div>
-          <Deals />
-        </div>
-        <div>{/* <HomeSlide /> */}</div>
-        <div>{/* <Picks /> */}</div>
-        <div>
-          <Health />
-        </div>
-        <div>
-          <Medicine />
-        </div>
-      </div>
-      <div>
-        <Footer />
-      </div>
+      </MainLayout>
     </>
   );
 };

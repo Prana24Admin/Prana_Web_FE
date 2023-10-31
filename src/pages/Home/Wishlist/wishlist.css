@@ -4,6 +4,7 @@
   max-width: 1240px;
   margin: auto;
   padding-top: 9rem;
+  font-family: "Libre Franklin";
 }
 .favorites-title {
   font-size: 1.5rem;
@@ -27,11 +28,14 @@
   /* padding-bottom: 2rem; */
   gap: 1.25rem;
 }
-.favorites-cardContainer {
+.favorites-cardWrapper {
+  position: relative;
   /* height: 370px; */
-  padding: 0.75rem;
-  border-radius: 5px;
   border: 1px solid var(--cloudGray);
+  border-radius: 5px;
+  padding: 0.75rem;
+}
+.favorites-cardContainer {
   cursor: pointer;
   background-color: var(--white);
   position: relative;
@@ -48,11 +52,11 @@
   z-index: 100;
   transition: 0.3s ease-in-out;
 }
-.favorites-cardContainer:hover {
+/* .favorites-cardContainer:hover {
   scale: 1.03;
-}
+} */
 .favorites-image {
-  height: 100%;
+  height: 60%;
   width: 100%;
   border-radius: 5px;
   margin-bottom: 0.75rem;
@@ -90,15 +94,19 @@
   color: var(--white);
 }
 
-.favorites-heartIcon {
+.favorites-trashIcon {
   position: absolute;
-  bottom: 5.5rem;
-  right: 1.1rem;
+  top: 1rem;
+  right: 1rem;
   padding: 0.4rem;
   border-radius: 50%;
   background-color: var(--lightGray);
   color: var(--crimsonPink);
   cursor: pointer;
+  transition: 0.2s ease;
+}
+.favorites-trashIcon:hover {
+  scale: 1.05;
 }
 .favorites-flexContainer {
   display: flex;
@@ -111,4 +119,15 @@
   font-family: Arial, Helvetica, sans-serif;
   color: var(--coinGray);
   text-decoration: line-through;
+}
+.wishlist-addToCartButton {
+  width: 90%;
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  position: absolute;
 }

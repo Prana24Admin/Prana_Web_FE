@@ -20,11 +20,6 @@ import Bill from "../../../components/Bill";
 import RemoveModal from "../../../components/Modals/RemoveModal";
 
 const Cart = () => {
-  const {
-    isOpen: removeIsOpen,
-    onOpen: removeOnOpen,
-    onClose: removeOnClose,
-  } = useDisclosure();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
@@ -103,13 +98,6 @@ const Cart = () => {
                           key={item.product.uuid}
                           cartItem={item}
                           labItem={null}
-                          onOpen={removeOnOpen}
-                        />
-                        <RemoveModal
-                          product={item}
-                          isOpen={removeIsOpen}
-                          onClose={removeOnClose}
-                          onOpen={removeOnOpen}
                         />
                       </>
                     ))}

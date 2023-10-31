@@ -19,17 +19,6 @@ const Products = () => {
 
   const { data, isLoading, error } = useQuery(["All Products"], fetchData);
 
-  const addToWishlist = async (productId) => {
-    const response = await axiosInstance.post("/wishlist", {
-      product_id: productId,
-      quantity: 1,
-    });
-    if (response.status === 201) {
-      toast.success("Added to wishlist");
-    }
-    return response.data;
-  };
-
   return (
     <MainLayout>
       <div className="products-container">
@@ -52,11 +41,7 @@ const Products = () => {
               <p className="main-header">Products</p>
               <div className="products-productsContainer">
                 {data.products.map((product) => (
-                  <ProductItem
-                    key={product.uuid}
-                    product={product}
-                    method={addToWishlist}
-                  />
+                  <ProductItem key={product.uuid} product={product} />
                 ))}
               </div>
             </div>

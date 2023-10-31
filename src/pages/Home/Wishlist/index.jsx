@@ -33,27 +33,10 @@ const Wishlist = () => {
         <div className="favorites-gridContainer">
           {data &&
             data.map((item) => (
-              // <div key={item.uuid} className="wishlist-cardContainer">
-              //   <img className="favorites-image" src={image} alt="imge" />
-              //   <Heart
-              //     onClick={() => removeFromWishlist(item.uuid)}
-              //     fill="red"
-              //     color="red"
-              //     className="favorites-heartIcon"
-              //     size={35}
-              //   />
-              //   <p className="favorites-productName">{item.product.name}</p>
-              //   <div className="favorites-flexContainer">
-              //     <p className="favorites-productPrice">
-              //       ₹{item.product.price}
-              //     </p>
-              //   </div>
-              //   <p className="favorites-button">Add to cart</p>
-              // </div>
               <ProductItem
                 wishlistItem={item}
                 key={item.uuid}
-                method={removeFromWishlist}
+                removeFromWishlist={removeFromWishlist}
                 product={""}
               />
             ))}

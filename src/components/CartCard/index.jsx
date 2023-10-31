@@ -10,9 +10,16 @@ import toast from "react-hot-toast";
 import Image from "../../assets/images/doctor/doctor.png";
 import { useNavigate } from "react-router-dom";
 import { useDisclosure } from "@chakra-ui/react";
+import RemoveModal from "../Modals/RemoveModal";
 
-const CartCard = ({ onOpen, cartItem, labItem = null }) => {
+const CartCard = ({ cartItem, labItem = null }) => {
   const navigate = useNavigate();
+
+  const {
+    isOpen: removeIsOpen,
+    onOpen: removeOnOpen,
+    onClose: removeOnClose,
+  } = useDisclosure();
 
   const pathName = window.location.pathname;
 
@@ -105,7 +112,7 @@ const CartCard = ({ onOpen, cartItem, labItem = null }) => {
               //     : removeCartItem(cartItem.uuid)
               // }
               // onClick={()=>}
-              onClick={onOpen}
+              onClick={removeOnOpen}
             >
               <Trash2 size={15} />
               <p className="cart-removeText">REMOVE</p>
@@ -160,6 +167,12 @@ const CartCard = ({ onOpen, cartItem, labItem = null }) => {
             )}
           </div>
         </div>
+        <RemoveModal
+          product={cartItem}
+          isOpen={removeIsOpen}
+          onClose={removeOnClose}
+          onOpen={removeOnOpen}
+        />
       </div>
     </div>
   );

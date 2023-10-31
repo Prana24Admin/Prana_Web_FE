@@ -1,15 +1,46 @@
 import React from "react";
-import axiosInstance from "../../libs/axios";
-import { useNavigate } from "react-router-dom";
-import { Heart } from "lucide-react";
-import Image from "../../assets/images/home/body.png";
-import toast from "react-hot-toast";
 
-const ProductItem = ({ product, method, wishlistItem = null }) => {
+import { useNavigate } from "react-router-dom";
+import { Trash2 } from "lucide-react";
+import Image from "../../assets/images/home/body.png";
+import axiosInstance from "../../libs/axios";
+import toast from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+
+const ProductItem = ({ product, removeFromWishlist, wishlistItem = null }) => {
   const navigate = useNavigate();
 
+  const addToCart = async (productId) => {
+    const response = await axiosInstance.post("/cart", {
+      quantity: 1,
+      product_id: productId,
+    });
+
+    return response.data;
+  };
+
+  const { mutate, isLoading } = useMutation(
+    (productId) => {
+      return addToCart(productId);
+    },
+    {
+      onSuccess: () => {
+        removeFromWishlist(wishlistItem.uuid);
+        toast.success("Added to cart");
+      },
+    },
+    {
+      onError: () => {
+        toast.error("Try again");
+      },
+    }
+  );
+
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      className="favorites-cardWrapper"
+      style={wishlistItem ? { height: "360px" } : { height: "auto" }}
+    >
       <div
         className="favorites-cardContainer"
         onClick={() =>
@@ -34,17 +65,19 @@ const ProductItem = ({ product, method, wishlistItem = null }) => {
           </p>
         </div>
       </div>
-      {/* <div
-        onClick={() =>
-          wishlistItem ? method(wishlistItem.uuid) : method(product.uuid)
-        }
-      >
-        <Heart
-          className="favorites-heartIcon"
-          fill={wishlistItem ? "var(--crimsonPink)" : "var(--powderWhite)"}
-          size={35}
-        />
-      </div> */}
+      {wishlistItem && (
+        <div onClick={() => removeFromWishlist(wishlistItem.uuid)}>
+          <Trash2 className="favorites-trashIcon" size={32} />
+        </div>
+      )}
+      {wishlistItem && (
+        <button
+          onClick={() => mutate(wishlistItem.product.uuid)}
+          className="wishlist-addToCartButton"
+        >
+          Add to cart
+        </button>
+      )}
     </div>
   );
 };

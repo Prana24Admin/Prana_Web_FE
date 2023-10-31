@@ -7,8 +7,7 @@ import MainLayout from "../../../../components/MainLayout";
 import Profile from "../../../../assets/images/profile/avatar.png";
 import "./doctorProfile.css";
 import { CheckCircle, ChevronDown } from "lucide-react";
-import { StaticDateTimePicker } from "@mui/x-date-pickers";
-import DatePicker from "react-horizontal-datepicker";
+import DatePicker from "../../../../components/DatePicker";
 
 const DoctorProfile = () => {
   const { id } = useParams();

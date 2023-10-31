@@ -6,7 +6,7 @@ import { BsTwitter } from "react-icons/bs";
 import "./footer.css";
 function Footer() {
   return (
-    <>
+    <section className="footer-container">
       <div className="foot-col">
         <div className="footer">
           <div className="sub-row3">
@@ -74,7 +74,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

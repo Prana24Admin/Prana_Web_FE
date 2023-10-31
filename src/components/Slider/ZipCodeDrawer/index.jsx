@@ -16,7 +16,7 @@ const ZipCodeDrawer = ({ onClose, setLocation, location }) => {
           console.log(response.data[0].PostOffice[0].District);
           localStorage.setItem(
             "location",
-            pinCode + "," + response.data[0].PostOffice[0].District
+            pinCode + ", " + response.data[0].PostOffice[0].District
           );
           setLocation(response.data[0].PostOffice[0].District);
           onClose();
@@ -33,6 +33,7 @@ const ZipCodeDrawer = ({ onClose, setLocation, location }) => {
       toast.error("Try again");
     }
   };
+
   return (
     <div className="zipCodeContainer">
       <div style={{ position: "relative" }}>

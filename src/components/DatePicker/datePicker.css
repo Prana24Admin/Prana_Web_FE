@@ -1,0 +1,33 @@
+.date-picker-container {
+  display: flex;
+  margin-bottom: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.date-picker {
+  width: 85%;
+  margin: auto;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.date-item {
+  width: 100px;
+  display: inline-block;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #f2f2f2;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.date-item.active {
+  background-color: var(--crimsonPink);
+  color: white;
+}
+
+.date-picker::-webkit-scrollbar {
+  display: none;
+}

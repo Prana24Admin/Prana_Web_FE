@@ -14,6 +14,7 @@ import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCar
 import HighLights from "../../../components/Home/innerHome/highLights";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LabTestsCarousel from "../../../components/CarouselLayout/LabTestsCarousel";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -49,9 +50,9 @@ const Main = () => {
           <div className="labTest-mainContainer">
             <div className="labTest-container">
               <p className="main-title">Lab Tests by Health Concern</p>
-              <p className="main-description">Powered by 8H%Tai</p>
+              {/* <p className="main-description">Powered by 8H%Tai</p> */}
             </div>
-            <MultiItemCarousel multiData={quickLabTests} />
+            <LabTestsCarousel multiData={quickLabTests} />
           </div>
         </div>
 

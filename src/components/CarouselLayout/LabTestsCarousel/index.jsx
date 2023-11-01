@@ -1,13 +1,14 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./carousel.css";
+import "../carousel.css";
+import LabTestCard from "../../LabTestCard";
 
 import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-let slidesToShow = 6;
+let slidesToShow = 4;
 
 const PreviousBtn = (props) => {
   const { className, onClick, currentSlide } = props;
@@ -67,7 +68,7 @@ const carouselProperties = {
   ],
 };
 
-const MultiItemCarousel = ({ multiData }) => {
+const LabTestsCarousel = ({ multiData }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -85,30 +86,20 @@ const MultiItemCarousel = ({ multiData }) => {
   } else if (width > 769 && width <= 1025) {
     slidesToShow = 4;
   } else {
-    slidesToShow = 6;
+    slidesToShow = 4;
   }
 
   return (
     <div style={{ margin: "10px 0" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
-          <CarouselCard item={item} key={item.id} />
+          <div key={item.uuid} style={{ margin: "0rem 2rem" }}>
+            <LabTestCard test={item} />
+          </div>
         ))}
       </Slider>
     </div>
   );
 };
 
-const CarouselCard = ({ item }) => {
-  const navigate = useNavigate();
-
-  return (
-    <div className="card-borderContainer" onClick={() => navigate(item.path)}>
-      <img className="card-image" src={item.Image} alt="" />
-      {item.Text && <p className="card-title">{item.Text}</p>}
-      {item.seeAll && <p className="card-seeAll">{item.seeAll}</p>}
-    </div>
-  );
-};
-
-export default MultiItemCarousel;
+export default LabTestsCarousel;

@@ -15,10 +15,19 @@ import { useNavigate } from "react-router-dom";
 import "./RemoveModal.css";
 import axiosInstance from "../../libs/axios";
 import toast from "react-hot-toast";
-import { handleRefetchCartItems } from "../../libs/queryFunctions";
+import {
+  handleRefetchCartItems,
+  handleRefetchLabCartData,
+} from "../../libs/queryFunctions";
 import { useMutation } from "@tanstack/react-query";
 
-const RemoveModal = ({ isOpen, onClose, product }) => {
+const RemoveModal = ({
+  isOpen,
+  onClose,
+  product,
+  labTest = null,
+  pathName,
+}) => {
   const navigate = useNavigate();
 
   const removeCartItem = async (productId) => {
@@ -28,6 +37,15 @@ const RemoveModal = ({ isOpen, onClose, product }) => {
       localStorage.removeItem(productId);
       handleRefetchCartItems();
       onClose();
+    }
+    return response.data;
+  };
+
+  const removeLabCartItem = async (testId) => {
+    const response = await axiosInstance.delete(`/cart/labcart/${testId}`);
+    if (response.status === 200) {
+      toast.success("Test removed");
+      handleRefetchLabCartData();
     }
     return response.data;
   };
@@ -68,28 +86,45 @@ const RemoveModal = ({ isOpen, onClose, product }) => {
                 className="removeModal-img"
                 // src={product.product.image}
                 src={TruckSuccess}
-                alt={product.product.name}
+                alt={
+                  pathName.includes("/lab")
+                    ? labTest.lab_test.name
+                    : product.product.name
+                }
               />
               <div>
-                <p className="removeModal-title">{product.product.name}</p>
+                <p className="removeModal-title">
+                  {pathName.includes("/lab")
+                    ? labTest.lab_test.name
+                    : product.product.name}
+                </p>
                 <p className="removeModal-price">
-                  MRP :{product.product.price}
+                  MRP :
+                  {pathName.includes("/lab")
+                    ? labTest.lab_test.price
+                    : product.product.price}
                 </p>
               </div>
             </div>
             <div className="removeModal-buttonContainer">
               <button
-                onClick={() => removeCartItem(product.uuid)}
+                onClick={() =>
+                  pathName.includes("/lab")
+                    ? removeLabCartItem(labTest.uuid)
+                    : removeCartItem(product.uuid)
+                }
                 className="removeModal-removeButton"
               >
                 Remove
               </button>
-              <button
-                onClick={() => mutate(product.product.uuid)}
-                className="removeModal-button"
-              >
-                Save for later
-              </button>
+              {labTest === null && (
+                <button
+                  onClick={() => mutate(product.product.uuid)}
+                  className="removeModal-button"
+                >
+                  Save for later
+                </button>
+              )}
             </div>
           </ModalBody>
         </ModalContent>

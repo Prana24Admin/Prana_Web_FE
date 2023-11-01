@@ -92,12 +92,14 @@ const LabTestCard = ({
         </div>
         <div className="testCard-justifyContainer">
           <p className="testCard-price">₹{test.price}</p>
-          <button
-            onClick={() => mutateLabAdd(test)}
-            className="testCard-selectButton"
-          >
-            Book
-          </button>
+          {labCartData && (
+            <button
+              onClick={() => mutateLabAdd(test)}
+              className="testCard-selectButton"
+            >
+              Book
+            </button>
+          )}
         </div>
       </div>
     </div>

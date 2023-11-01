@@ -93,13 +93,9 @@ const Cart = () => {
                   <div className="cart-cardContainer">
                     <p className="main-head-title">Items in Your cart</p>
                     {data.map((item) => (
-                      <>
-                        <CartCard
-                          key={item.product.uuid}
-                          cartItem={item}
-                          labItem={null}
-                        />
-                      </>
+                      <div key={item.product.uuid}>
+                        <CartCard cartItem={item} labItem={null} />
+                      </div>
                     ))}
                   </div>
                   <div className="cart-rightContainer">

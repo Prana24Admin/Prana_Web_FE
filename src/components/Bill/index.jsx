@@ -102,7 +102,7 @@ const Bill = ({
           <p className="cart-descriptionTextDark">Cart value</p>
           <p className="cart-descriptionTextDark">
             {pathName.includes("/lab")
-              ? `₹${(subTotal - sampleCollectionCharges - discount).toFixed(2)}`
+              ? `₹${(subTotal + sampleCollectionCharges - discount).toFixed(2)}`
               : `₹${(
                   subTotal -
                   couponValue +
@@ -124,8 +124,11 @@ const Bill = ({
       <div className="cart-savingsContainer">
         <IndianRupee size={15} className="cart-ruppeIcon" />
         <p className="cart-savingsText">
-          Total savings of <span style={{ fontWeight: "bold" }}>₹324</span> on
-          this order
+          Total savings of{" "}
+          <span style={{ fontWeight: "bold" }}>
+            ₹{discount ? discount : "320"}
+          </span>{" "}
+          on this order
         </p>
       </div>
     </section>

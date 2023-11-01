@@ -93,7 +93,7 @@ const ProductCarousel = ({ multiData }) => {
     <div style={{ margin: "10px 0" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
-          <CarouselCard item={item} />
+          <CarouselCard item={item} key={item.id} />
         ))}
       </Slider>
     </div>

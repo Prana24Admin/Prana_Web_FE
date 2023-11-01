@@ -33,7 +33,7 @@ const HighLights = () => {
         <p className="highLights-heading">Why to choose us?</p>
         <div className="highLights-flexContainer">
           {highLightsList.map((highlight) => (
-            <div className="highLight-boxContainer">
+            <div key={highlight.id} className="highLight-boxContainer">
               <highlight.Icon size={30} color={"var(--crimsonPink)"} />
               <div>
                 <p className="highLights-title">{highlight.title}</p>

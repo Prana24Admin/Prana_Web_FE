@@ -64,33 +64,12 @@ const LabCart = () => {
                     ))}
                   </div>
                   <div className="cart-rightContainer">
-                    <Button
-                      ref={btnRef}
-                      borderColor={"var(--cloudGray)"}
-                      borderWidth={"1px"}
-                      colorScheme="teal"
-                      gap={"5px"}
-                      onClick={onOpen}
-                    >
-                      <BadgePercent size={18} />
-                      Apply Coupon
-                    </Button>
-
                     <Bill
                       subTotal={subTotal}
                       sampleCollectionCharges={sampleCollectionCharges}
                       discount={totalDiscount}
                     />
-                    <div className="cart-savingsContainer">
-                      <IndianRupee size={15} className="cart-ruppeIcon" />
-                      <p className="cart-savingsText">
-                        Total savings of{" "}
-                        <span style={{ fontWeight: "bold" }}>
-                          ₹{totalDiscount}
-                        </span>{" "}
-                        on this order
-                      </p>
-                    </div>
+
                     <Slider
                       onClose={onClose}
                       isOpen={isOpen}

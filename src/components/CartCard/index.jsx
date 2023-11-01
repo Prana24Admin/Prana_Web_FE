@@ -104,16 +104,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
             </div>
           </div>
           <div className="cart-quantityContainerFlex">
-            <div
-              className="cart-removeButtonContainer"
-              // onClick={() =>
-              //   pathName.includes("/lab")
-              //     ? removeLabCartItem(labItem.uuid)
-              //     : removeCartItem(cartItem.uuid)
-              // }
-              // onClick={()=>}
-              onClick={removeOnOpen}
-            >
+            <div className="cart-removeButtonContainer" onClick={removeOnOpen}>
               <Trash2 size={15} />
               <p className="cart-removeText">REMOVE</p>
             </div>
@@ -168,10 +159,12 @@ const CartCard = ({ cartItem, labItem = null }) => {
           </div>
         </div>
         <RemoveModal
-          product={cartItem}
+          product={!pathName.includes("/lab") && cartItem}
           isOpen={removeIsOpen}
           onClose={removeOnClose}
           onOpen={removeOnOpen}
+          labTest={labItem}
+          pathName={pathName}
         />
       </div>
     </div>

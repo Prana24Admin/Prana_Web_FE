@@ -84,18 +84,18 @@ const MainBannerCarousel = ({ multiData }) => {
   if (width <= 426) {
     slidesToShow = 1;
   } else if (width > 426 && width <= 769) {
-    slidesToShow = 3;
+    slidesToShow = 1;
   } else if (width > 769 && width <= 1025) {
-    slidesToShow = 4;
+    slidesToShow = 1;
   } else {
-    slidesToShow = 5;
+    slidesToShow = 1;
   }
 
   return (
     <div style={{ margin: "10px 0" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
-          <CarouselCard item={item} />
+          <CarouselCard item={item} key={item.id} />
         ))}
       </Slider>
     </div>

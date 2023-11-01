@@ -285,6 +285,9 @@ const Navbar = () => {
                     <Link className="dropdowntext" to={"/healthcare/orders"}>
                       Your Orders
                     </Link>
+                    <Link className="dropdowntext" to={"/wishlist"}>
+                      Wishlist
+                    </Link>
 
                     <div>
                       {data ? (

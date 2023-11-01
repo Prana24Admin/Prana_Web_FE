@@ -26,6 +26,11 @@
   /* margin-left: 20px; */
   font-size: 16px !important;
 }
+.prana-logo {
+  mix-blend-mode: multiply;
+  overflow: hidden;
+  cursor: pointer;
+}
 .par-nav {
   font-size: 1.85rem;
   font-weight: bold;

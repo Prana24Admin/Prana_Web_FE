@@ -7,7 +7,7 @@ import LabTestCard from "../../LabTestCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+
 let slidesToShow = 4;
 
 const PreviousBtn = (props) => {
@@ -93,9 +93,7 @@ const LabTestsCarousel = ({ multiData }) => {
     <div style={{ margin: "10px 0" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
-          <div key={item.uuid} style={{ margin: "0rem 2rem" }}>
-            <LabTestCard test={item} />
-          </div>
+          <LabTestCard test={item} />
         ))}
       </Slider>
     </div>

@@ -43,3 +43,7 @@
   color: var(--azureBlue);
   cursor: pointer;
 }
+.main-leftText:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--azureBlue);
+}

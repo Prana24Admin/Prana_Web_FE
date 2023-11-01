@@ -12,6 +12,7 @@ import { ChevronDown, MapPin, Search, ShoppingCart } from "lucide-react";
 import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../Slider";
 import ZipCodeDrawer from "../Slider/ZipCodeDrawer";
+import Logo from "../../assets/images/Prana_Logo.jpeg";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -132,11 +133,16 @@ const Navbar = () => {
         <div className="headerFlex">
           <div className="logo">
             <div className="d-flex flex-row alingContainer">
-              <div
-                className="d-flex flex-column"
-                onClick={() => navigate("/home")}
-              >
-                <p className="par-nav">Prana24 </p>
+              <div className="d-flex flex-column">
+                {/* <p className="par-nav">Prana24 </p> */}
+                <img
+                  className="prana-logo"
+                  width={85}
+                  height={85}
+                  src={Logo}
+                  alt="logo"
+                  onClick={() => navigate("/home")}
+                />
               </div>
 
               <div className="navbar-location" onClick={onOpen}>

@@ -16,7 +16,7 @@
   border-bottom-right-radius: 7px;
 }
 .carousel .slick-next {
-  right: 0;
+  right: -1%;
   top: 50%;
   border-bottom-left-radius: 7px;
   border-top-left-radius: 7px;
@@ -41,7 +41,7 @@
   transition: 500ms;
 } */
 .card-borderContainer {
-  width: 90%;
+  width: 94%;
   height: 15rem;
   border: 1px solid var(--lightGray);
   display: flex;
@@ -96,7 +96,7 @@
 }
 .card-image {
   /* width: 13rem; */
-  width: 100%;
+  width: 98%;
   height: 10rem;
   object-fit: cover;
   margin-bottom: 1rem;

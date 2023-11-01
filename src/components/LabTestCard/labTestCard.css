@@ -6,6 +6,8 @@
   padding: 1rem;
   transition: 0.2s ease-in;
   cursor: pointer;
+  width: 97%;
+  margin: 0.5rem 0rem;
 }
 
 .testCard-container:hover {

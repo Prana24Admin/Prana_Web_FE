@@ -49,7 +49,7 @@ const Main = () => {
         <div>
           <div className="labTest-mainContainer">
             <div className="labTest-container">
-              <p className="main-title">Lab Tests by Health Concern</p>
+              <p className="main-title">Lab Tests</p>
               {/* <p className="main-description">Powered by 8H%Tai</p> */}
             </div>
             <LabTestsCarousel multiData={quickLabTests} />

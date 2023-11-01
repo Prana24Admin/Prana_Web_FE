@@ -62,12 +62,6 @@ export const herbs = [
     Text: "Isabgol",
     // Text: "Ashwagandha is an important herb of the Ayurvedic system of medicine. It is also known as Indian ginseng or winter cherry.",
   },
-  {
-    id: 7,
-    Image: More,
-    seeAll: "view more",
-    path: "/healthcare/categories/092d9458-7175-473d-aba3-ab3eee8774c9",
-  },
 ];
 
 export const hairCare = [
@@ -107,12 +101,6 @@ export const hairCare = [
     Text: "Teatree",
     // Text: "Ashwagandha is an important herb of the Ayurvedic system of medicine. It is also known as Indian ginseng or winter cherry.",
   },
-  {
-    id: 7,
-    Image: More,
-    seeAll: "view More",
-    path: "/healthcare/categories/092d9458-7175-473d-aba3-ab3eee8774c9",
-  },
 ];
 
 export const skinCare = [
@@ -151,12 +139,6 @@ export const skinCare = [
     Image: Turmeric,
     Text: "Turmeric",
     // Text: "Ashwagandha is an important herb of the Ayurvedic system of medicine. It is also known as Indian ginseng or winter cherry.",
-  },
-  {
-    id: 7,
-    Image: More,
-    seeAll: "view More",
-    path: "/healthcare/categories/092d9458-7175-473d-aba3-ab3eee8774c9",
   },
 ];
 

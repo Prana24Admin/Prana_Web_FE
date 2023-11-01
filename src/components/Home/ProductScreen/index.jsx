@@ -60,7 +60,7 @@ const Product = () => {
                   // src={productData.image}
                   // alt={productData.name}
                   src={image}
-                  alt="Sanju"
+                  alt="Product"
                 />
               </div>
             </div>

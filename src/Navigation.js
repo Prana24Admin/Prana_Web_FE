@@ -55,6 +55,7 @@ import Main from "./pages/Home/Main";
 import NotFound from "./pages/404";
 import DoctorNearMe from "./components/Doctor/DoctorNearMe";
 import DoctorProfile from "./pages/Home/Doctor/DoctorProfile";
+import Brands from "./pages/Home/Brands";
 // import ScrollToTop from "./libs/scrollToTop";
 
 const Navigation = () => {
@@ -121,6 +122,7 @@ const Navigation = () => {
         <Route path="/checkout" element={<CheckoutScreen />} />
 
         <Route path="*" element={<NotFound />} />
+        <Route path="/brands" element={<Brands />} />
       </Routes>
     </Router>
   );

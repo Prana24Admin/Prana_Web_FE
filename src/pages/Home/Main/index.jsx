@@ -12,8 +12,11 @@ import { categories } from "../../../utils/categories";
 import BannerCarousel from "../../../components/CarouselLayout/BannerCarousel";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import HighLights from "../../../components/Home/innerHome/highLights";
+import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+  const navigate = useNavigate();
   return (
     <MainLayout>
       <div className="max-w-container">
@@ -31,7 +34,13 @@ const Main = () => {
 
         {/* ---------------------Brands---------------------------- */}
         <div>
-          <p className="main-title">Brands</p>
+          <div className="main-titleFlex">
+            <p className="main-title">Brands</p>
+            <div className="main-leftText" onClick={() => navigate("/brands")}>
+              <p>View More</p>
+              <ChevronRight size={15} />
+            </div>
+          </div>
           <MultiItemCarousel multiData={brands} />
         </div>
 

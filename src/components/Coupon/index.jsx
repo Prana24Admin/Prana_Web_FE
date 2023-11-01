@@ -35,12 +35,14 @@ const Coupon = ({
       </div>
       <div className={smallCoupon ? "small-copy-button" : "copy-button"}>
         <input id="copyvalue" type="text" readOnly value={item.code} disabled />
-        <button
-          onClick={() => handleCouponSelect(item)}
-          className={smallCoupon ? "small-copybtn" : "copybtn"}
-        >
-          {smallCoupon ? "SELECT" : "COPY"}
-        </button>
+        {smallCoupon && (
+          <button
+            onClick={() => handleCouponSelect(item)}
+            className={"small-copybtn"}
+          >
+            "SELECT"
+          </button>
+        )}
       </div>
       <div className={smallCoupon ? "small-coupon-note" : "coupon-note"}>
         <p>

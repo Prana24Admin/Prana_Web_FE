@@ -33,9 +33,9 @@ const Main = () => {
         </div>
 
         {/* ---------------------Brands---------------------------- */}
-        <div>
+        <div style={{ marginTop: "1.25rem" }}>
           <div className="main-titleFlex">
-            <p className="main-title">Brands</p>
+            <p className="main-title">Popular Brands</p>
             <div className="main-leftText" onClick={() => navigate("/brands")}>
               <p>View More</p>
               <ChevronRight size={15} />
@@ -77,7 +77,16 @@ const Main = () => {
 
         {/* -----------------------Catagories----------------------- */}
         <div>
-          <p className="main-title">Shop By categories</p>
+          <div className="main-titleFlex">
+            <p className="main-title">Shop by Categories</p>
+            <div
+              className="main-leftText"
+              onClick={() => navigate("/healthcare")}
+            >
+              <p>View More</p>
+              <ChevronRight size={15} />
+            </div>
+          </div>
           <MultiItemCarousel multiData={categories} />
         </div>
 

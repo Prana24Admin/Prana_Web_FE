@@ -107,6 +107,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--ashGray);
+  text-transform: capitalize;
 }
 .banner-image {
   width: 97%;

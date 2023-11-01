@@ -27,6 +27,9 @@
   padding: 0 10px;
   align-items: center;
 }
+#copyvalue {
+  padding: 0.25rem;
+}
 .card::after {
   position: absolute;
   content: "";

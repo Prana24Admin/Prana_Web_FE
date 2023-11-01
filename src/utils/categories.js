@@ -58,9 +58,15 @@ export const categories = [
   },
   {
     id: 6,
-    // Text: "HealthCare Devices",
-    Image: SeeAll,
-    seeAll: "view all",
+    Text: "Home Care",
+    Image: Harpic,
+    path: "/healthcare/categories/8e33ee75-ad8a-4664-a0a9-451a84244be1",
+  },
+  {
+    id: 7,
+    Text: "Home Care",
+    Image: Harpic,
+    path: "/healthcare/categories/8e33ee75-ad8a-4664-a0a9-451a84244be1",
   },
 ];
 

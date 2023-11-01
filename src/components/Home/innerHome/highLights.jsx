@@ -4,36 +4,45 @@ import Location from "../../../assets/images/home/choose/location.jpg";
 import Family from "../../../assets/images/home/choose/family.jpg";
 import Delivery from "../../../assets/images/home/choose/deliveryBoy.jpg";
 import "../../../assets/css/Home/highLights.css";
+import { Pill, Truck, Users2 } from "lucide-react";
 
 const HighLights = () => {
+  const highLightsList = [
+    {
+      id: 1,
+      Icon: Truck,
+      title: "Lightning-Fast Delivery",
+      description: "Experience superfast delivery for medicine on time",
+    },
+    {
+      id: 2,
+      Icon: Pill,
+      title: "Medicine",
+      description: "Get your every medical need",
+    },
+    {
+      id: 3,
+      Icon: Users2,
+      title: "24x7 Customer support",
+      description: "Get your query resolved instantly",
+    },
+  ];
   return (
     <>
       <div className="highLights-mainContainer">
-        <p className="highLights-title">Why to choose us?</p>
+        <p className="highLights-heading">Why to choose us?</p>
         <div className="highLights-flexContainer">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <img className="highLights-image" src={Delivery} alt="delivery" />
-            <p className="highLights-description">Lightning-Fast Delivery</p>
-            <p className="main-description" style={{ width: "60%" }}>
-              Experience superfast delivery for medicine on time
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <img className="highLights-image" src={Med} alt="delivery" />
-            <p className="highLights-description">24x7 Customer support</p>
-          </div>
+          {highLightsList.map((highlight) => (
+            <div className="highLight-boxContainer">
+              <highlight.Icon size={30} color={"var(--crimsonPink)"} />
+              <div>
+                <p className="highLights-title">{highlight.title}</p>
+                <p className="highLights-description">
+                  {highlight.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

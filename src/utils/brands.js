@@ -21,5 +21,6 @@ export const brands = [
   { id: 4, Image: EasyPharm, Text: "Pharmeasy" },
   { id: 5, Image: Friend, Text: "Friends" },
   { id: 6, Image: Glucon, Text: "Glucon D" },
-  { id: 7, Image: SeeAll, seeAll: "view more" },
+  { id: 7, Image: EasyLive, Text: "LivEasy" },
+  { id: 8, Image: EasyPharm, Text: "Pharmeasy" },
 ];

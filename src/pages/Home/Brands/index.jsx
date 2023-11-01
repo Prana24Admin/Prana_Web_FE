@@ -4,24 +4,40 @@ import MainLayout from "../../../components/MainLayout";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import { brands } from "../../../utils/brands";
 import { banners1 } from "../../../utils/banners";
+import axiosInstance from "../../../libs/axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Brands = () => {
+  const fetchAllBrands = async () => {
+    const response = await axiosInstance.get("/brands");
+    return response.data;
+  };
+  const {
+    data: brandsData,
+    isLoading,
+    error,
+  } = useQuery(["Brands"], fetchAllBrands);
+
   return (
     <MainLayout>
       <div style={{ maxWidth: "1240px", margin: "auto", paddingTop: "10rem" }}>
         <MainBannerCarousel multiData={banners1} />
-        <p className="main-title">Brands</p>
-        <div
-          className="favorites-gridContainer"
-          style={{ marginBottom: "1rem" }}
-        >
-          {brands.map((item) => (
-            <div className="card-borderContainer">
-              <img className="card-image" src={item.Image} alt="" />
-              {item.Text && <p className="card-title">{item.Text}</p>}
-            </div>
-          ))}
-        </div>
+        <p className="main-title" style={{ marginTop: "1.5rem" }}>
+          Brands
+        </p>
+        {brandsData && brandsData.data.length > 0 && (
+          <div
+            className="favorites-gridContainer"
+            style={{ marginBottom: "1rem" }}
+          >
+            {brandsData.data.map((brand) => (
+              <div className="card-borderContainer">
+                <img className="card-image" src={brand.image} alt="" />
+                <p className="card-title">{brand.name}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </MainLayout>
   );

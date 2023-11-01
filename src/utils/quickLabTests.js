@@ -31,14 +31,4 @@ export const quickLabTests = [
     Image: Women,
     path: "/lab/test/43ad0857-32e0-4f64-afa5-6e874c0240c6",
   },
-  {
-    id: 6,
-    Image: SeeAll,
-    seeAll: "view all",
-    path: "/lab/all-tests",
-  },
-  // {
-  //   id: 7,
-  //   Image: Fever,
-  // },
 ];

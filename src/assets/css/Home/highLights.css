@@ -1,27 +1,42 @@
 .highLights-mainContainer {
   margin: auto;
-  background-color: var(--powderWhite);
-  padding: 1rem 0;
+  /* background-color: var(--powderWhite); */
+  font-family: "Libre Franklin";
 }
 .highLights-flexContainer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+.highLights-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+  text-align: center;
+  margin: 1.25rem 0;
+}
+.highLight-boxContainer {
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 30%;
+  height: 5rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 .highLights-title {
-  font-size: 2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--ashGray);
-  text-align: center;
+  /* text-align: center; */
 }
-.highLights-image {
-  width: 8rem;
-  height: 7rem;
-  mix-blend-mode: multiply;
-}
+
 .highLights-description {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--ashGray);
-  margin-top: 0.5rem;
+  /* margin-top: 0.1rem; */
 }

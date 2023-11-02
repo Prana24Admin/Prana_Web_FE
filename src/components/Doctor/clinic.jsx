@@ -1,5 +1,4 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
 
 import "../../assets/css/Doctor/clinic.css";
 import { useNavigate } from "react-router-dom";

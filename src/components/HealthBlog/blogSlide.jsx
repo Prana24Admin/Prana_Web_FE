@@ -1,5 +1,5 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
+
 import { blogSlider } from "../../utils/banners";
 import MainBannerCarousel from "../CarouselLayout/MainBannerCarousel";
 

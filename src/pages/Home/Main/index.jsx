@@ -15,6 +15,7 @@ import HighLights from "../../../components/Home/innerHome/highLights";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LabTestsCarousel from "../../../components/CarouselLayout/LabTestsCarousel";
+import Downlaod from "../../../components/Home/innerHome/homeDownload";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -94,6 +95,9 @@ const Main = () => {
         {/* ---------------------------Highlights---------------------- */}
         <div>
           <HighLights />
+        </div>
+        <div>
+          <Downlaod />
         </div>
       </div>
     </MainLayout>

@@ -1,5 +1,5 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
+
 import "../../../assets/css/inner/innerMed.css";
 import ProductCarousel from "../../CarouselLayout/ProductCarousel";
 import { products } from "../../../utils/categories";

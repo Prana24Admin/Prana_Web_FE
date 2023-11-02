@@ -1,5 +1,5 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
+
 import MultiItemCarousel from "../../CarouselLayout";
 import { categories2 } from "../../../utils/categories";
 

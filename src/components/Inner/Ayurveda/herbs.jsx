@@ -1,5 +1,5 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
+
 import "../../../assets/css/inner/ayurveda/herbs.css";
 import MultiItemCarousel from "../../CarouselLayout";
 import { herbs } from "../../../utils/ayurvedhaCards";

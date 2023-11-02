@@ -1,14 +1,13 @@
 import React from "react";
-import "react-multi-carousel/lib/styles.css";
+
 import AyurSlide from "./ayurslide";
-import Offers from "./offers";
+
 import Herbs from "./herbs";
 import Hair from "./hair";
 import Skin from "./skin";
 import Digest from "./digestive";
 import Download from "../../Home/innerHome/homeDownload";
-import Footer from "../../Footer";
-import Navbar from "../../Navbar";
+
 import MainLayout from "../../MainLayout";
 
 const AyurvedaIndex = () => {

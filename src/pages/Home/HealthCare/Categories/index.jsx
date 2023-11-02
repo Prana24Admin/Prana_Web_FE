@@ -1,7 +1,5 @@
 import React from "react";
 
-import "react-multi-carousel/lib/styles.css";
-
 import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
 
 // import "../../../assets/css/Health/healthCare.css";

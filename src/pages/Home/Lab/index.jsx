@@ -1,9 +1,9 @@
 import React from "react";
-import Slider from "../../../components/Inner/Medicine/medicineSlider";
+
 import Test from "./test";
-import LabHealth from "./labHealth";
+
 import Package from "./package";
-import Happy from "./happyCustomers";
+
 import Download from "../../../components/Home/innerHome/homeDownload";
 
 import CartBox from "./CartBox/CartBox";

@@ -1,25 +1,19 @@
 import React from "react";
 
-import RightDoctor from "./rightDoctor";
 import Filter from "./filter";
 import Available from "./available";
-import Footer from "../../Footer";
-import Navbar from "../../Navbar";
+
+import MainLayout from "../../MainLayout";
 const FindDoctorIndex = () => {
   return (
-    <>
-      <Navbar />
-      <div>{/* <RightDoctor /> */}</div>
+    <MainLayout>
       <div>
         <Filter />
       </div>
       <div>
         <Available />
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </MainLayout>
   );
 };
 export default FindDoctorIndex;

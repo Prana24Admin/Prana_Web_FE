@@ -4,18 +4,12 @@ import React from "react";
 import Welcome from "./welcome";
 import Items from "./items";
 import Clinic from "./clinic";
-import Users from "./users";
 import Download from "../Home/innerHome/homeDownload";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import MainLayout from "../MainLayout";
 
 const DoctorIndex = () => {
   return (
-    <>
-      <Navbar />
-      {/* <div>
-        <SearchBar />
-      </div> */}
+    <MainLayout>
       <div>
         <Welcome />
       </div>
@@ -25,14 +19,10 @@ const DoctorIndex = () => {
       <div>
         <Clinic />
       </div>
-      <div>{/* <Users /> */}</div>
       <div>
         <Download />
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+    </MainLayout>
   );
 };
 export default DoctorIndex;

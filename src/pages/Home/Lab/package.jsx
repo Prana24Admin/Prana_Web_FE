@@ -1,6 +1,5 @@
 import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+
 import BasicWomen from "../../../assets/images/lab/package/basic-women.jpg";
 import CardiacBasic from "../../../assets/images/lab/package/cardiac-basic.jpg";
 import Cardiac from "../../../assets/images/lab/package/cardiac.jpg";
@@ -16,34 +15,15 @@ import ThyroidBasic from "../../../assets/images/lab/package/thyroid-basic.jpg";
 import Tax from "../../../assets/images/lab/package/tax-saver.jpg";
 import "../../../assets/css/Lab/index.css";
 
-import LabCard from "../../../components/LabCard";
-
 import { useNavigate } from "react-router-dom";
+import TestPackageCarousel from "../../../components/CarouselLayout/TestPackageCarousel";
 
 const Packages = () => {
   const navigate = useNavigate();
   const navigateAppointment = () => {
     navigate("/inner/doctor/appointment");
   };
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+
   const newArr = [
     {
       Image: BasicWomen,
@@ -181,18 +161,7 @@ const Packages = () => {
             <p>Men's Health</p>
           </div>
         </div>
-        <Carousel
-          responsive={responsive}
-          containerClass="medicineSlider-container"
-        >
-          {newArr.map((item) => {
-            return (
-              <>
-                <LabCard />
-              </>
-            );
-          })}
-        </Carousel>
+        <TestPackageCarousel multiData={newArr} />
       </div>
     </>
   );

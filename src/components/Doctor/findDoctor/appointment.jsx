@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Alert } from "react-bootstrap";
+
 import "../../../assets/css/Doctor/inner/filter.css";
 import SimpleNav from "../../Home/Nav/simpleNav";
 import Footer from "../../Footer";

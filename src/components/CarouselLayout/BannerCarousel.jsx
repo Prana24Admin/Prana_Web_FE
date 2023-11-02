@@ -2,44 +2,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
-// import { data, multiData } from "./data";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Card } from "react-bootstrap";
+
 import { useNavigate } from "react-router-dom";
+import { NextBtn, PreviousBtn } from "./CarouselButtons";
+import LazyLoadedImage from "../../libs/LazyLoadedImage";
+
 let slidesToShow = 3;
-
-const PreviousBtn = (props) => {
-  const { className, onClick, currentSlide } = props;
-  return (
-    <>
-      {currentSlide !== 0 && (
-        <div className={className} onClick={onClick}>
-          <ChevronLeft style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
-const NextBtn = (props) => {
-  const { className, onClick, slideCount, currentSlide } = props;
-
-  return (
-    <>
-      {currentSlide !== slideCount - slidesToShow && (
-        <div className={className} onClick={onClick}>
-          <ChevronRight style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
 
 const carouselProperties = {
   prevArrow: <PreviousBtn />,
-  nextArrow: <NextBtn />,
+  nextArrow: <NextBtn slidesToShow={3} />,
   slidesToShow: slidesToShow,
   slidesToScroll: 1,
   infinite: true,
@@ -108,7 +83,12 @@ const CarouselCard = ({ item }) => {
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(item.path)}>
-      <img className="banner-image" src={item.Image} alt="banner" />
+      {/* <img className="banner-image" src={item.Image} alt="banner" /> */}
+      <LazyLoadedImage
+        className={"banner-image"}
+        src={item.Image}
+        alt={"banner"}
+      />
     </div>
   );
 };

@@ -1,36 +1,74 @@
-import React from "react";
-// import Error from "../../../../assets/images/ErrorPages/404 Error.png";
+import React, { useState } from "react";
+
 import "./products.css";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 
 import MainLayout from "../../../../components/MainLayout";
-import ProductItem from "../../../../components/ProductItem";
-import toast from "react-hot-toast";
+
+import ProductsByCategories from "./ProductsByCategories";
 const Products = () => {
-  const { id } = useParams();
+  const navigate = useNavigate();
+  const { categoryId, id } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState("All Products");
+
+  const handleCategoryNavigate = (category, categoryUUID) => {
+    if (category !== "All Products") {
+      navigate(`/healthcare/categories/${categoryId}/${categoryUUID}`);
+    } else {
+      navigate(`/healthcare/categories/${categoryId}`);
+    }
+    setSelectedCategory(category);
+  };
 
   const fetchData = async () => {
-    const response = await axiosInstance.get(`filters/products/${id}`);
+    console.log(categoryId, id);
+    const response = await axiosInstance.get(`filters/products/${categoryId}`);
     return response.data;
   };
 
-  const { data, isLoading, error } = useQuery(["All Products"], fetchData);
+  const {
+    data: categoryData,
+    isLoading,
+    error,
+  } = useQuery(["AllCategories"], fetchData);
 
   return (
     <MainLayout>
       <div className="products-container">
         {isLoading && <p>Loading..</p>}
-        {data && (
+        {categoryData && (
           <div className="products-flexContainer">
             <div className="products-leftContainer">
               <div className="products-filtersContainer">
-                <p className="main-header">Categories</p>
+                <p className="products-categoryHeading">Categories</p>
                 <div className="products-categoryContainer">
-                  {data.items.map((category) => (
-                    <p className="products-filterItems" key={category.uuid}>
+                  <p
+                    className={
+                      selectedCategory === "All Products"
+                        ? "products-filterItemsActive"
+                        : "products-filterItems"
+                    }
+                    onClick={() =>
+                      handleCategoryNavigate("All Products", categoryId)
+                    }
+                  >
+                    All Products
+                  </p>
+                  {categoryData.items.map((category) => (
+                    <p
+                      onClick={() =>
+                        handleCategoryNavigate(category.name, category.uuid)
+                      }
+                      className={
+                        selectedCategory === category.name
+                          ? "products-filterItemsActive"
+                          : "products-filterItems"
+                      }
+                      key={category.uuid}
+                    >
                       {category.name}
                     </p>
                   ))}
@@ -39,11 +77,18 @@ const Products = () => {
             </div>
             <div className="products-rightContainer">
               <p className="main-header">Products</p>
-              <div className="products-productsContainer">
-                {data.products.map((product) => (
-                  <ProductItem key={product.uuid} product={product} />
-                ))}
-              </div>
+              {!id && (
+                <ProductsByCategories
+                  categoryId={categoryId}
+                  selectedCategory={selectedCategory}
+                />
+              )}
+              {id && (
+                <ProductsByCategories
+                  categoryId={id}
+                  selectedCategory={selectedCategory}
+                />
+              )}
             </div>
           </div>
         )}

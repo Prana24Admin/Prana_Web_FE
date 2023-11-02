@@ -1,8 +1,5 @@
 import React from "react";
-import { BsInstagram } from "react-icons/bs";
-import { BsFacebook } from "react-icons/bs";
-import { BsYoutube } from "react-icons/bs";
-import { BsTwitter } from "react-icons/bs";
+
 import "./footer.css";
 function Footer() {
   return (
@@ -40,7 +37,7 @@ function Footer() {
                   <br /> situated at Viman Nagar,SNO 30/3A3B,
                   <br /> Next to Hyatt, Pune, Maharashtra - 411014 IN
                 </p>
-                <div className="d-flex flex-row ">
+                {/* <div className="d-flex flex-row ">
                   <div className="d-flex flex-column gap">
                     <div>
                       <BsInstagram className="col-in" />
@@ -61,7 +58,7 @@ function Footer() {
                       <BsTwitter className="col-in" />
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

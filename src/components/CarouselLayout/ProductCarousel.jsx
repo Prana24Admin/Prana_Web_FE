@@ -5,40 +5,14 @@ import "./carousel.css";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ProductItem from "../ProductItem";
+import { NextBtn, PreviousBtn } from "./CarouselButtons";
 let slidesToShow = 5;
-
-const PreviousBtn = (props) => {
-  const { className, onClick, currentSlide } = props;
-  return (
-    <>
-      {currentSlide !== 0 && (
-        <div className={className} onClick={onClick}>
-          <ChevronLeft style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
-const NextBtn = (props) => {
-  const { className, onClick, slideCount, currentSlide } = props;
-
-  return (
-    <>
-      {currentSlide !== slideCount - slidesToShow && (
-        <div className={className} onClick={onClick}>
-          <ChevronRight style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
 
 const carouselProperties = {
   prevArrow: <PreviousBtn />,
-  nextArrow: <NextBtn />,
+  nextArrow: <NextBtn slidesToShow={5} />,
   slidesToShow: slidesToShow,
   slidesToScroll: 1,
   infinite: false,

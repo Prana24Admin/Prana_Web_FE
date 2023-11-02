@@ -25,9 +25,7 @@ const DoctorIndex = () => {
       <div>
         <Clinic />
       </div>
-      <div>
-        <Users />
-      </div>
+      <div>{/* <Users /> */}</div>
       <div>
         <Download />
       </div>

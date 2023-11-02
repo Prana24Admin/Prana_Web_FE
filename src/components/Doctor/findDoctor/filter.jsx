@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../assets/css/Doctor/inner/filter.css";
-import { BiSearch } from "react-icons/bi";
+import { Search } from "lucide-react";
+
 const Filter = () => {
   return (
     <div className="filters-mainContainer">
@@ -24,7 +25,7 @@ const Filter = () => {
           </select>
         </div>
         <div className="filters-input">
-          <BiSearch size={18} color="var(--ashGray)" />
+          <Search size={18} color="var(--ashGray)" />
           <input
             className="filters-inputText"
             type="Search"

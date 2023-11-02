@@ -188,30 +188,6 @@ const Packages = () => {
           {newArr.map((item) => {
             return (
               <>
-                {/* <div style={{ marginTop: "40px", marginLeft: "40px" }}>
-                  <Card className="card-img-health-pack" id="card-health">
-                    <img className="vitamin-img-lab" src={item.Image} alt="" />
-                    <p className="vitamin-par">{item.Title}</p>
-                    <p className="vitamin-par1" id="ayur-par-slide">
-                      {item.Text}
-                    </p>
-                    <p className="vitamin-par2">5 tests included</p>
-                    <div className="d-flex flex-row mark-row">
-                      <div className="d-flex flex-column">
-                        <p className="rate-mark">
-                          {item.Price}{" "}
-                          <strike className="stri-mark">{item.Price1}</strike>{" "}
-                          <span>{item.Offer}</span>
-                        </p>
-                      </div>
-                      <div className="d-flex flex-column">
-                        <p onClick={navigateAppointment} className="book-now">
-                          Book Now
-                        </p>
-                      </div>
-                    </div>
-                  </Card>
-                </div> */}
                 <LabCard />
               </>
             );

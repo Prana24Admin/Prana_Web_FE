@@ -139,3 +139,9 @@
   border-radius: 5px;
   text-decoration: underline;
 }
+.mainBanner-Image {
+  width: 99%;
+  height: 17rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

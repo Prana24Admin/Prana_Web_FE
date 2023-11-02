@@ -1,14 +1,14 @@
 import React from "react";
 import Flat from "../../../assets/images/offers/flat.jpg";
 import Plus from "../../../assets/images/offers/plusoffer.jpg";
-import Card from "react-bootstrap/Card";
+
 import "./offerInnerScreen.css";
 
 import InnerSearch from "../../../components/Home/Nav/innerSearch";
 import OfferScreen from "./Offers";
 
 import MainLayout from "../../../components/MainLayout";
-import { format } from "date-fns";
+
 import Coupon from "../../../components/Coupon";
 const HealthCare = () => {
   const OfferArr = [

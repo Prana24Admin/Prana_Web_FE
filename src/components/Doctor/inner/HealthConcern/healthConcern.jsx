@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import Card from "react-bootstrap/Card";
+
 import "react-multi-carousel/lib/styles.css";
 import Cough from "../../../../assets/images/doctor/health/cough.jpg";
 import Periods from "../../../../assets/images/doctor/health/period.jpg";

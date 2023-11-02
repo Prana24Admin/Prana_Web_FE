@@ -2,42 +2,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
-// import { data, multiData } from "./data";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { NextBtn, PreviousBtn } from "./CarouselButtons";
 let slidesToShow = 1;
-
-const PreviousBtn = (props) => {
-  const { className, onClick, currentSlide } = props;
-  return (
-    <>
-      {currentSlide !== 0 && (
-        <div className={className} onClick={onClick}>
-          <ChevronLeft style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
-const NextBtn = (props) => {
-  const { className, onClick, slideCount, currentSlide } = props;
-
-  return (
-    <>
-      {currentSlide !== slideCount - slidesToShow && (
-        <div className={className} onClick={onClick}>
-          <ChevronRight style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
 
 const carouselProperties = {
   prevArrow: <PreviousBtn />,
-  nextArrow: <NextBtn />,
+  nextArrow: <NextBtn slidesToShow={1} />,
   slidesToShow: slidesToShow,
   slidesToScroll: 1,
   infinite: true,
@@ -105,17 +78,7 @@ const MainBannerCarousel = ({ multiData }) => {
 const CarouselCard = ({ item }) => {
   return (
     <div>
-      <img
-        // className="banner-image"
-        style={{
-          width: "99%",
-          height: "17rem",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-        src={item.Image}
-        alt="banner"
-      />
+      <img className="mainBanner-Image" src={item.Image} alt="banner" />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Splash from "../../assets/images/splash.jpg";
 import axios from "axios";
-import { Form, Alert } from "react-bootstrap";
+
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [flag, setFlag] = useState(false);

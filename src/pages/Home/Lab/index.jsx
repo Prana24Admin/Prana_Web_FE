@@ -25,7 +25,7 @@ const LabIndex = () => {
           </div>
           <MedicineSlider />
           <Test />
-          <LabHealth />
+          {/* <LabHealth /> */}
           <Package />
           <div style={{ marginTop: "1.5rem" }}>
             <Download />

@@ -14,3 +14,6 @@ export const handleRefetchCouponsData = () =>
 
 export const handleRefetchLabCartData = () =>
   queryClient.refetchQueries(["LabCart"]);
+
+export const handleRefetchAllCategories = () =>
+  queryClient.refetchQueries(["AllCategories"]);

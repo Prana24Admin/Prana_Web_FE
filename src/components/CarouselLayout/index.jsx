@@ -5,39 +5,14 @@ import "./carousel.css";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { NextBtn, PreviousBtn } from "./CarouselButtons";
+import LazyLoadedImage from "../../libs/LazyLoadedImage";
 let slidesToShow = 6;
-
-const PreviousBtn = (props) => {
-  const { className, onClick, currentSlide } = props;
-  return (
-    <>
-      {currentSlide !== 0 && (
-        <div className={className} onClick={onClick}>
-          <ChevronLeft style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
-const NextBtn = (props) => {
-  const { className, onClick, slideCount, currentSlide } = props;
-
-  return (
-    <>
-      {currentSlide !== slideCount - slidesToShow && (
-        <div className={className} onClick={onClick}>
-          <ChevronRight style={{ color: "blue", fontSize: "30px" }} />
-        </div>
-      )}
-    </>
-  );
-};
 
 const carouselProperties = {
   prevArrow: <PreviousBtn />,
-  nextArrow: <NextBtn />,
+  nextArrow: <NextBtn slidesToShow={6} />,
   slidesToShow: slidesToShow,
   slidesToScroll: 1,
   infinite: false,
@@ -104,7 +79,12 @@ const CarouselCard = ({ item }) => {
 
   return (
     <div className="card-borderContainer" onClick={() => navigate(item.path)}>
-      <img className="card-image" src={item.Image} alt="" />
+      {/* <img className="card-image" src={item.Image} alt="" /> */}
+      <LazyLoadedImage
+        className={"card-image"}
+        src={item.Image}
+        alt={"product"}
+      />
       {item.Text && <p className="card-title">{item.Text}</p>}
       {item.seeAll && <p className="card-seeAll">{item.seeAll}</p>}
     </div>

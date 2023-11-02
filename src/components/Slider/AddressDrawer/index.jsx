@@ -6,7 +6,7 @@ import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "react-bootstrap";
+import { Button } from "@chakra-ui/react";
 
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   const { data } = useContext(ProfileContext);

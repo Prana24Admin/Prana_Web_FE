@@ -1,7 +1,8 @@
 import React from "react";
 import Person from "../../../assets/images/lab/call-order1.png";
-import { IoCallSharp } from "react-icons/io5";
+
 import "../../../assets/css/Lab/index.css";
+import { PhoneCall } from "lucide-react";
 
 const BookingTest = () => {
   return (
@@ -25,7 +26,7 @@ const BookingTest = () => {
         <div className="d-flex-column">
           <p className="lab-num">
             <span className="med-call-icon">
-              <IoCallSharp />
+              <PhoneCall />
             </span>
             +918886786584
           </p>

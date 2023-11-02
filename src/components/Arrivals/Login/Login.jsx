@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Splash from "../../../assets/images/splash.jpg";
 import "./login.module.css";
 import axios from "axios";
-import { Form, Alert } from "react-bootstrap";
+
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -128,11 +128,6 @@ const Login = () => {
                   >
                     Create new account Signup?
                   </p>
-                  {flag && (
-                    <Alert color="primary" variant="danger">
-                      I got it you are in hurry! But every Field is important!
-                    </Alert>
-                  )}
                 </form>
               </div>
             </div>

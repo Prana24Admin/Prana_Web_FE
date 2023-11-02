@@ -9,8 +9,9 @@ import axiosInstance from "../../../libs/axios";
 import toast from "react-hot-toast";
 import { handleRefetchCartItems } from "../../../libs/queryFunctions";
 import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+
 import image from "../../../assets/images/health/Safety.jpg";
+import { Spinner } from "@chakra-ui/react";
 
 const Product = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false);

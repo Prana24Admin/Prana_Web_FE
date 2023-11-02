@@ -1,10 +1,9 @@
 import React from "react";
 import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-multi-carousel";
 
 import "../../assets/css/Doctor/clinic.css";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Stack } from "react-bootstrap";
+
 import MultiItemCarousel from "../CarouselLayout";
 import { specializations } from "../../utils/specializations";
 

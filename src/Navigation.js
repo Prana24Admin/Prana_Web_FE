@@ -100,7 +100,14 @@ const Navigation = () => {
         <Route path="/inner/doctor/appointment" element={<Appointment />} />
 
         <Route path="/healthcare" element={<HealthCareIndex />} />
-        <Route path="/healthcare/categories/:id" element={<Products />} />
+        <Route
+          path="/healthcare/categories/:categoryId"
+          element={<Products />}
+        />
+        <Route
+          path="/healthcare/categories/:categoryId/:id"
+          element={<Products />}
+        />
         <Route path="/product/:id" element={<Product />} />
 
         <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />

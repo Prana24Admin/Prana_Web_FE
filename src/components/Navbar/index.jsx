@@ -141,7 +141,7 @@ const Navbar = () => {
                   height={85}
                   src={Logo}
                   alt="logo"
-                  onClick={() => navigate("/home")}
+                  onClick={() => navigate("/")}
                 />
               </div>
 

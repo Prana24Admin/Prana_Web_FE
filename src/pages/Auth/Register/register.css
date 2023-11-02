@@ -1,0 +1,142 @@
+.register-header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+  font-family: "Libre Franklin";
+  margin-bottom: 0.5rem;
+}
+
+.register-headerContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.register-formContainer {
+  width: 90%;
+  height: 100%;
+  /* background: var(--powderWhite); */
+  /* border: 1px solid var(--cloudGray); */
+  /* border-radius: 5px; */
+  /* transition: all 0.3s; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 0.5rem;
+  width: 100%;
+}
+.register-inputField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.form-control {
+  border: 1px solid var(--cloudGray);
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  margin-bottom: 0.25rem;
+}
+.form-error {
+  font-size: 0.75rem;
+  color: red;
+  margin-top: 0.25rem;
+  margin-left: 0.25rem;
+}
+
+.forgot-password {
+  text-align: right;
+  font-size: 0.9rem;
+  padding-top: 10px;
+  color: var(--ashGray);
+  cursor: pointer;
+}
+.form-control:placeholder-shown {
+  padding-left: 0.75rem;
+}
+.register-button {
+  background-color: var(--crimsonPink);
+  border: none;
+  color: var(--pearlWhite);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.log-login {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--crimsonPink);
+}
+.log-login:hover {
+  text-decoration: underline;
+}
+.header-dot {
+  font-size: 2rem;
+  color: var(--crimsonPink);
+}
+
+.forgotPassword-container {
+  width: 100%;
+}
+.forgotPasswordText {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--crimsonPink);
+  text-align: end;
+  cursor: pointer;
+}
+.forgotPasswordText:hover {
+  text-decoration: underline;
+}
+
+/* .forgot {
+    text-align: right;
+    font-size: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: grey;
+    cursor: pointer;
+  } */
+
+/* #form-login {
+    margin-top: 60px;
+  }
+  #form-pass {
+    margin-top: 15px;
+  }
+  #pass-for {
+    margin-top: 30px;
+  }
+  #form-login1 {
+    margin-top: 100px;
+  } */
+/* .inputfield-otp {
+    display: flex;
+    flex-direction: row;
+  } */
+/* .otp-in {
+    width: 50px;
+    margin-left: 20px;
+    margin-right: 10px;
+  } */
+
+/* 
+  .input-height {
+    height: 4.5rem;
+  } */

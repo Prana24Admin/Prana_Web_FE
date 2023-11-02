@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from "./components/Arrivals/Register";
 
-import Forgot from "./components/Arrivals/forgot";
 import OTP from "./components/Arrivals/otp";
 import PasswordChange from "./components/Arrivals/passwordchange";
 
@@ -21,7 +19,7 @@ import Appointment from "./components/Doctor/findDoctor/appointment";
 import InnerLab from "./pages/Home/Lab";
 import HealthCareIndex from "./pages/Home/HealthCare/index";
 import HealthBlogIndex from "./components/HealthBlog/index";
-import Login from "./components/Arrivals/Login/Login";
+
 import Products from "./pages/Home/HealthCare/Products";
 
 import Product from "./components/Home/ProductScreen";
@@ -55,6 +53,9 @@ import NotFound from "./pages/404";
 import DoctorNearMe from "./components/Doctor/DoctorNearMe";
 import DoctorProfile from "./pages/Home/Doctor/DoctorProfile";
 import Brands from "./pages/Home/Brands";
+import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 // import ScrollToTop from "./libs/scrollToTop";
 
 const Navigation = () => {
@@ -62,14 +63,14 @@ const Navigation = () => {
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/forgot_password" element={<ForgotPassword />} />
         <Route path="/otp" element={<OTP />} />
         <Route path="/Password" element={<PasswordChange />} />
 
         {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/home" element={<Main />} />
+        <Route path="/" element={<Main />} />
 
         <Route path="/about" element={<AboutIndex />} />
         <Route path="/contact" element={<Contact />} />

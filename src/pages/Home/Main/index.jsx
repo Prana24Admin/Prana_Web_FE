@@ -49,9 +49,15 @@ const Main = () => {
         {/* -----------------------LabTests--------------------------- */}
         <div>
           <div className="labTest-mainContainer">
-            <div className="labTest-container">
-              <p className="main-title">Lab Tests</p>
-              {/* <p className="main-description">Powered by 8H%Tai</p> */}
+            <div className="main-titleFlex">
+              <p className="main-title">Popular Lab Tests</p>
+              <div
+                className="main-leftText"
+                onClick={() => navigate("/lab/all-tests")}
+              >
+                <p>View More</p>
+                <ChevronRight size={15} />
+              </div>
             </div>
             <LabTestsCarousel multiData={quickLabTests} />
           </div>

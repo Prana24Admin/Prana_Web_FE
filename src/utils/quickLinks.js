@@ -8,7 +8,7 @@ export const quickLinks = [
     Image: Med,
     header: "Order Medicine",
     description: "Save upto 25% OFF",
-    path: "/inner/innerMed",
+    path: "/medicine",
   },
   {
     id: 2,

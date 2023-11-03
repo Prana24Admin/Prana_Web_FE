@@ -43,8 +43,8 @@ const OrderCard = ({ order, screen }) => {
               className="orders-billText"
               onClick={() => {
                 screen === "lab"
-                  ? navigate(`/lab/orders/${order.uuid}`)
-                  : navigate(`/healthcare/orders/${order.uuid}`);
+                  ? navigate(`/orders/lab/${order.uuid}`)
+                  : navigate(`/orders/healthcare/${order.uuid}`);
               }}
             >
               View order details

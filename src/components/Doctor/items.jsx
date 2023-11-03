@@ -18,7 +18,7 @@ const DoctorItem = () => {
     navigate("/doctor/finddoctor");
   };
   const navigateMedicine = () => {
-    navigate("/inner/innerMed");
+    navigate("/medicine");
   };
   const navigateLab = () => {
     navigate("/lab");

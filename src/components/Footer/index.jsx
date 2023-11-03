@@ -1,6 +1,8 @@
 import React from "react";
 
 import "./footer.css";
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <section className="footer-container">
@@ -22,10 +24,18 @@ function Footer() {
                   <p className="footer-par1" id="footer-par1">
                     Company
                   </p>
-                  <p className="footer-par1-1">Home</p>
-                  <p className="footer-par1-1">About Us</p>
-                  <p className="footer-par1-1">Contact Us</p>
-                  <p className="footer-par1-1">Careers</p>
+                  <Link className="footer-par1-1" to={"/"}>
+                    Home
+                  </Link>
+                  <Link className="footer-par1-1" to={"/about"}>
+                    About Us
+                  </Link>
+                  <Link className="footer-par1-1" to={"/contact"}>
+                    Contact Us
+                  </Link>
+                  <Link className="footer-par1-1" to={"/careers"}>
+                    Careers
+                  </Link>
                 </div>
               </div>
               <div className="d-flex flex-column">
@@ -37,32 +47,9 @@ function Footer() {
                   <br /> situated at Viman Nagar,SNO 30/3A3B,
                   <br /> Next to Hyatt, Pune, Maharashtra - 411014 IN
                 </p>
-                {/* <div className="d-flex flex-row ">
-                  <div className="d-flex flex-column gap">
-                    <div>
-                      <BsInstagram className="col-in" />
-                    </div>
-                  </div>
-                  <div className="d-flex flex-column gap">
-                    <div>
-                      <BsFacebook className="col-in" />
-                    </div>
-                  </div>
-                  <div className="d-flex flex-column gap">
-                    <div>
-                      <BsYoutube className="col-in" />
-                    </div>
-                  </div>
-                  <div className="d-flex flex-column gap">
-                    <div>
-                      <BsTwitter className="col-in" />
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
-          {/* <hr /> */}
           <div className="separator" />
           <div>
             <p className="btm-par">

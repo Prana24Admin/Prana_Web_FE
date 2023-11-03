@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import OTP from "./components/Arrivals/otp";
@@ -56,81 +56,86 @@ import Brands from "./pages/Home/Brands";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
-// import ScrollToTop from "./libs/scrollToTop";
+import BrandDetails from "./pages/Home/Brands/BrandDetails";
+import Specialization from "./components/Doctor/Specialization";
 
 const Navigation = () => {
   return (
     <Router>
       <ScrollToTop />
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot_password" element={<ForgotPassword />} />
-        <Route path="/otp" element={<OTP />} />
-        <Route path="/Password" element={<PasswordChange />} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot_password" element={<ForgotPassword />} />
+          <Route path="/otp" element={<OTP />} />
+          <Route path="/Password" element={<PasswordChange />} />
 
-        {/* <Route path="/home" element={<Home />} /> */}
-        <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main />} />
 
-        <Route path="/about" element={<AboutIndex />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/career" element={<Careers />} />
+          <Route path="/about" element={<AboutIndex />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
 
-        <Route path="/offers" element={<OffersTab />} />
-        <Route path="/offers/payment" element={<Payment />} />
-        <Route path="/offers/medicine" element={<Medicine />} />
-        <Route path="/offers/diagnostic" element={<Diagnostic />} />
-        <Route path="/offers/healthcare" element={<HealthCare />} />
+          <Route path="/profile" element={<ProfileAccount />} />
+          <Route path="/profile/address" element={<ProfileAddress />} />
+          <Route path="/wishlist" element={<Wishlist />} />
 
-        <Route path="/prescription" element={<Prescription />} />
-        <Route path="/inner/innerMed" element={<InnerMed />} />
-        <Route path="/inner/innerAyur" element={<InnerAyur />} />
-        <Route path="/doctor" element={<Doctor />} />
+          <Route path="/brands" element={<Brands />} />
+          <Route path="/brands/:id" element={<BrandDetails />} />
 
-        <Route path="/lab" element={<InnerLab />} />
-        <Route path="/lab/all-tests" element={<LabTests />} />
-        <Route path="/lab/test/:id" element={<PackageOrder />} />
-        <Route path="/lab/cart" element={<LabCart />} />
-        <Route path="/lab/checkout" element={<LabTestCheckout />} />
+          <Route path="/medicine" element={<InnerMed />} />
 
-        <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
-        <Route path="/doctor/specialization/:id" element={<FindDoctor />} />
-        <Route path="/doctor/near-me" element={<DoctorNearMe />} />
-        <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
-        <Route path="/inner/doctor/appointment" element={<Appointment />} />
+          <Route path="/lab" element={<InnerLab />} />
+          <Route path="/lab/all-tests" element={<LabTests />} />
+          <Route path="/lab/test/:id" element={<PackageOrder />} />
+          <Route path="/lab/cart" element={<LabCart />} />
+          <Route path="/lab/checkout" element={<LabTestCheckout />} />
 
-        <Route path="/healthcare" element={<HealthCareIndex />} />
-        <Route
-          path="/healthcare/categories/:categoryId"
-          element={<Products />}
-        />
-        <Route
-          path="/healthcare/categories/:categoryId/:id"
-          element={<Products />}
-        />
-        <Route path="/product/:id" element={<Product />} />
+          <Route path="/healthcare" element={<HealthCareIndex />} />
+          <Route
+            path="/healthcare/categories/:categoryId"
+            element={<Products />}
+          />
+          <Route
+            path="/healthcare/categories/:categoryId/:id"
+            element={<Products />}
+          />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<CheckoutScreen />} />
 
-        <Route path="/inner/healthBlog" element={<HealthBlogIndex />} />
+          <Route path="/blogs" element={<HealthBlogIndex />} />
 
-        <Route path="/profile" element={<ProfileAccount />} />
-        <Route path="/profile/address" element={<ProfileAddress />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/doctor" element={<Doctor />} />
+          <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
+          <Route path="/doctor/specialization" element={<Specialization />} />
+          <Route path="/doctor/specialization/:id" element={<FindDoctor />} />
+          <Route path="/doctor/near-me" element={<DoctorNearMe />} />
+          <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
+          <Route path="/inner/doctor/appointment" element={<Appointment />} />
 
-        {/* <Route path="/orders/:id" element={<OrderDetails />} /> */}
-        <Route path="/healthcare/orders" element={<HealthcareOrders />} />
-        <Route
-          path="/healthcare/orders/:id"
-          element={<HealthCareOrderDetails />}
-        />
-        <Route path="/lab/orders" element={<LabTestOrders />} />
-        <Route path="/lab/orders/:id" element={<LabOrderDetails />} />
+          <Route path="/ayurveda" element={<InnerAyur />} />
 
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<CheckoutScreen />} />
+          <Route path="/offers" element={<OffersTab />} />
+          <Route path="/offers/payment" element={<Payment />} />
+          <Route path="/offers/medicine" element={<Medicine />} />
+          <Route path="/offers/diagnostic" element={<Diagnostic />} />
+          <Route path="/offers/healthcare" element={<HealthCare />} />
 
-        <Route path="*" element={<NotFound />} />
-        <Route path="/brands" element={<Brands />} />
-      </Routes>
+          <Route path="/prescription" element={<Prescription />} />
+
+          <Route path="/orders/healthcare" element={<HealthcareOrders />} />
+          <Route
+            path="/orders/healthcare/:id"
+            element={<HealthCareOrderDetails />}
+          />
+          <Route path="/orders/lab" element={<LabTestOrders />} />
+          <Route path="/orders/lab/:id" element={<LabOrderDetails />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };

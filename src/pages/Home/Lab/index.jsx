@@ -8,7 +8,9 @@ import Download from "../../../components/Home/innerHome/homeDownload";
 
 import CartBox from "./CartBox/CartBox";
 import MainLayout from "../../../components/MainLayout";
-import MedicineSlider from "../../../components/Inner/Medicine/medicineSlider";
+import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
+import { MedicineBanner } from "../../../utils/banners";
+// import MedicineSlider from "../../../components/Inner/Medicine/medicineSlider";
 
 const LabIndex = () => {
   return (
@@ -23,7 +25,8 @@ const LabIndex = () => {
           <div style={{ marginBottom: "1rem" }}>
             <CartBox />
           </div>
-          <MedicineSlider />
+          {/* <MedicineSlider /> */}
+          <MainBannerCarousel multiData={MedicineBanner} />
           <Test />
           {/* <LabHealth /> */}
           <Package />

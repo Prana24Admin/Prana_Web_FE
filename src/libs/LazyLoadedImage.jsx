@@ -32,6 +32,7 @@ const LazyLoadedImage = ({ src, alt, className }) => {
     <img
       src={isIntersecting ? src : ""}
       className={className}
+      loading="lazy"
       alt={alt}
       ref={imageRef}
       style={{ filter: src ? "none" : "blur(5px)" }}

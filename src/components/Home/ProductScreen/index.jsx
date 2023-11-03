@@ -29,26 +29,37 @@ const Product = () => {
   } = useQuery(["Product"], fetchProduct);
 
   const handleQuantity = async (product) => {
-    const response = await axiosInstance.post("/cart", {
-      quantity: product.quantity ?? 1,
-      product_id: product.productId,
-    });
-    if (response.status === 400) toast.error("Try again");
-
-    if (response.status === 201 || response.status === 200)
-      toast.success("Added to cart");
-    return response.data;
-  };
-  const { mutate, isLoading: quantityLoading } = useMutation(
-    (product) => {
-      return handleQuantity(product);
-    },
-    {
-      onSuccess: () => {
-        return handleRefetchCartItems();
-      },
+    const cartData = await axiosInstance.get("/cart");
+    const existingCartItem = cartData.data.find(
+      (item) => item.product.uuid === product.productId
+    );
+    if (existingCartItem) {
+      if (existingCartItem.quantity === parseInt(product.quantity)) {
+        toast.error("Product is already present in the cart.");
+        return;
+      } else {
+        const response = await axiosInstance.post(`/cart`, {
+          quantity: product.quantity,
+          product_id: product.productId,
+        });
+        if (response.status === 200) {
+          toast.success("Product quantity updated in the cart.");
+        }
+      }
+    } else {
+      const response = await axiosInstance.post("/cart", {
+        quantity: product.quantity ?? 1,
+        product_id: product.productId,
+      });
+      if (response.status === 201 || response.status === 200) {
+        toast.success("Added to cart");
+      }
     }
-  );
+  };
+
+  const { mutate, isLoading: quantityLoading } = useMutation((product) => {
+    return handleQuantity(product);
+  });
   return (
     <MainLayout>
       <div className="product-mainContainer">
@@ -58,20 +69,19 @@ const Product = () => {
               <div className="product-leftImage">
                 <img
                   className="product-img"
-                  // src={productData.image}
-                  // alt={productData.name}
+                  loading="lazy"
                   src={image}
                   alt="Product"
                 />
               </div>
             </div>
             <div className="product-rightContainer">
-              <div className="product-detailsContainer">
-                <p className="product-productTitle">{productData.name}</p>
-                <p className="product-productDescription">
-                  {productData.description}
-                </p>
-              </div>
+              <p className="product-productTitle">{productData.name}</p>
+              <p className="product-brandName">{productData.brand.name}</p>
+              <p className="product-productDescription">
+                {productData.description}
+              </p>
+
               <div className="product-flexContainer">
                 <div>
                   <div className="product-priceContainer">

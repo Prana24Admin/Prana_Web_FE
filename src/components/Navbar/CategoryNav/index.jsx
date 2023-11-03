@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./categoryNav.css";
 import { useNavigate } from "react-router-dom";
@@ -17,57 +17,60 @@ const CategoryNav = () => {
   const navigate = useNavigate();
   const pathName = window.location.pathname;
 
-  const navElements = [
-    {
-      id: 1,
-      name: "Medicine",
-      Icon: Pill,
-      path: "/inner/innerMed",
-      active: pathName.includes("/innerMed"),
-    },
-    {
-      id: 2,
-      name: "Lab Tests",
-      Icon: FlaskConical,
-      path: "/lab",
-      active: pathName.includes("/lab"),
-    },
-    {
-      id: 3,
-      name: "Health Care",
-      Icon: Syringe,
-      path: "/healthcare",
-      active: pathName.includes("/healthcare"),
-    },
-    {
-      id: 4,
-      name: "Health Blogs",
-      Icon: Newspaper,
-      path: "/inner/healthBlog",
-      active: pathName.includes("/healthBlog"),
-    },
-    {
-      id: 5,
-      name: "Doctor",
-      Icon: Stethoscope,
-      path: "/doctor",
-      active: pathName.includes("/doctor"),
-    },
-    {
-      id: 6,
-      name: "Ayurveda",
-      Icon: Sprout,
-      path: "/inner/innerAyur",
-      active: pathName.includes("/innerAyur"),
-    },
-    {
-      id: 7,
-      name: "Offers",
-      Icon: BadgePercent,
-      path: "/offers",
-      active: pathName.includes("/offers"),
-    },
-  ];
+  const navElements = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "Medicine",
+        Icon: Pill,
+        path: "/medicine",
+        active: pathName.startsWith("/medicine"),
+      },
+      {
+        id: 2,
+        name: "Lab Tests",
+        Icon: FlaskConical,
+        path: "/lab",
+        active: pathName.startsWith("/lab"),
+      },
+      {
+        id: 3,
+        name: "Health Care",
+        Icon: Syringe,
+        path: "/healthcare",
+        active: pathName.startsWith("/healthcare"),
+      },
+      {
+        id: 4,
+        name: "Health Blogs",
+        Icon: Newspaper,
+        path: "/blogs",
+        active: pathName.startsWith("/blogs"),
+      },
+      {
+        id: 5,
+        name: "Doctor",
+        Icon: Stethoscope,
+        path: "/doctor",
+        active: pathName.startsWith("/doctor"),
+      },
+      {
+        id: 6,
+        name: "Ayurveda",
+        Icon: Sprout,
+        path: "/ayurveda",
+        active: pathName.startsWith("/ayurveda"),
+      },
+      {
+        id: 7,
+        name: "Offers",
+        Icon: BadgePercent,
+        path: "/offers",
+        active: pathName.startsWith("/offers"),
+      },
+    ],
+    [pathName]
+  );
 
   return (
     <div className="innerNav-mainContainer">

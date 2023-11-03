@@ -7,6 +7,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("accessToken");
+    config.headers["Cache-Control"] = "max-age=3600";
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

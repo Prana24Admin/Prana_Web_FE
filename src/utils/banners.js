@@ -12,11 +12,6 @@ import Toothsi from "../assets/images/home/toothsi.jpg";
 import InnerMed from "../assets/images/inner/med/innermed-img.jpg";
 import InnerMed1 from "../assets/images/inner/med/innermed-img1.png";
 import InnerMed2 from "../assets/images/inner/med/innermed-img2.jpg";
-import InnerMed3 from "../assets/images/inner/med/innermed-img3.jpg";
-import InnerMed4 from "../assets/images/inner/med/innermed-img4.jpg";
-import InnerMed5 from "../assets/images/inner/med/innermed-img5.jpg";
-import InnerMed6 from "../assets/images/inner/med/innermed-img6.jpg";
-import InnerMed7 from "../assets/images/inner/med/innermed-img7.jpg";
 
 import HealthSlide from "../assets/images/blog/healthSlide.jpg";
 import HealthSlide1 from "../assets/images/blog/healthSlide1.jpg";
@@ -79,13 +74,6 @@ export const MedicineBanner = [
   },
   { id: 2, Image: InnerMed1 },
   { id: 3, Image: InnerMed2 },
-  { id: 4, Image: InnerMed3 },
-  { id: 5, Image: InnerMed4 },
-  { id: 6, Image: InnerMed5 },
-  { id: 7, Image: InnerMed6 },
-  {
-    Image: InnerMed7,
-  },
 ];
 
 export const blogSlider = [

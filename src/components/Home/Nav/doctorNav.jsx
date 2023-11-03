@@ -11,7 +11,7 @@ const DoctorNav = () => {
     navigate("/inner/doctor/consultant");
   };
   const navigateMedicine = () => {
-    navigate("/inner/innerMed");
+    navigate("/medicine");
   };
   const navigateLab = () => {
     navigate("/lab");

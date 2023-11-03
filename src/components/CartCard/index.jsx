@@ -1,10 +1,7 @@
 import { ChevronDown, Loader, Trash2 } from "lucide-react";
 import React, { useState } from "react";
 import axiosInstance from "../../libs/axios";
-import {
-  handleRefetchCartItems,
-  handleRefetchLabCartData,
-} from "../../libs/queryFunctions";
+import { handleRefetchCartItems } from "../../libs/queryFunctions";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Image from "../../assets/images/doctor/doctor.png";
@@ -36,25 +33,6 @@ const CartCard = ({ cartItem, labItem = null }) => {
     return response.data;
   };
 
-  const removeCartItem = async (productId) => {
-    const response = await axiosInstance.delete(`/cart/${productId}`);
-    if (response.status === 200) {
-      toast.success("Product removed");
-      localStorage.removeItem(productId);
-      handleRefetchCartItems();
-    }
-    return response.data;
-  };
-
-  const removeLabCartItem = async (testId) => {
-    const response = await axiosInstance.delete(`/cart/labcart/${testId}`);
-    if (response.status === 200) {
-      toast.success("Test removed");
-      handleRefetchLabCartData();
-    }
-    return response.data;
-  };
-
   const { mutate, isLoading } = useMutation(
     (product) => {
       return handleQuantity(product);
@@ -62,6 +40,11 @@ const CartCard = ({ cartItem, labItem = null }) => {
     {
       onSuccess: () => {
         return handleRefetchCartItems();
+      },
+    },
+    {
+      onError: () => {
+        return toast.error("Failed! Try again");
       },
     }
   );

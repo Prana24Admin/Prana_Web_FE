@@ -30,7 +30,7 @@ export const categories = [
     id: 1,
     Text: "Ayurvedic Care",
     Image: AyurvedicCare,
-    path: "/inner/innerAyur",
+    path: "/ayurveda",
   },
   {
     id: 2,

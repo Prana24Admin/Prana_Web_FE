@@ -5,10 +5,9 @@ import Footer from "../Footer";
 
 const MainLayout = ({ children }) => {
   return (
-    <main>
+    <main id="root">
       <Navbar />
-      {/* <InnerNav /> */}
-      {children}
+      <div className="main-content">{children}</div>
       <Footer />
     </main>
   );

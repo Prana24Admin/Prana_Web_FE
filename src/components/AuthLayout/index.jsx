@@ -1,8 +1,8 @@
 import React from "react";
 import "./authLayout.css";
 
-import Logo from "../../assets/images/Prana_Logo.jpeg";
-import LoginImage from "../../assets/images/VectorImages/LoginWallpaper.png";
+import Logo from "../../assets/images/Prana_Logo.webp";
+import LoginImage from "../../assets/images/VectorImages/LoginWallpaper.webp";
 
 const AuthLayout = ({ children }) => {
   return (

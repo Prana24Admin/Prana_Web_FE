@@ -12,33 +12,11 @@ import { ChevronDown, MapPin, Search, ShoppingCart } from "lucide-react";
 import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../Slider";
 import ZipCodeDrawer from "../Slider/ZipCodeDrawer";
-import Logo from "../../assets/images/Prana_Logo.jpeg";
+import Logo from "../../assets/images/Prana_Logo.webp";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
   const navigate = useNavigate();
-  const navigateAbout = () => {
-    navigate("/about");
-  };
-  const navigateRegister = () => {
-    navigate("/register");
-  };
-
-  const navigateContact = () => {
-    navigate("/contact");
-  };
-  const navigateCareer = () => {
-    navigate("/career");
-  };
-  const navigateHome = () => {
-    navigate("/home");
-  };
-  const navigateofferScreen = () => {
-    navigate("/offers");
-  };
-  const navigateCart = () => {
-    navigate("/cart");
-  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -288,7 +266,7 @@ const Navbar = () => {
                     <Link className="dropdowntext" to={"/profile"}>
                       Your Profile
                     </Link>
-                    <Link className="dropdowntext" to={"/healthcare/orders"}>
+                    <Link className="dropdowntext" to={"/orders/healthcare"}>
                       Your Orders
                     </Link>
                     <Link className="dropdowntext" to={"/wishlist"}>

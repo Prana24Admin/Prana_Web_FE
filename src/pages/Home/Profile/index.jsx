@@ -115,7 +115,7 @@ const Profile = ({ children }) => {
                 </div>
                 <div className="profile-innerOptions">
                   <div
-                    onClick={() => navigate("/healthcare/orders")}
+                    onClick={() => navigate("/orders/healthcare")}
                     className="profile-optionsMainContainer"
                   >
                     <div style={{ width: "10%" }} />
@@ -124,7 +124,7 @@ const Profile = ({ children }) => {
                     </p>
                   </div>
                   <div
-                    onClick={() => navigate("/lab/orders")}
+                    onClick={() => navigate("/orders/lab")}
                     className="profile-optionsMainContainer"
                   >
                     <div style={{ width: "10%" }} />

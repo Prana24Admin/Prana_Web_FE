@@ -7,7 +7,6 @@ import "./ProductScreen.css";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../libs/axios";
 import toast from "react-hot-toast";
-import { handleRefetchCartItems } from "../../../libs/queryFunctions";
 import { useParams } from "react-router-dom";
 
 import image from "../../../assets/images/health/Safety.jpg";

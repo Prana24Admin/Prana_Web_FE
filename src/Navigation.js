@@ -11,10 +11,8 @@ import InnerMed from "./components/Inner/Medicine/index";
 import InnerAyur from "./components/Inner/Ayurveda/index";
 
 import Doctor from "./components/Doctor/index";
-import InnerDoctor from "./components/Doctor/inner/index";
 
 import FindDoctor from "./components/Doctor/findDoctor/index";
-import Appointment from "./components/Doctor/findDoctor/appointment";
 
 import InnerLab from "./pages/Home/Lab";
 import HealthCareIndex from "./pages/Home/HealthCare/index";
@@ -70,28 +68,21 @@ const Navigation = () => {
           <Route path="/forgot_password" element={<ForgotPassword />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/Password" element={<PasswordChange />} />
-
           <Route path="/" element={<Main />} />
-
           <Route path="/about" element={<AboutIndex />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
-
           <Route path="/profile" element={<ProfileAccount />} />
           <Route path="/profile/address" element={<ProfileAddress />} />
           <Route path="/wishlist" element={<Wishlist />} />
-
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/:id" element={<BrandDetails />} />
-
           <Route path="/medicine" element={<InnerMed />} />
-
           <Route path="/lab" element={<InnerLab />} />
           <Route path="/lab/all-tests" element={<LabTests />} />
           <Route path="/lab/test/:id" element={<PackageOrder />} />
           <Route path="/lab/cart" element={<LabCart />} />
           <Route path="/lab/checkout" element={<LabTestCheckout />} />
-
           <Route path="/healthcare" element={<HealthCareIndex />} />
           <Route
             path="/healthcare/categories/:categoryId"
@@ -104,27 +95,20 @@ const Navigation = () => {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckoutScreen />} />
-
           <Route path="/blogs" element={<HealthBlogIndex />} />
-
           <Route path="/doctor" element={<Doctor />} />
-          <Route path="/inner/doctor/consultant" element={<InnerDoctor />} />
           <Route path="/doctor/specialization" element={<Specialization />} />
           <Route path="/doctor/specialization/:id" element={<FindDoctor />} />
           <Route path="/doctor/near-me" element={<DoctorNearMe />} />
           <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
-          <Route path="/inner/doctor/appointment" element={<Appointment />} />
 
           <Route path="/ayurveda" element={<InnerAyur />} />
-
           <Route path="/offers" element={<OffersTab />} />
           <Route path="/offers/payment" element={<Payment />} />
           <Route path="/offers/medicine" element={<Medicine />} />
           <Route path="/offers/diagnostic" element={<Diagnostic />} />
           <Route path="/offers/healthcare" element={<HealthCare />} />
-
           <Route path="/prescription" element={<Prescription />} />
-
           <Route path="/orders/healthcare" element={<HealthcareOrders />} />
           <Route
             path="/orders/healthcare/:id"
@@ -132,7 +116,6 @@ const Navigation = () => {
           />
           <Route path="/orders/lab" element={<LabTestOrders />} />
           <Route path="/orders/lab/:id" element={<LabOrderDetails />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

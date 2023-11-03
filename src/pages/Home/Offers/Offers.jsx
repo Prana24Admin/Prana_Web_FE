@@ -1,11 +1,11 @@
 import React from "react";
 import "./offers.css";
 import { Link } from "react-router-dom";
-// import MainLayout from "../../../components/MainLayout";
+
 const Offers = () => {
   return (
     <>
-      <div style={{ paddingTop: "8rem", maxWidth: "1240px", margin: "auto" }}>
+      <div style={{ paddingTop: "11rem", maxWidth: "1240px", margin: "auto" }}>
         <p className="pharm">Prana24 Offers & Coupon Codes</p>
         <p className="prana">
           Prana 24 is one of India’s leading online healthcare platforms that
@@ -18,37 +18,6 @@ const Offers = () => {
           Download the Prana24 app today to buy medicines online with great
           savings.Hurry! Avail these exclusive Prana24 offers now.
         </p>
-      </div>
-      <div className="d-flex flex-row col-row">
-        <div className="d-flex flex-column col-offer">
-          <Link to="/offers">
-            {" "}
-            <p className="col-term">All</p>
-          </Link>
-        </div>
-        <div className="d-flex flex-column col-offer">
-          <Link to="/offers/payment">
-            {" "}
-            <p className="col-term">Payments</p>
-          </Link>
-        </div>
-        <div className="d-flex flex-column col-offer">
-          <Link to="/offers/medicine">
-            <p className="col-term">Medicine</p>
-          </Link>
-        </div>
-        <div className="d-flex flex-column col-offer">
-          <Link to="/offers/diagnostic">
-            {" "}
-            <p className="col-term">Diagnostic</p>
-          </Link>
-        </div>
-        <div className="d-flex flex-column col-offer">
-          <Link to="/offers/healthcare">
-            {" "}
-            <p className="col-term">Health Care</p>
-          </Link>
-        </div>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import Flat from "../../../assets/images/offers/flat.jpg";
 import Plus from "../../../assets/images/offers/plusoffer.jpg";
 
 import "./offerInnerScreen.css";
-import InnerSearch from "../../../components/Home/Nav/innerSearch";
+// import InnerSearch from "../../../components/Home/Nav/innerSearch";
 import OfferScreen from "./Offers";
 
 import MainLayout from "../../../components/MainLayout";
@@ -60,12 +60,9 @@ const Diagnostic = () => {
   return (
     <MainLayout>
       <div>
-        <InnerSearch />
-      </div>
-      <div>
         <OfferScreen />
       </div>
-      <div className="d-flex flex-row justify-content-center mt-5 mb-5">
+      <div>
         <div className="coupon-container">
           {OfferArr.map((item) => {
             return <Coupon key={item.uuid} item={item} />;

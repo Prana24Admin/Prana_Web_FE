@@ -1,8 +1,4 @@
 import React from "react";
-import Med from "../../../assets/images/home/choose/med-foot.jpg";
-import Location from "../../../assets/images/home/choose/location.jpg";
-import Family from "../../../assets/images/home/choose/family.jpg";
-import Delivery from "../../../assets/images/home/choose/deliveryBoy.jpg";
 import "../../../assets/css/Home/highLights.css";
 import { Pill, Truck, Users2 } from "lucide-react";
 

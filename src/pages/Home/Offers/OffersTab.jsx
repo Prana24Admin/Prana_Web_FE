@@ -3,7 +3,7 @@ import "./offerInnerScreen.css";
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../components/MainLayout";
-import InnerSearchBar from "../../../components/Home/Nav/innerSearch";
+// import InnerSearchBar from "../../../components/Home/Nav/innerSearch";
 import OfferScreen from "./Offers";
 import Coupon from "../../../components/Coupon";
 
@@ -18,12 +18,9 @@ const OffersTab = () => {
   return (
     <MainLayout>
       <div>
-        <InnerSearchBar />
-      </div>
-      <div>
         <OfferScreen />
       </div>
-      <div className="d-flex flex-row justify-content-center mt-5 mb-5">
+      <div>
         <div className="coupon-container">
           {data &&
             data.data.map((item) => {

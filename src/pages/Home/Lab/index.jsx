@@ -10,7 +10,6 @@ import CartBox from "./CartBox/CartBox";
 import MainLayout from "../../../components/MainLayout";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import { MedicineBanner } from "../../../utils/banners";
-// import MedicineSlider from "../../../components/Inner/Medicine/medicineSlider";
 
 const LabIndex = () => {
   return (

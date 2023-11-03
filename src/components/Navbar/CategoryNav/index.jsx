@@ -1,13 +1,10 @@
 import React, { useMemo } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import "./categoryNav.css";
 import { useNavigate } from "react-router-dom";
 import {
-  Activity,
   BadgePercent,
   FlaskConical,
   Newspaper,
-  Percent,
   Pill,
   Sprout,
   Stethoscope,

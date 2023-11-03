@@ -1,6 +1,5 @@
 import React from "react";
 
-// import SearchBar from "../Home/Nav/innerSearch";
 import Welcome from "./welcome";
 import Items from "./items";
 import Clinic from "./clinic";

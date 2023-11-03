@@ -5,13 +5,10 @@ import "./labCart.css";
 import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-import { BadgePercent, IndianRupee } from "lucide-react";
-
-import { useNavigate } from "react-router-dom";
 
 import CartCard from "../../../../components/CartCard";
 import MainLayout from "../../../../components/MainLayout";
-import { Button, useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
 
 import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";

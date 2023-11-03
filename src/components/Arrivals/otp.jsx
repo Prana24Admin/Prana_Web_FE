@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Splash from "../../assets/images/splash.jpg";
-import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 const OTP = () => {
-  const [flag, setFlag] = useState(false);
   const navigate = useNavigate();
 
   const navigatePasswordChange = () => {

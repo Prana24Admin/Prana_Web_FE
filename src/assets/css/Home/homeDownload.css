@@ -220,8 +220,10 @@
 }
 .homeDownload-flexContainer {
   display: flex;
-  gap: 1rem;
+  gap: 5rem;
   align-items: center;
+  max-width: 1240px;
+  margin: auto;
   font-family: "Libre Franklin";
   /* justify-content: space-between; */
 }

@@ -7,6 +7,7 @@ import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import DoctorCard from "../../DoctorCard";
 import CostEstimate from "../../CostEstimate";
+import doctors from "../../../assets/images/VectorImages/NO_DOCTORS.png";
 
 const Available = () => {
   const navigate = useNavigate();
@@ -66,18 +67,27 @@ const Available = () => {
 
   return (
     <div className="available-mainContainer">
-      {/* <div className="d-flex flex-row"> */}
       <div className="available-flexContainer">
         <div className="available-leftContainer">
-          {/* <div className="d-flex flex-column col-lg-7"> */}
+          <p className="available-doctorDetails">
+            Book appointments with minimum wait-time & verified doctor details
+          </p>
           <div>
             <p className="available-doctorsTitle">
-              {data && data.doctors.length > 0
-                ? `${data.doctors.length} doctors found`
-                : "No doctors found"}
-            </p>
-            <p className="available-doctorDetails">
-              Book appointments with minimum wait-time & verified doctor details
+              {data && data.doctors.length > 0 ? (
+                `${data.doctors.length} doctors found`
+              ) : (
+                <div className="available-imageContainer">
+                  <img
+                    style={{ width: "50%" }}
+                    src={doctors}
+                    alt="No Doctors found Near you !"
+                  />
+                  <p className="available-imageDescription">
+                    Sorry! No Doctors found Near you{" "}
+                  </p>
+                </div>
+              )}
             </p>
           </div>
           {/* <hr /> */}

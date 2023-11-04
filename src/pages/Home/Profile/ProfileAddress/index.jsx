@@ -10,6 +10,7 @@ import Profile from "..";
 import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
 import { AddressDrawer } from "../../../../components/Slider/AddressDrawer";
+import address from "../../../../assets/images/VectorImages/NO_ADDRESS.png";
 
 const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
@@ -133,7 +134,16 @@ const ProfileAddress = () => {
         {data &&
           Object.keys(data.address).length < 1 &&
           data.additional_address.length < 1 && (
-            <p>No addresses! Add one right now</p>
+            <div className="address-imageContainer">
+              <img
+                style={{ width: "35%", height: "35%" }}
+                src={address}
+                alt="No Address Found"
+              />
+              <p className="address-imageText">
+                No Address Found ! <span>Please Add one...</span>
+              </p>
+            </div>
           )}
       </div>
       <Slider

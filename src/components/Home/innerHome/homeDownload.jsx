@@ -2,14 +2,18 @@ import React from "react";
 import "../../../assets/css/Home/homeDownload.css";
 import Playstore from "../../../assets/images/home/Download/playstore.jpg";
 import AppStore from "../../../assets/images/home/Download/mac_button.jpg";
-import Mobile from "../../../assets/images/home/Download/mobile.jpg";
+import Mobile from "../../../assets/images/VectorImages/Mobile.png";
 function Downlaod() {
   return (
     <>
       <div className="homeDownload-flexContainer">
-        <div>
-          <img loading="lazy" src={Mobile} alt="Mobile" />
-        </div>
+        <img
+          loading="lazy"
+          style={{ width: "35%" }}
+          src={Mobile}
+          alt="Mobile"
+        />
+
         <div>
           <p className="homeDownload-mainTitle">
             Download The Prana24 app for free

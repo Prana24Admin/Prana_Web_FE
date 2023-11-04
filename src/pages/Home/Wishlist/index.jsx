@@ -9,6 +9,7 @@ import axiosInstance from "../../../libs/axios";
 import { handleRefetchWishlistData } from "../../../libs/queryFunctions";
 import MainLayout from "../../../components/MainLayout";
 import ProductItem from "../../../components/ProductItem";
+import wishlist from "../../../assets/images/VectorImages/WHISHLIST.png";
 
 const Wishlist = () => {
   const fetchWishlist = async () => {
@@ -29,10 +30,12 @@ const Wishlist = () => {
   return (
     <MainLayout>
       <div className="favorites-mainContainer">
-        <p className="wishlist-title">Favorites</p>
-        <div className="favorites-gridContainer">
-          {data &&
-            data.map((item) => (
+        <p className="wishlist-title">
+          Favorites<span style={{ color: "var(--crimsonPink)" }}>.</span>
+        </p>
+        {data && data.length > 0 ? (
+          <div className="favorites-gridContainer">
+            {data.map((item) => (
               <ProductItem
                 wishlistItem={item}
                 key={item.uuid}
@@ -40,7 +43,14 @@ const Wishlist = () => {
                 product={""}
               />
             ))}
-        </div>
+          </div>
+        ) : (
+          <div className="wishlist-imageContainer">
+            <img className="wishlist-image" src={wishlist} alt="no items" />
+
+            <p className="wishlist-text">You haven't saved any items yet</p>
+          </div>
+        )}
       </div>
     </MainLayout>
   );

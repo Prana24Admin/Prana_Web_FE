@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductItem from "../../../../components/ProductItem";
 import { handleRefetchAllCategories } from "../../../../libs/queryFunctions";
+import products from "../../../../assets/images/VectorImages/NO_PRODUCTS.png";
+
+import "./products.css";
 
 const ProductsByCategories = ({ categoryId, selectedCategory }) => {
   const fetchProductsByCategory = async () => {
@@ -24,13 +26,18 @@ const ProductsByCategories = ({ categoryId, selectedCategory }) => {
   }, [categoryId, selectedCategory, refetch]);
 
   return (
-    <div className="products-productsContainer">
+    <div>
       {productsData && productsData.products.length > 0 ? (
-        productsData.products.map((product) => (
-          <ProductItem key={product.uuid} product={product} />
-        ))
+        <div className="products-productsContainer">
+          {productsData.products.map((product) => (
+            <ProductItem key={product.uuid} product={product} />
+          ))}
+        </div>
       ) : (
-        <p>No Products</p>
+        <div className="products-imageContainer">
+          <img style={{ width: "40%" }} src={products} alt="No Products" />
+          <p className="products-imageDescription">No Products Found!</p>
+        </div>
       )}
     </div>
   );

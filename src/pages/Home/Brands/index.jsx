@@ -1,14 +1,13 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import "../../../components/CarouselLayout/carousel.css";
 import MainLayout from "../../../components/MainLayout";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
-
+import "./brands.css";
 import { banners1 } from "../../../utils/banners";
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../components/Loader";
-
-const BrandCard = lazy(() => import("../../../components/BrandCard"));
+import BrandCard from "../../../components/BrandCard";
 
 const Brands = () => {
   const fetchAllBrands = async () => {
@@ -40,14 +39,12 @@ const Brands = () => {
         )}
         {brandsData && brandsData.data.length > 0 && (
           <div
-            className="favorites-gridContainer"
+            className="brands-gridContainer"
             style={{ marginBottom: "1rem" }}
           >
-            <Suspense fallback={<p>Loading</p>}>
-              {brandsData.data.map((brand) => (
-                <BrandCard brand={brand} key={brand.uuid} />
-              ))}
-            </Suspense>
+            {brandsData.data.map((brand) => (
+              <BrandCard brand={brand} key={brand.uuid} />
+            ))}
           </div>
         )}
       </div>

@@ -1,0 +1,8 @@
+.brands-gridContainer {
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 1.25rem 0;
+
+  gap: 1.25rem;
+}

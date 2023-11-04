@@ -8,7 +8,7 @@ function Downlaod() {
     <>
       <div className="homeDownload-flexContainer">
         <div>
-          <img src={Mobile} alt="Mobile" />
+          <img loading="lazy" src={Mobile} alt="Mobile" />
         </div>
         <div>
           <p className="homeDownload-mainTitle">
@@ -22,8 +22,18 @@ function Downlaod() {
             operations.
           </p>
           <div className="homeDownload-downloadButtons">
-            <img className="homeDownload-buttons" src={Playstore} alt="" />
-            <img className="homeDownload-buttons" src={AppStore} alt="" />
+            <img
+              loading="lazy"
+              className="homeDownload-buttons"
+              src={Playstore}
+              alt=""
+            />
+            <img
+              loading="lazy"
+              className="homeDownload-buttons"
+              src={AppStore}
+              alt=""
+            />
           </div>
         </div>
       </div>

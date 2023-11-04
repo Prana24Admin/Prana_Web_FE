@@ -49,7 +49,12 @@ const ProductItem = ({ product, removeFromWishlist, wishlistItem = null }) => {
             : navigate(`/product/${product.uuid}`)
         }
       >
-        <img className="favorites-image" src={Image} alt={product.name} />
+        <img
+          loading="lazy"
+          className="favorites-image"
+          src={Image}
+          alt={product.name}
+        />
         <p className="favorites-productName">
           {wishlistItem !== null ? wishlistItem?.product.name : product?.name}
         </p>

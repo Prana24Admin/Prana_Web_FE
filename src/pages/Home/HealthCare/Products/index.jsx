@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./products.css";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 
@@ -11,20 +11,27 @@ import MainLayout from "../../../../components/MainLayout";
 import ProductsByCategories from "./ProductsByCategories";
 const Products = () => {
   const navigate = useNavigate();
-  const { categoryId, id } = useParams();
+  const { categoryId } = useParams();
+  const [subcategory, setSubCategory] = useState(null);
+
   const [selectedCategory, setSelectedCategory] = useState("All Products");
 
   const handleCategoryNavigate = (category, categoryUUID) => {
     if (category !== "All Products") {
-      navigate(`/healthcare/categories/${categoryId}/${categoryUUID}`);
+      navigate(
+        `/healthcare/categories/${categoryId}?subcategory=${categoryUUID}`
+      );
+      setSelectedCategory(category);
+      setSubCategory(categoryUUID);
+      console.log(subcategory);
     } else {
       navigate(`/healthcare/categories/${categoryId}`);
+      setSelectedCategory("All Products");
+      setSubCategory(null);
     }
-    setSelectedCategory(category);
   };
 
   const fetchData = async () => {
-    console.log(categoryId, id);
     const response = await axiosInstance.get(`filters/products/${categoryId}`);
     return response.data;
   };
@@ -33,7 +40,7 @@ const Products = () => {
     data: categoryData,
     isLoading,
     error,
-  } = useQuery(["AllCategories"], fetchData);
+  } = useQuery(["AllCategories", categoryId], fetchData);
 
   return (
     <MainLayout>
@@ -77,15 +84,15 @@ const Products = () => {
             </div>
             <div className="products-rightContainer">
               <p className="main-header">Products</p>
-              {!id && (
+              {subcategory === null && (
                 <ProductsByCategories
                   categoryId={categoryId}
                   selectedCategory={selectedCategory}
                 />
               )}
-              {id && (
+              {subcategory && (
                 <ProductsByCategories
-                  categoryId={id}
+                  categoryId={subcategory}
                   selectedCategory={selectedCategory}
                 />
               )}

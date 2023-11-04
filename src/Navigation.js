@@ -89,7 +89,7 @@ const Navigation = () => {
             element={<Products />}
           />
           <Route
-            path="/healthcare/categories/:categoryId/:id"
+            path="/healthcare/categories/:categoryId?subcategory=:id"
             element={<Products />}
           />
           <Route path="/product/:id" element={<Product />} />

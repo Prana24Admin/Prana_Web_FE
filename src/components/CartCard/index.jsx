@@ -54,6 +54,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
       <div className="cart-card">
         <div className="cart-flexContainer">
           <img
+            loading="lazy"
             className="cart-Image"
             src={Image}
             alt={

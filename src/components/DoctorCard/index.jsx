@@ -10,7 +10,12 @@ const DoctorCard = ({ doctor, specialization }) => {
     >
       <div className="available-cardContainer">
         <div>
-          <img className="available-doctorImage" src={doctor.image} alt="" />
+          <img
+            loading="lazy"
+            className="available-doctorImage"
+            src={doctor.image}
+            alt=""
+          />
           <p className="type">{specialization}</p>
         </div>
         <div>

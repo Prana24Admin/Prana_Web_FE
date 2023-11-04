@@ -14,7 +14,12 @@ const Prescription = () => {
         {/* <p className="main-title">Order with prescription</p> */}
         <div className="prescription-flexContainer">
           <div>
-            <img className="prescription-image" src={Upload} alt="Pres" />
+            <img
+              loading="lazy"
+              className="prescription-image"
+              src={Upload}
+              alt="Pres"
+            />
           </div>
           <div className="prescription-flexRightContainer">
             {/* <p style={{ fontWeight: "bold", fontSize: "20px" }}>

@@ -29,10 +29,18 @@ function Footer() {
         >
           <p className="footer-header">Company</p>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <Link className="footer-links">Home</Link>
-            <Link className="footer-links">About us</Link>
-            <Link className="footer-links">Contact us</Link>
-            <Link className="footer-links">Careers</Link>
+            <Link to={"/"} className="footer-links">
+              Home
+            </Link>
+            <Link to={"/about"} className="footer-links">
+              About us
+            </Link>
+            <Link to={"/contact"} className="footer-links">
+              Contact us
+            </Link>
+            <Link to={"/careers"} className="footer-links">
+              Careers
+            </Link>
           </div>
         </div>
         <div className="footer-widthContainer">

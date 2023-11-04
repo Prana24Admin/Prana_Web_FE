@@ -11,7 +11,12 @@ const LabCard = () => {
         className="labCard-cardContainer"
         onClick={() => navigate("/packageorder")}
       >
-        <img className="labCard-cardImage" src={Image} alt="sanju" />
+        <img
+          loading="lazy"
+          className="labCard-cardImage"
+          src={Image}
+          alt="sanju"
+        />
         <p className="labCard-cardTitle">Title</p>
         <div className="labCard-flexContainer">
           <div>

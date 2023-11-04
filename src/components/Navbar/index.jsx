@@ -228,6 +228,7 @@ const Navbar = () => {
                   {data ? (
                     data.image !== null ? (
                       <img
+                        loading="lazy"
                         src={data?.image}
                         alt="avatar"
                         style={{
@@ -239,6 +240,7 @@ const Navbar = () => {
                       />
                     ) : (
                       <img
+                        loading="lazy"
                         src={Avatar}
                         alt="avatar"
                         style={{
@@ -251,6 +253,7 @@ const Navbar = () => {
                     )
                   ) : (
                     <img
+                      loading="lazy"
                       src={Avatar}
                       alt="avatar"
                       style={{

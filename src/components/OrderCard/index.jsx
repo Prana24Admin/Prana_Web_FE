@@ -54,7 +54,12 @@ const OrderCard = ({ order, screen }) => {
       </div>
       <div className="orders-details">
         <div className="orders-detailsFlex">
-          <img className="orders-image" src={Image} alt="sanju" />
+          <img
+            loading="lazy"
+            className="orders-image"
+            src={Image}
+            alt="sanju"
+          />
           <div className="orders-gapContainer">
             <p className="orders-productName">Orders Name</p>
             <button className="orders-button">View your Item</button>

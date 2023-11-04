@@ -83,6 +83,7 @@ const RemoveModal = ({
           <ModalBody>
             <div className="removeModal-mainContainer">
               <img
+                loading="lazy"
                 className="removeModal-img"
                 // src={product.product.image}
                 src={TruckSuccess}

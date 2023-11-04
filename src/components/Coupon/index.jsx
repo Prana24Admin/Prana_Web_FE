@@ -19,6 +19,7 @@ const Coupon = ({
       <div className={smallCoupon ? "small-main" : "main"}>
         <div className={smallCoupon ? "small-co-img" : "co-img"}>
           <img
+            loading="lazy"
             src="https://i.pinimg.com/originals/c7/84/67/c78467db9ff497393cb548a48f02d451.png"
             alt={"coupon"}
             className={smallCoupon ? "coupon-image" : "coupon-image"}

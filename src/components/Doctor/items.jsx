@@ -73,6 +73,7 @@ const DoctorItem = () => {
               onClick={() => navigate(doctorCard.path)}
             >
               <img
+                loading="lazy"
                 className="items-img"
                 src={doctorCard.Image}
                 alt={doctorCard.header}

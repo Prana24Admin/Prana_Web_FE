@@ -24,7 +24,6 @@ const ProfileAccount = () => {
       email: userData.email,
       phone_number: userData.phoneNumber,
     });
-    console.log(response.data);
     setEdit(false);
     return response.data;
   };

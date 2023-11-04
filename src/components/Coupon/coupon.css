@@ -1,5 +1,6 @@
 .coupon-container {
   margin: auto;
+  margin-bottom: 4rem;
   width: 100%;
   max-width: 1240px;
   display: flex;

@@ -42,6 +42,11 @@ body p {
 .main-content {
   flex: 1;
 }
+.fullContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

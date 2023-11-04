@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import MainLayout from "../../../../components/MainLayout";
 import "./packageOrder.css";
-import { ChevronDown } from "lucide-react";
-import Loader from "../../../../components/loader";
+
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import Loader from "../../../../components/Loader";
 
 const PackageOrder = () => {
   const navigate = useNavigate();
@@ -39,6 +39,16 @@ const PackageOrder = () => {
   return (
     <MainLayout>
       <div className="packageOrder-mainContainer">
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {testData && (
           <>
             <div className="packageOrder-borderContainer">

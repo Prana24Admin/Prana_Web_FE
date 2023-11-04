@@ -10,6 +10,7 @@ import { handleRefetchWishlistData } from "../../../libs/queryFunctions";
 import MainLayout from "../../../components/MainLayout";
 import ProductItem from "../../../components/ProductItem";
 import wishlist from "../../../assets/images/VectorImages/WHISHLIST.png";
+import Loader from "../../../components/Loader";
 
 const Wishlist = () => {
   const fetchWishlist = async () => {
@@ -33,6 +34,16 @@ const Wishlist = () => {
         <p className="wishlist-title">
           Favorites<span style={{ color: "var(--crimsonPink)" }}>.</span>
         </p>
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {data && data.length > 0 ? (
           <div className="favorites-gridContainer">
             {data.map((item) => (

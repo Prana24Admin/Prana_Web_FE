@@ -2,7 +2,7 @@ import React from "react";
 import "./labTestCard.css";
 import axiosInstance from "../../libs/axios";
 import { useMutation } from "@tanstack/react-query";
-import Loader from "../loader";
+
 import { handleRefetchLabCartData } from "../../libs/queryFunctions";
 import { useNavigate } from "react-router-dom";
 

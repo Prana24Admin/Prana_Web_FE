@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
-import MainLayout from "../../MainLayout";
+import MainLayout from "../../../../components/MainLayout";
 
 import { ChevronDown, ShoppingBag, Truck } from "lucide-react";
 import "./ProductScreen.css";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import axiosInstance from "../../../libs/axios";
+import axiosInstance from "../../../../libs/axios";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
-import image from "../../../assets/images/health/Safety.jpg";
+import image from "../../../../assets/images/home/covid.jpg";
+import Loader from "../../../../components/Loader";
 import { Spinner } from "@chakra-ui/react";
 
 const Product = () => {
@@ -62,6 +63,16 @@ const Product = () => {
   return (
     <MainLayout>
       <div className="product-mainContainer">
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {productData && (
           <>
             <div className="product-leftContainer">

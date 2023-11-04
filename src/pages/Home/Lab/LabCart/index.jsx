@@ -13,6 +13,7 @@ import Slider from "../../../../components/Slider";
 
 import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";
 import Bill from "../../../../components/Bill";
+import Loader from "../../../../components/Loader";
 
 const LabCart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -40,7 +41,16 @@ const LabCart = () => {
   return (
     <MainLayout>
       <section>
-        {isLoading && <p>Loading..</p>}
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         <div className="cart-mainContainer">
           <div className="cart-marginContainer">
             {data &&

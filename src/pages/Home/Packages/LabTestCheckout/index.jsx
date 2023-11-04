@@ -5,6 +5,7 @@ import CheckoutLayout from "../../../../components/CheckoutLayout";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import CartCard from "../../../../components/CartCard";
+import Loader from "../../../../components/Loader";
 
 const LabTestCheckout = () => {
   const fetchLabCart = async () => {
@@ -19,6 +20,16 @@ const LabTestCheckout = () => {
   } = useQuery(["LabCart"], fetchLabCart);
   return (
     <CheckoutLayout cartData={labCartData.data}>
+      {isLoading && (
+        <div className="fullContainer">
+          <Loader width={"4rem"} height={"4rem"} />
+        </div>
+      )}
+      {error && (
+        <div>
+          <p>Error fetching. Try again</p>
+        </div>
+      )}
       {labCartData &&
         labCartData.data.length > 0 &&
         labCartData.data.map((test) => (

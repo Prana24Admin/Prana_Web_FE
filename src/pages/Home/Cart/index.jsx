@@ -14,6 +14,7 @@ import Slider from "../../../components/Slider";
 
 import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
 import Bill from "../../../components/Bill";
+import Loader from "../../../components/Loader";
 
 const Cart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -72,9 +73,18 @@ const Cart = () => {
   return (
     <MainLayout>
       <section>
-        {isLoading && <p>Loading..</p>}
         <div className="cart-mainContainer">
           <div className="cart-marginContainer">
+            {isLoading && (
+              <div className="fullContainer">
+                <Loader width={"4rem"} height={"4rem"} />
+              </div>
+            )}
+            {error && (
+              <div>
+                <p>Error fetching. Try again</p>
+              </div>
+            )}
             {data &&
               (data.length < 1 ? (
                 <div style={{ margin: "auto" }}>

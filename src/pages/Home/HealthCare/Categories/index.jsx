@@ -2,11 +2,11 @@ import React from "react";
 
 import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
 
-// import "../../../assets/css/Health/healthCare.css";
 import "./categories.css";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../../components/Loader";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -20,8 +20,16 @@ const Categories = () => {
   return (
     <>
       <div className="categories-container">
-        {isLoading && <p>Loading</p>}
-        {error && <p>Error fetching data! Try again</p>}
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching data! Try again</p>
+          </div>
+        )}
         {data && (
           <div className="categories-marginContainer">
             <div className="categories-box">

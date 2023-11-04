@@ -6,6 +6,7 @@ import { handleRefetchAllCategories } from "../../../../libs/queryFunctions";
 import products from "../../../../assets/images/VectorImages/NO_PRODUCTS.png";
 
 import "./products.css";
+import Loader from "../../../../components/Loader";
 
 const ProductsByCategories = ({ categoryId, selectedCategory }) => {
   const fetchProductsByCategory = async () => {
@@ -27,6 +28,16 @@ const ProductsByCategories = ({ categoryId, selectedCategory }) => {
 
   return (
     <div>
+      {isLoading && (
+        <div className="fullContainer">
+          <Loader width={"4rem"} height={"4rem"} />
+        </div>
+      )}
+      {error && (
+        <div>
+          <p>Error fetching. Try again</p>
+        </div>
+      )}
       {productsData && productsData.products.length > 0 ? (
         <div className="products-productsContainer">
           {productsData.products.map((product) => (

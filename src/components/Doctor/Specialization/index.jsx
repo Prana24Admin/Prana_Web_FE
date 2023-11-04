@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import LazyLoadedImage from "../../../libs/LazyLoadedImage";
 import { useNavigate } from "react-router-dom";
 import "./specialization.css";
+import Loader from "../../Loader";
 
 const Specialization = () => {
   const navigate = useNavigate();
@@ -25,6 +26,16 @@ const Specialization = () => {
   return (
     <MainLayout>
       <section className="specialization-container">
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {specializationData && (
           <div
             className="favorites-gridContainer"

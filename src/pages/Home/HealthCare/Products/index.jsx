@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 
 import ProductsByCategories from "./ProductsByCategories";
+import Loader from "../../../../components/Loader";
 const Products = () => {
   const navigate = useNavigate();
   const { categoryId } = useParams();
@@ -45,7 +46,16 @@ const Products = () => {
   return (
     <MainLayout>
       <div className="products-container">
-        {isLoading && <p>Loading..</p>}
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {categoryData && (
           <div className="products-flexContainer">
             <div className="products-leftContainer">

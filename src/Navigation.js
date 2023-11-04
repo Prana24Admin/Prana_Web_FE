@@ -20,7 +20,6 @@ import HealthBlogIndex from "./components/HealthBlog/index";
 
 import Products from "./pages/Home/HealthCare/Products";
 
-import Product from "./components/Home/ProductScreen";
 import Wishlist from "./pages/Home/Wishlist";
 
 import CheckoutScreen from "./pages/Home/Checkout/Checkout";
@@ -56,6 +55,7 @@ import Login from "./pages/Auth/Login";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import BrandDetails from "./pages/Home/Brands/BrandDetails";
 import Specialization from "./components/Doctor/Specialization";
+import Product from "./pages/Home/HealthCare/ProductScreen";
 
 const Navigation = () => {
   return (

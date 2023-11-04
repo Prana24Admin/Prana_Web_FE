@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import format from "date-fns/format";
 import MainLayout from "../../../../components/MainLayout";
+import Loader from "../../../../components/Loader";
 
 const HealthCareOrderDetails = () => {
   const { id } = useParams();
@@ -20,6 +21,16 @@ const HealthCareOrderDetails = () => {
   return (
     <MainLayout>
       <div className="orderdetails-mainContainer">
+        {isLoading && (
+          <div className="fullContainer">
+            <Loader width={"4rem"} height={"4rem"} />
+          </div>
+        )}
+        {error && (
+          <div>
+            <p>Error fetching. Try again</p>
+          </div>
+        )}
         {data && (
           <div>
             <p className="orderdetails-title">Order Details</p>

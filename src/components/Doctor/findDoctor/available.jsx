@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import DoctorCard from "../../DoctorCard";
 import CostEstimate from "../../CostEstimate";
 import doctors from "../../../assets/images/VectorImages/NO_DOCTORS.png";
+import Loader from "../../Loader";
 
 const Available = () => {
   const navigate = useNavigate();
@@ -74,6 +75,16 @@ const Available = () => {
           </p>
           <div>
             <p className="available-doctorsTitle">
+              {isLoading && (
+                <div className="fullContainer">
+                  <Loader width={"4rem"} height={"4rem"} />
+                </div>
+              )}
+              {error && (
+                <div>
+                  <p>Error fetching. Try again</p>
+                </div>
+              )}
               {data && data.doctors.length > 0 ? (
                 `${data.doctors.length} doctors found`
               ) : (

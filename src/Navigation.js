@@ -7,6 +7,7 @@ import Login from "./pages/Auth/Login";
 import NotFound from "./pages/404";
 import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import ProtectedRoute from "./libs/ProtectedRoute";
 
 const PasswordChange = lazy(import("./components/Arrivals/passwordchange"));
 const OTP = lazy(import("./components/Arrivals/otp"));
@@ -76,50 +77,181 @@ const Navigation = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/profile" element={<ProfileAccount />} />
-          <Route path="/profile/address" element={<ProfileAddress />} />
-          <Route path="/wishlist" element={<Wishlist />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfileAccount />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/address"
+            element={
+              <ProtectedRoute>
+                <ProfileAddress />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <ProtectedRoute>
+                <Wishlist />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/:id" element={<BrandDetails />} />
           <Route path="/medicine" element={<Medicine />} />
           <Route path="/lab" element={<Lab />} />
-          <Route path="/lab/all-tests" element={<LabTests />} />
-          <Route path="/lab/test/:id" element={<PackageOrder />} />
-          <Route path="/lab/cart" element={<LabCart />} />
-          <Route path="/lab/checkout" element={<LabTestCheckout />} />
+          <Route
+            path="/lab/all-tests"
+            element={
+              <ProtectedRoute>
+                <LabTests />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lab/test/:id"
+            element={
+              <ProtectedRoute>
+                <PackageOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lab/cart"
+            element={
+              <ProtectedRoute>
+                <LabCart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/lab/checkout"
+            element={
+              <ProtectedRoute>
+                <LabTestCheckout />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/healthcare" element={<HealthCare />} />
           <Route
             path="/healthcare/categories/:categoryId"
-            element={<Products />}
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/healthcare/categories/:categoryId?subcategory=:id"
-            element={<Products />}
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckoutScreen />} />
+          <Route
+            path="/product/:id"
+            element={
+              <ProtectedRoute>
+                <Product />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <CheckoutScreen />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/blogs" element={<HealthBlog />} />
           <Route path="/doctor" element={<Doctor />} />
           <Route path="/doctor/specialization" element={<Specialization />} />
-          <Route path="/doctor/specialization/:id" element={<FindDoctor />} />
-          <Route path="/doctor/near-me" element={<DoctorNearMe />} />
-          <Route path="/doctor/profile/:id" element={<DoctorProfile />} />
+          <Route
+            path="/doctor/specialization/:id"
+            element={
+              <ProtectedRoute>
+                <FindDoctor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor/near-me"
+            element={
+              <ProtectedRoute>
+                <DoctorNearMe />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/doctor/profile/:id"
+            element={
+              <ProtectedRoute>
+                <DoctorProfile />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path="/ayurveda" element={<Ayurveda />} />
-          <Route path="/offers" element={<OffersTab />} />
+          <Route
+            path="/offers"
+            element={
+              <ProtectedRoute>
+                <OffersTab />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/offers/payment" element={<Payment />} />
           <Route path="/offers/medicine" element={<MedicineOffers />} />
           <Route path="/offers/diagnostic" element={<Diagnostic />} />
           <Route path="/offers/healthcare" element={<HealthCareOffers />} />
           <Route path="/prescription" element={<Prescription />} />
-          <Route path="/orders/healthcare" element={<HealthcareOrders />} />
+          <Route
+            path="/orders/healthcare"
+            element={
+              <ProtectedRoute>
+                <HealthcareOrders />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/orders/healthcare/:id"
-            element={<HealthCareOrderDetails />}
+            element={
+              <ProtectedRoute>
+                <HealthCareOrderDetails />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/orders/lab" element={<LabTestOrders />} />
-          <Route path="/orders/lab/:id" element={<LabOrderDetails />} />
+          <Route
+            path="/orders/lab"
+            element={
+              <ProtectedRoute>
+                <LabTestOrders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders/lab/:id"
+            element={
+              <ProtectedRoute>
+                <LabOrderDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

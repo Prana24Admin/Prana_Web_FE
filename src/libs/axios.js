@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const axiosInstance = axios.create({
   baseURL: "https://api-prana.prana24.in/api",
@@ -6,7 +7,15 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("accessToken");
+    const cookies = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("="));
+    const accessTokenCookie = cookies.find(
+      (cookie) => cookie[0].trim() === "accessToken"
+    );
+
+    const token = accessTokenCookie ? accessTokenCookie[1] : null;
+
     config.headers["Cache-Control"] = "max-age=3600";
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -20,16 +29,22 @@ axiosInstance.interceptors.request.use(
 
 const refreshAccessToken = async () => {
   try {
-    const refreshToken = localStorage.getItem("refreshToken");
+    const cookies = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("="));
+    const refreshTokenCookie = cookies.find(
+      (cookie) => cookie[0].trim() === "refreshToken"
+    );
+    const refreshToken = refreshTokenCookie ? refreshTokenCookie[1] : null;
     const response = await axiosInstance.post("/auth/refresh", {
       refresh_token: refreshToken,
     });
     const newAccessToken = response.data.token;
-    localStorage.setItem("accessToken", response.data.token);
-    localStorage.setItem("refreshToken", response.data.refresh_token);
+    document.cookie = `accessToken=${response.data.token}; max-age=3600; path=/`;
+    document.cookie = `refreshToken=${response.data.refresh_token}; max-age=86400; path=/`;
     return newAccessToken;
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
 
@@ -37,10 +52,15 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true;
       const accessToken = await refreshAccessToken();
       if (accessToken) {
+        localStorage.setItem("isAuthenticated", true);
         axios.defaults.headers.common.Authorization = "Bearer " + accessToken;
         return axiosInstance(originalRequest);
       }

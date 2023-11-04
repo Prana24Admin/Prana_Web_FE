@@ -13,10 +13,12 @@ import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../Slider";
 import ZipCodeDrawer from "../Slider/ZipCodeDrawer";
 import Logo from "../../assets/images/Prana_Logo.webp";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useContext(AuthContext);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -42,11 +44,22 @@ const Navbar = () => {
   } = useQuery(["Profile"], fetchProfileData);
 
   const handleLogout = async () => {
-    const token = localStorage.getItem("accessToken");
+    const cookies = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("="));
+    const accessTokenCookie = cookies.find(
+      (cookie) => cookie[0].trim() === "accessToken"
+    );
+    const token = accessTokenCookie ? accessTokenCookie[1] : null;
+
     const response = await axiosInstance.post("/auth/logout", {
       token: token,
     });
     if (response.status === 200) {
+      document.cookie = "accessToken=; Max-Age=0; path=/;";
+      document.cookie = "refreshToken=; Max-Age=0; path=/;";
+      setIsAuthenticated(false);
+      localStorage.clear();
       navigate("/login");
     }
   };

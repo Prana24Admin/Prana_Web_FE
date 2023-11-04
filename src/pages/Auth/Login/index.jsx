@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "../Register/register.css";
 import axios from "axios";
@@ -7,8 +7,10 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import AuthLayout from "../../../components/AuthLayout";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
+  const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
   const navigateRegister = () => {
     navigate("/register");
@@ -34,8 +36,10 @@ const Login = () => {
       .post("https://api-prana.prana24.in/api/auth/login", data)
       .then((response) => {
         toast.success("Login success");
-        localStorage.setItem("accessToken", response.data.token);
-        localStorage.setItem("refreshToken", response.data.refresh_token);
+        document.cookie = `accessToken=${response.data.token}; max-age=3600; path=/`;
+        document.cookie = `refreshToken=${response.data.refresh_token}; max-age=86400; path=/`;
+        localStorage.setItem("isAuthenticated", true);
+        setIsAuthenticated(true);
         setTimeout(() => {
           navigate("/");
         }, 1000);
@@ -108,7 +112,7 @@ const Login = () => {
             type="submit"
             className="register-button"
           >
-            {isSubmitting ? "Loading ..." : "Register"}
+            {isSubmitting ? "Loading ..." : "Login"}
           </button>
           <p
             className="forgot-password text-center for-par"

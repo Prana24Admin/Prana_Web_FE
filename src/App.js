@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import ProfileProvider from "./context/ProfileProvider";
 import { ChakraProvider } from "@chakra-ui/react";
+import AuthProvider from "./context/AuthProvider";
 
 export const queryClient = new QueryClient();
 
@@ -14,15 +15,17 @@ const App = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <ChakraProvider>
-          <ProfileProvider>
-            <Navigation />
-            <ReactQueryDevtools initialIsOpen={false} />
-            <Toaster
-              containerStyle={{
-                zIndex: 1000000000,
-              }}
-            />
-          </ProfileProvider>
+          <AuthProvider>
+            <ProfileProvider>
+              <Navigation />
+              <ReactQueryDevtools initialIsOpen={false} />
+              <Toaster
+                containerStyle={{
+                  zIndex: 1000000000,
+                }}
+              />
+            </ProfileProvider>
+          </AuthProvider>
         </ChakraProvider>
       </QueryClientProvider>
     </>

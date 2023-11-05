@@ -6,6 +6,7 @@ import LazyLoadedImage from "../../../libs/LazyLoadedImage";
 import { useNavigate } from "react-router-dom";
 import "./specialization.css";
 import Loader from "../../Loader";
+import "../../../pages/Home/Wishlist/wishlist.css";
 
 const Specialization = () => {
   const navigate = useNavigate();

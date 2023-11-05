@@ -65,7 +65,7 @@ const LabTestsCarousel = ({ multiData }) => {
   }
 
   return (
-    <div style={{ margin: "10px 0" }} className="carousel">
+    <div style={{ margin: "0px 0rem" }} className="carousel">
       <Slider {...carouselProperties}>
         {multiData.map((item) => (
           <LabTestCard key={item.uuid} test={item} />

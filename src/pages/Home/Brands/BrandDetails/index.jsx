@@ -4,6 +4,7 @@ import "./brandDetails.css";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
+import "../../Wishlist/wishlist.css";
 
 const BrandDetails = () => {
   const { id } = useParams();

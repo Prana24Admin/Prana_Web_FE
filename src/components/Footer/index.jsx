@@ -2,9 +2,6 @@ import React from "react";
 
 import "./footer.css";
 import { Link } from "react-router-dom";
-import Input from "../Input";
-import { Button } from "@chakra-ui/react";
-import { Contact } from "lucide-react";
 
 function Footer() {
   return (

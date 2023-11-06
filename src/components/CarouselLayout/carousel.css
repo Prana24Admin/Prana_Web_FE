@@ -42,7 +42,7 @@
 } */
 .card-borderContainer {
   width: 94%;
-  /* height: 20rem; */
+  height: 17rem;
   border: 1px solid var(--lightGray);
   display: flex;
   flex-direction: column;

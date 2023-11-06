@@ -120,7 +120,7 @@ const Product = () => {
                     </span>
                   </p>
                   <div className="product-chevronIcon">
-                    <ChevronDown size={18} strokeWidth={2.5} color="#0e382c" />
+                    <ChevronDown size={18} strokeWidth={2.5} />
                   </div>
 
                   {toggleDropDown && (
@@ -149,9 +149,9 @@ const Product = () => {
                 </p>
               </div>
               <div className="product-buttonsContainer">
-                <button className="product-buyButton">
+                {/* <button className="product-buyButton">
                   <p>Buy Now</p>
-                </button>
+                </button> */}
                 <button
                   className="product-cartButton"
                   onClick={() => {

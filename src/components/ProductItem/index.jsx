@@ -6,6 +6,7 @@ import Image from "../../assets/images/home/body.png";
 import axiosInstance from "../../libs/axios";
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
+import "../../pages/Home/Wishlist/wishlist.css";
 
 const ProductItem = ({ product, removeFromWishlist, wishlistItem = null }) => {
   const navigate = useNavigate();

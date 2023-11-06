@@ -7,6 +7,7 @@ import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 
 import MainLayout from "../../../../components/MainLayout";
+import "../../HealthCare/ProductScreen/ProductScreen.css";
 
 import ProductsByCategories from "./ProductsByCategories";
 import Loader from "../../../../components/Loader";

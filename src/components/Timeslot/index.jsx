@@ -48,6 +48,11 @@ const TimeSlot = ({ doctorId }) => {
     getSelectedTimeSlot();
   }, [selectedDate, timeSlotData]);
 
+  useEffect(() => {
+    console.log(selectedDate);
+    console.log(selectedDateData);
+  });
+
   return (
     <section>
       {timeSlotData && (
@@ -91,50 +96,58 @@ const TimeSlot = ({ doctorId }) => {
               <p>123fee</p>
             </div>
           </div>
-          <div className="doctorProfile-boxContainer">
-            <div>
-              <DatePicker
-                dateData={timeSlotData}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-              />
-            </div>
-            <div className="doctorProfile-timeSlotContainer">
-              <div
-                className={
-                  selectedTimeSlot ===
-                  selectedDate +
-                    selectedDateData.start_time +
-                    " - " +
-                    selectedDateData.end_time
-                    ? "doctorProfile-selectedTimeText"
-                    : "doctorProfile-timeText"
-                }
-                onClick={() =>
-                  setSelectedTimeSlot(
+          {timeSlotData.data.length > 0 ? (
+            <div className="doctorProfile-boxContainer">
+              <div>
+                <DatePicker
+                  dateData={timeSlotData}
+                  selectedDate={selectedDate}
+                  setSelectedDate={setSelectedDate}
+                />
+              </div>
+              <div className="doctorProfile-timeSlotContainer">
+                <div
+                  className={
+                    selectedTimeSlot ===
                     selectedDate +
                       selectedDateData.start_time +
                       " - " +
                       selectedDateData.end_time
-                  )
-                }
-              >
-                <p>
-                  {selectedDateData &&
-                    formatTime(selectedDateData.start_time) +
-                      " - " +
-                      formatTime(selectedDateData.end_time)}
-                </p>
+                      ? "doctorProfile-selectedTimeText"
+                      : "doctorProfile-timeText"
+                  }
+                  onClick={() =>
+                    setSelectedTimeSlot(
+                      selectedDate +
+                        selectedDateData.start_time +
+                        " - " +
+                        selectedDateData.end_time
+                    )
+                  }
+                >
+                  <p>
+                    {selectedDateData &&
+                      formatTime(selectedDateData.start_time) +
+                        " - " +
+                        formatTime(selectedDateData.end_time)}
+                  </p>
+                </div>
               </div>
+              <button
+                className="doctorProfile-continueButton"
+                disabled={!selectedTimeSlot ? true : false}
+                onClick={() => onOpen()}
+              >
+                Continue Booking
+              </button>
             </div>
-            <button
-              className="doctorProfile-continueButton"
-              disabled={!selectedTimeSlot ? true : false}
-              onClick={() => onOpen()}
-            >
-              Continue Booking
-            </button>
-          </div>
+          ) : (
+            <div className="doctorProfile-boxContainer">
+              <p className="doctorProfile-appointmentText">
+                Sorry! No time-slot available to book an appointment.
+              </p>
+            </div>
+          )}
           <BookAppointmentModal
             isOpen={isOpen}
             onClose={onClose}

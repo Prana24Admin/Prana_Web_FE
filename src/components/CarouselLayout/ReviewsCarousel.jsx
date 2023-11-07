@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NextBtn, PreviousBtn } from "./CarouselButtons";
 import LazyLoadedImage from "../../libs/LazyLoadedImage";
-let slidesToShow = 6;
+let slidesToShow = 4;
 
 const carouselProperties = {
   prevArrow: <PreviousBtn />,
@@ -42,7 +42,7 @@ const carouselProperties = {
   ],
 };
 
-const MultiItemCarousel = ({ multiData }) => {
+const ReviewCarousel = ({ multiData }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const updateWidth = () => {
     setWidth(window.innerWidth);
@@ -60,7 +60,7 @@ const MultiItemCarousel = ({ multiData }) => {
   } else if (width > 769 && width <= 1025) {
     slidesToShow = 4;
   } else {
-    slidesToShow = 6;
+    slidesToShow = 4;
   }
 
   return (
@@ -78,16 +78,15 @@ const CarouselCard = ({ item }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="card-borderContainer" onClick={() => navigate(item.path)}>
-      <LazyLoadedImage
-        className={"card-image"}
-        src={item.Image}
-        alt={"product"}
-      />
-      {item.Text && <p className="card-title">{item.Text}</p>}
-      {item.seeAll && <p className="card-seeAll">{item.seeAll}</p>}
+    <div
+      className="reviews-borderContainer"
+      onClick={() => navigate(item.path)}
+    >
+      <p className="reviews-title">{item.par}</p>
+      <p className="reviews-date">{item.paragraph}</p>
+      <p className="reviews-text">{item.Text}</p>
     </div>
   );
 };
 
-export default MultiItemCarousel;
+export default ReviewCarousel;

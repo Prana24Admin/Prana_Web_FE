@@ -8,11 +8,14 @@ import image from "../../../../assets/images/profile/avatar.png";
 
 const LabOrderDetails = () => {
   const { id } = useParams();
+
+  // Function to fetch lab order details by ID
   const fetchOrderById = async () => {
     const response = await axiosInstance.get(`/orders/laborders/${id}`);
     return response.data;
   };
 
+  // Use the useQuery hook to manage lab order data and its state
   const { data, isLoading, error } = useQuery(["LabOrderById"], fetchOrderById);
 
   return (
@@ -24,7 +27,6 @@ const LabOrderDetails = () => {
             <div className="orderdetails-justifyContainer">
               <div className="orderdetails-flexContainer">
                 <p>
-                  {" "}
                   Ordered on {format(new Date(data.createdAt), "dd MMMM yyyy")}
                 </p>
                 <div className="orderdetails-line" />

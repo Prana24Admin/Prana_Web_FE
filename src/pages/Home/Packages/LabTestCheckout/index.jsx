@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./labcheckout.css";
 import CheckoutLayout from "../../../../components/CheckoutLayout";
 import axiosInstance from "../../../../libs/axios";
@@ -13,13 +12,15 @@ const LabTestCheckout = () => {
     return response.data;
   };
 
+  // Use the useQuery hook to manage lab cart data and its state
   const {
     data: labCartData,
     isLoading,
     error,
   } = useQuery(["LabCart"], fetchLabCart);
+
   return (
-    <CheckoutLayout cartData={labCartData.data}>
+    <CheckoutLayout cartData={labCartData?.data}>
       {isLoading && (
         <div className="fullContainer">
           <Loader width={"4rem"} height={"4rem"} />

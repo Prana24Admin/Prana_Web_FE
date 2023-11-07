@@ -8,25 +8,6 @@ import AboutInner from "./about-inner";
 import MainLayout from "../../../components/MainLayout";
 
 const AboutIndex = () => {
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
   return (
     <MainLayout>
       <div className="about-mainContainer">
@@ -52,9 +33,7 @@ const AboutIndex = () => {
           </p>
         </div>
         <div
-          // className="d-flex flex-row justify-content-center"
           style={{
-            // justifyContent: "space-between",
             display: "flex",
             alignItems: "center",
             margin: "auto",
@@ -107,6 +86,7 @@ const AboutIndex = () => {
           <iframe
             className="youtube"
             src="https://www.youtube.com/embed/Kk-POoUQAoA"
+            alt="Youtube"
           />
         </div>
         <div>

@@ -1,16 +1,13 @@
 import React from "react";
-
 import "../../Cart/cart.css";
 import "./labCart.css";
 import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-
 import CartCard from "../../../../components/CartCard";
 import MainLayout from "../../../../components/MainLayout";
 import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
-
 import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";
 import Bill from "../../../../components/Bill";
 import Loader from "../../../../components/Loader";
@@ -19,13 +16,16 @@ const LabCart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
+  // Function to fetch lab cart data
   const fetchLabCart = async () => {
     const response = await axiosInstance.get("/cart/labcart");
     return response.data;
   };
 
+  // Use the useQuery hook to manage lab cart data and its state
   const { data, isLoading, error } = useQuery(["LabCart"], fetchLabCart);
 
+  // Calculate subTotal, sampleCollectionCharges, and totalDiscount
   const subTotal = data?.data.reduce((sum, test) => {
     return sum + parseFloat(test.lab_test.price);
   }, 0);
@@ -42,11 +42,13 @@ const LabCart = () => {
     <MainLayout>
       <section>
         {isLoading && (
+          // Show a loader while data is loading
           <div className="fullContainer">
             <Loader width={"4rem"} height={"4rem"} />
           </div>
         )}
         {error && (
+          // Display an error message if there's an error
           <div>
             <p>Error fetching. Try again</p>
           </div>
@@ -67,6 +69,7 @@ const LabCart = () => {
                   <div className="cart-cardContainer">
                     <p className="main-head-title">Items in Your cart</p>
                     {data.data.map((test) => (
+                      // Render each lab cart item
                       <CartCard key={test.uuid} labItem={test} />
                     ))}
                   </div>
@@ -76,7 +79,6 @@ const LabCart = () => {
                       sampleCollectionCharges={sampleCollectionCharges}
                       discount={totalDiscount}
                     />
-
                     <Slider
                       onClose={onClose}
                       isOpen={isOpen}
@@ -94,4 +96,5 @@ const LabCart = () => {
     </MainLayout>
   );
 };
+
 export default LabCart;

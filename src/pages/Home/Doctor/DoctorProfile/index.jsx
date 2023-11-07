@@ -5,29 +5,38 @@ import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 import Profile from "../../../../assets/images/profile/avatar.png";
-import "./doctorProfile.css";
 import { CheckCircle } from "lucide-react";
 import Loader from "../../../../components/Loader";
 import TimeSlot from "../../../../components/Timeslot";
 
 const DoctorProfile = () => {
+  // Get the "id" parameter from the URL
   const { id } = useParams();
+
+  // Define an asynchronous function to fetch doctor data by ID
   const fetchDoctorById = async () => {
-    const response = await axiosInstance.get(`/doctor/${id}`);
-    return response.data;
+    try {
+      const response = await axiosInstance.get(`/doctor/${id}`);
+      return response.data;
+    } catch (error) {
+      throw new Error("Error fetching doctor data");
+    }
   };
 
+  // Use the useQuery hook to manage doctor data and its state
   const { data, isLoading, error } = useQuery(["DoctorById"], fetchDoctorById);
 
   return (
     <MainLayout>
       <div className="doctorProfile-mainContainer">
         {isLoading && (
+          // Show a loader while data is loading
           <div className="fullContainer">
             <Loader width={"4rem"} height={"4rem"} />
           </div>
         )}
         {error && (
+          // Display an error message if there's an error
           <div>
             <p>Error fetching. Try again</p>
           </div>
@@ -46,6 +55,7 @@ const DoctorProfile = () => {
                   alt="avatar"
                 />
                 <div>
+                  {/* Display doctor's name, title, email, and contact information */}
                   <p className="doctorProfile-header">
                     Dr. {data.first_name} {data.last_name}
                   </p>
@@ -76,13 +86,14 @@ const DoctorProfile = () => {
                   <p className="doctorProfile-subheader">
                     Address:
                     <span className="doctorProfile-description">
-                      42-199/1,madhapur,Hyd
+                      42-199/1, Madhapur, Hyd
                     </span>
                   </p>
                 </div>
               </div>
             </div>
             <div className="doctorProfile-rightContainer">
+              {/* Render the TimeSlot component with the doctor's ID */}
               <TimeSlot doctorId={data.id} />
             </div>
           </>

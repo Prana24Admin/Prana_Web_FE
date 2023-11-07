@@ -1,25 +1,29 @@
 import React, { useState } from "react";
-
 import MainLayout from "../../../../components/MainLayout";
-
 import { ChevronDown, ShoppingBag, Truck } from "lucide-react";
 import "./ProductScreen.css";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../../libs/axios";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
-
 import image from "../../../../assets/images/home/covid.jpg";
 import Loader from "../../../../components/Loader";
 import { Spinner } from "@chakra-ui/react";
 
 const Product = () => {
+  // State for toggling quantity dropdown
   const [toggleDropDown, setToggleDropDown] = useState(false);
+  // Get the "id" parameter from the URL
   const { id } = useParams();
 
+  // Define an asynchronous function to fetch product data by ID
   const fetchProduct = async () => {
-    const response = await axiosInstance.get(`/products/${id}`);
-    return response.data;
+    try {
+      const response = await axiosInstance.get(`/products/${id}`);
+      return response.data;
+    } catch (error) {
+      throw new Error("Error fetching product data");
+    }
   };
 
   const {
@@ -28,6 +32,7 @@ const Product = () => {
     error,
   } = useQuery(["Product"], fetchProduct);
 
+  // Function to handle quantity updates and add to cart
   const handleQuantity = async (product) => {
     const cartData = await axiosInstance.get("/cart");
     const existingCartItem = cartData.data.find(
@@ -57,18 +62,23 @@ const Product = () => {
     }
   };
 
+  // Use the useMutation hook to handle quantity updates and cart addition
   const { mutate, isLoading: quantityLoading } = useMutation((product) => {
     return handleQuantity(product);
   });
+
   return (
+    // Render the Product component within the MainLayout
     <MainLayout>
       <div className="product-mainContainer">
         {isLoading && (
+          // Show a loader while data is loading
           <div className="fullContainer">
             <Loader width={"4rem"} height={"4rem"} />
           </div>
         )}
         {error && (
+          // Display an error message if there's an error
           <div>
             <p>Error fetching. Try again</p>
           </div>
@@ -86,6 +96,7 @@ const Product = () => {
               </div>
             </div>
             <div className="product-rightContainer">
+              {/* Display product information */}
               <p className="product-productTitle">{productData.name}</p>
               <p className="product-brandName">{productData.brand.name}</p>
               <p className="product-productDescription">
@@ -125,6 +136,7 @@ const Product = () => {
 
                   {toggleDropDown && (
                     <div className="product-dropdown">
+                      {/* Display quantity options */}
                       {Array.from({ length: 20 }, (_, index) => index + 1).map(
                         (number) => (
                           <div
@@ -144,7 +156,7 @@ const Product = () => {
               </div>
               <div className="">
                 <p>
-                  Only <span style={{ color: "#e50f0f" }}>1 items </span> left!
+                  Only <span style={{ color: "#e50f0f" }}>1 item </span> left!
                   Don't miss it
                 </p>
               </div>
@@ -162,6 +174,7 @@ const Product = () => {
                   }}
                 >
                   {quantityLoading ? (
+                    // Show a loading spinner while adding to cart
                     <Spinner animation="border" size="sm" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </Spinner>
@@ -177,7 +190,7 @@ const Product = () => {
                     <p className="product-footerText">Fast Delivery</p>
                   </div>
                   <p className="product-footerDescriptionText">
-                    Delivery in 3days.
+                    Delivery in 3 days.
                   </p>
                 </div>
                 <div className="product-deliveryBody">
@@ -186,7 +199,7 @@ const Product = () => {
                     <p className="product-footerText">Return Delivery</p>
                   </div>
                   <p className="product-footerDescriptionText">
-                    Free 10days Delivery Returns.
+                    Free 10 days Delivery Returns.
                   </p>
                 </div>
               </div>
@@ -198,4 +211,5 @@ const Product = () => {
   );
 };
 
+// Export the Product component
 export default Product;

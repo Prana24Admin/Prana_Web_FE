@@ -3,7 +3,6 @@ import "./wishlist.css";
 import image from "../../../assets/images/home/Beautynew.jpg";
 import { Heart } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-
 import toast from "react-hot-toast";
 import axiosInstance from "../../../libs/axios";
 import { handleRefetchWishlistData } from "../../../libs/queryFunctions";
@@ -17,15 +16,24 @@ const Wishlist = () => {
     const response = await axiosInstance.get("/wishlist");
     return response.data;
   };
+
   const { data, isLoading, error } = useQuery(["Wishlist"], fetchWishlist);
 
   const removeFromWishlist = async (id) => {
-    const response = await axiosInstance.delete(`/wishlist/${id}`);
-    if (response.status === 200) {
-      toast.success("Removed");
-      handleRefetchWishlistData();
+    try {
+      const response = await axiosInstance.delete(`/wishlist/${id}`);
+      if (response.status === 200) {
+        // Display a success notification using toast.
+        toast.success("Removed");
+
+        // After successfully removing from the wishlist, refetch the wishlist data.
+        handleRefetchWishlistData();
+      }
+      return response.data;
+    } catch (error) {
+      // Handle and display any errors that may occur during removal.
+      console.error("Error removing item from the wishlist:", error);
     }
-    return response.data;
   };
 
   return (

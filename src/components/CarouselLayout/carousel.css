@@ -142,3 +142,39 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.reviews-borderContainer {
+  width: 94%;
+  height: 17rem;
+  border: 1px solid var(--lightGray);
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 0.5rem;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-family: "Libre Franklin";
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--powderWhite);
+  gap: 0.15rem;
+  overflow: scroll;
+  margin-bottom: 2rem;
+}
+.card-borderContainer:hover {
+  border: 1px solid var(--crimsonPink);
+}
+.reviews-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neutralBlack);
+}
+.reviews-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.reviews-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}

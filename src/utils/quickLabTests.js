@@ -1,10 +1,3 @@
-import Body from "../assets/images/home/body.png";
-import Thyroid from "../assets/images/home/thyroid.png";
-import Vitamins from "../assets/images/home/vitamin_labs.png";
-import Diabetes from "../assets/images/home/diabetes.jpg";
-import Women from "../assets/images/home/women.jpg";
-import SeeAll from "../assets/images/VectorImages/More.png";
-
 export const quickLabTests = [
   {
     image: null,

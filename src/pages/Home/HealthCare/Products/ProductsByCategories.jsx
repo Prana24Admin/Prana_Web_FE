@@ -9,11 +9,13 @@ import "./products.css";
 import Loader from "../../../../components/Loader";
 
 const ProductsByCategories = ({ categoryId, selectedCategory }) => {
+  // Function to fetch products by category
   const fetchProductsByCategory = async () => {
     const response = await axiosInstance.get(`/filters/products/${categoryId}`);
     return response.data;
   };
 
+  // Use the useQuery hook to manage product data and its state
   const {
     data: productsData,
     isLoading,
@@ -21,6 +23,7 @@ const ProductsByCategories = ({ categoryId, selectedCategory }) => {
     refetch,
   } = useQuery([selectedCategory], fetchProductsByCategory);
 
+  // Effect to handle data refetch when category or selectedCategory changes
   useEffect(() => {
     handleRefetchAllCategories();
     refetch();
@@ -29,11 +32,13 @@ const ProductsByCategories = ({ categoryId, selectedCategory }) => {
   return (
     <div>
       {isLoading && (
+        // Show a loader while data is loading
         <div className="fullContainer">
           <Loader width={"4rem"} height={"4rem"} />
         </div>
       )}
       {error && (
+        // Display an error message if there's an error
         <div>
           <p>Error fetching. Try again</p>
         </div>
@@ -41,6 +46,7 @@ const ProductsByCategories = ({ categoryId, selectedCategory }) => {
       {productsData && productsData.products.length > 0 ? (
         <div className="products-productsContainer">
           {productsData.products.map((product) => (
+            // Render product items
             <ProductItem key={product.uuid} product={product} />
           ))}
         </div>

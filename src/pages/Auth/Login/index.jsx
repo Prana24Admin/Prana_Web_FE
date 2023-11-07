@@ -12,6 +12,7 @@ import { AuthContext } from "../../../context/AuthProvider";
 const Login = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const navigateRegister = () => {
     navigate("/register");
   };
@@ -32,19 +33,34 @@ const Login = () => {
   });
 
   const onSubmit = async (data) => {
-    await axios
-      .post("https://api-prana.prana24.in/api/auth/login", data)
-      .then((response) => {
-        toast.success("Login success");
+    try {
+      const response = await axios.post(
+        "https://api-prana.prana24.in/api/auth/login",
+        data
+      );
+      if (response.status === 200) {
+        // Display a success toast when the login is successful.
+        toast.success("Login successful");
+
+        // Store access and refresh tokens as cookies and set authentication status.
         document.cookie = `accessToken=${response.data.token}; max-age=3600; path=/`;
         document.cookie = `refreshToken=${response.data.refresh_token}; max-age=86400; path=/`;
         localStorage.setItem("isAuthenticated", true);
         setIsAuthenticated(true);
+
+        // Redirect to the homepage after a short delay.
         setTimeout(() => {
           navigate("/");
         }, 1000);
-      })
-      .catch((err) => toast.error(err.response.data.message));
+      } else {
+        // Handle other possible scenarios, e.g., server error.
+        toast.error("Login failed. Please try again.");
+      }
+    } catch (error) {
+      // Handle any errors that may occur during login.
+      toast.error("An error occurred while logging in.");
+      console.error("Login error:", error);
+    }
   };
 
   return (
@@ -64,8 +80,7 @@ const Login = () => {
               placeholder="Enter email"
               {...register("email", {
                 required: true,
-                // pattern:
-                //   /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                // You can add a regular expression pattern for email validation here.
               })}
               aria-invalid={errors.email ? "true" : "false"}
             />
@@ -85,7 +100,7 @@ const Login = () => {
               {...register("password", {
                 required: true,
                 min: 8,
-                // pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
+                // You can add a regular expression pattern for password validation here.
               })}
               aria-invalid={errors.password ? "true" : "false"}
             />
@@ -125,4 +140,5 @@ const Login = () => {
     </AuthLayout>
   );
 };
+
 export default Login;

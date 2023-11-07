@@ -10,6 +10,7 @@ import AuthLayout from "../../../components/AuthLayout";
 
 const Register = () => {
   const navigate = useNavigate();
+
   const navigateLogin = () => {
     navigate("/login");
   };
@@ -31,22 +32,35 @@ const Register = () => {
   });
 
   const onSubmit = async (data) => {
-    await axios
-      .post("https://api-prana.prana24.in/api/auth/signup", data)
-      .then((response) => {
-        toast.success("Register success");
+    try {
+      const response = await axios.post(
+        "https://api-prana.prana24.in/api/auth/signup",
+        data
+      );
+      if (response.status === 200) {
+        // Display a success toast when registration is successful.
+        toast.success("Registration successful");
+
+        // Redirect to the login page after a short delay.
         setTimeout(() => {
-          navigate("/login");
+          navigateLogin();
         }, 1000);
-      })
-      .catch((err) => console.log(err));
+      } else {
+        // Handle other possible scenarios, e.g., server error.
+        toast.error("Registration failed. Please try again.");
+      }
+    } catch (error) {
+      // Handle any errors that may occur during registration.
+      toast.error("An error occurred while registering.");
+      console.error("Registration error:", error);
+    }
   };
 
   return (
     <AuthLayout>
       <div className="register-headerContainer">
         <p className="register-header">
-          Create new account <span className="header-dot">.</span>
+          Create a new account <span className="header-dot">.</span>
         </p>
       </div>
       <div className="register-formContainer">
@@ -72,7 +86,7 @@ const Register = () => {
             )}
             {errors.first_name?.type === "minLength" && (
               <p className="form-error" role="alert">
-                Greater than 3 characters
+                Should be more than 3 characters
               </p>
             )}
           </div>
@@ -103,8 +117,7 @@ const Register = () => {
               placeholder="Enter email"
               {...register("email", {
                 required: true,
-                // pattern:
-                //   /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                // You can add a regular expression pattern for email validation here.
               })}
               aria-invalid={errors.email ? "true" : "false"}
             />
@@ -117,7 +130,7 @@ const Register = () => {
           <div className="register-inputField">
             <label>Phone No.</label>
             <input
-              type="Phone"
+              type="tel"
               className="form-control"
               placeholder="Enter contact no"
               {...register("phone_number", {
@@ -130,12 +143,12 @@ const Register = () => {
             />
             {errors.phone_number?.type === "required" && (
               <p className="form-error" role="alert">
-                please Enter correct mobile number
+                Please enter a correct mobile number
               </p>
             )}
             {errors.phone_number?.type === "minLength" && (
               <p className="form-error" role="alert">
-                Mobile number must be 10 digit
+                Mobile number must be 10 digits
               </p>
             )}
           </div>
@@ -147,8 +160,8 @@ const Register = () => {
               placeholder="Enter password"
               {...register("password", {
                 required: true,
-                min: 8,
-                // pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/,
+                minLength: 8,
+                // You can add a regular expression pattern for password validation here.
               })}
               aria-invalid={errors.password ? "true" : "false"}
             />
@@ -157,9 +170,9 @@ const Register = () => {
                 Password is required
               </p>
             )}
-            {errors.password?.type === "min" && (
+            {errors.password?.type === "minLength" && (
               <p className="form-error" role="alert">
-                Password must be 8 digits
+                Password must be at least 8 characters long
               </p>
             )}
           </div>
@@ -169,7 +182,7 @@ const Register = () => {
             type="submit"
             className="register-button"
           >
-            {isSubmitting ? "Loading ..." : "Register"}
+            {isSubmitting ? "Loading..." : "Register"}
           </button>
           <p
             className="forgot-password text-center for-par"
@@ -182,4 +195,5 @@ const Register = () => {
     </AuthLayout>
   );
 };
+
 export default Register;

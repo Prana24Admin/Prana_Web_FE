@@ -18,13 +18,26 @@ const ForgotPassword = () => {
   });
 
   const onSubmit = async (data) => {
-    await axios
-      .post("https://api-prana.prana24.in/api/auth/forgot-password", data)
-      .then((response) => {
-        toast.success("Link has been sent to your mail");
-      })
-      .catch((err) => toast.error(err.response.data.message));
+    try {
+      const response = await axios.post(
+        "https://api-prana.prana24.in/api/auth/forgot-password",
+        data
+      );
+      if (response.status === 200) {
+        // Display a success toast when the password reset link is sent.
+        toast.success("Password reset link has been sent to your email.");
+        navigate("/login"); // Redirect to the login page after sending the link.
+      } else {
+        // Handle other possible scenarios, e.g., server error.
+        toast.error("Password reset link could not be sent. Please try again.");
+      }
+    } catch (error) {
+      // Handle any errors that may occur during the password reset request.
+      toast.error("An error occurred while sending the password reset link.");
+      console.error("Password reset error:", error);
+    }
   };
+
   return (
     <AuthLayout>
       <div className="register-headerContainer">
@@ -42,8 +55,7 @@ const ForgotPassword = () => {
               placeholder="Enter email"
               {...register("email", {
                 required: true,
-                // pattern:
-                //   /^[a-zA-Z0-9._%+-]+a-@[zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                // You can add a regular expression pattern for email validation here.
               })}
               aria-invalid={errors.email ? "true" : "false"}
             />

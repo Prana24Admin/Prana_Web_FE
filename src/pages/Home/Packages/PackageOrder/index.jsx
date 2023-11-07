@@ -1,7 +1,6 @@
 import React from "react";
 import MainLayout from "../../../../components/MainLayout";
 import "./packageOrder.css";
-
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -16,6 +15,7 @@ const PackageOrder = () => {
     return response.data;
   };
 
+  // Use the useQuery hook to manage test data and its state
   const {
     data: testData,
     isLoading,
@@ -29,6 +29,7 @@ const PackageOrder = () => {
     return response.data;
   };
 
+  // Use the useMutation hook to handle the addition of the test to the cart
   const { mutate, isLoading: AddingToCart } = useMutation(
     (testId) => handleAddToLabCart(testId),
     {
@@ -56,7 +57,6 @@ const PackageOrder = () => {
               <p className="packageOrder-description">{testData.content}</p>
               <div className="packageOrder-flexContainer">
                 <p className="packageOrder-mrpText">
-                  {" "}
                   ₹
                   {(
                     testData.price -

@@ -1,0 +1,16 @@
+.appointments-Header {
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-family: "Libre Franklin";
+  color: var(--ashGray);
+  margin-bottom: 1rem;
+}
+.appointments-mainContainer {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.appointments-boxContainer {
+  border: var(--cloudGray);
+  background-color: var(--powderWhite);
+}

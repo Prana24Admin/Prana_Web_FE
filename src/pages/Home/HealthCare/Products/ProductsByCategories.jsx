@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+import "./products.css";
+
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductItem from "../../../../components/ProductItem";
 import { handleRefetchAllCategories } from "../../../../libs/queryFunctions";
 import products from "../../../../assets/images/VectorImages/NO_PRODUCTS.png";
 
-import "./products.css";
 import Loader from "../../../../components/Loader";
 
 const ProductsByCategories = ({ categoryId, selectedCategory }) => {

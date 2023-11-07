@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./contact.css";
+
 import MainLayout from "../../../components/MainLayout";
 import Input from "../../../components/Input/index";
 

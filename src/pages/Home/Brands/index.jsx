@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../components/CarouselLayout/carousel.css";
 import MainLayout from "../../../components/MainLayout";
+
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import "./brands.css";
 import { banners1 } from "../../../utils/banners";
@@ -22,7 +23,7 @@ const Brands = () => {
 
   return (
     <MainLayout>
-      <div style={{ maxWidth: "1240px", margin: "auto", paddingTop: "10rem" }}>
+      <div style={{ maxWidth: "1340px", margin: "auto", paddingTop: "10rem" }}>
         <MainBannerCarousel multiData={banners1} />
         <p className="main-title" style={{ marginTop: "1.5rem" }}>
           Brands

@@ -1,17 +1,17 @@
-.orderdetails-mainContainer {
+.orderDetails-mainContainer {
   max-width: 940px;
   height: 100%;
   margin: auto;
   margin-bottom: 2rem;
   padding-top: 11rem;
 }
-.orderdetails-title {
+.orderDetails-title {
   font-size: 2rem;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--neutralBlack);
 }
-.orderdetails-flexContainer {
+.orderDetails-flexContainer {
   font-size: 0.9rem;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
@@ -20,46 +20,46 @@
   align-items: center;
   gap: 0.75rem;
 }
-.orderdetails-line {
+.orderDetails-line {
   border: 2px solid var(--neutralBlack);
 }
-.orderdetails-justifyContainer {
+.orderDetails-justifyContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.orderdetails-borderContainer {
+.orderDetails-borderContainer {
   margin: 1rem 0;
   border: 1px solid var(--cloudGray);
   padding: 1rem 1rem;
   border-radius: 5px;
 }
-.orderdetails-borderFlexContainer {
+.orderDetails-borderFlexContainer {
   display: flex;
   /* align-items: center; */
   /* justify-content: space-between; */
   gap: 2rem;
 }
-.orderdetails-header {
+.orderDetails-header {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--neutralBlack);
   font-family: Arial, Helvetica, sans-serif;
   text-transform: capitalize;
 }
-.orderdetails-bodyText {
+.orderDetails-bodyText {
   font-size: 0.9rem;
   font-weight: 400;
   color: var(--neutralBlack);
   font-family: Arial, Helvetica, sans-serif;
 }
-.orderdetails-billJustifyContainer {
+.orderDetails-billJustifyContainer {
   display: flex;
   gap: 5rem;
   justify-content: space-between;
   text-transform: capitalize;
 }
-.orderdetails-hoverFlexContainer {
+.orderDetails-hoverFlexContainer {
   font-size: 0.9rem;
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
@@ -69,16 +69,16 @@
   gap: 0.25rem;
   cursor: pointer;
 }
-.orderdetails-hoverFlexContainer:hover {
+.orderDetails-hoverFlexContainer:hover {
   color: var(--azureBlue);
   text-decoration: underline;
 }
-.orderdetails-image {
+.orderDetails-image {
   height: 7rem;
   width: 7rem;
   object-fit: cover;
 }
-.orderdetails-button {
+.orderDetails-button {
   font-size: 0.85rem;
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
@@ -89,7 +89,7 @@
   border: none;
   margin: 0.5rem 0;
 }
-.orderdetails-buttonsRight {
+.orderDetails-buttonsRight {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--crimsonPink);
@@ -99,7 +99,7 @@
   border-radius: 5px;
   border: 1px solid var(--cloudGray);
 }
-.orderdetails-buttonsRight:hover {
+.orderDetails-buttonsRight:hover {
   color: var(--white);
   background-color: var(--crimsonPink);
   /* border-radius: 5px; */

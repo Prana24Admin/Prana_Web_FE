@@ -1,7 +1,6 @@
 import React from "react";
 import "./wishlist.css";
-import image from "../../../assets/images/home/Beautynew.jpg";
-import { Heart } from "lucide-react";
+
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../libs/axios";

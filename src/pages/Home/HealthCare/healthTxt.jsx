@@ -1,5 +1,6 @@
 import React from "react";
 import "./healthCare.css";
+
 const HealthCareTxt = () => {
   return (
     <>

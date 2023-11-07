@@ -12,7 +12,7 @@ const HealthBlogIndex = () => {
         <div
           style={{
             paddingTop: "10rem",
-            maxWidth: "1240px",
+            maxWidth: "1340px",
             margin: "auto",
             display: "flex",
             flexDirection: "column",

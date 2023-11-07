@@ -1,14 +1,12 @@
 import React from "react";
-import Flat from "../../../assets/images/offers/flat.jpg";
-import Plus from "../../../assets/images/offers/plusoffer.jpg";
-
 import "./offerInnerScreen.css";
 
+import Flat from "../../../assets/images/offers/flat.jpg";
+import Plus from "../../../assets/images/offers/plusoffer.jpg";
 import OfferScreen from "./Offers";
-
 import MainLayout from "../../../components/MainLayout";
-import { format } from "date-fns";
 import Coupon from "../../../components/Coupon";
+
 const Medicine = () => {
   const OfferArr = [
     {

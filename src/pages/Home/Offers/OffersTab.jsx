@@ -1,5 +1,6 @@
 import React from "react";
 import "./offerInnerScreen.css";
+
 import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../components/MainLayout";

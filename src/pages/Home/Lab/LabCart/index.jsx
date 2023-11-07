@@ -1,6 +1,7 @@
 import React from "react";
 import "../../Cart/cart.css";
 import "./labCart.css";
+
 import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";

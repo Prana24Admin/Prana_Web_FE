@@ -15,7 +15,7 @@ const MedicineIndex = () => {
       <MainLayout>
         <div
           style={{
-            maxWidth: "1240px",
+            maxWidth: "1340px",
             margin: "auto",
             paddingTop: "10rem",
             display: "flex",

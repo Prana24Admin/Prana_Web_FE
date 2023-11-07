@@ -1,4 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
+import "../Orders.css";
+
 import { useQuery } from "@tanstack/react-query";
 import OrderCard from "../../../../components/OrderCard";
 import Profile from "../../Profile";

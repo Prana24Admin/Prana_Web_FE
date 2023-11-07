@@ -3,6 +3,7 @@ import MainLayout from "../../../../../components/MainLayout";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
+import Profile from "../../../Profile";
 
 const AppointmentById = () => {
   const { id } = useParams();
@@ -15,9 +16,9 @@ const AppointmentById = () => {
     fetchAppointmentById
   );
   return (
-    <MainLayout>
-      <div></div>
-    </MainLayout>
+    <Profile>
+      <p>sanjay</p>
+    </Profile>
   );
 };
 

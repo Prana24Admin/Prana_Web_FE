@@ -1,6 +1,7 @@
 import React from "react";
-import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
 import "./categories.css";
+
+import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,7 @@
 import React from "react";
-import Image from "../../../assets/images/career/image.jpg";
 import "./careers.css";
+
+import Image from "../../../assets/images/career/image.jpg";
 import MainLayout from "../../../components/MainLayout";
 
 const Careers = () => {

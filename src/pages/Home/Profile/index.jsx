@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from "react";
 import "./Profile.css";
+
 import Avatar from "../../../assets/images/profile/avatar.png";
 import { ShoppingCart, User2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../libs/axios";
-import { useQuery } from "@tanstack/react-query";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import MainLayout from "../../../components/MainLayout";
@@ -129,6 +129,13 @@ const Profile = ({ children }) => {
                   >
                     <div style={{ width: "10%" }} />
                     <p className="profile-innerOptionsText">Lab test Orders</p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/appointments")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Appointments</p>
                   </div>
                 </div>
               </div>

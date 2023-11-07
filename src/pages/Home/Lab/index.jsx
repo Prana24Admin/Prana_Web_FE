@@ -1,11 +1,8 @@
 import React from "react";
 
 import Test from "./test";
-
 import Package from "./package";
-
 import Download from "../../../components/Home/innerHome/homeDownload";
-
 import CartBox from "./CartBox/CartBox";
 import MainLayout from "../../../components/MainLayout";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
@@ -17,7 +14,7 @@ const LabIndex = () => {
       <MainLayout>
         <div
           style={{
-            maxWidth: "1240px",
+            maxWidth: "1340px",
             margin: "auto",
           }}
         >

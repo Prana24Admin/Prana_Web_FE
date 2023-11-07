@@ -1,6 +1,6 @@
 .innerlab-med {
   /* padding-top: 11rem; */
-  max-width: 1240px;
+  max-width: 1340px;
   margin: auto;
 }
 .innerLab-img {
@@ -94,7 +94,7 @@
 }
 .testby-par {
   margin: auto;
-  max-width: 1240px;
+  max-width: 1340px;
   font-weight: bold;
   font-size: 24px;
 }
@@ -203,7 +203,7 @@
 }
 .test-container {
   width: auto;
-  max-width: 1240px;
+  max-width: 1340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,6 +241,6 @@
   scale: 1.02;
 }
 .package-container {
-  max-width: 1240px;
+  max-width: 1340px;
   margin: auto;
 }

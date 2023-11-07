@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import MainLayout from "../../../../components/MainLayout";
 import "./labTests.css";
+
+import MainLayout from "../../../../components/MainLayout";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import LabTestCard from "../../../../components/LabTestCard";
@@ -57,7 +58,7 @@ const LabTests = () => {
             <p>Error fetching. Try again</p>
           </div>
         )}
-        {labCartData && (
+        {data && labCartData && (
           <div className="labTests-gridContainer">
             {data.data.map((test) => (
               // Render each lab test card

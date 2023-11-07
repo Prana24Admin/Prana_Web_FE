@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./about.css";
+
 import { reviewsArray } from "../../../utils/reviews";
 import ReviewCarousel from "../../../components/CarouselLayout/ReviewsCarousel";
 

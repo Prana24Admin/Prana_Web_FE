@@ -85,12 +85,14 @@ const TimeSlot = ({ doctorId }) => {
               Max waiting time will be:{" "}
               <span className="doctorProfile-subheader">15mins</span>
             </p>
-            <p className="doctorProfile-description">
-              Consultation type:{" "}
-              <span className="doctorProfile-subheader">
-                {selectedDateData && selectedDateData.type}
-              </span>
-            </p>
+            {Object.keys(selectedDateData).length > 0 && (
+              <p className="doctorProfile-description">
+                Consultation type:{" "}
+                <span className="doctorProfile-subheader">
+                  {selectedDateData.type}
+                </span>
+              </p>
+            )}
             <div className="doctorProfile-flexAppointment">
               <p>Clinic appointment fee</p>
               <p>123fee</p>

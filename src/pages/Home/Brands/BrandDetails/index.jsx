@@ -1,6 +1,7 @@
 import React from "react";
-import MainLayout from "../../../../components/MainLayout";
 import "./brandDetails.css";
+import MainLayout from "../../../../components/MainLayout";
+
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";

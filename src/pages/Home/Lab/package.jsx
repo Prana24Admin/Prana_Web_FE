@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../assets/css/Lab/index.css";
 
 import BasicWomen from "../../../assets/images/lab/package/basic-women.jpg";
 import CardiacBasic from "../../../assets/images/lab/package/cardiac-basic.jpg";
@@ -13,7 +14,6 @@ import VitaminDef from "../../../assets/images/lab/package/vitamin-deficiency.jp
 import Young from "../../../assets/images/lab/package/young-indian.jpg";
 import ThyroidBasic from "../../../assets/images/lab/package/thyroid-basic.jpg";
 import Tax from "../../../assets/images/lab/package/tax-saver.jpg";
-import "../../../assets/css/Lab/index.css";
 
 import { useNavigate } from "react-router-dom";
 import TestPackageCarousel from "../../../components/CarouselLayout/TestPackageCarousel";

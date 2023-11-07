@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./cart.css";
+
 import { useQuery } from "@tanstack/react-query";
 import { useDisclosure } from "@chakra-ui/react";
 import axiosInstance from "../../../libs/axios";
@@ -9,7 +11,6 @@ import Slider from "../../../components/Slider";
 import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
 import Bill from "../../../components/Bill";
 import Loader from "../../../components/Loader";
-import "./cart.css";
 
 import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
 

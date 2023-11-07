@@ -1,6 +1,6 @@
 import React from "react";
-
 import "./about.css";
+
 import Connect from "../../../assets/images/about/connect.png";
 import Transparency from "../../../assets/images/about/transparency.png";
 import Trust from "../../../assets/images/about/trust.png";

@@ -1,5 +1,6 @@
 import React from "react";
 import "./main.css";
+
 import MainLayout from "../../../components/MainLayout";
 import MultiItemCarousel from "../../../components/CarouselLayout";
 import { brands } from "../../../utils/brands";

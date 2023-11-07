@@ -1,5 +1,6 @@
 import React from "react";
 import "./OrderDetails.css";
+
 import image from "../../../../assets/images/profile/avatar.png";
 import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +23,7 @@ const HealthCareOrderDetails = () => {
 
   return (
     <MainLayout>
-      <div className="orderdetails-mainContainer">
+      <div className="orderDetails-mainContainer">
         {isLoading && (
           // Show a loader while data is loading
           <div className="fullContainer">
@@ -37,23 +38,23 @@ const HealthCareOrderDetails = () => {
         )}
         {data && (
           <div>
-            <p className="orderdetails-title">Order Details</p>
-            <div className="orderdetails-justifyContainer">
-              <div className="orderdetails-flexContainer">
+            <p className="orderDetails-title">Order Details</p>
+            <div className="orderDetails-justifyContainer">
+              <div className="orderDetails-flexContainer">
                 <p>
                   {" "}
                   Ordered on {format(new Date(data.createdAt), "dd MMMM yyyy")}
                 </p>
-                <div className="orderdetails-line" />
+                <div className="orderDetails-line" />
                 <p>ORDER ID: {data.order_id}</p>
               </div>
             </div>
-            <div className="orderdetails-borderContainer">
-              <div className="orderdetails-justifyContainer">
-                <div className="orderdetails-borderFlexContainer">
+            <div className="orderDetails-borderContainer">
+              <div className="orderDetails-justifyContainer">
+                <div className="orderDetails-borderFlexContainer">
                   <div>
-                    <p className="orderdetails-header">Shipping address</p>
-                    <p className="orderdetails-bodyText">
+                    <p className="orderDetails-header">Shipping address</p>
+                    <p className="orderDetails-bodyText">
                       {data.shipping_address.split(",")[0]}, <br />{" "}
                       {data.shipping_address.split(",")[1]},<br />
                       {data.shipping_address.split(",")[2]},{" "}
@@ -62,29 +63,29 @@ const HealthCareOrderDetails = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="orderdetails-header">payment method</p>
-                    <p className="orderdetails-bodyText">
+                    <p className="orderDetails-header">payment method</p>
+                    <p className="orderDetails-bodyText">
                       {data.payment_method}
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className="orderdetails-header">Order summary</p>
-                  <div className="orderdetails-bodyText">
-                    <div className="orderdetails-billJustifyContainer">
+                  <p className="orderDetails-header">Order summary</p>
+                  <div className="orderDetails-bodyText">
+                    <div className="orderDetails-billJustifyContainer">
                       <p>items subtotal:</p>
                       <p>₹{data.amount}</p>
                     </div>
-                    <div className="orderdetails-billJustifyContainer">
+                    <div className="orderDetails-billJustifyContainer">
                       <p>Shipping:</p>
                       <p>₹{data.shipping_charge}</p>
                     </div>
-                    <div className="orderdetails-billJustifyContainer">
+                    <div className="orderDetails-billJustifyContainer">
                       <p>total:</p>
                       <p>₹{data.total_amount}</p>
                     </div>
                     <div
-                      className="orderdetails-billJustifyContainer"
+                      className="orderDetails-billJustifyContainer"
                       style={{ fontWeight: "800" }}
                     >
                       <p>grand total:</p>
@@ -94,20 +95,20 @@ const HealthCareOrderDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="orderdetails-borderContainer">
-              <div className="orderdetails-justifyContainer">
-                <div className="orderdetails-borderFlexContainer">
-                  <img className="orderdetails-image" src={image} alt="sanju" />
+            <div className="orderDetails-borderContainer">
+              <div className="orderDetails-justifyContainer">
+                <div className="orderDetails-borderFlexContainer">
+                  <img className="orderDetails-image" src={image} alt="sanju" />
                   <div>
-                    <p className="orderdetails-header">Order name</p>
+                    <p className="orderDetails-header">Order name</p>
                     <p>₹399.00</p>
-                    <button className="orderdetails-button">
+                    <button className="orderDetails-button">
                       View your Item
                     </button>
                   </div>
                 </div>
                 <div>
-                  <div className="orderdetails-bodyText">
+                  <div className="orderDetails-bodyText">
                     <div
                       style={{
                         display: "flex",
@@ -115,10 +116,10 @@ const HealthCareOrderDetails = () => {
                         flexDirection: "column",
                       }}
                     >
-                      <button className="orderdetails-buttonsRight">
+                      <button className="orderDetails-buttonsRight">
                         Customer support
                       </button>
-                      <button className="orderdetails-buttonsRight">
+                      <button className="orderDetails-buttonsRight">
                         Write a review
                       </button>
                     </div>

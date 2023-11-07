@@ -11,7 +11,7 @@ const HealthCareIndex = () => {
     <>
       <MainLayout>
         <div
-          style={{ maxWidth: "1240px", margin: "auto", paddingTop: "11rem" }}
+          style={{ maxWidth: "1340px", margin: "auto", paddingTop: "11rem" }}
         >
           <div style={{ marginBottom: "2rem" }}>
             <MainBannerCarousel multiData={MedicineBanner} />

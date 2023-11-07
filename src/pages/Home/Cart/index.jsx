@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
-
-import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
-
-import "./cart.css";
-
-import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
-
-import CartCard from "../../../components/CartCard";
-import MainLayout from "../../../components/MainLayout";
 import { useDisclosure } from "@chakra-ui/react";
-import Slider from "../../../components/Slider";
+import axiosInstance from "../../../libs/axios";
 
+import MainLayout from "../../../components/MainLayout";
+import CartCard from "../../../components/CartCard";
+import Slider from "../../../components/Slider";
 import { CouponDrawer } from "../../../components/Slider/CouponDrawer";
 import Bill from "../../../components/Bill";
 import Loader from "../../../components/Loader";
+import "./cart.css";
+
+import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
 
 const Cart = () => {
+  // Using React Hooks for state and side effects
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
+  // Fetch cart items using async function
   const fetchCart = async () => {
     const response = await axiosInstance.get("/cart");
     return response.data;
@@ -28,7 +27,14 @@ const Cart = () => {
   const { data, isLoading, error } = useQuery(["cart"], fetchCart);
 
   const [selectedCoupon, setSelectedCoupon] = useState(null);
+  const [couponValue, setCouponValue] = useState(null);
 
+  // Calculate subTotal based on items in the cart
+  const subTotal = data?.reduce((sum, product) => {
+    return sum + product.product.price * product.quantity;
+  }, 0);
+
+  // Effect to check for a previously applied coupon in local storage
   useEffect(() => {
     const coupon = JSON.parse(localStorage.getItem("appliedCoupon"));
     if (coupon) {
@@ -38,12 +44,7 @@ const Cart = () => {
     }
   }, []);
 
-  const [couponValue, setCouponValue] = useState(null);
-
-  const subTotal = data?.reduce((sum, product) => {
-    return sum + product.product.price * product.quantity;
-  }, 0);
-
+  // Effect to apply coupon discount based on subtotal and selected coupon
   useEffect(() => {
     const couponDiscount = () => {
       if (
@@ -64,6 +65,7 @@ const Cart = () => {
     }
   }, [subTotal, selectedCoupon]);
 
+  // Function to handle removing applied coupon
   const handleRemoveCoupon = () => {
     localStorage.removeItem("appliedCoupon");
     setSelectedCoupon(null);
@@ -75,18 +77,21 @@ const Cart = () => {
       <section>
         <div className="cart-mainContainer">
           <div className="cart-marginContainer">
+            {/* Loader while fetching data */}
             {isLoading && (
               <div className="fullContainer">
                 <Loader width={"4rem"} height={"4rem"} />
               </div>
             )}
+            {/* Error message if fetching fails */}
             {error && (
               <div>
                 <p>Error fetching. Try again</p>
               </div>
             )}
+            {/* Check for cart items */}
             {data &&
-              (data.length < 1 ? (
+              (data.length < 1 ? ( // Display empty cart image if no items
                 <div style={{ margin: "auto" }}>
                   <img
                     className="vector-image"
@@ -95,6 +100,7 @@ const Cart = () => {
                   />
                 </div>
               ) : (
+                // Display cart items and bill section
                 <>
                   <div className="cart-cardContainer">
                     <p className="main-head-title">Items in Your cart</p>
@@ -117,6 +123,7 @@ const Cart = () => {
                 </>
               ))}
           </div>
+          {/* Apply Coupon Slider */}
           <Slider
             onClose={onClose}
             isOpen={isOpen}
@@ -131,9 +138,9 @@ const Cart = () => {
             }
           />
         </div>
-        {error && <img className="vector-image" src={Error} alt="Error" />}
       </section>
     </MainLayout>
   );
 };
+
 export default Cart;

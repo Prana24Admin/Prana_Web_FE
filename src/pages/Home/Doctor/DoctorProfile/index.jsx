@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 import Profile from "../../../../assets/images/profile/avatar.png";
 import "./doctorProfile.css";
-import { CheckCircle, ChevronDown } from "lucide-react";
-import DatePicker from "../../../../components/DatePicker";
+import { CheckCircle } from "lucide-react";
 import Loader from "../../../../components/Loader";
+import TimeSlot from "../../../../components/Timeslot";
 
 const DoctorProfile = () => {
   const { id } = useParams();
@@ -83,51 +83,7 @@ const DoctorProfile = () => {
               </div>
             </div>
             <div className="doctorProfile-rightContainer">
-              <p className="doctorProfile-header">
-                Pick a time slot for doctor consultation
-              </p>
-              <div className="doctorProfile-boxContainer">
-                <div className="doctorProfile-clinicDetails">
-                  <div>
-                    <p className="doctorProfile-subheader">Clinic NAme</p>
-                    <p className="doctorProfile-description">Clinic address</p>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      fontSize: "0.9rem",
-                      fontWeight: "500",
-                      color: "var(--azureBlue)",
-                    }}
-                  >
-                    <p>Change Clinic</p>
-                    <ChevronDown size={15} />
-                  </div>
-                </div>
-                <p className="doctorProfile-description">
-                  Max waiting time will be:{" "}
-                  <span className="doctorProfile-subheader">15mins</span>
-                </p>
-                <div className="doctorProfile-flexAppointment">
-                  <p>Clinic appointment fee</p>
-                  <p>123fee</p>
-                </div>
-              </div>
-              <div className="doctorProfile-boxContainer">
-                <div>
-                  <DatePicker />
-                </div>
-                <div className="doctorProfile-timeSlotContainer">
-                  <p className="doctorProfile-timeText">11.30</p>
-                  <p className="doctorProfile-timeText">11.30</p>
-                  <p className="doctorProfile-timeText">11.30</p>
-                  <p className="doctorProfile-timeText">11.30</p>
-                  <p className="doctorProfile-timeText">11.30</p>
-                  <p className="doctorProfile-timeText">11.30</p>
-                </div>
-              </div>
+              <TimeSlot doctorId={data.id} />
             </div>
           </>
         )}

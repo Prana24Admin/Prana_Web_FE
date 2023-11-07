@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import ProfileProvider from "./context/ProfileProvider";
 import { ChakraProvider } from "@chakra-ui/react";
 import AuthProvider from "./context/AuthProvider";
+import DoctorBookingProvider from "./context/DoctorBookingProvider";
 
 export const queryClient = new QueryClient();
 
@@ -17,13 +18,15 @@ const App = () => {
         <ChakraProvider>
           <AuthProvider>
             <ProfileProvider>
-              <Navigation />
-              <ReactQueryDevtools initialIsOpen={false} />
-              <Toaster
-                containerStyle={{
-                  zIndex: 1000000000,
-                }}
-              />
+              <DoctorBookingProvider>
+                <Navigation />
+                <ReactQueryDevtools initialIsOpen={false} />
+                <Toaster
+                  containerStyle={{
+                    zIndex: 1000000000,
+                  }}
+                />
+              </DoctorBookingProvider>
             </ProfileProvider>
           </AuthProvider>
         </ChakraProvider>

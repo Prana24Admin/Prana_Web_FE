@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./doctorProfile.css";
 import { useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
@@ -8,15 +8,19 @@ import Profile from "../../../../assets/images/profile/avatar.png";
 import { CheckCircle } from "lucide-react";
 import Loader from "../../../../components/Loader";
 import TimeSlot from "../../../../components/Timeslot";
+import { DoctorBookingContext } from "../../../../context/DoctorBookingProvider";
 
 const DoctorProfile = () => {
   // Get the "id" parameter from the URL
   const { id } = useParams();
 
+  const { setData } = useContext(DoctorBookingContext);
+
   // Define an asynchronous function to fetch doctor data by ID
   const fetchDoctorById = async () => {
     try {
       const response = await axiosInstance.get(`/doctor/${id}`);
+      setData(response.data);
       return response.data;
     } catch (error) {
       throw new Error("Error fetching doctor data");
@@ -24,7 +28,11 @@ const DoctorProfile = () => {
   };
 
   // Use the useQuery hook to manage doctor data and its state
-  const { data, isLoading, error } = useQuery(["DoctorById"], fetchDoctorById);
+  const {
+    data: doctorData,
+    isLoading,
+    error,
+  } = useQuery(["DoctorById"], fetchDoctorById);
 
   return (
     <MainLayout>
@@ -41,7 +49,7 @@ const DoctorProfile = () => {
             <p>Error fetching. Try again</p>
           </div>
         )}
-        {data && (
+        {doctorData && (
           <>
             <div className="doctorProfile-leftContainer">
               <div className="doctorProfile-flexContainer">
@@ -57,19 +65,21 @@ const DoctorProfile = () => {
                 <div>
                   {/* Display doctor's name, title, email, and contact information */}
                   <p className="doctorProfile-header">
-                    Dr. {data.first_name} {data.last_name}
+                    Dr. {doctorData.first_name} {doctorData.last_name}
                   </p>
-                  <p className="doctorProfile-description">{data.title}</p>
+                  <p className="doctorProfile-description">
+                    {doctorData.title}
+                  </p>
                   <p className="doctorProfile-subheader">
                     Email:
                     <span className="doctorProfile-description">
-                      {data.email}
+                      {doctorData.email}
                     </span>
                   </p>
                   <p className="doctorProfile-subheader">
                     Mobile:
                     <span className="doctorProfile-description">
-                      {data.phone_ext} {data.phone_number}
+                      {doctorData.phone_ext} {doctorData.phone_number}
                     </span>
                   </p>
                   <div
@@ -94,7 +104,7 @@ const DoctorProfile = () => {
             </div>
             <div className="doctorProfile-rightContainer">
               {/* Render the TimeSlot component with the doctor's ID */}
-              <TimeSlot doctorId={data.id} />
+              <TimeSlot doctorId={doctorData.id} />
             </div>
           </>
         )}

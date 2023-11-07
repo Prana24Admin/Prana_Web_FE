@@ -67,8 +67,10 @@
 }
 .doctorProfile-timeSlotContainer {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
 }
 .doctorProfile-timeText {
   display: flex;
@@ -84,8 +86,39 @@
   border: 1px solid var(--crimsonPink);
   cursor: pointer;
 }
+.doctorProfile-selectedTimeText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 0.5rem 0.25rem;
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  transition: 0.3s ease-in-out;
+  border: 1px solid var(--crimsonPink);
+  cursor: pointer;
+}
 .doctorProfile-timeText:hover {
   border: 1px solid var(--crimsonPink);
   background-color: var(--crimsonPink);
   color: var(--pearlWhite);
+}
+.doctorProfile-continueButton {
+  float: right;
+  width: 40%;
+  background-color: var(--crimsonPink);
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem 0;
+  color: var(--pearlWhite);
+  font-weight: 500;
+  border: none;
+  outline: none;
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    border: none;
+  }
 }

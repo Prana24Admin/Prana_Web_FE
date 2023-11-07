@@ -1,14 +1,23 @@
 import { ChevronDown } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "../DatePicker";
 import "../../pages/Home/Doctor/DoctorProfile/doctorProfile.css";
 import axiosInstance from "../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
+import { formatDate, formatTime } from "../../libs/dateTimeFormater";
+import { useDisclosure } from "@chakra-ui/react";
+import BookAppointmentModal from "../Modals/BookAppointment";
+import { DoctorBookingContext } from "../../context/DoctorBookingProvider";
 
 const TimeSlot = ({ doctorId }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { data } = useContext(DoctorBookingContext);
+
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDateData, setSelectedDateData] = useState({});
-  const [timeIntervals, setTimeIntervals] = useState();
+
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
 
   const fetchDoctorTimeSlot = async () => {
     const response = await axiosInstance.get(
@@ -16,67 +25,32 @@ const TimeSlot = ({ doctorId }) => {
     );
     return response.data;
   };
-  const { data, isLoading, error } = useQuery(
-    ["TimeSlot"],
-    fetchDoctorTimeSlot
-  );
+  const {
+    data: timeSlotData,
+    isLoading,
+    error,
+  } = useQuery(["TimeSlot"], fetchDoctorTimeSlot);
 
   useEffect(() => {
-    function getTimeIntervals(start_time, end_time) {
-      // Convert string times to Date objects
-      const startDate = new Date(`2000-01-01T${start_time}`);
-      const endDate = new Date(`2000-01-01T${end_time}`);
-
-      const timeIntervals = [];
-      let currentTime = startDate;
-
-      // While the current time is less than the end time
-      while (currentTime < endDate) {
-        // Get current time in HH:mm format
-        const currentFormattedTime = currentTime.toTimeString().substring(0, 8);
-
-        // Add current time to intervals array
-        timeIntervals.push(currentFormattedTime);
-
-        // Increment time by 15 minutes
-        currentTime.setMinutes(currentTime.getMinutes() + 15);
-      }
-
-      setTimeIntervals(timeIntervals);
-    }
-
     const getSelectedTimeSlot = () => {
       const date = new Date(selectedDate);
-
-      // Extract year, month, and day from the Date object
-      const year = date.getFullYear();
-      // Months are zero-based (0-Jan, 1-Feb, ...), so we add 1 to match the desired format
-      const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Adding padding for double digits
-      const day = date.getDate().toString().padStart(2, "0"); // Adding padding for double digits
-
-      // Form the new date string in 'YYYY-MM-DD' format
-      const newDateFormat = `${year}-${month}-${day}`;
-      if (data) {
-        const timeSlotData = data.data.find(
-          (arrayData) => arrayData.date === newDateFormat
+      const newDate = formatDate(date);
+      if (timeSlotData) {
+        const timeSlot = timeSlotData.data.find(
+          (arrayData) => arrayData.date === newDate
         );
-        if (timeSlotData) {
-          setSelectedDateData(timeSlotData);
-          getTimeIntervals(timeSlotData.start_time, timeSlotData.end_time);
+        if (timeSlot) {
+          setSelectedDateData(timeSlot);
         }
       }
     };
 
     getSelectedTimeSlot();
-  }, [selectedDate, data]);
-
-  useEffect(() => {
-    console.log(timeIntervals); // Display the updated timeIntervals value
-  }, [timeIntervals]);
+  }, [selectedDate, timeSlotData]);
 
   return (
     <section>
-      {data && (
+      {timeSlotData && (
         <>
           {" "}
           <p className="doctorProfile-header">
@@ -120,24 +94,53 @@ const TimeSlot = ({ doctorId }) => {
           <div className="doctorProfile-boxContainer">
             <div>
               <DatePicker
-                dateData={data}
+                dateData={timeSlotData}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
               />
             </div>
             <div className="doctorProfile-timeSlotContainer">
-              {/* <p className="doctorProfile-timeText">11.30</p>
-              <p className="doctorProfile-timeText">11.30</p>
-              <p className="doctorProfile-timeText">11.30</p>
-              <p className="doctorProfile-timeText">11.30</p>
-              <p className="doctorProfile-timeText">11.30</p>
-              <p className="doctorProfile-timeText">{selectedDate}</p> */}
-              {timeIntervals &&
-                timeIntervals.map((interval) => (
-                  <p className="doctorProfile-timeText">{interval}</p>
-                ))}
+              <div
+                className={
+                  selectedTimeSlot ===
+                  selectedDate +
+                    selectedDateData.start_time +
+                    " - " +
+                    selectedDateData.end_time
+                    ? "doctorProfile-selectedTimeText"
+                    : "doctorProfile-timeText"
+                }
+                onClick={() =>
+                  setSelectedTimeSlot(
+                    selectedDate +
+                      selectedDateData.start_time +
+                      " - " +
+                      selectedDateData.end_time
+                  )
+                }
+              >
+                <p>
+                  {selectedDateData &&
+                    formatTime(selectedDateData.start_time) +
+                      " - " +
+                      formatTime(selectedDateData.end_time)}
+                </p>
+              </div>
             </div>
+            <button
+              className="doctorProfile-continueButton"
+              disabled={!selectedTimeSlot ? true : false}
+              onClick={() => onOpen()}
+            >
+              Continue Booking
+            </button>
           </div>
+          <BookAppointmentModal
+            isOpen={isOpen}
+            onClose={onClose}
+            doctorData={data}
+            timeSlotData={timeSlotData}
+          />
         </>
       )}
     </section>

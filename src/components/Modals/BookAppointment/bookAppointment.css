@@ -1,0 +1,58 @@
+.appointmentModal-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.appointmentModal-container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.appointmentModal-flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.appointmentModal-changeText {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--crimsonPink);
+  cursor: pointer;
+}
+.appointmentModal-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.appointmentModal-line {
+  border: 0.1px solid var(--cloudGray);
+  margin: 0.75rem 0;
+}
+.appointmentModal-Image {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.appointmentModal-doctorFlexContainer {
+  display: flex;
+  gap: 1rem;
+}
+.appointmentModal-button {
+  border: 1px solid var(--crimsonPink);
+  padding: 0.25rem 1rem;
+  border-radius: 5px;
+  color: var(--crimsonPink);
+  transition: 0.2s ease-in-out;
+  width: 100%;
+  margin: 1rem 0;
+}
+.appointmentModal-button:hover {
+  border: 1px solid var(--crimsonPink);
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+}
+.appointmentModal-doctorText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}

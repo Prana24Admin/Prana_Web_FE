@@ -139,7 +139,7 @@ const TimeSlot = ({ doctorId }) => {
             isOpen={isOpen}
             onClose={onClose}
             doctorData={data}
-            timeSlotData={timeSlotData}
+            timeSlotData={selectedDateData}
           />
         </>
       )}

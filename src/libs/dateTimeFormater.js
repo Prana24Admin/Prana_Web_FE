@@ -23,3 +23,12 @@ export const formatDate = (date) => {
 
   return newDateFormat;
 };
+
+export const formatDateToText = (date) => {
+  const newDate = new Date(date);
+  return newDate.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+};

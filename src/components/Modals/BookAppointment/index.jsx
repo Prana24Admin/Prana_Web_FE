@@ -6,7 +6,7 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,11 @@ import toast from "react-hot-toast";
 import "./bookAppointment.css";
 import { Calendar, Timer } from "lucide-react";
 import Image from "../../../assets/images/doctor/clinic/dentist.jpg";
-import { formatDate, formatTime } from "../../../libs/dateTimeFormater";
+import { formatDateToText, formatTime } from "../../../libs/dateTimeFormater";
+import { useMutation } from "@tanstack/react-query";
+import axiosInstance from "../../../libs/axios";
+import BookingSuccess from "../../../assets/images/Lottie/booking_success.json";
+import Lottie from "lottie-react";
 
 const BookAppointmentModal = ({
   isOpen,
@@ -24,26 +28,61 @@ const BookAppointmentModal = ({
 }) => {
   const navigate = useNavigate();
 
+  const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [bookingSuccessId, setBookingSuccessId] = useState("");
+
+  const postBookingData = async (bookingData) => {
+    const consultationType = bookingData.type === "offline" ? true : false;
+    console.log(bookingData);
+    const response = await axiosInstance.post("/users/appointment/", {
+      date: bookingData.date,
+      timeslot_id: bookingData.timeslot_id,
+      is_offline: consultationType,
+    });
+    if (response.status === 201 || response.status === 200) {
+      setBookingSuccessId(response.data.uuid);
+      setBookingSuccess(true);
+    }
+    return response.data;
+  };
+
+  const { mutate, isLoading } = useMutation(
+    (bookingData) => {
+      return postBookingData(bookingData);
+    },
+    {
+      onError: () => toast.error("Failed! Try again"),
+    },
+    {
+      onSuccess: () => setBookingSuccess(true),
+    }
+  );
+
   return (
     <Modal onClose={onClose} isOpen={isOpen} isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader className="appointmentModal-header">
-          Booking confirmation
-        </ModalHeader>
-        <ModalCloseButton />
+        {!bookingSuccess && (
+          <ModalHeader className="appointmentModal-header">
+            Booking confirmation
+          </ModalHeader>
+        )}
+        {!bookingSuccess && <ModalCloseButton />}
         <ModalBody>
-          {doctorData && timeSlotData && (
+          {doctorData && timeSlotData && !bookingSuccess && (
             <div>
               <div className="appointmentModal-container">
                 <div>
                   <div className="appointmentModal-flexContainer">
                     <Calendar size={18} color="var(--ashGray)" />
                     <p className="appointmentModal-text">
-                      On {timeSlotData.date}
+                      On {formatDateToText(timeSlotData.date)}
                     </p>
                   </div>
-                  <p className="appointmentModal-changeText">
+                  <p
+                    className="appointmentModal-changeText"
+                    onClick={() => onClose()}
+                  >
                     Change Date & Time
                   </p>
                 </div>
@@ -73,9 +112,27 @@ const BookAppointmentModal = ({
               </div>
               <div className="appointmentModal-line" />
               <div>clinic details</div>
-              <div className="appointmentModal-line" />
-              <button className="appointmentModal-button">Book Now</button>
+
+              <button
+                onClick={() =>
+                  mutate({
+                    date: timeSlotData.date,
+                    timeslot_id: timeSlotData.uuid,
+                    is_offline: timeSlotData.type,
+                  })
+                }
+                className="appointmentModal-button"
+              >
+                Book Now
+              </button>
             </div>
+          )}
+          {bookingSuccess && (
+            <Lottie
+              animationData={BookingSuccess}
+              loop={false}
+              onComplete={() => navigate(`/appointments/${bookingSuccessId}`)}
+            />
           )}
         </ModalBody>
       </ModalContent>

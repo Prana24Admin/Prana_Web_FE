@@ -61,6 +61,10 @@ const LabTestOrders = lazy(() => import("./pages/Home/Orders/LabTestsOrders"));
 const LabOrderDetails = lazy(() =>
   import("./pages/Home/Orders/OrderDetails/LabOrderDetails")
 );
+const Appointments = lazy(() => import("./pages/Home/Doctor/Appointments"));
+const AppointmentById = lazy(() =>
+  import("./pages/Home/Doctor/Appointments/AppointmentById")
+);
 
 const Navigation = () => {
   return (
@@ -249,6 +253,22 @@ const Navigation = () => {
             element={
               <ProtectedRoute>
                 <LabOrderDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/appointments"
+            element={
+              <ProtectedRoute>
+                <Appointments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/appointments/:id"
+            element={
+              <ProtectedRoute>
+                <AppointmentById />
               </ProtectedRoute>
             }
           />

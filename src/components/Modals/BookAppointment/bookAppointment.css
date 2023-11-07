@@ -9,7 +9,7 @@
 }
 .appointmentModal-flexContainer {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 0.25rem;
 }
 .appointmentModal-changeText {
@@ -24,7 +24,7 @@
   color: var(--ashGray);
 }
 .appointmentModal-line {
-  border: 0.1px solid var(--cloudGray);
+  border: 0.1px solid var(--lightGray);
   margin: 0.75rem 0;
 }
 .appointmentModal-Image {

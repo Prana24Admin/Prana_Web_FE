@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./datePicker.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { formatDateToText } from "../../libs/dateTimeFormater";
 
 const DatePicker = ({ dateData, selectedDate, setSelectedDate }) => {
   const [dates, setDates] = useState([]);
@@ -18,13 +19,7 @@ const DatePicker = ({ dateData, selectedDate, setSelectedDate }) => {
     dateObjects.sort((a, b) => a - b);
 
     // Convert sorted Date objects back to strings
-    const dateArray = dateObjects.map((date) =>
-      date.toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      })
-    );
+    const dateArray = dateObjects.map((date) => formatDateToText(date));
 
     setDates(dateArray);
     setSelectedDate(dateArray[0]);

@@ -23,6 +23,7 @@ const DatePicker = ({ dateData, selectedDate, setSelectedDate }) => {
 
     setDates(dateArray);
     setSelectedDate(dateArray[0]);
+    console.log(dateData);
   }, [dateData, setSelectedDate]);
 
   const handleDateClick = (date) => {
@@ -37,27 +38,29 @@ const DatePicker = ({ dateData, selectedDate, setSelectedDate }) => {
   };
 
   return (
-    <div className="date-picker-container">
-      <button onClick={() => scrollDateItems(-dateItemWidth)}>
-        <ChevronLeft />
-      </button>
-      <div className="date-picker" ref={dateItemsRef}>
-        <div className="date-items">
-          {dates.map((date) => (
-            <div
-              key={date}
-              className={`date-item ${selectedDate === date ? "active" : ""}`}
-              onClick={() => handleDateClick(date)}
-            >
-              {date}
-            </div>
-          ))}
+    <>
+      <div className="date-picker-container">
+        <button onClick={() => scrollDateItems(-dateItemWidth)}>
+          <ChevronLeft />
+        </button>
+        <div className="date-picker" ref={dateItemsRef}>
+          <div className="date-items">
+            {dates.map((date) => (
+              <div
+                key={date}
+                className={`date-item ${selectedDate === date ? "active" : ""}`}
+                onClick={() => handleDateClick(date)}
+              >
+                {date}
+              </div>
+            ))}
+          </div>
         </div>
+        <button onClick={() => scrollDateItems(dateItemWidth)}>
+          <ChevronRight />
+        </button>
       </div>
-      <button onClick={() => scrollDateItems(dateItemWidth)}>
-        <ChevronRight />
-      </button>
-    </div>
+    </>
   );
 };
 

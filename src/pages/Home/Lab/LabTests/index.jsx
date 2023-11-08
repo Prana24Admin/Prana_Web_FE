@@ -19,29 +19,6 @@ const LabTests = () => {
   // Use the useQuery hook to manage lab test data and its state
   const { data, isLoading, error } = useQuery(["LabTests"], fetchAllLabTests);
 
-  // Function to fetch lab tests in the cart
-  const fetchLabTestsCart = async () => {
-    const response = await axiosInstance.get("/cart/labcart");
-    return response.data;
-  };
-
-  // Use the useQuery hook to manage lab cart data and its state
-  const { data: labCartData } = useQuery(["LabCart"], fetchLabTestsCart);
-
-  // Calculate the total price of tests in the cart
-  const total = labCartData?.data.reduce((sum, test) => {
-    return sum + parseFloat(test.lab_test.price);
-  }, 0);
-
-  // Load selected tests from local storage
-  useEffect(() => {
-    const selectedIds = localStorage.getItem("selectedTestIds");
-
-    if (selectedIds) {
-      setSelectedTests(selectedIds);
-    }
-  }, []);
-
   return (
     <MainLayout>
       <div className="labTests-container">
@@ -58,17 +35,11 @@ const LabTests = () => {
             <p>Error fetching. Try again</p>
           </div>
         )}
-        {data && labCartData && (
+        {data && (
           <div className="labTests-gridContainer">
             {data.data.map((test) => (
               // Render each lab test card
-              <LabTestCard
-                key={test.uuid}
-                test={test}
-                selectedTest={selectedTests}
-                setSelectedTest={setSelectedTests}
-                labCartData={labCartData?.data}
-              />
+              <LabTestCard key={test.uuid} test={test} />
             ))}
           </div>
         )}

@@ -109,22 +109,8 @@ const Navigation = () => {
           <Route path="/brands/:id" element={<BrandDetails />} />
           <Route path="/medicine" element={<Medicine />} />
           <Route path="/lab" element={<Lab />} />
-          <Route
-            path="/lab/all-tests"
-            element={
-              <ProtectedRoute>
-                <LabTests />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/lab/test/:id"
-            element={
-              <ProtectedRoute>
-                <PackageOrder />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/lab/all-tests" element={<LabTests />} />
+          <Route path="/lab/test/:id" element={<PackageOrder />} />
           <Route
             path="/lab/cart"
             element={
@@ -144,19 +130,11 @@ const Navigation = () => {
           <Route path="/healthcare" element={<HealthCare />} />
           <Route
             path="/healthcare/categories/:categoryId"
-            element={
-              <ProtectedRoute>
-                <Products />
-              </ProtectedRoute>
-            }
+            element={<Products />}
           />
           <Route
             path="/healthcare/categories/:categoryId?subcategory=:id"
-            element={
-              <ProtectedRoute>
-                <Products />
-              </ProtectedRoute>
-            }
+            element={<Products />}
           />
           <Route
             path="/product/:id"

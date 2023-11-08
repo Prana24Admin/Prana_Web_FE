@@ -6,223 +6,317 @@ import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import { useContext, useState } from "react";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
-import { Button } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   const { data } = useContext(ProfileContext);
 
-  const [addressData, setAddressData] = useState({
-    id:
-      method === "add"
-        ? uuidv4()
-        : method === "edit"
-        ? data.uuid
-        : additionalAddress.id,
-    place:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.place
-        : additionalAddress.place,
-    name:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.name
-        : additionalAddress.name,
-    phoneNumber:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.phoneNumber
-        : additionalAddress.phoneNumber,
-    houseNumber:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.houseNumber
-        : additionalAddress.houseNumber,
-    street:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.street
-        : additionalAddress.street,
-    city:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.city
-        : additionalAddress.city,
-    state:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.state
-        : additionalAddress.state,
-    pinCode:
-      method === "add"
-        ? ""
-        : method === "edit"
-        ? data.address.pinCode
-        : additionalAddress.pinCode,
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      id:
+        method === "add"
+          ? uuidv4()
+          : method === "edit"
+          ? data.uuid
+          : additionalAddress.id,
+      place:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.place
+          : additionalAddress.place,
+      name:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.name
+          : additionalAddress.name,
+      phoneNumber:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.phoneNumber
+          : additionalAddress.phoneNumber,
+      houseNumber:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.houseNumber
+          : additionalAddress.houseNumber,
+      street:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.street
+          : additionalAddress.street,
+      city:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.city
+          : additionalAddress.city,
+      state:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.state
+          : additionalAddress.state,
+      pinCode:
+        method === "add"
+          ? ""
+          : method === "edit"
+          ? data.address.pinCode
+          : additionalAddress.pinCode,
+    },
   });
 
-  const saveAddress = async (data) => {
-    let response;
-    if (method === "add") {
-      if (Object.keys(data?.address) < 1) {
+  const onSubmit = async (formData) => {
+    try {
+      if (formData.place === "") return;
+      let response;
+      if (method === "add") {
+        if (!data?.address) {
+          response = await axiosInstance.patch("/users/profile", {
+            address: formData,
+          });
+        } else {
+          response = await axiosInstance.patch("/users/profile", {
+            additional_address: [...(data?.additional_address || []), formData],
+          });
+        }
+      } else if (method === "edit") {
         response = await axiosInstance.patch("/users/profile", {
-          address: addressData,
+          address: formData,
         });
       } else {
-        response = await axiosInstance.patch("/users/profile", {
-          additional_address: [...data?.additional_address, addressData],
-        });
+        const index = data?.additional_address.findIndex(
+          (address) => address.id === additionalAddress.id
+        );
+        if (index !== -1) {
+          const updatedAddress = [...data?.additional_address];
+          updatedAddress[index] = { ...updatedAddress[index], ...formData };
+          response = await axiosInstance.patch("/users/profile", {
+            additional_address: updatedAddress,
+          });
+        }
       }
-    } else if (method === "edit") {
-      response = await axiosInstance.patch("/users/profile", {
-        address: addressData,
-      });
-    } else {
-      const index = data?.additional_address.findIndex(
-        (address) => address.id === additionalAddress.id
-      );
-      if (index !== -1) {
-        const updatedAddress = [...data?.additional_address];
-        updatedAddress[index] = { ...updatedAddress[index], ...addressData };
-        response = await axiosInstance.patch("/users/profile", {
-          additional_address: updatedAddress,
-        });
+      if (response) {
+        handleRefetchProfileData(); // Call the function to update profile data
+        onClose(); // Close the form
       }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
     }
-    handleRefetchProfileData();
-    onClose();
-    return response.data;
   };
+
   return (
-    <div style={{ marginTop: "0.5rem" }}>
-      <div className="addressDrawer-iconContainer">
-        <button
-          onClick={() => setAddressData({ ...addressData, place: "Home" })}
-          className={
-            addressData.place === "Home"
-              ? "addressDrawer-selectedInnerIconContainer"
-              : "addressDrawer-innerIconContainer"
-          }
-        >
-          {addressData.place === "Home" ? (
-            <CheckCircle size={16} strokeWidth={2.5} />
-          ) : (
-            <Home size={16} />
-          )}
-          <p>Home</p>
-        </button>
-        <button
-          onClick={() => setAddressData({ ...addressData, place: "Work" })}
-          className={
-            addressData.place === "Work"
-              ? "addressDrawer-selectedInnerIconContainer"
-              : "addressDrawer-innerIconContainer"
-          }
-        >
-          {addressData.place === "Work" ? (
-            <CheckCircle size={16} strokeWidth={2.5} />
-          ) : (
-            <Building size={16} />
-          )}
-          <p>Work</p>
-        </button>
-        <button
-          onClick={() => setAddressData({ ...addressData, place: "Other" })}
-          className={
-            addressData.place === "Other"
-              ? "addressDrawer-selectedInnerIconContainer"
-              : "addressDrawer-innerIconContainer"
-          }
-        >
-          {addressData.place === "Other" ? (
-            <CheckCircle size={16} strokeWidth={2.5} />
-          ) : (
-            <Building size={16} />
-          )}
-          <p>Other</p>
-        </button>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.5rem",
-          marginTop: "1rem",
-        }}
-      >
-        <Input
-          label="Name"
-          value={addressData.name}
-          onChange={(e) =>
-            setAddressData({ ...addressData, name: e.target.value })
-          }
-        />
-        <Input
-          label="Phone number"
-          value={addressData.phoneNumber}
-          onChange={(e) =>
-            setAddressData({
-              ...addressData,
-              phoneNumber: e.target.value,
-            })
-          }
-        />
-        <Input
-          label={"House No/ Apartment No"}
-          value={addressData.houseNumber}
-          onChange={(e) =>
-            setAddressData({ ...addressData, houseNumber: e.target.value })
-          }
-        />
-        <Input
-          label="Street"
-          value={addressData.street}
-          onChange={(e) =>
-            setAddressData({ ...addressData, street: e.target.value })
-          }
-        />
-        <Input
-          label="City"
-          value={addressData.city}
-          onChange={(e) =>
-            setAddressData({ ...addressData, city: e.target.value })
-          }
-        />
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          <Input
-            label="State"
-            value={addressData.state}
-            onChange={(e) =>
-              setAddressData({ ...addressData, state: e.target.value })
-            }
-          />
-          <Input
-            label="Pincode"
-            value={addressData.pinCode}
-            onChange={(e) =>
-              setAddressData({ ...addressData, pinCode: e.target.value })
-            }
-          />
+    <div>
+      <form style={{ marginTop: "0.5rem" }} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <div className="addressDrawer-iconContainer">
+            <button
+              onClick={() => setValue("place", "Home")}
+              className={
+                getValues("place") === "Home"
+                  ? "addressDrawer-selectedInnerIconContainer"
+                  : "addressDrawer-innerIconContainer"
+              }
+            >
+              {getValues("place") === "Home" ? (
+                <CheckCircle size={16} strokeWidth={2.5} />
+              ) : (
+                <Home size={16} />
+              )}
+              <p>Home</p>
+            </button>
+            <button
+              onClick={() => setValue("place", "Work")}
+              className={
+                getValues("place") === "Work"
+                  ? "addressDrawer-selectedInnerIconContainer"
+                  : "addressDrawer-innerIconContainer"
+              }
+            >
+              {getValues("place") === "Work" ? (
+                <CheckCircle size={16} strokeWidth={2.5} />
+              ) : (
+                <Building size={16} />
+              )}
+              <p>Work</p>
+            </button>
+            <button
+              onClick={() => setValue("place", "Other")}
+              className={
+                getValues("place") === "Other"
+                  ? "addressDrawer-selectedInnerIconContainer"
+                  : "addressDrawer-innerIconContainer"
+              }
+            >
+              {getValues("place") === "Other" ? (
+                <CheckCircle size={16} strokeWidth={2.5} />
+              ) : (
+                <Building size={16} />
+              )}
+              <p>Other</p>
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="addressDrawer-buttonsContainer">
-        <button className="addressDrawer-cancelButton" onClick={onClose}>
-          Cancel
-        </button>
-        <button
-          onClick={() => saveAddress(data)}
-          className="addressDrawer-saveButton"
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            marginTop: "1rem",
+          }}
         >
-          Save
-        </button>
-      </div>
+          <div>
+            <Input
+              label="Name"
+              register={register("name", {
+                required: true,
+              })}
+              name={"name"}
+              error={errors}
+            />
+            {errors.name?.type === "required" && (
+              <p
+                style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                role="alert"
+              >
+                Name is required
+              </p>
+            )}
+          </div>
+          <div>
+            <Input
+              label="Phone number"
+              register={register("phoneNumber", {
+                required: true,
+              })}
+              name={"phoneNumber"}
+              error={errors}
+            />
+            {errors.phoneNumber?.type === "required" && (
+              <p
+                style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                role="alert"
+              >
+                Phone number is required
+              </p>
+            )}
+          </div>
+          <div>
+            <Input
+              label={"House No/ Apartment No"}
+              register={register("houseNumber", {
+                required: true,
+              })}
+              name={"houseNumber"}
+              error={errors}
+            />
+            {errors.houseNumber?.type === "required" && (
+              <p
+                style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                role="alert"
+              >
+                House number is required
+              </p>
+            )}
+          </div>
+          <div>
+            <Input
+              label="Street"
+              register={register("street", {
+                required: true,
+              })}
+              name={"street"}
+              error={errors}
+            />
+            {errors.street?.type === "required" && (
+              <p
+                style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                role="alert"
+              >
+                Street is required
+              </p>
+            )}
+          </div>
+          <div>
+            <Input
+              label="City"
+              register={register("city", {
+                required: true,
+              })}
+              name={"city"}
+              error={errors}
+            />
+            {errors.city?.type === "required" && (
+              <p
+                style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                role="alert"
+              >
+                City is required
+              </p>
+            )}
+          </div>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            <div>
+              <Input
+                label="State"
+                register={register("state", {
+                  required: true,
+                })}
+                name={"state"}
+                error={errors}
+              />
+              {errors.state?.type === "required" && (
+                <p
+                  style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                  role="alert"
+                >
+                  state is required
+                </p>
+              )}
+            </div>
+            <div>
+              <Input
+                label="Pincode"
+                register={register("pinCode", {
+                  required: true,
+                })}
+                name={"pinCode"}
+                error={errors}
+              />
+              {errors.pinCode?.type === "required" && (
+                <p
+                  style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
+                  role="alert"
+                >
+                  Pincode is required
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="addressDrawer-buttonsContainer">
+          <button className="addressDrawer-cancelButton" onClick={onClose}>
+            Cancel
+          </button>
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            className="addressDrawer-saveButton"
+          >
+            {isSubmitting ? "Loading ..." : "Save"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

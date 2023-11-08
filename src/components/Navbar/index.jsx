@@ -14,6 +14,8 @@ import Slider from "../Slider";
 import ZipCodeDrawer from "../Slider/ZipCodeDrawer";
 import Logo from "../../assets/images/Prana_Logo.webp";
 import { AuthContext } from "../../context/AuthProvider";
+import { logout } from "../../services/authService";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -44,23 +46,17 @@ const Navbar = () => {
   } = useQuery(["Profile"], fetchProfileData);
 
   const handleLogout = async () => {
-    const cookies = document.cookie
-      .split(";")
-      .map((cookie) => cookie.split("="));
-    const accessTokenCookie = cookies.find(
-      (cookie) => cookie[0].trim() === "accessToken"
-    );
-    const token = accessTokenCookie ? accessTokenCookie[1] : null;
-
-    const response = await axiosInstance.post("/auth/logout", {
-      token: token,
-    });
-    if (response.status === 200) {
-      document.cookie = "accessToken=; Max-Age=0; path=/;";
-      document.cookie = "refreshToken=; Max-Age=0; path=/;";
-      setIsAuthenticated(false);
-      localStorage.clear();
-      navigate("/login");
+    try {
+      const response = await logout();
+      if (response.status === 200) {
+        document.cookie = "accessToken=; Max-Age=0; path=/;";
+        document.cookie = "refreshToken=; Max-Age=0; path=/;";
+        setIsAuthenticated(false);
+        localStorage.clear();
+        navigate("/login");
+      }
+    } catch (err) {
+      toast.error("Try again");
     }
   };
 
@@ -105,17 +101,19 @@ const Navbar = () => {
   }, [location]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axiosInstance.get(`/home?search=${searchText}`);
-      setSearchResult(response.data);
-    };
-    const delay = 800;
-    const debounce = setTimeout(() => {
-      fetchData();
-    }, delay);
-    return () => {
-      clearTimeout(debounce);
-    };
+    if (searchText.length > 1) {
+      const fetchData = async () => {
+        const response = await axiosInstance.get(`/home?search=${searchText}`);
+        setSearchResult(response.data);
+      };
+      const delay = 800;
+      const debounce = setTimeout(() => {
+        fetchData();
+      }, delay);
+      return () => {
+        clearTimeout(debounce);
+      };
+    }
   }, [searchText]);
 
   return (

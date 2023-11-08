@@ -83,7 +83,6 @@ const LabTestCard = ({
     >
       <div>
         <p className="testCard-testName">{test.name}</p>
-        <p className="testCard-description">{test.content}</p>
         <div className="testCard-report">
           <p className="testCard-reportText">
             Get test report in {test.report_tat}{" "}

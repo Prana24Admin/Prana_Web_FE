@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 
 import AuthLayout from "../../../components/AuthLayout";
 import { AuthContext } from "../../../context/AuthProvider";
+import { login } from "../../../services/authService";
 
 const Login = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
@@ -34,27 +35,12 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        "https://api-prana.prana24.in/api/auth/login",
-        data
-      );
-      if (response.status === 200) {
-        // Display a success toast when the login is successful.
-        toast.success("Login successful");
-
-        // Store access and refresh tokens as cookies and set authentication status.
-        document.cookie = `accessToken=${response.data.token}; max-age=3600; path=/`;
-        document.cookie = `refreshToken=${response.data.refresh_token}; max-age=86400; path=/`;
-        localStorage.setItem("isAuthenticated", true);
-        setIsAuthenticated(true);
-
-        // Redirect to the homepage after a short delay.
+      const response = await login(data);
+      if (response) {
         setTimeout(() => {
           navigate("/");
         }, 1000);
-      } else {
-        // Handle other possible scenarios, e.g., server error.
-        toast.error("Login failed. Please try again.");
+        setIsAuthenticated(true);
       }
     } catch (error) {
       // Handle any errors that may occur during login.

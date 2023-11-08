@@ -105,7 +105,11 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
       <div className="addressDrawer-iconContainer">
         <button
           onClick={() => setAddressData({ ...addressData, place: "Home" })}
-          className="addressDrawer-innerIconContainer"
+          className={
+            addressData.place === "Home"
+              ? "addressDrawer-selectedInnerIconContainer"
+              : "addressDrawer-innerIconContainer"
+          }
         >
           {addressData.place === "Home" ? (
             <CheckCircle size={16} strokeWidth={2.5} />
@@ -116,7 +120,11 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
         </button>
         <button
           onClick={() => setAddressData({ ...addressData, place: "Work" })}
-          className="addressDrawer-innerIconContainer"
+          className={
+            addressData.place === "Work"
+              ? "addressDrawer-selectedInnerIconContainer"
+              : "addressDrawer-innerIconContainer"
+          }
         >
           {addressData.place === "Work" ? (
             <CheckCircle size={16} strokeWidth={2.5} />
@@ -127,7 +135,11 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
         </button>
         <button
           onClick={() => setAddressData({ ...addressData, place: "Other" })}
-          className="addressDrawer-innerIconContainer"
+          className={
+            addressData.place === "Other"
+              ? "addressDrawer-selectedInnerIconContainer"
+              : "addressDrawer-innerIconContainer"
+          }
         >
           {addressData.place === "Other" ? (
             <CheckCircle size={16} strokeWidth={2.5} />
@@ -201,21 +213,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
         </div>
       </div>
       <div className="addressDrawer-buttonsContainer">
-        <Button
-          className="addressDrawer-cancelButton"
-          variant="outline"
-          mr={3}
-          onClick={onClose}
-        >
+        <button className="addressDrawer-cancelButton" onClick={onClose}>
           Cancel
-        </Button>
-        <Button
+        </button>
+        <button
           onClick={() => saveAddress(data)}
-          colorScheme="var(--crimsonPink)"
           className="addressDrawer-saveButton"
         >
           Save
-        </Button>
+        </button>
       </div>
     </div>
   );

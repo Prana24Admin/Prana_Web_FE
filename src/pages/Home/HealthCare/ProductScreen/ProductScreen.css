@@ -8,6 +8,7 @@
   /* margin: auto; */
   padding-top: 9rem;
   margin: 2.5rem auto;
+  font-family: "Libre Franklin";
 }
 .product-leftContainer {
   width: 45%;
@@ -40,7 +41,6 @@
   font-size: 1.75rem;
   font-weight: 600;
   text-transform: capitalize;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--neutralBlack);
 }
 .product-brandName {
@@ -50,7 +50,6 @@
 .product-productDescription {
   font-size: 1rem;
   font-weight: 400;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--neutralBlack);
   margin-bottom: 0.5rem;
 }
@@ -65,7 +64,6 @@
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--neutralBlack);
-  font-family: Arial, Helvetica, sans-serif;
   padding: 0rem 0rem;
 }
 .product-buttonsContainer {
@@ -79,7 +77,6 @@
   /* padding: 0.5rem 0; */
   border-radius: 0.5rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--crimsonPink);
   color: var(--white);
   width: 28%;
@@ -89,7 +86,6 @@
   padding: 0.5rem 0;
   border-radius: 0.5rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--white);
   border: 1px solid var(--crimsonPink);
   color: var(--crimsonPink);
@@ -117,7 +113,7 @@
 .product-quantity {
   font-weight: 500;
   font-size: 0.9rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 
 .product-chevronIcon {
@@ -152,14 +148,12 @@
 .product-mrpDescription {
   font-size: 0.9rem;
   font-weight: 400;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--coinGray);
   text-decoration: line-through;
 }
 .product-mrpDescriptionText {
   font-size: 1rem;
   font-weight: 400;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--coinGray);
 }
 .product-deliveryContainer {
@@ -180,13 +174,11 @@
 .product-footerText {
   font-size: 1rem;
   font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--neutralBlack);
 }
 .product-footerDescriptionText {
   font-size: 0.8rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
   color: var(--neutralBlack);
 }
 .product-footerContainer {

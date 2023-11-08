@@ -18,7 +18,24 @@
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
+  transition: 0.3s ease-in-out;
+}
+.addressDrawer-selectedInnerIconContainer {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: var(--crimsonPink);
+  color: var(--pearlWhite);
+  border: 1px solid var(--crimsonPink);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Libre Franklin";
+  transition: 0.3s ease-in-out;
 }
 .addressDrawer-innerIconContainer:hover {
   background-color: var(--crimsonPink);
@@ -38,32 +55,31 @@
 .addressDrawer-saveButton:hover {
   background-color: var(--crimsonPink);
   color: var(--pearlWhite);
-  border: none;
-  width: 100%;
   scale: 1.02;
-  transition: 0.3s ease-in;
 }
 .addressDrawer-saveButton {
   background-color: var(--crimsonPink);
   color: var(--pearlWhite);
-  border: none;
+  border: 1px solid var(--crimsonPink);
   width: 100%;
   font-size: 1rem;
   font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-family: "Libre Franklin";
+  transition: 0.3s ease-in-out;
 }
 .addressDrawer-cancelButton {
-  border: 1px solid var(--crimsonPink);
-  color: var(--crimsonPink);
+  border-radius: 5px;
   width: 100%;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.addressDrawer-cancelButton:hover {
-  width: 100%;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--ashGray);
   color: var(--neutralBlack);
-  scale: 1.02;
   transition: 0.3s ease-in;
+}
+
+.addressDrawer-cancelButton:hover {
+  border: 1px solid var(--crimsonPink);
+  color: var(--crimsonPink);
+  scale: 1.02;
 }

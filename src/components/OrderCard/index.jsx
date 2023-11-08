@@ -1,8 +1,9 @@
 import { format } from "date-fns";
+import "../../pages/Home/Orders/Orders.css";
+
 import React, { useContext } from "react";
 import Image from "../../assets/images/profile/avatar.png";
 import { useNavigate } from "react-router-dom";
-import "../../pages/Home/Orders/Orders.css";
 import { ProfileContext } from "../../context/ProfileProvider";
 
 const OrderCard = ({ order, screen }) => {
@@ -25,7 +26,9 @@ const OrderCard = ({ order, screen }) => {
           {screen === "healthCare" && (
             <div>
               <p className="orders-text">Ship To</p>
-              <p className="orders-shipToText">{data.first_name}</p>
+              <p className="orders-shipToText">
+                {data.first_name} {data.last_name}
+              </p>
             </div>
           )}
         </div>
@@ -47,7 +50,7 @@ const OrderCard = ({ order, screen }) => {
                   : navigate(`/orders/healthcare/${order.uuid}`);
               }}
             >
-              View order details
+              View Order Details
             </p>
           </div>
         </div>

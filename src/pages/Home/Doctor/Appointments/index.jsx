@@ -5,8 +5,16 @@ import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import Profile from "../../Profile";
 import Loader from "../../../../components/Loader";
+import profile from "../../../../assets/images/profile/avatar.png";
+import {
+  formatDateToText,
+  formatTime,
+} from "../../../../libs/dateTimeFormater";
+import { useNavigate } from "react-router-dom";
 
 const Appointments = () => {
+  const navigate = useNavigate();
+
   const fetchAllAppointments = async () => {
     const response = await axiosInstance.get("/users/appointment/");
     return response.data;
@@ -34,13 +42,59 @@ const Appointments = () => {
         <div className="appointments-mainContainer">
           {data.data.map((appointment) => (
             <div className="appointments-boxContainer">
-              <p>{appointment.appointment_id}</p>
-              <p>
-                From{appointment.start_time} To {appointment.end_time}
-              </p>
-              <p>On {appointment.date}</p>
-              <p>{appointment.consultation_fee}</p>
-              <p>{appointment.is_offline}</p>
+              <div className="appointments-justifyContainer">
+                <div>
+                  <p className="appointments-titleText">
+                    Appointment Date & Time
+                  </p>
+                  <p className="appointments-descriptionText">
+                    On {formatDateToText(appointment.date)},{" "}
+                    {formatTime(appointment.start_time)} -{" "}
+                    {formatTime(appointment.end_time)}
+                  </p>
+                </div>
+                <div className="appointments-flexColumn">
+                  <div className="appointments-headerFlex">
+                    <p className="appointments-titleText">Appointment Id: </p>
+                    <p className="appointments-descriptionText">
+                      {appointment.appointment_id}
+                    </p>
+                  </div>
+                  <p
+                    className="appointments-viewText"
+                    onClick={() =>
+                      navigate(`/appointments/${appointment.uuid}`)
+                    }
+                  >
+                    View Appointment Details
+                  </p>
+                </div>
+              </div>
+              <div className="appointments-separator" />
+              <div className="appointments-detailsContainer">
+                <div className="appointments-flexContainer">
+                  <div>
+                    <img
+                      className="appointments-image"
+                      src={profile}
+                      alt="Avatar"
+                    />
+                  </div>
+                  <div>
+                    <p className="appointments-doctorTitle">Dr.Name</p>
+                    <p className="appointments-titleText">Specialization</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="appointments-titleText">
+                    Consultation Fee:
+                    <span className="appointments-consultationText">
+                      {" "}
+                      ₹{appointment.consultation_fee}
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

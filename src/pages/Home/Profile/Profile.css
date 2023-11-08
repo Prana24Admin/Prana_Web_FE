@@ -96,18 +96,18 @@
   font-weight: 700;
   font-size: 1.25rem;
   color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-greeting {
   font-weight: 400;
   font-size: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-username {
   font-weight: 500;
   font-size: 1.25rem;
   text-transform: capitalize;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-borderContainer {
   border: 1px solid var(--cloudGray);
@@ -134,7 +134,7 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--coinGray);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-innerOptions {
   margin-top: 0.5rem;
@@ -147,17 +147,19 @@
 .profile-innerOptionsText {
   font-weight: 500;
   font-size: 0.95rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-innerContainer {
   padding: 1rem 2rem;
   position: relative;
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
 }
 .profile-header {
   font-size: 1.75rem;
   font-weight: 500;
   color: var(--neutralBlack);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-inputsContainer {
   padding: 1rem 0rem;
@@ -195,7 +197,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }
 .profile-saveButton {
   width: 30%;
@@ -206,5 +208,5 @@
   border-radius: 5px;
   padding: 0.4rem 0;
   margin-top: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin";
 }

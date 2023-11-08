@@ -4,24 +4,23 @@
   margin: auto;
   margin-bottom: 2rem;
   padding-top: 11rem;
+  font-family: "Libre Franklin";
 }
 .orderDetails-title {
   font-size: 2rem;
   font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--neutralBlack);
+  color: var(--ashGray);
 }
 .orderDetails-flexContainer {
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--neutralBlack);
+  color: var(--ashGray);
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 .orderDetails-line {
-  border: 2px solid var(--neutralBlack);
+  border: 2px solid var(--ashGray);
 }
 .orderDetails-justifyContainer {
   display: flex;
@@ -42,28 +41,26 @@
 }
 .orderDetails-header {
   font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--neutralBlack);
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: var(--ashGray);
   text-transform: capitalize;
 }
 .orderDetails-bodyText {
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--neutralBlack);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ashGray);
+  font-family: "Libre Franklin";
 }
 .orderDetails-billJustifyContainer {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   justify-content: space-between;
   text-transform: capitalize;
 }
 .orderDetails-hoverFlexContainer {
   font-size: 0.9rem;
   font-weight: 500;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--neutralBlack);
+  color: var(--ashGray);
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -81,19 +78,23 @@
 .orderDetails-button {
   font-size: 0.85rem;
   font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--white);
   padding: 0.25rem 0.75rem;
-  background-color: var(--crimsonPink);
   border-radius: 5px;
-  border: none;
+  background-color: transparent;
+  color: var(--crimsonPink);
   margin: 0.5rem 0;
+  border: 1px solid var(--crimsonPink);
+  transition: 0.3s ease-in-out;
+}
+.orderDetails-button:hover {
+  background-color: var(--crimsonPink);
+  border: 1px solid var(--crimsonPink);
+  color: var(--white);
 }
 .orderDetails-buttonsRight {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--crimsonPink);
-  font-family: Arial, Helvetica, sans-serif;
   padding: 0.25rem 0.75rem;
   background-color: var(--powderWhite);
   border-radius: 5px;
@@ -104,4 +105,14 @@
   background-color: var(--crimsonPink);
   /* border-radius: 5px; */
   border: 1px solid var(--crimsonPink);
+}
+.orderDetails-idText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}
+.orderDetails-bodyText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
 }

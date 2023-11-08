@@ -107,24 +107,6 @@ const HealthCareOrderDetails = () => {
                     </button>
                   </div>
                 </div>
-                <div>
-                  <div className="orderDetails-bodyText">
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "0.5rem",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <button className="orderDetails-buttonsRight">
-                        Customer support
-                      </button>
-                      <button className="orderDetails-buttonsRight">
-                        Write a review
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

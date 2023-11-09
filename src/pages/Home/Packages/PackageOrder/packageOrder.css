@@ -97,20 +97,20 @@
   color: var(--ashGray);
 }
 .packageOrder-descriptionText {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  color: var(--ashGray);
+  color: var(--neutralBlack);
 }
 .packageOrder-detailsContainer {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 .packageOrder-labDetailsContainer {
   margin-left: 1.75rem;
 }
 .packageOrder-subText {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--ashGray);
   text-transform: capitalize;

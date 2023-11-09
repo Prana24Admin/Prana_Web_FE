@@ -125,7 +125,7 @@ const PackageOrder = () => {
                       <div className="packageOrder-packageFlex">
                         {testData.tests.map((test) => (
                           <p className="packageOrder-flex">
-                            <Dot size={40} color="var(--ashGray)" />
+                            <Dot size={35} color="var(--neutralBlack)" />
                             <span className="packageOrder-descriptionText">
                               {test.name}
                             </span>

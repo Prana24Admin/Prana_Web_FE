@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Upload from "../../../assets/images/home/upload.jpg";
+import Upload from "../../../assets/images/VectorImages/Prescription.png";
 import "../../../assets/css/Home/homePaymentOffers.css";
 
 const Prescription = () => {

@@ -83,3 +83,6 @@
   color: var(--crimsonPink);
   scale: 1.02;
 }
+.addressDrawer-input {
+  height: 5rem;
+}

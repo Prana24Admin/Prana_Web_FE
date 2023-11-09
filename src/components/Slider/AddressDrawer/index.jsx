@@ -1,6 +1,7 @@
 import { Building, CheckCircle, Home } from "lucide-react";
-import Input from "../../Input";
 import "./addressDrawer.css";
+
+import Input from "../../Input";
 import axiosInstance from "../../../libs/axios";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import { useContext, useState } from "react";
@@ -175,7 +176,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             marginTop: "1rem",
           }}
         >
-          <div>
+          <div className="addressDrawer-input">
             <Input
               label="Name"
               register={register("name", {
@@ -193,7 +194,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
-          <div>
+          <div className="addressDrawer-input">
             <Input
               label="Phone number"
               register={register("phoneNumber", {
@@ -211,7 +212,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
-          <div>
+          <div className="addressDrawer-input">
             <Input
               label={"House No/ Apartment No"}
               register={register("houseNumber", {
@@ -229,7 +230,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
-          <div>
+          <div className="addressDrawer-input">
             <Input
               label="Street"
               register={register("street", {
@@ -247,7 +248,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
-          <div>
+          <div className="addressDrawer-input">
             <Input
               label="City"
               register={register("city", {
@@ -265,8 +266,8 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
-          <div style={{ display: "flex", gap: "0.5rem" }}>
-            <div>
+          <div style={{ display: "flex", gap: "1rem" }}>
+            <div className="addressDrawer-input">
               <Input
                 label="State"
                 register={register("state", {
@@ -284,7 +285,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
                 </p>
               )}
             </div>
-            <div>
+            <div className="addressDrawer-input">
               <Input
                 label="Pincode"
                 register={register("pinCode", {

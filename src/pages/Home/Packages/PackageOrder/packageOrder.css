@@ -1,3 +1,22 @@
+.packageOrder-mainFlexContainer {
+  display: flex;
+  gap: 2rem;
+}
+.packageOrder-leftContainer {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.packageOrder-rightContainer {
+  width: 35%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .packageOrder-mainContainer {
   max-width: 1340px;
   margin: auto;
@@ -29,12 +48,12 @@
   align-items: center;
 }
 .packageOrder-mrpText {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--ashGray);
 }
 .packageOrder-discountText {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--coinGray);
 }
@@ -62,4 +81,57 @@
 .packageOrder-button:hover {
   scale: 1.02;
   opacity: 0.9;
+}
+.packageOrder-packageFlex {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.packageOrder-flex {
+  display: flex;
+  align-items: center;
+}
+.packageOrder-titleText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ashGray);
+}
+.packageOrder-descriptionText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+}
+.packageOrder-detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.packageOrder-labDetailsContainer {
+  margin-left: 1.75rem;
+}
+.packageOrder-subText {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ashGray);
+  text-transform: capitalize;
+}
+.packageOrder-image {
+  width: 28rem;
+  height: 28rem;
+  position: sticky;
+  object-fit: contain;
+}
+.packageOrder-imageText {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ashGray);
+  text-transform: capitalize;
+}
+.packageOrder-imageFlex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--cloudGray);
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
 }

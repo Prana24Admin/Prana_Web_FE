@@ -14,6 +14,7 @@
   width: 45%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .product-leftImage {
   width: 400px;
@@ -24,11 +25,13 @@
   border-radius: 0.5rem;
   background-color: var(--powderWhite);
   padding: 1rem;
+  position: sticky;
 }
 .product-img {
   width: 350px;
   height: 350px;
   border-radius: 5px;
+  mix-blend-mode: multiply;
 }
 .product-rightContainer {
   display: flex;

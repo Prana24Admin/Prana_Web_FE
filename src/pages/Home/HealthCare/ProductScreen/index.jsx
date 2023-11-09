@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./ProductScreen.css";
+
 import MainLayout from "../../../../components/MainLayout";
 import { ChevronDown, ShoppingBag, Truck } from "lucide-react";
-import "./ProductScreen.css";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../../libs/axios";
 import toast from "react-hot-toast";
@@ -90,7 +91,7 @@ const Product = () => {
                 <img
                   className="product-img"
                   loading="lazy"
-                  src={image}
+                  src={productData.image}
                   alt="Product"
                 />
               </div>
@@ -156,8 +157,11 @@ const Product = () => {
               </div>
               <div className="">
                 <p>
-                  Only <span style={{ color: "#e50f0f" }}>1 item </span> left!
-                  Don't miss it
+                  Only{" "}
+                  <span style={{ color: "#e50f0f" }}>
+                    {productData.quantity} items{" "}
+                  </span>{" "}
+                  left! Don't miss it
                 </p>
               </div>
               <div className="product-buttonsContainer">

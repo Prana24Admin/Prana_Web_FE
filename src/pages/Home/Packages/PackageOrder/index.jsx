@@ -2,10 +2,19 @@ import React from "react";
 import "./packageOrder.css";
 
 import MainLayout from "../../../../components/MainLayout";
+import labTest from "../../../../assets/images/VectorImages/LabTest.png";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../../libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Loader from "../../../../components/Loader";
+import {
+  BookMarked,
+  Dot,
+  Package,
+  ShieldPlus,
+  TestTube2,
+  UtensilsCrossed,
+} from "lucide-react";
 
 const PackageOrder = () => {
   const navigate = useNavigate();
@@ -53,58 +62,124 @@ const PackageOrder = () => {
         )}
         {testData && (
           <>
-            <div className="packageOrder-borderContainer">
-              <p className="packageOrder-title">{testData.name}</p>
-              <p className="packageOrder-description">{testData.content}</p>
-              <div className="packageOrder-flexContainer">
-                <p className="packageOrder-mrpText">
-                  ₹
-                  {(
-                    testData.price -
-                    testData.price * (testData.discount / 100)
-                  ).toFixed(2)}
-                </p>
-                <p className="packageOrder-discountText">
-                  MRP:
-                  <span className="packageOrder-overLine">
-                    ₹{testData.price}
-                  </span>
-                </p>
+            <div className="packageOrder-mainFlexContainer">
+              <div className="packageOrder-leftContainer">
+                <div className="packageOrder-borderContainer">
+                  <p className="packageOrder-title">{testData.name}</p>
+                  <div className="packageOrder-flexContainer">
+                    <p className="packageOrder-mrpText">
+                      ₹
+                      {(
+                        testData.price -
+                        testData.price * (testData.discount / 100)
+                      ).toFixed(2)}
+                    </p>
+                    <p className="packageOrder-discountText">
+                      MRP:
+                      <span className="packageOrder-overLine">
+                        ₹{testData.price}
+                      </span>
+                    </p>
+                  </div>
+                  <div className="packageOrder-separator" />
+                  <div className="packageOrder-justifyContainer">
+                    <div className="packageOrder-flexContainer">
+                      <p
+                        style={{
+                          textTransform: "uppercase",
+                          color: "var(--ashGray)",
+                          fontWeight: "500",
+                        }}
+                      >
+                        Get your test report in {testData.report_tat}{" "}
+                        {testData.report_tat_unit.toLowerCase()}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => mutate(testData.uuid)}
+                      className="packageOrder-button"
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+                <div className="packageOrder-borderContainer">
+                  <div className="packageOrder-detailsContainer">
+                    <div className="packageOrder-packageFlex">
+                      <UtensilsCrossed
+                        size={24}
+                        strokeWidth={2}
+                        color="var(--ashGray)"
+                      />
+                      <p className="packageOrder-descriptionText">
+                        {testData.preparation}
+                      </p>
+                    </div>
+                    <div>
+                      <div className="packageOrder-packageFlex">
+                        <Package size={24} color="var(--ashGray)" />
+                        <p className="packageOrder-titleText">
+                          Packages Included
+                        </p>
+                      </div>
+                      <div className="packageOrder-packageFlex">
+                        {testData.tests.map((test) => (
+                          <p className="packageOrder-flex">
+                            <Dot size={40} color="var(--ashGray)" />
+                            <span className="packageOrder-descriptionText">
+                              {test.name}
+                            </span>
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="packageOrder-packageFlex">
+                        <TestTube2 size={23} color="var(--ashGray)" />
+                        <p className="packageOrder-titleText">Lab Details</p>
+                      </div>
+                      <div className="packageOrder-labDetailsContainer">
+                        <p className="packageOrder-descriptionText">
+                          Lab Name:{" "}
+                          <span className="packageOrder-subText">
+                            {testData.labs[0].name}
+                          </span>
+                        </p>
+                        <p className="packageOrder-descriptionText">
+                          Lab Address:{" "}
+                          <span className="packageOrder-subText">
+                            {testData.labs[0].name}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="packageOrder-packageFlex">
+                        <BookMarked size={24} color="var(--ashGray)" />
+                        <p className="packageOrder-titleText">Description</p>
+                      </div>
+                      <div className="packageOrder-labDetailsContainer">
+                        <p className="packageOrder-descriptionText">
+                          {testData.content}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="packageOrder-separator" />
-              <div className="packageOrder-justifyContainer">
-                <div className="packageOrder-flexContainer">
-                  <p
-                    style={{
-                      textTransform: "uppercase",
-                      color: "var(--ashGray)",
-                      fontWeight: "500",
-                    }}
-                  >
-                    Get your test report in {testData.report_tat}{" "}
-                    {testData.report_tat_unit.toLowerCase()}
+              <div className="packageOrder-rightContainer">
+                <img
+                  loading="lazy"
+                  className="packageOrder-image"
+                  src={labTest}
+                  alt="lab"
+                />
+                <div className="packageOrder-imageFlex">
+                  <ShieldPlus color="var(--crimsonPink)" size={100} />
+                  <p className="packageOrder-imageText">
+                    "Our goal is to ensure the well-being of India's population"
                   </p>
                 </div>
-                <button
-                  onClick={() => mutate(testData.uuid)}
-                  className="packageOrder-button"
-                >
-                  Book Now
-                </button>
-              </div>
-            </div>
-            <div className="packageOrder-borderContainer">
-              <div>
-                <p>
-                  Lab :{" "}
-                  <span
-                    style={{ textTransform: "capitalize", fontWeight: "600" }}
-                  >
-                    {testData.labs[0].name}
-                  </span>
-                </p>
-                <p>Sample Type</p>
-                <p>Blood,Urine</p>
               </div>
             </div>
           </>

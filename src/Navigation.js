@@ -136,14 +136,7 @@ const Navigation = () => {
             path="/healthcare/categories/:categoryId?subcategory=:id"
             element={<Products />}
           />
-          <Route
-            path="/product/:id"
-            element={
-              <ProtectedRoute>
-                <Product />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/product/:id" element={<Product />} />
           <Route
             path="/cart"
             element={

@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductScreen.css";
 
 import MainLayout from "../../../../components/MainLayout";
-import { ChevronDown, ShoppingBag, Truck } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axiosInstance from "../../../../libs/axios";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
-import image from "../../../../assets/images/home/covid.jpg";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../../../components/Loader";
-import { Spinner } from "@chakra-ui/react";
 
 const Product = () => {
+  const navigate = useNavigate();
   // State for toggling quantity dropdown
   const [toggleDropDown, setToggleDropDown] = useState(false);
   // Get the "id" parameter from the URL
@@ -35,31 +34,36 @@ const Product = () => {
 
   // Function to handle quantity updates and add to cart
   const handleQuantity = async (product) => {
-    const cartData = await axiosInstance.get("/cart");
-    const existingCartItem = cartData.data.find(
-      (item) => item.product.uuid === product.productId
-    );
-    if (existingCartItem) {
-      if (existingCartItem.quantity === parseInt(product.quantity)) {
-        toast.error("Product is already present in the cart.");
-        return;
+    try {
+      const cartData = await axiosInstance.get("/cart");
+      const existingCartItem = cartData.data.find(
+        (item) => item.product.uuid === product.productId
+      );
+      if (existingCartItem) {
+        if (existingCartItem.quantity === parseInt(product.quantity)) {
+          toast.error("Product is already present in the cart.");
+          return;
+        } else {
+          const response = await axiosInstance.post(`/cart`, {
+            quantity: product.quantity,
+            product_id: product.productId,
+          });
+          if (response.status === 200) {
+            toast.success("Product quantity updated in the cart.");
+          }
+        }
       } else {
-        const response = await axiosInstance.post(`/cart`, {
-          quantity: product.quantity,
+        const response = await axiosInstance.post("/cart", {
+          quantity: product.quantity ?? 1,
           product_id: product.productId,
         });
-        if (response.status === 200) {
-          toast.success("Product quantity updated in the cart.");
+        if (response.status === 201 || response.status === 200) {
+          toast.success("Added to cart");
         }
       }
-    } else {
-      const response = await axiosInstance.post("/cart", {
-        quantity: product.quantity ?? 1,
-        product_id: product.productId,
-      });
-      if (response.status === 201 || response.status === 200) {
-        toast.success("Added to cart");
-      }
+    } catch (err) {
+      if (err.response.data.message === "Token not found")
+        toast.error("Login! To continue");
     }
   };
 
@@ -67,6 +71,26 @@ const Product = () => {
   const { mutate, isLoading: quantityLoading } = useMutation((product) => {
     return handleQuantity(product);
   });
+
+  const [showBelowImageCartButton, setShowBelowImageCartButton] =
+    useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+        setShowBelowImageCartButton(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     // Render the Product component within the MainLayout
@@ -87,28 +111,72 @@ const Product = () => {
         {productData && (
           <>
             <div className="product-leftContainer">
-              <div className="product-leftImage">
-                <img
-                  className="product-img"
-                  loading="lazy"
-                  src={productData.image}
-                  alt="Product"
-                />
+              <div className="product-leftInnerContainer">
+                <div className="product-leftImage">
+                  <img
+                    className="product-img"
+                    src={productData.image}
+                    alt="Product"
+                  />
+                </div>
+                {isScrolled && showBelowImageCartButton && (
+                  <button
+                    className="product-cartButtonBelowImage"
+                    onClick={() => {
+                      mutate({
+                        quantity: localStorage.getItem(productData.uuid),
+                        productId: productData.uuid,
+                      });
+                    }}
+                  >
+                    {quantityLoading ? (
+                      <Loader width={"1rem"} height={"1rem"} />
+                    ) : (
+                      "Add to Cart"
+                    )}
+                  </button>
+                )}
               </div>
             </div>
             <div className="product-rightContainer">
               {/* Display product information */}
-              <p className="product-productTitle">{productData.name}</p>
-              <p className="product-brandName">{productData.brand.name}</p>
-              <p className="product-productDescription">
-                {productData.description}
-              </p>
+              <div className="product-Title">
+                <div>
+                  <p className="product-productTitle">{productData.name}</p>
+                  <p
+                    onClick={() =>
+                      navigate(`/brands/${productData.brand.uuid}`)
+                    }
+                    className="product-brandName"
+                  >
+                    {productData.brand.name}
+                  </p>
+                </div>
+                <button
+                  className="product-cartButton"
+                  onClick={() => {
+                    mutate({
+                      quantity: localStorage.getItem(productData.uuid),
+                      productId: productData.uuid,
+                    });
+                  }}
+                >
+                  {quantityLoading ? (
+                    // Show a loading spinner while adding to cart
+                    <Loader width={"1rem"} height={"1rem"} />
+                  ) : (
+                    "Add to Cart"
+                  )}
+                </button>
+              </div>
 
               <div className="product-flexContainer">
                 <div>
                   <div className="product-priceContainer">
                     <p className="product-amountText">
-                      ₹{productData.discount}
+                      ₹
+                      {productData.price -
+                        (productData.price * productData.discount) / 100}
                     </p>
                     <p className="product-mrpDescriptionText">
                       MRP :
@@ -126,7 +194,7 @@ const Product = () => {
                   onClick={() => setToggleDropDown(!toggleDropDown)}
                 >
                   <p className="product-quantity">
-                    Qty:
+                    Qty:{" "}
                     <span style={{ fontWeight: "bold" }}>
                       {localStorage.getItem(productData.uuid) ?? 1}
                     </span>
@@ -164,48 +232,25 @@ const Product = () => {
                   left! Don't miss it
                 </p>
               </div>
-              <div className="product-buttonsContainer">
-                {/* <button className="product-buyButton">
-                  <p>Buy Now</p>
-                </button> */}
-                <button
-                  className="product-cartButton"
-                  onClick={() => {
-                    mutate({
-                      quantity: localStorage.getItem(productData.uuid),
-                      productId: productData.uuid,
-                    });
-                  }}
-                >
-                  {quantityLoading ? (
-                    // Show a loading spinner while adding to cart
-                    <Spinner animation="border" size="sm" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                  ) : (
-                    "Add to Cart"
-                  )}
-                </button>
-              </div>
-              <div className="product-deliveryContainer">
-                <div className="product-deliveryBody">
-                  <div className="product-footerContainer">
-                    <Truck size={20} />
-                    <p className="product-footerText">Fast Delivery</p>
-                  </div>
-                  <p className="product-footerDescriptionText">
-                    Delivery in 3 days.
-                  </p>
+
+              <div className="product-productDetailsContainer">
+                <div>
+                  <p className="product-subHeading">Description</p>
+                  <p>{productData.description}</p>
                 </div>
-                <div className="product-deliveryBody">
-                  <div className="product-footerContainer">
-                    <ShoppingBag size={20} />
-                    <p className="product-footerText">Return Delivery</p>
-                  </div>
-                  <p className="product-footerDescriptionText">
-                    Free 10 days Delivery Returns.
-                  </p>
-                </div>
+                {Object.keys(productData.meta).map(
+                  (tag) =>
+                    productData.meta[tag].length > 0 && (
+                      <div key={tag}>
+                        <p className="product-subHeading">
+                          {tag.replace(/_/g, " ")}
+                        </p>
+                        {productData.meta[tag]
+                          .split(".")
+                          .map((line) => line.length > 0 && <li>{line}.</li>)}
+                      </div>
+                    )
+                )}
               </div>
             </div>
           </>

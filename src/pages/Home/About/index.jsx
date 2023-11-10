@@ -32,38 +32,22 @@ const AboutIndex = () => {
             reason for being
           </p>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            margin: "auto",
-            marginLeft: "15rem",
-          }}
-        >
-          <div
-            className="d-flex flex-column col-3 "
-            style={{ alignItems: "center" }}
-          >
+        <div className="about-imageMainContainer">
+          <div className="about-imageContainer ">
             <img className="about-img" src={Connect} alt="" />
-            <h3 className="connect">Connect</h3>
+            <h3 className="about-description">Connect</h3>
           </div>
-          <div
-            className="d-flex flex-column col-3"
-            style={{ alignItems: "center" }}
-          >
+          <div className="about-imageContainer ">
             <img className="about-img" src={Transparency} alt="" />
-            <h3 className="transparency">Transparency</h3>
+            <h3 className="about-description">Transparency</h3>
           </div>
-          <div
-            className="d-flex flex-column col-3"
-            style={{ alignItems: "center" }}
-          >
+          <div className="about-imageContainer ">
             <img className="about-img" src={Trust} alt="" />
-            <h3 className="connect">Trust</h3>
+            <h3 className="about-description">Trust</h3>
           </div>
         </div>
-        <div className="prana">
-          <p className="pra">What is Prana24 ?</p>
+        <div className="about-detailsContainer">
+          <p className="about-detailsHeader">What is Prana24 ?</p>
           <p className="about-par-txt">
             Prana24 is a consumer healthcare “super app”.
           </p>
@@ -81,8 +65,8 @@ const AboutIndex = () => {
             all.
           </p>
         </div>
-        <div className="about-alingCenter">
-          <p className="about-knownText">Get to know us better</p>
+        <div className="about-alignCenter">
+          <p className="about-detailsHeader">Get to know us better</p>
           <iframe
             className="youtube"
             src="https://www.youtube.com/embed/Kk-POoUQAoA"

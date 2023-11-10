@@ -144,7 +144,7 @@
 }
 .reviews-borderContainer {
   width: 94%;
-  height: 17rem;
+  height: 13rem;
   border: 1px solid var(--lightGray);
   display: flex;
   flex-direction: column;

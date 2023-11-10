@@ -1,5 +1,8 @@
 import React from "react";
 import "./brandDetails.css";
+import "../../Wishlist/wishlist.css";
+import "../../../../components/CarouselLayout/carousel.css";
+
 import MainLayout from "../../../../components/MainLayout";
 
 import { useParams } from "react-router-dom";

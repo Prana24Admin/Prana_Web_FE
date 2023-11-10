@@ -6,16 +6,9 @@ import axiosInstance from "../../../libs/axios";
 import CartCard from "../../../components/CartCard";
 import CheckoutLayout from "../../../components/CheckoutLayout";
 import Loader from "../../../components/Loader";
+import { fetchCartData } from "../../../services/cartService";
 
 const Checkout = () => {
-  // Define an asynchronous function to fetch cart data
-  const fetchCartData = async () => {
-    // Send a GET request to retrieve cart data
-    const response = await axiosInstance.get("/cart");
-    // Return the data obtained from the response
-    return response.data;
-  };
-
   // Use the useQuery hook to manage cart data and its state
   const {
     data: cartData,

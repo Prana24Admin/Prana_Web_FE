@@ -2,23 +2,18 @@ import React from "react";
 import "./labcheckout.css";
 
 import CheckoutLayout from "../../../../components/CheckoutLayout";
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import CartCard from "../../../../components/CartCard";
 import Loader from "../../../../components/Loader";
+import { fetchLabCartData } from "../../../../services/labCartService";
 
 const LabTestCheckout = () => {
-  const fetchLabCart = async () => {
-    const response = await axiosInstance.get("/cart/labcart");
-    return response.data;
-  };
-
   // Use the useQuery hook to manage lab cart data and its state
   const {
     data: labCartData,
     isLoading,
     error,
-  } = useQuery(["LabCart"], fetchLabCart);
+  } = useQuery(["LabCart"], fetchLabCartData);
 
   return (
     <CheckoutLayout cartData={labCartData?.data}>

@@ -3,7 +3,7 @@ import "../../Cart/cart.css";
 import "./labCart.css";
 
 import EmptyCart from "../../../../assets/images/VectorImages/cart empty.png";
-import axiosInstance from "../../../../libs/axios";
+
 import { useQuery } from "@tanstack/react-query";
 import CartCard from "../../../../components/CartCard";
 import MainLayout from "../../../../components/MainLayout";
@@ -12,19 +12,14 @@ import Slider from "../../../../components/Slider";
 import { CouponDrawer } from "../../../../components/Slider/CouponDrawer";
 import Bill from "../../../../components/Bill";
 import Loader from "../../../../components/Loader";
+import { fetchLabCartData } from "../../../../services/labCartService";
 
 const LabCart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  // Function to fetch lab cart data
-  const fetchLabCart = async () => {
-    const response = await axiosInstance.get("/cart/labcart");
-    return response.data;
-  };
-
   // Use the useQuery hook to manage lab cart data and its state
-  const { data, isLoading, error } = useQuery(["LabCart"], fetchLabCart);
+  const { data, isLoading, error } = useQuery(["LabCart"], fetchLabCartData);
 
   // Calculate subTotal, sampleCollectionCharges, and totalDiscount
   const subTotal = data?.data.reduce((sum, test) => {

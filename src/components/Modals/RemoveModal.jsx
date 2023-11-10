@@ -6,20 +6,15 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
-import Lottie from "lottie-react";
 import TruckSuccess from "../../assets/images/lab/med/innermed-img.jpg";
-import { useNavigate } from "react-router-dom";
 import "./RemoveModal.css";
-import axiosInstance from "../../libs/axios";
 import toast from "react-hot-toast";
-import {
-  handleRefetchCartItems,
-  handleRefetchLabCartData,
-} from "../../libs/queryFunctions";
 import { useMutation } from "@tanstack/react-query";
+import { removeCartItem } from "../../services/cartService";
+import { addToWishlist } from "../../services/wishlistService";
+import { removeLabCartItem } from "../../services/labCartService";
 
 const RemoveModal = ({
   isOpen,
@@ -28,37 +23,6 @@ const RemoveModal = ({
   labTest = null,
   pathName,
 }) => {
-  const navigate = useNavigate();
-
-  const removeCartItem = async (productId) => {
-    const response = await axiosInstance.delete(`/cart/${productId}`);
-    if (response.status === 200) {
-      toast.success("Product removed");
-      localStorage.removeItem(productId);
-      handleRefetchCartItems();
-      onClose();
-    }
-    return response.data;
-  };
-
-  const removeLabCartItem = async (testId) => {
-    const response = await axiosInstance.delete(`/cart/labcart/${testId}`);
-    if (response.status === 200) {
-      toast.success("Test removed");
-      handleRefetchLabCartData();
-    }
-    return response.data;
-  };
-
-  const addToWishlist = async (productId) => {
-    const response = await axiosInstance.post("/wishlist", {
-      product_id: productId,
-      quantity: 1,
-    });
-
-    return response.data;
-  };
-
   const { mutate, isLoading } = useMutation(
     (productId) => {
       return addToWishlist(productId);
@@ -66,7 +30,7 @@ const RemoveModal = ({
     {
       onSuccess: () => {
         toast.success("Added to wishlist");
-        removeCartItem(product.uuid);
+        removeCartItem(product.uuid, onClose);
       },
     }
   );

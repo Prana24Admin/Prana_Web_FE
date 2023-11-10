@@ -15,6 +15,7 @@ import {
   TestTube2,
   UtensilsCrossed,
 } from "lucide-react";
+import { handleAddToLabCart } from "../../../../services/labCartService";
 
 const PackageOrder = () => {
   const navigate = useNavigate();
@@ -31,13 +32,6 @@ const PackageOrder = () => {
     isLoading,
     error,
   } = useQuery(["LabTestId"], fetchTestById);
-
-  const handleAddToLabCart = async (testId) => {
-    const response = await axiosInstance.post("/cart/labcart", {
-      lab_test_id: testId,
-    });
-    return response.data;
-  };
 
   // Use the useMutation hook to handle the addition of the test to the cart
   const { mutate, isLoading: AddingToCart } = useMutation(

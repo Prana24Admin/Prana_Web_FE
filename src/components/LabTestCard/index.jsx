@@ -5,25 +5,17 @@ import { useMutation } from "@tanstack/react-query";
 
 import { handleRefetchLabCartData } from "../../libs/queryFunctions";
 import { useNavigate } from "react-router-dom";
+import { handleAddToLabCart } from "../../services/labCartService";
 
 const LabTestCard = ({ test }) => {
   const navigate = useNavigate();
-  //Adding lab test to cart
-  const handleAddToLabCart = async (test) => {
-    const response = await axiosInstance.post("/cart/labcart", {
-      lab_test_id: test.uuid,
-    });
-
-    return response.data;
-  };
 
   const { mutate: mutateLabAdd, isLoading: isAddLoading } = useMutation(
     (test) => {
-      return handleAddToLabCart(test);
+      return handleAddToLabCart(test.uuid);
     },
     {
       onSuccess: () => {
-        localStorage.setItem("selectedTestIds", test.uuid);
         handleRefetchLabCartData();
       },
     }
@@ -46,7 +38,7 @@ const LabTestCard = ({ test }) => {
           <p className="testCard-price">₹{test.price}</p>
           {
             <button
-              onClick={() => mutateLabAdd(test)}
+              onClick={() => mutateLabAdd(test.uuid)}
               className="testCard-selectButton"
             >
               Book

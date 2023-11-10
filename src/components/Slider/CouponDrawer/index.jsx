@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import Coupon from "../../Coupon";
 import { fetchCoupons } from "../../../services/couponService";
 
-// CouponDrawer component for displaying a list of coupons
 export const CouponDrawer = ({
   selectedCoupon,
   setSelectedCoupon,

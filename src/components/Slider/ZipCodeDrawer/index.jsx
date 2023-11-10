@@ -3,9 +3,11 @@ import "./zipCodeDrawer.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+// ZipCodeDrawer component for entering and checking PIN code
 const ZipCodeDrawer = ({ onClose, setLocation, location }) => {
   const [pinCode, setPinCode] = useState("");
 
+  // Function to get location details based on PIN code
   const getLocation = async () => {
     try {
       const response = await axios.get(
@@ -21,6 +23,7 @@ const ZipCodeDrawer = ({ onClose, setLocation, location }) => {
           setLocation(response.data[0].PostOffice[0].District);
           onClose();
         } else {
+          // Handle case where PostOffice is null
           if (location) {
             localStorage.removeItem("location");
             setLocation("Select location");
@@ -34,6 +37,7 @@ const ZipCodeDrawer = ({ onClose, setLocation, location }) => {
     }
   };
 
+  // JSX structure for rendering the ZipCodeDrawer component
   return (
     <div className="zipCodeContainer">
       <div style={{ position: "relative" }}>

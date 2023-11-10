@@ -1,29 +1,18 @@
 import React from "react";
+import "../../assets/css/Doctor/items.css";
+
 import Video from "../../assets/images/doctor/items/video.png";
 import Near from "../../assets/images/doctor/items/near.jpg";
 import Surgery from "../../assets/images/doctor/items/surgery.jpg";
 import Lab from "../../assets/images/doctor/items/lab.jpg";
 import Medicine from "../../assets/images/doctor/items/medicine.jpg";
-import "../../assets/css/Doctor/items.css";
 import { useNavigate } from "react-router-dom";
-const DoctorItem = () => {
-  const navigate = useNavigate();
-  const navigateVideoConsultant = () => {
-    navigate("/inner/doctor/consultant");
-  };
-  const navigateVideo = () => {
-    navigate("/inner/doctor/consultant");
-  };
-  const navigateDoctor = () => {
-    navigate("/doctor/finddoctor");
-  };
-  const navigateMedicine = () => {
-    navigate("/medicine");
-  };
-  const navigateLab = () => {
-    navigate("/lab");
-  };
 
+const DoctorItem = () => {
+  // React Router navigation hook
+  const navigate = useNavigate();
+
+  // Data array containing information about different doctor items
   const doctorCards = [
     {
       id: 1,
@@ -62,9 +51,11 @@ const DoctorItem = () => {
     },
   ];
 
+  // JSX structure for rendering doctor-related items
   return (
     <>
       <div className="items-consultationContainer">
+        {/* Mapping over the doctorCards array to render individual item boxes */}
         {doctorCards.map((doctorCard) => {
           return (
             <div
@@ -72,6 +63,7 @@ const DoctorItem = () => {
               className="items-boxContainer"
               onClick={() => navigate(doctorCard.path)}
             >
+              {/* Displaying item image, header, and description */}
               <img
                 loading="lazy"
                 className="items-img"
@@ -84,40 +76,8 @@ const DoctorItem = () => {
           );
         })}
       </div>
-
-      {/* <div
-          className="d-flex flex-column prac-col col-lg-2"
-          onClick={navigateVideo}
-        >
-          <img className="prac-img" src={Near} alt="" />
-          <p className="prac-par"> Doctors near you</p>
-          <p className="prac-par1">confirmed appointments</p>
-        </div>
-        <div
-          className="d-flex flex-column prac-col col-lg-2"
-          onClick={navigateDoctor}
-        >
-          <img className="prac-img" src={Surgery} alt="" />
-          <p className="prac-par"> Surgeries</p>
-          <p className="prac-par1">Safe and trusted surgery centers</p>
-        </div>
-        <div
-          className="d-flex flex-column prac-col col-lg-2"
-          onClick={navigateLab}
-        >
-          <img className="prac-img" src={Lab} alt="" />
-          <p className="prac-par"> Lab Tests</p>
-          <p className="prac-par1">Sample pickup at your home</p>
-        </div>
-        <div
-          className="d-flex flex-column prac-col col-lg-2"
-          onClick={navigateMedicine}
-        >
-          <img className="prac-img" src={Medicine} alt="" />
-          <p className="prac-par"> Medicines</p>
-          <p className="prac-par1">Essentials at your door steps</p>
-        </div> */}
     </>
   );
 };
+
 export default DoctorItem;

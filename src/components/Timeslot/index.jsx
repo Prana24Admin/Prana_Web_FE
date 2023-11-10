@@ -9,28 +9,35 @@ import { useDisclosure } from "@chakra-ui/react";
 import BookAppointmentModal from "../Modals/BookAppointment";
 import { DoctorBookingContext } from "../../context/DoctorBookingProvider";
 
+// TimeSlot Component for booking doctor appointments
 const TimeSlot = ({ doctorId }) => {
+  // Chakra UI's Disclosure hook for modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  // Accessing data from DoctorBookingContext
   const { data } = useContext(DoctorBookingContext);
 
+  // State to manage selected date, selected date data, and selected time slot
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedDateData, setSelectedDateData] = useState({});
-
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
 
+  // Function to fetch doctor's time slots using axios
   const fetchDoctorTimeSlot = async () => {
     const response = await axiosInstance.get(
       `/doctor/timeslot?doctor_id=${doctorId}`
     );
     return response.data;
   };
+
+  // Using react-query to fetch doctor's time slots
   const {
     data: timeSlotData,
     isLoading,
     error,
   } = useQuery(["TimeSlot"], fetchDoctorTimeSlot);
 
+  // Effect hook to update selectedDateData based on selectedDate and timeSlotData
   useEffect(() => {
     const getSelectedTimeSlot = () => {
       const date = new Date(selectedDate);
@@ -48,6 +55,7 @@ const TimeSlot = ({ doctorId }) => {
     getSelectedTimeSlot();
   }, [selectedDate, timeSlotData]);
 
+  // Logging selectedDate and selectedDateData to console
   useEffect(() => {
     console.log(selectedDate);
     console.log(selectedDateData);
@@ -57,16 +65,18 @@ const TimeSlot = ({ doctorId }) => {
     <section>
       {timeSlotData && (
         <>
-          {" "}
+          {/* Header for picking a time slot */}
           <p className="doctorProfile-header">
             Pick a time slot for doctor consultation
           </p>
           <div className="doctorProfile-boxContainer">
+            {/* Clinic details section */}
             <div className="doctorProfile-clinicDetails">
               <div>
-                <p className="doctorProfile-subheader">Clinic NAme</p>
+                <p className="doctorProfile-subheader">Clinic Name</p>
                 <p className="doctorProfile-description">Clinic address</p>
               </div>
+              {/* Change Clinic button */}
               <div
                 style={{
                   display: "flex",
@@ -81,10 +91,12 @@ const TimeSlot = ({ doctorId }) => {
                 <ChevronDown size={15} />
               </div>
             </div>
+            {/* Maximum waiting time information */}
             <p className="doctorProfile-description">
               Max waiting time will be:{" "}
               <span className="doctorProfile-subheader">15mins</span>
             </p>
+            {/* Consultation type information */}
             {Object.keys(selectedDateData).length > 0 && (
               <p className="doctorProfile-description">
                 Consultation type:{" "}
@@ -93,13 +105,16 @@ const TimeSlot = ({ doctorId }) => {
                 </span>
               </p>
             )}
+            {/* Clinic appointment fee section */}
             <div className="doctorProfile-flexAppointment">
               <p>Clinic appointment fee</p>
               <p>123fee</p>
             </div>
           </div>
+          {/* Date picker and time slot selection section */}
           {timeSlotData.data.length > 0 ? (
             <div className="doctorProfile-boxContainer">
+              {/* Date picker component */}
               <div>
                 <DatePicker
                   dateData={timeSlotData}
@@ -107,6 +122,7 @@ const TimeSlot = ({ doctorId }) => {
                   setSelectedDate={setSelectedDate}
                 />
               </div>
+              {/* Time slot selection section */}
               <div className="doctorProfile-timeSlotContainer">
                 <div
                   className={
@@ -135,6 +151,7 @@ const TimeSlot = ({ doctorId }) => {
                   </p>
                 </div>
               </div>
+              {/* Continue Booking button */}
               <button
                 className="doctorProfile-continueButton"
                 disabled={!selectedTimeSlot ? true : false}
@@ -144,12 +161,14 @@ const TimeSlot = ({ doctorId }) => {
               </button>
             </div>
           ) : (
+            // Message if no time slots are available
             <div className="doctorProfile-boxContainer">
               <p className="doctorProfile-appointmentText">
                 Sorry! No time-slot available to book an appointment.
               </p>
             </div>
           )}
+          {/* Book Appointment modal */}
           <BookAppointmentModal
             isOpen={isOpen}
             onClose={onClose}

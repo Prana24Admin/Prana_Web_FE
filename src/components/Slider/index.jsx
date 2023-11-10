@@ -1,12 +1,10 @@
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
 } from "@chakra-ui/react";
 
 const Slider = ({ isOpen, onClose, btnRef, drawerBody, header, css }) => {

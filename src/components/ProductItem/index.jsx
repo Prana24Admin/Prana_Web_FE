@@ -1,4 +1,5 @@
 import React from "react";
+import "../../pages/Home/Wishlist/wishlist.css";
 
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
@@ -6,35 +7,44 @@ import Image from "../../assets/images/home/body.png";
 
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
-import "../../pages/Home/Wishlist/wishlist.css";
 import { addToCart } from "../../services/cartService";
 import { removeFromWishlist } from "../../services/wishlistService";
 
+// ProductItem component represents an item in the wishlist or product list
 const ProductItem = ({ product, wishlistItem = null }) => {
+  // React Router hook for navigation
   const navigate = useNavigate();
 
+  // UseMutation hook for adding a product to the cart
   const { mutate, isLoading } = useMutation(
     (productId) => {
       return addToCart(productId);
     },
     {
+      // On successful addition to cart
       onSuccess: () => {
+        // Remove the product from the wishlist
         removeFromWishlist(wishlistItem.uuid);
+        // Display a success toast message
         toast.success("Added to cart");
       },
     },
     {
+      // On error during cart addition
       onError: () => {
+        // Display an error toast message
         toast.error("Try again");
       },
     }
   );
 
+  // JSX structure for rendering the ProductItem component
   return (
     <div
       className="favorites-cardWrapper"
       style={wishlistItem ? { height: "360px" } : { height: "auto" }}
     >
+      {/* Product card container */}
       <div
         className="favorites-cardContainer"
         onClick={() =>
@@ -43,15 +53,18 @@ const ProductItem = ({ product, wishlistItem = null }) => {
             : navigate(`/product/${product.uuid}`)
         }
       >
+        {/* Product image */}
         <img
           loading="lazy"
           className="favorites-image"
           src={Image}
           alt={product.name}
         />
+        {/* Product name */}
         <p className="favorites-productName">
           {wishlistItem !== null ? wishlistItem?.product.name : product?.name}
         </p>
+        {/* Product price information */}
         <div className="favorites-flexContainer">
           <p className="favorites-productPrice">
             ₹{wishlistItem ? wishlistItem.product.discount : product.discount}
@@ -64,11 +77,13 @@ const ProductItem = ({ product, wishlistItem = null }) => {
           </p>
         </div>
       </div>
+      {/* Trash icon for removing from wishlist */}
       {wishlistItem && (
         <div onClick={() => removeFromWishlist(wishlistItem.uuid)}>
           <Trash2 className="favorites-trashIcon" size={32} />
         </div>
       )}
+      {/* Add to cart button for wishlist items */}
       {wishlistItem && (
         <button
           onClick={() => mutate(wishlistItem.product.uuid)}

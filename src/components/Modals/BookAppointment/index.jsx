@@ -20,44 +20,56 @@ import axiosInstance from "../../../libs/axios";
 import BookingSuccess from "../../../assets/images/Lottie/booking_success.json";
 import Lottie from "lottie-react";
 
+// BookAppointmentModal component for handling appointment booking confirmation
 const BookAppointmentModal = ({
-  isOpen,
-  onClose,
-  doctorData,
-  timeSlotData,
+  isOpen, // Boolean indicating whether the modal is open or not
+  onClose, // Function to close the modal
+  doctorData, // Data about the selected doctor for the appointment
+  timeSlotData, // Data about the selected time slot for the appointment
 }) => {
+  // React Router navigation hook
   const navigate = useNavigate();
 
+  // State to track booking success
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [bookingSuccessId, setBookingSuccessId] = useState("");
 
+  // Function to post booking data to the server
   const postBookingData = async (bookingData) => {
+    // Determine the consultation type (offline or online)
     const consultationType = bookingData.type === "offline" ? true : false;
     console.log(bookingData);
+
+    // Send a POST request to create the appointment
     const response = await axiosInstance.post("/users/appointment/", {
       date: bookingData.date,
       timeslot_id: bookingData.timeslot_id,
       is_offline: consultationType,
     });
+
+    // If the request is successful, update state and set the booking success flag
     if (response.status === 201 || response.status === 200) {
       setBookingSuccessId(response.data.uuid);
       setBookingSuccess(true);
     }
+
     return response.data;
   };
 
+  // React Query hook for handling the mutation (posting booking data)
   const { mutate, isLoading } = useMutation(
     (bookingData) => {
       return postBookingData(bookingData);
     },
     {
-      onError: () => toast.error("Failed! Try again"),
+      onError: () => toast.error("Failed! Try again"), // Display an error toast if mutation fails
     },
     {
-      onSuccess: () => setBookingSuccess(true),
+      onSuccess: () => setBookingSuccess(true), // Set booking success flag on successful mutation
     }
   );
 
+  // JSX structure for rendering the modal content
   return (
     <Modal onClose={onClose} isOpen={isOpen} isCentered>
       <ModalOverlay />
@@ -71,6 +83,7 @@ const BookAppointmentModal = ({
         <ModalBody>
           {doctorData && timeSlotData && !bookingSuccess && (
             <div>
+              {/* Display selected date and time */}
               <div className="appointmentModal-container">
                 <div>
                   <div className="appointmentModal-flexContainer">
@@ -79,6 +92,7 @@ const BookAppointmentModal = ({
                       On {formatDateToText(timeSlotData.date)}
                     </p>
                   </div>
+                  {/* Allow changing date and time */}
                   <p
                     className="appointmentModal-changeText"
                     onClick={() => onClose()}
@@ -96,6 +110,7 @@ const BookAppointmentModal = ({
               </div>
               <div className="appointmentModal-line" />
               <div>
+                {/* Display doctor details */}
                 <div className="appointmentModal-doctorFlexContainer">
                   <img
                     className="appointmentModal-Image"
@@ -111,8 +126,10 @@ const BookAppointmentModal = ({
                 </div>
               </div>
               <div className="appointmentModal-line" />
+              {/* Display clinic details (placeholder text) */}
               <div>clinic details</div>
 
+              {/* Button to trigger booking */}
               <button
                 onClick={() =>
                   mutate({
@@ -128,6 +145,7 @@ const BookAppointmentModal = ({
             </div>
           )}
           {bookingSuccess && (
+            // Display a success animation upon successful booking
             <Lottie
               animationData={BookingSuccess}
               loop={false}

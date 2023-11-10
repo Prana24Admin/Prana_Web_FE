@@ -1,5 +1,7 @@
-import { BadgePercent, IndianRupee } from "lucide-react";
 import React from "react";
+import "../../pages/Home/Cart/cart.css";
+
+import { BadgePercent, IndianRupee } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Bill = ({
@@ -13,9 +15,11 @@ const Bill = ({
   handleRemoveCoupon,
 }) => {
   const pathName = window.location.pathname;
+
   const navigate = useNavigate();
 
   const handleToCheckout = () => {
+    // Storing the bill details in localStorage before navigation
     localStorage.setItem(
       "bill",
       JSON.stringify({
@@ -26,13 +30,18 @@ const Bill = ({
         sampleCollectionCharges,
       })
     );
+
+    // Determining the correct checkout route based on the pathname
     if (pathName === "/lab/cart") navigate("/lab/checkout");
     else navigate("/checkout");
   };
 
+  // JSX structure for rendering the bill section in the cart
   return (
     <section className="cart-billSectionWrapper">
+      {/* Container for applying and removing coupons */}
       <div style={{ position: "relative" }}>
+        {/* Button to apply coupons */}
         <button
           className="cart-applyCouponButton"
           ref={btnRef}
@@ -50,6 +59,7 @@ const Bill = ({
           </div>
         </button>
 
+        {/* Button to remove applied coupon */}
         {selectedCoupon && (
           <button
             onClick={handleRemoveCoupon}
@@ -59,12 +69,19 @@ const Bill = ({
           </button>
         )}
       </div>
+
+      {/* Container for displaying the bill details */}
       <div className="cart-billContainer">
+        {/* Title for the bill summary */}
         <p className="cart-titleText">Bill Summary</p>
+
+        {/* Displaying total MRP */}
         <div className="cart-flex">
           <p className="cart-descriptionText">Total Mrp</p>
           <p className="cart-descriptionText">₹{subTotal.toFixed(2)}</p>
         </div>
+
+        {/* Displaying delivery charges for the cart page */}
         {pathName === "/cart" && (
           <div className="cart-flex">
             <p className="cart-descriptionText">Delivery charges</p>
@@ -74,6 +91,7 @@ const Bill = ({
           </div>
         )}
 
+        {/* Displaying sample collection charges */}
         {sampleCollectionCharges && (
           <div className="cart-flex">
             <p className="cart-descriptionText">Sample collection charges</p>
@@ -82,12 +100,16 @@ const Bill = ({
             </p>
           </div>
         )}
+
+        {/* Displaying discount */}
         {discount && (
           <div className="cart-flex">
             <p className="cart-descriptionText">Discount</p>
             <p className="cart-descriptionText">- ₹{discount.toFixed(2)}</p>
           </div>
         )}
+
+        {/* Displaying coupon value */}
         {couponValue && (
           <div className="cart-flex">
             <p className="cart-descriptionText">Coupon</p>
@@ -96,8 +118,11 @@ const Bill = ({
             </p>
           </div>
         )}
+
+        {/* Horizontal line for separation */}
         <div className="checkout-line" />
 
+        {/* Displaying the total cart value */}
         <div className="cart-flex">
           <p className="cart-descriptionTextDark">Cart value</p>
           <p className="cart-descriptionTextDark">
@@ -110,17 +135,23 @@ const Bill = ({
                 ).toFixed(2)}`}
           </p>
         </div>
+
+        {/* Proceed to checkout button for the cart page */}
         {pathName === "/cart" && (
           <button className="cart-button" onClick={handleToCheckout}>
             Proceed To Checkout
           </button>
         )}
+
+        {/* Proceed to checkout button for the lab/cart page */}
         {pathName === "/lab/cart" && (
           <button className="cart-button" onClick={handleToCheckout}>
             Proceed To Checkout
           </button>
         )}
       </div>
+
+      {/* Container for displaying total savings information */}
       <div className="cart-savingsContainer">
         <IndianRupee size={15} className="cart-ruppeIcon" />
         <p className="cart-savingsText">
@@ -135,4 +166,5 @@ const Bill = ({
   );
 };
 
+// Exporting the Bill component as the default export
 export default Bill;

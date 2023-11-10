@@ -10,10 +10,16 @@ import {
   Stethoscope,
   Syringe,
 } from "lucide-react";
+
+// CategoryNav component for displaying navigation elements
 const CategoryNav = () => {
+  // React Router hook for navigation
   const navigate = useNavigate();
+
+  // Get the current path name
   const pathName = window.location.pathname;
 
+  // Define navigation elements with their corresponding icons, paths, and active status
   const navElements = useMemo(
     () => [
       {
@@ -69,6 +75,7 @@ const CategoryNav = () => {
     [pathName]
   );
 
+  // JSX structure for rendering the navigation elements
   return (
     <div className="innerNav-mainContainer">
       <div className="innerNav-flexContainer">
@@ -90,4 +97,5 @@ const CategoryNav = () => {
     </div>
   );
 };
+
 export default CategoryNav;

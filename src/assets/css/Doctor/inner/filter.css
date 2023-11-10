@@ -136,14 +136,7 @@
   color: var(--pearlWhite);
 }
 .available-rightContainer {
-  width: 30%;
-  height: 52%;
-  padding: 1rem 1rem;
-  border: 1px solid var(--cloudGray);
-  background-color: var(--powderWhite);
-  border-radius: 5px;
-  /* position: fixed;
-  right: 6rem; */
+  padding: 1rem 3rem;
 }
 .type {
   text-align: center;
@@ -157,10 +150,6 @@
   border-radius: 5px;
   border: 1px solid var(--cloudGray);
   margin: 0.5rem 0px;
-  /* background-color: transparent; */
-}
-.form-doctor {
-  /* margin: 20px 40px; */
 }
 .available-formButton {
   color: var(--crimsonPink);
@@ -190,4 +179,9 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--ashGray);
+}
+.available-image {
+  width: 30rem;
+  height: 30rem;
+  object-fit: cover;
 }

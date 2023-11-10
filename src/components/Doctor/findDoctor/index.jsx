@@ -1,16 +1,12 @@
 import React from "react";
 
-import Filter from "./filter";
 import Available from "./available";
 
 import MainLayout from "../../MainLayout";
 const FindDoctorIndex = () => {
   return (
     <MainLayout>
-      <div>
-        <Filter />
-      </div>
-      <div>
+      <div style={{ paddingTop: "11rem" }}>
         <Available />
       </div>
     </MainLayout>

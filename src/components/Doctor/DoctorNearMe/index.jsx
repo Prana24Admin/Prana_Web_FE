@@ -1,9 +1,10 @@
 import React from "react";
+import "../../../assets/css/Doctor/inner/filter.css";
+
 import MainLayout from "../../MainLayout";
-import Filter from "../findDoctor/filter";
 import axiosInstance from "../../../libs/axios";
-import CostEstimate from "../../CostEstimate";
 import { useQuery } from "@tanstack/react-query";
+import DoctorsNear from "../../../assets/images/VectorImages/Doctors_near_you.png";
 
 const DoctorNearMe = () => {
   const fetchDoctorsByZipCode = async () => {
@@ -19,14 +20,9 @@ const DoctorNearMe = () => {
 
   return (
     <MainLayout>
-      <div>
-        <Filter />
-      </div>
-      <div className="available-mainContainer">
-        {/* <div className="d-flex flex-row"> */}
+      <div className="available-mainContainer" style={{ paddingTop: "12rem" }}>
         <div className="available-flexContainer">
           <div className="available-leftContainer">
-            {/* <div className="d-flex flex-column col-lg-7"> */}
             <div>
               <p className="available-doctorsTitle">
                 {/* {data && data.doctors.length > 0
@@ -53,10 +49,11 @@ const DoctorNearMe = () => {
             })} */}
           </div>
           <div className="available-rightContainer">
-            {/* <div className="d-flex flex-column col-lg-1"></div> */}
-            <div>
-              <CostEstimate />
-            </div>
+            <img
+              className="available-image"
+              src={DoctorsNear}
+              alt="Doctors_Near_You"
+            />
           </div>
         </div>
       </div>

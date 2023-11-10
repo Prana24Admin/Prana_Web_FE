@@ -1,15 +1,7 @@
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import React from "react";
 import Lottie from "lottie-react";
-import TruckSuccess from "../../assets/images/Lottie/TruckSucess.json";
+import OrderSuccess from "../../assets/images/Lottie/booking_success.json";
 import { useNavigate } from "react-router-dom";
 
 const SuccessModal = ({ isOpen, onClose, onOpen, id }) => {
@@ -21,24 +13,10 @@ const SuccessModal = ({ isOpen, onClose, onOpen, id }) => {
         <ModalContent>
           <ModalBody>
             <Lottie
-              animationData={TruckSuccess}
+              animationData={OrderSuccess}
               loop={false}
-              onComplete={() => navigate(`/orders/${id}`)}
-              //   style={{ width: "20rem", height: "20rem" }}
+              onComplete={() => navigate(`/orders/healthcare/${id}`)}
             />
-            <p
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "2rem",
-                fontWeight: "600",
-                color: "var(--ashGray)",
-                marginBottom: "1rem",
-              }}
-            >
-              Order placed successfully!
-            </p>
           </ModalBody>
         </ModalContent>
       </Modal>

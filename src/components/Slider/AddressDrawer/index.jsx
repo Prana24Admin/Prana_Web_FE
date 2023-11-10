@@ -4,14 +4,17 @@ import "./addressDrawer.css";
 import Input from "../../Input";
 import axiosInstance from "../../../libs/axios";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 
+// AddressDrawer component for adding/editing user addresses
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
+  // Access profile data from the context
   const { data } = useContext(ProfileContext);
 
+  // React Hook Form setup for handling form state
   const {
     register,
     handleSubmit,
@@ -19,6 +22,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     getValues,
     formState: { errors, isSubmitting },
   } = useForm({
+    // Set default values based on the method (add, edit)
     defaultValues: {
       id:
         method === "add"
@@ -26,6 +30,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
           : method === "edit"
           ? data.uuid
           : additionalAddress.id,
+      // Set other default values based on the method
       place:
         method === "add"
           ? ""
@@ -77,25 +82,34 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     },
   });
 
+  // Handle form submission
   const onSubmit = async (formData) => {
     try {
+      // Validate form data
       if (formData.place === "") return;
+
       let response;
+
+      // Perform actions based on the method (add, edit)
       if (method === "add") {
         if (!data?.address) {
+          // If user has no address, patch profile with the new address
           response = await axiosInstance.patch("/users/profile", {
             address: formData,
           });
         } else {
+          // If user has an address, add the new address to additional addresses
           response = await axiosInstance.patch("/users/profile", {
             additional_address: [...(data?.additional_address || []), formData],
           });
         }
       } else if (method === "edit") {
+        // Edit the existing address in the profile
         response = await axiosInstance.patch("/users/profile", {
           address: formData,
         });
       } else {
+        // Edit a specific additional address
         const index = data?.additional_address.findIndex(
           (address) => address.id === additionalAddress.id
         );
@@ -107,18 +121,22 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
           });
         }
       }
+
+      // If the response is successful, update the profile data and close the form
       if (response) {
-        handleRefetchProfileData(); // Call the function to update profile data
-        onClose(); // Close the form
+        handleRefetchProfileData();
+        onClose();
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
     }
   };
 
+  // JSX structure for rendering the AddressDrawer component
   return (
     <div>
       <form style={{ marginTop: "0.5rem" }} onSubmit={handleSubmit(onSubmit)}>
+        {/* Address type selection buttons */}
         <div>
           <div className="addressDrawer-iconContainer">
             <button
@@ -168,6 +186,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             </button>
           </div>
         </div>
+        {/* Form inputs for address details */}
         <div
           style={{
             display: "flex",
@@ -176,6 +195,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             marginTop: "1rem",
           }}
         >
+          {/* Name input */}
           <div className="addressDrawer-input">
             <Input
               label="Name"
@@ -194,6 +214,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
+          {/* Phone number input */}
           <div className="addressDrawer-input">
             <Input
               label="Phone number"
@@ -212,6 +233,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
+          {/* House/Apartment number input */}
           <div className="addressDrawer-input">
             <Input
               label={"House No/ Apartment No"}
@@ -230,6 +252,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
+          {/* Street input */}
           <div className="addressDrawer-input">
             <Input
               label="Street"
@@ -248,6 +271,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
+          {/* City input */}
           <div className="addressDrawer-input">
             <Input
               label="City"
@@ -266,6 +290,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               </p>
             )}
           </div>
+          {/* State and Pincode inputs */}
           <div style={{ display: "flex", gap: "1rem" }}>
             <div className="addressDrawer-input">
               <Input
@@ -281,7 +306,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
                   style={{ color: "var(--crimsonPink)", fontSize: "0.8rem" }}
                   role="alert"
                 >
-                  state is required
+                  State is required
                 </p>
               )}
             </div>
@@ -305,6 +330,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             </div>
           </div>
         </div>
+        {/* Buttons for cancel and save */}
         <div className="addressDrawer-buttonsContainer">
           <button className="addressDrawer-cancelButton" onClick={onClose}>
             Cancel

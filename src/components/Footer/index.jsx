@@ -1,29 +1,24 @@
 import React from "react";
-
 import "./footer.css";
+
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <section className="footer-container">
       <div className="footer-mainContainer">
+        {/* Prana24 Section */}
         <div className="footer-widthContainer">
           <p className="footer-title">Prana24</p>
-          <p className="footer-description">Subscribe To our news letter</p>
+          <p className="footer-description">Subscribe To our newsletter</p>
           <div style={{ position: "relative", margin: "0.75rem 0" }}>
             <input type="text" className="footer-input" />
             <button className="footer-subscribeButton">Subscribe</button>
           </div>
         </div>
-        <div
-          className="footer-widthContainer"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+
+        {/* Company Section */}
+        <div className="footer-widthContainer">
           <p className="footer-header">Company</p>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Link to={"/"} className="footer-links">
@@ -40,6 +35,8 @@ function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Registration Office Section */}
         <div className="footer-widthContainer">
           <p className="footer-header">Registration Office</p>
           <p className="footer-description">
@@ -47,6 +44,8 @@ function Footer() {
             Hyderabad, Telangana 500033
           </p>
         </div>
+
+        {/* Address Section */}
         <div className="footer-widthContainer">
           <p className="footer-header">Address</p>
           <p className="footer-description">
@@ -54,7 +53,11 @@ function Footer() {
           </p>
         </div>
       </div>
+
+      {/* Separator */}
       <div className="footer-separator" />
+
+      {/* Copyright Section */}
       <div
         style={{
           display: "flex",

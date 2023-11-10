@@ -87,12 +87,13 @@ const Cart = () => {
             {/* Check for cart items */}
             {data &&
               (data.length < 1 ? ( // Display empty cart image if no items
-                <div style={{ margin: "auto" }}>
+                <div className="cart-emptyContainer" style={{ margin: "auto" }}>
                   <img
                     className="vector-image"
                     src={EmptyCart}
                     alt="cartEmpty"
                   />
+                  <p className="cart-title">Your Healthcare cart is empty!</p>
                 </div>
               ) : (
                 // Display cart items and bill section

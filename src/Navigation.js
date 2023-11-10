@@ -9,8 +9,6 @@ import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ProtectedRoute from "./libs/ProtectedRoute";
 
-const PasswordChange = lazy(import("./components/Arrivals/passwordchange"));
-const OTP = lazy(import("./components/Arrivals/otp"));
 const About = lazy(() => import("./pages/Home/About"));
 const Contact = lazy(() => import("./pages/Home/Contact"));
 const Careers = lazy(() => import("./pages/Home/Careers"));
@@ -75,8 +73,6 @@ const Navigation = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
-          <Route path="/otp" element={<OTP />} />
-          <Route path="/Password" element={<PasswordChange />} />
           <Route path="/" element={<Main />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />

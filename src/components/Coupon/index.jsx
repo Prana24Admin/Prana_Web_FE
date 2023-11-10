@@ -9,14 +9,23 @@ const Coupon = ({
   setSelectedCoupon,
   onClose,
 }) => {
+  // Function to handle coupon selection
   const handleCouponSelect = (coupon) => {
+    // Set the selected coupon in the parent component state
     setSelectedCoupon(coupon);
+
+    // Store the selected coupon in local storage
     localStorage.setItem("appliedCoupon", JSON.stringify(coupon));
+
+    // Close the coupon card
     onClose();
   };
+
+  // JSX structure for the Coupon component
   return (
     <div className={smallCoupon ? "small-card" : "card"}>
       <div className={smallCoupon ? "small-main" : "main"}>
+        {/* Coupon image section */}
         <div className={smallCoupon ? "small-co-img" : "co-img"}>
           <img
             loading="lazy"
@@ -25,7 +34,9 @@ const Coupon = ({
             className={smallCoupon ? "coupon-image" : "coupon-image"}
           />
         </div>
+        {/* Vertical line separator */}
         <div className={smallCoupon ? "small-vertical" : "vertical"}></div>
+        {/* Coupon content section */}
         <div className={smallCoupon ? "small-content" : "content"}>
           <h2>{item.status}</h2>
           <h1>
@@ -34,8 +45,10 @@ const Coupon = ({
           <p>Valid till {format(new Date(item.expiry_date), "dd MMMM yyyy")}</p>
         </div>
       </div>
+      {/* Copy button and coupon code section */}
       <div className={smallCoupon ? "small-copy-button" : "copy-button"}>
         <input id="copyvalue" type="text" readOnly value={item.code} disabled />
+        {/* "SELECT" button for small coupon cards */}
         {smallCoupon && (
           <button
             onClick={() => handleCouponSelect(item)}
@@ -45,9 +58,10 @@ const Coupon = ({
           </button>
         )}
       </div>
+      {/* Coupon note section */}
       <div className={smallCoupon ? "small-coupon-note" : "coupon-note"}>
         <p>
-          *Get {item.discount}% off upto ₹{item.max_amount} on orders above ₹
+          *Get {item.discount}% off up to ₹{item.max_amount} on orders above ₹
           {item.min_value}
         </p>
       </div>

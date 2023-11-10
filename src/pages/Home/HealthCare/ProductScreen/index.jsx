@@ -8,6 +8,7 @@ import axiosInstance from "../../../../libs/axios";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../../../components/Loader";
+import { handleCartQuantity } from "../../../../services/cartService";
 
 const Product = () => {
   const navigate = useNavigate();
@@ -32,44 +33,9 @@ const Product = () => {
     error,
   } = useQuery(["Product"], fetchProduct);
 
-  // Function to handle quantity updates and add to cart
-  const handleQuantity = async (product) => {
-    try {
-      const cartData = await axiosInstance.get("/cart");
-      const existingCartItem = cartData.data.find(
-        (item) => item.product.uuid === product.productId
-      );
-      if (existingCartItem) {
-        if (existingCartItem.quantity === parseInt(product.quantity)) {
-          toast.error("Product is already present in the cart.");
-          return;
-        } else {
-          const response = await axiosInstance.post(`/cart`, {
-            quantity: product.quantity,
-            product_id: product.productId,
-          });
-          if (response.status === 200) {
-            toast.success("Product quantity updated in the cart.");
-          }
-        }
-      } else {
-        const response = await axiosInstance.post("/cart", {
-          quantity: product.quantity ?? 1,
-          product_id: product.productId,
-        });
-        if (response.status === 201 || response.status === 200) {
-          toast.success("Added to cart");
-        }
-      }
-    } catch (err) {
-      if (err.response.data.message === "Token not found")
-        toast.error("Login! To continue");
-    }
-  };
-
   // Use the useMutation hook to handle quantity updates and cart addition
   const { mutate, isLoading: quantityLoading } = useMutation((product) => {
-    return handleQuantity(product);
+    return handleCartQuantity(product);
   });
 
   const [showBelowImageCartButton, setShowBelowImageCartButton] =

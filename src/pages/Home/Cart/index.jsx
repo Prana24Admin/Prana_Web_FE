@@ -3,7 +3,6 @@ import "./cart.css";
 
 import { useQuery } from "@tanstack/react-query";
 import { useDisclosure } from "@chakra-ui/react";
-import axiosInstance from "../../../libs/axios";
 
 import MainLayout from "../../../components/MainLayout";
 import CartCard from "../../../components/CartCard";
@@ -13,19 +12,14 @@ import Bill from "../../../components/Bill";
 import Loader from "../../../components/Loader";
 
 import EmptyCart from "../../../assets/images/VectorImages/cart empty.png";
+import { fetchCartData } from "../../../services/cartService";
 
 const Cart = () => {
   // Using React Hooks for state and side effects
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-  // Fetch cart items using async function
-  const fetchCart = async () => {
-    const response = await axiosInstance.get("/cart");
-    return response.data;
-  };
-
-  const { data, isLoading, error } = useQuery(["cart"], fetchCart);
+  const { data, isLoading, error } = useQuery(["cart"], fetchCartData);
 
   const [selectedCoupon, setSelectedCoupon] = useState(null);
   const [couponValue, setCouponValue] = useState(null);

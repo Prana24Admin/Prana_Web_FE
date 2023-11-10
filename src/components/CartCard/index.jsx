@@ -1,6 +1,5 @@
-import { ChevronDown, Loader, Trash2 } from "lucide-react";
+import { ChevronDown, Trash2 } from "lucide-react";
 import React, { useState } from "react";
-import axiosInstance from "../../libs/axios";
 import { handleRefetchCartItems } from "../../libs/queryFunctions";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -8,10 +7,10 @@ import Image from "../../assets/images/doctor/doctor.png";
 import { useNavigate } from "react-router-dom";
 import { useDisclosure } from "@chakra-ui/react";
 import RemoveModal from "../Modals/RemoveModal";
+import { handleCartQuantity } from "../../services/cartService";
+import Loader from "../Loader";
 
 const CartCard = ({ cartItem, labItem = null }) => {
-  const navigate = useNavigate();
-
   const {
     isOpen: removeIsOpen,
     onOpen: removeOnOpen,
@@ -22,20 +21,9 @@ const CartCard = ({ cartItem, labItem = null }) => {
 
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  const handleQuantity = async (product) => {
-    const response = await axiosInstance.post("/cart", {
-      quantity: product.quantity,
-      product_id: product.productId,
-    });
-    if (response.status === 400) {
-      toast.error("Try again");
-    }
-    return response.data;
-  };
-
   const { mutate, isLoading } = useMutation(
     (product) => {
-      return handleQuantity(product);
+      return handleCartQuantity(product);
     },
     {
       onSuccess: () => {
@@ -99,7 +87,7 @@ const CartCard = ({ cartItem, labItem = null }) => {
               >
                 {isLoading ? (
                   <div className="cart-loaderContainer">
-                    <Loader />
+                    <Loader width={"1rem"} height={"1rem"} />
                   </div>
                 ) : (
                   <>

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import AuthLayout from "../../../components/AuthLayout";
+import { signup } from "../../../services/authService";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -33,10 +34,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        "https://api-prana.prana24.in/api/auth/signup",
-        data
-      );
+      const response = await signup(data);
       if (response.status === 200) {
         // Display a success toast when registration is successful.
         toast.success("Registration successful");
@@ -45,9 +43,6 @@ const Register = () => {
         setTimeout(() => {
           navigateLogin();
         }, 1000);
-      } else {
-        // Handle other possible scenarios, e.g., server error.
-        toast.error("Registration failed. Please try again.");
       }
     } catch (error) {
       // Handle any errors that may occur during registration.

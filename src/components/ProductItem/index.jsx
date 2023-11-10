@@ -3,22 +3,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import Image from "../../assets/images/home/body.png";
-import axiosInstance from "../../libs/axios";
+
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
 import "../../pages/Home/Wishlist/wishlist.css";
+import { addToCart } from "../../services/cartService";
+import { removeFromWishlist } from "../../services/wishlistService";
 
-const ProductItem = ({ product, removeFromWishlist, wishlistItem = null }) => {
+const ProductItem = ({ product, wishlistItem = null }) => {
   const navigate = useNavigate();
-
-  const addToCart = async (productId) => {
-    const response = await axiosInstance.post("/cart", {
-      quantity: 1,
-      product_id: productId,
-    });
-
-    return response.data;
-  };
 
   const { mutate, isLoading } = useMutation(
     (productId) => {

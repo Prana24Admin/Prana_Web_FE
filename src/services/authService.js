@@ -23,6 +23,14 @@ export const login = async (data) => {
   }
 };
 
+export const signup = async (data) => {
+  const response = await axios.post(
+    "https://api-prana.prana24.in/api/auth/signup",
+    data
+  );
+  return response;
+};
+
 export const logout = async () => {
   const cookies = document.cookie.split(";").map((cookie) => cookie.split("="));
   const accessTokenCookie = cookies.find(

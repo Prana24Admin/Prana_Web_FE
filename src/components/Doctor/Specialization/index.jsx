@@ -2,32 +2,24 @@ import React from "react";
 import "./specialization.css";
 
 import MainLayout from "../../MainLayout";
-import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import LazyLoadedImage from "../../../libs/LazyLoadedImage";
 import { useNavigate } from "react-router-dom";
 
 // Loading spinner component
 import Loader from "../../Loader";
+import { fetchAllDoctorSpecializations } from "../../../services/filtersService";
 
 const Specialization = () => {
   // React Router navigation hook
   const navigate = useNavigate();
-
-  // Function to fetch all specializations from the server
-  const fetchAllSpecializations = async () => {
-    const response = await axiosInstance.get(
-      "/filters?type=CONSULTATION_SPECIALIZATION"
-    );
-    return response.data;
-  };
 
   // UseQuery hook to fetch and manage data, loading, and error states
   const {
     data: specializationData,
     isLoading,
     error,
-  } = useQuery(["Specializations"], fetchAllSpecializations);
+  } = useQuery(["Specializations"], fetchAllDoctorSpecializations);
 
   // Function to handle navigation to a specific specialization
   const handleNavigationSpecialization = (specializationId) => {

@@ -2,12 +2,12 @@ import { Building, CheckCircle, Home } from "lucide-react";
 import "./addressDrawer.css";
 
 import Input from "../../Input";
-import axiosInstance from "../../../libs/axios";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import { useContext } from "react";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
+import { addUserAddress } from "../../../services/profileService";
 
 // AddressDrawer component for adding/editing user addresses
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
@@ -88,42 +88,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
       // Validate form data
       if (formData.place === "") return;
 
-      let response;
-
-      // Perform actions based on the method (add, edit)
-      if (method === "add") {
-        if (!data?.address) {
-          // If user has no address, patch profile with the new address
-          response = await axiosInstance.patch("/users/profile", {
-            address: formData,
-          });
-        } else {
-          // If user has an address, add the new address to additional addresses
-          response = await axiosInstance.patch("/users/profile", {
-            additional_address: [...(data?.additional_address || []), formData],
-          });
-        }
-      } else if (method === "edit") {
-        // Edit the existing address in the profile
-        response = await axiosInstance.patch("/users/profile", {
-          address: formData,
-        });
-      } else {
-        // Edit a specific additional address
-        const index = data?.additional_address.findIndex(
-          (address) => address.id === additionalAddress.id
-        );
-        if (index !== -1) {
-          const updatedAddress = [...data?.additional_address];
-          updatedAddress[index] = { ...updatedAddress[index], ...formData };
-          response = await axiosInstance.patch("/users/profile", {
-            additional_address: updatedAddress,
-          });
-        }
-      }
+      const response = await addUserAddress(
+        data,
+        method,
+        formData,
+        additionalAddress
+      );
 
       // If the response is successful, update the profile data and close the form
-      if (response) {
+      if (response.status === 200 || response.status === 201) {
         handleRefetchProfileData();
         onClose();
       }
@@ -141,6 +114,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
           <div className="addressDrawer-iconContainer">
             <button
               onClick={() => setValue("place", "Home")}
+              type="button"
               className={
                 getValues("place") === "Home"
                   ? "addressDrawer-selectedInnerIconContainer"
@@ -156,6 +130,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             </button>
             <button
               onClick={() => setValue("place", "Work")}
+              type="button"
               className={
                 getValues("place") === "Work"
                   ? "addressDrawer-selectedInnerIconContainer"
@@ -171,6 +146,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
             </button>
             <button
               onClick={() => setValue("place", "Other")}
+              type="button"
               className={
                 getValues("place") === "Other"
                   ? "addressDrawer-selectedInnerIconContainer"

@@ -2,32 +2,21 @@ import React from "react";
 import "../../../assets/css/Doctor/inner/filter.css";
 
 import { useParams } from "react-router-dom";
-
-import axiosInstance from "../../../libs/axios";
-
 import { useQuery } from "@tanstack/react-query";
-
 import DoctorCard from "../../DoctorCard";
-
 import Loader from "../../Loader";
-
 import doctors from "../../../assets/images/VectorImages/NO_DOCTORS.png";
 import DoctorsNear from "../../../assets/images/VectorImages/Doctors_near_you.png";
+import { fetchDoctorsBySpecialization } from "../../../services/doctorService";
 
 const Available = () => {
   // React Router useParams hook to get parameters from the URL
   const { id } = useParams();
 
-  // Function to fetch doctors by specialization from the server
-  const fetchDoctorsBySpecialization = async () => {
-    const response = await axiosInstance.get(`/doctor/specialization/${id}`);
-    return response.data;
-  };
-
   // UseQuery hook to fetch and manage data, loading, and error states
   const { data, isLoading, error } = useQuery(
-    ["DoctorsBySpecialization"],
-    fetchDoctorsBySpecialization
+    ["DoctorsBySpecialization", id],
+    () => fetchDoctorsBySpecialization(id)
   );
 
   // JSX structure for the Available component

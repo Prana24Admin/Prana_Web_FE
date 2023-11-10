@@ -1,28 +1,24 @@
 import React, { useEffect } from "react";
 import "./products.css";
 
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductItem from "../../../../components/ProductItem";
 import { handleRefetchAllCategories } from "../../../../libs/queryFunctions";
 import products from "../../../../assets/images/VectorImages/NO_PRODUCTS.png";
 
 import Loader from "../../../../components/Loader";
+import { fetchProductDataByCategory } from "../../../../services/filtersService";
 
 const ProductsByCategories = ({ categoryId, selectedCategory }) => {
-  // Function to fetch products by category
-  const fetchProductsByCategory = async () => {
-    const response = await axiosInstance.get(`/filters/products/${categoryId}`);
-    return response.data;
-  };
-
   // Use the useQuery hook to manage product data and its state
   const {
     data: productsData,
     isLoading,
     error,
     refetch,
-  } = useQuery([selectedCategory], fetchProductsByCategory);
+  } = useQuery([selectedCategory, categoryId], () =>
+    fetchProductDataByCategory(categoryId)
+  );
 
   // Effect to handle data refetch when category or selectedCategory changes
   useEffect(() => {

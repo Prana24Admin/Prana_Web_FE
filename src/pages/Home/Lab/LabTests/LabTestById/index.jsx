@@ -1,12 +1,11 @@
 import React from "react";
-import "./packageOrder.css";
+import "./labTestById.css";
 
-import MainLayout from "../../../../components/MainLayout";
-import labTest from "../../../../assets/images/VectorImages/LabTest.png";
+import MainLayout from "../../../../../components/MainLayout";
+import labTest from "../../../../../assets/images/VectorImages/LabTest.png";
 import { useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../../../libs/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import Loader from "../../../../components/Loader";
+import Loader from "../../../../../components/Loader";
 import {
   BookMarked,
   Dot,
@@ -15,23 +14,19 @@ import {
   TestTube2,
   UtensilsCrossed,
 } from "lucide-react";
-import { handleAddToLabCart } from "../../../../services/labCartService";
+import { handleAddToLabCart } from "../../../../../services/labCartService";
+import { fetchLabTestById } from "../../../../../services/labService";
 
-const PackageOrder = () => {
+const LabTestsById = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const fetchTestById = async () => {
-    const response = await axiosInstance(`/lab/test/${id}`);
-    return response.data;
-  };
 
   // Use the useQuery hook to manage test data and its state
   const {
     data: testData,
     isLoading,
     error,
-  } = useQuery(["LabTestId"], fetchTestById);
+  } = useQuery(["LabTestId", id], () => fetchLabTestById(id));
 
   // Use the useMutation hook to handle the addition of the test to the cart
   const { mutate, isLoading: AddingToCart } = useMutation(
@@ -183,4 +178,4 @@ const PackageOrder = () => {
   );
 };
 
-export default PackageOrder;
+export default LabTestsById;

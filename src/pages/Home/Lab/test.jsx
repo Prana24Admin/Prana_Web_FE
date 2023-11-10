@@ -1,8 +1,6 @@
 import React from "react";
 import "../../../assets/css/Lab/index.css";
 
-import All from "../../../assets/images/lab/test/all.jpg";
-import Book from "../../../assets/images/lab/test/book.jpg";
 import Health from "../../../assets/images/lab/test/health.jpg";
 import Test from "../../../assets/images/lab/test/test.jpg";
 import { useNavigate } from "react-router-dom";

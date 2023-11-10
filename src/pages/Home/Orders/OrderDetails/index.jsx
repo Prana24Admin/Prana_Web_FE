@@ -2,24 +2,20 @@ import React from "react";
 import "./OrderDetails.css";
 
 import image from "../../../../assets/images/profile/avatar.png";
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import format from "date-fns/format";
 import MainLayout from "../../../../components/MainLayout";
 import Loader from "../../../../components/Loader";
+import { fetchOrderHealthcareById } from "../../../../services/healthcareOrders";
 
 const HealthCareOrderDetails = () => {
   const { id } = useParams();
 
-  // Function to fetch order details by ID
-  const fetchOrderById = async () => {
-    const response = await axiosInstance.get(`/orders/${id}`);
-    return response.data;
-  };
-
   // Use the useQuery hook to manage order data and its state
-  const { data, isLoading, error } = useQuery(["OrderById"], fetchOrderById);
+  const { data, isLoading, error } = useQuery(["OrderById", id], () =>
+    fetchOrderHealthcareById(id)
+  );
 
   return (
     <MainLayout>

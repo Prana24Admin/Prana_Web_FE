@@ -4,21 +4,18 @@ import "../../../Orders/OrderDetails/OrderDetails.css";
 import image from "../../../../../assets/images/profile/avatar.png";
 import MainLayout from "../../../../../components/MainLayout";
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../../components/Loader";
 import { formatDateToText } from "../../../../../libs/dateTimeFormater";
+import { fetchAppointmentById } from "../../../../../services/appointmentsService";
 
 const AppointmentById = () => {
   const { id } = useParams();
-  const fetchAppointmentById = async () => {
-    const response = await axiosInstance.get(`/users/appointment/${id}`);
-    return response.data;
-  };
-  const { data, isLoading, error } = useQuery(
-    ["AppointmentByd"],
-    fetchAppointmentById
+
+  const { data, isLoading, error } = useQuery(["AppointmentByd", id], () =>
+    fetchAppointmentById(id)
   );
+
   return (
     <MainLayout>
       <div className="orderDetails-mainContainer">

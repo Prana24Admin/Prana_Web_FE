@@ -4,16 +4,10 @@ import "../Orders.css";
 import { useQuery } from "@tanstack/react-query";
 import OrderCard from "../../../../components/OrderCard";
 import Profile from "../../Profile";
-import axiosInstance from "../../../../libs/axios";
 import Loader from "../../../../components/Loader";
+import { fetchAllOrders } from "../../../../services/healthcareOrders";
 
 const HealthCareOrders = () => {
-  // Function to fetch all healthcare orders
-  const fetchAllOrders = async () => {
-    const response = await axiosInstance.get("/orders");
-    return response.data;
-  };
-
   // Use the useQuery hook to manage order data and its state
   const {
     data: ordersData,

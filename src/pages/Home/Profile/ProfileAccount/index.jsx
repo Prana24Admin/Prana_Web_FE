@@ -5,7 +5,10 @@ import Profile from "..";
 import Input from "../../../../components/Input";
 import { ProfileContext } from "../../../../context/ProfileProvider";
 import { FileEdit, X } from "lucide-react";
-import axiosInstance from "../../../../libs/axios";
+import { useMutation } from "@tanstack/react-query";
+import { updateUserProfile } from "../../../../services/profileService";
+import toast from "react-hot-toast";
+import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
 
 const ProfileAccount = () => {
   const { data } = useContext(ProfileContext);
@@ -18,16 +21,18 @@ const ProfileAccount = () => {
     phoneNumber: data?.phone_number,
   });
 
-  const updateUserProfile = async () => {
-    const response = await axiosInstance.patch("/users/profile", {
-      first_name: userData.firstName,
-      last_name: userData.lastName,
-      email: userData.email,
-      phone_number: userData.phoneNumber,
-    });
-    setEdit(false);
-    return response.data;
-  };
+  const { mutate, isLoading } = useMutation(
+    (userData) => {
+      return updateUserProfile(userData);
+    },
+    {
+      onSuccess: () => {
+        handleRefetchProfileData();
+        toast.success("Profile updated");
+        setEdit(false);
+      },
+    }
+  );
 
   return (
     <Profile>
@@ -78,7 +83,10 @@ const ProfileAccount = () => {
           />
         </div>
         {edit && (
-          <button onClick={updateUserProfile} className="profile-saveButton">
+          <button
+            onClick={() => mutate(userData)}
+            className="profile-saveButton"
+          >
             Save
           </button>
         )}

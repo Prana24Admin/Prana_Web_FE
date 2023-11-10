@@ -15,7 +15,7 @@ import Loader from "../../../../components/Loader";
 import { fetchLabCartData } from "../../../../services/labCartService";
 
 const LabCart = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
   // Use the useQuery hook to manage lab cart data and its state

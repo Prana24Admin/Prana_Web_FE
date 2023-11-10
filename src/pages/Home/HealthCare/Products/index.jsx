@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./products.css";
 
 import { useNavigate, useParams } from "react-router-dom";
-import axiosInstance from "../../../../libs/axios";
+
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 import "../../HealthCare/ProductScreen/ProductScreen.css";
 import ProductsByCategories from "./ProductsByCategories";
 import Loader from "../../../../components/Loader";
+import { fetchProductDataByCategory } from "../../../../services/filtersService";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -30,18 +31,14 @@ const Products = () => {
     }
   };
 
-  // Function to fetch category data
-  const fetchData = async () => {
-    const response = await axiosInstance.get(`filters/products/${categoryId}`);
-    return response.data;
-  };
-
   // Use the useQuery hook to manage category data and its state
   const {
     data: categoryData,
     isLoading,
     error,
-  } = useQuery(["AllCategories", categoryId], fetchData);
+  } = useQuery(["AllCategories", categoryId], () =>
+    fetchProductDataByCategory(categoryId)
+  );
 
   return (
     // Render the Products component within the MainLayout

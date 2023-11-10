@@ -4,10 +4,9 @@ import "./Profile.css";
 import Avatar from "../../../assets/images/profile/avatar.png";
 import { ShoppingCart, User2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../../libs/axios";
 import { ProfileContext } from "../../../context/ProfileProvider";
-import { handleRefetchProfileData } from "../../../libs/queryFunctions";
 import MainLayout from "../../../components/MainLayout";
+import { uploadUserImage } from "../../../services/profileService";
 
 const Profile = ({ children }) => {
   const navigate = useNavigate();
@@ -22,18 +21,7 @@ const Profile = ({ children }) => {
     const formData = new FormData();
     formData.append("image", imageRef.current.files[0]);
 
-    const response = await axiosInstance.post(
-      "https://api-prana.prana24.in/api/users/profile/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    handleRefetchProfileData();
-    return response.data;
+    uploadUserImage(formData);
   };
 
   return (

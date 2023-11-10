@@ -24,10 +24,12 @@ const BrandDetails = lazy(() => import("./pages/Home/Brands/BrandDetails"));
 const Medicine = lazy(() => import("./components/Inner/Medicine/index"));
 const Lab = lazy(() => import("./pages/Home/Lab"));
 const LabTests = lazy(() => import("./pages/Home/Lab/LabTests"));
-const PackageOrder = lazy(() => import("./pages/Home/Packages/PackageOrder"));
+const PackageOrder = lazy(() =>
+  import("./pages/Home/Lab/LabTests/LabTestById")
+);
 const LabCart = lazy(() => import("./pages/Home/Lab/LabCart"));
 const LabTestCheckout = lazy(() =>
-  import("./pages/Home/Packages/LabTestCheckout")
+  import("./pages/Home/Lab/LabTests/LabTestCheckout")
 );
 const HealthCare = lazy(() => import("./pages/Home/HealthCare/index"));
 const Products = lazy(() => import("./pages/Home/HealthCare/Products"));

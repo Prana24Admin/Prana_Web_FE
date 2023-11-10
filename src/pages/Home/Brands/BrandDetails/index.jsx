@@ -3,21 +3,18 @@ import "./brandDetails.css";
 import MainLayout from "../../../../components/MainLayout";
 
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import "../../Wishlist/wishlist.css";
+import { fetchBrandDetails } from "../../../../services/brandsService";
 
 const BrandDetails = () => {
   const { id } = useParams();
-  const fetchBrandDetails = async () => {
-    const response = await axiosInstance.get(`/brands/${id}`);
-    return response.data;
-  };
+
   const {
     data: brandDetailsData,
     isLoading,
     error,
-  } = useQuery(["BrandDetails"], fetchBrandDetails);
+  } = useQuery(["BrandDetails", id], () => fetchBrandDetails(id));
 
   return (
     <MainLayout>

@@ -5,16 +5,12 @@ import MainLayout from "../../../components/MainLayout";
 import MainBannerCarousel from "../../../components/CarouselLayout/MainBannerCarousel";
 import "./brands.css";
 import { banners1 } from "../../../utils/banners";
-import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../components/Loader";
 import BrandCard from "../../../components/BrandCard";
+import { fetchAllBrands } from "../../../services/brandsService";
 
 const Brands = () => {
-  const fetchAllBrands = async () => {
-    const response = await axiosInstance.get("/brands");
-    return response.data;
-  };
   const {
     data: brandsData,
     isLoading,

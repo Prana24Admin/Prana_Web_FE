@@ -1,19 +1,14 @@
 import React from "react";
 import "./offerInnerScreen.css";
 
-import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../components/MainLayout";
 import OfferScreen from "./Offers";
 import Coupon from "../../../components/Coupon";
 import Loader from "../../../components/Loader";
+import { fetchCoupons } from "../../../services/couponService";
 
 const OffersTab = () => {
-  const fetchCoupons = async () => {
-    const response = await axiosInstance.get("/coupons");
-    return response.data;
-  };
-
   const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
 
   return (

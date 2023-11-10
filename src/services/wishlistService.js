@@ -2,6 +2,11 @@ import toast from "react-hot-toast";
 import axiosInstance from "../libs/axios";
 import { handleRefetchWishlistData } from "../libs/queryFunctions";
 
+export const fetchWishlistData = async () => {
+  const response = await axiosInstance.get("/wishlist");
+  return response.data;
+};
+
 export const addToWishlist = async (productId) => {
   const response = await axiosInstance.post("/wishlist", {
     product_id: productId,

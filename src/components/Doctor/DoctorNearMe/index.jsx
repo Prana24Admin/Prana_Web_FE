@@ -2,17 +2,11 @@ import React from "react";
 import "../../../assets/css/Doctor/inner/filter.css";
 
 import MainLayout from "../../MainLayout";
-import axiosInstance from "../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import DoctorsNear from "../../../assets/images/VectorImages/Doctors_near_you.png";
+import { fetchDoctorsByZipCode } from "../../../services/doctorService";
 
 const DoctorNearMe = () => {
-  const fetchDoctorsByZipCode = async () => {
-    const zipcode = localStorage.getItem("location").split(",")[0];
-    const response = await axiosInstance.get(`/doctor?zipcode=${zipcode}`);
-    return response.data;
-  };
-
   const { data, isLoading, error } = useQuery(
     ["DoctorByZipCode"],
     fetchDoctorsByZipCode

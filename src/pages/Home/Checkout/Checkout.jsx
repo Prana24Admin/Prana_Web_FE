@@ -2,7 +2,6 @@ import React from "react";
 import "./checkout.css";
 
 import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "../../../libs/axios";
 import CartCard from "../../../components/CartCard";
 import CheckoutLayout from "../../../components/CheckoutLayout";
 import Loader from "../../../components/Loader";

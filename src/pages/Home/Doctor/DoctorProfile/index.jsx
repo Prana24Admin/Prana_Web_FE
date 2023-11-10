@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./doctorProfile.css";
 
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../../../libs/axios";
+
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 import Profile from "../../../../assets/images/profile/avatar.png";
@@ -10,6 +10,7 @@ import { CheckCircle } from "lucide-react";
 import Loader from "../../../../components/Loader";
 import TimeSlot from "../../../../components/Timeslot";
 import { DoctorBookingContext } from "../../../../context/DoctorBookingProvider";
+import { fetchDoctorById } from "../../../../services/doctorService";
 
 const DoctorProfile = () => {
   // Get the "id" parameter from the URL
@@ -17,23 +18,12 @@ const DoctorProfile = () => {
 
   const { setData } = useContext(DoctorBookingContext);
 
-  // Define an asynchronous function to fetch doctor data by ID
-  const fetchDoctorById = async () => {
-    try {
-      const response = await axiosInstance.get(`/doctor/${id}`);
-      setData(response.data);
-      return response.data;
-    } catch (error) {
-      throw new Error("Error fetching doctor data");
-    }
-  };
-
   // Use the useQuery hook to manage doctor data and its state
   const {
     data: doctorData,
     isLoading,
     error,
-  } = useQuery(["DoctorById"], fetchDoctorById);
+  } = useQuery(["DoctorById", id], () => fetchDoctorById(id, setData));
 
   return (
     <MainLayout>

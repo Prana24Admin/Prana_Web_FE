@@ -2,23 +2,19 @@ import React from "react";
 import "./OrderDetails.css";
 
 import { useParams } from "react-router-dom";
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../../../../components/MainLayout";
 import { format } from "date-fns";
 import image from "../../../../assets/images/profile/avatar.png";
+import { fetchLabOrderById } from "../../../../services/labTestOrderService";
 
 const LabOrderDetails = () => {
   const { id } = useParams();
 
-  // Function to fetch lab order details by ID
-  const fetchOrderById = async () => {
-    const response = await axiosInstance.get(`/orders/laborders/${id}`);
-    return response.data;
-  };
-
   // Use the useQuery hook to manage lab order data and its state
-  const { data, isLoading, error } = useQuery(["LabOrderById"], fetchOrderById);
+  const { data, isLoading, error } = useQuery(["LabOrderById", id], () =>
+    fetchLabOrderById(id)
+  );
 
   return (
     <MainLayout>

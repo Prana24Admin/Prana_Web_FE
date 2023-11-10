@@ -16,6 +16,7 @@ import Logo from "../../assets/images/Prana_Logo.webp";
 import { AuthContext } from "../../context/AuthProvider";
 import { logout } from "../../services/authService";
 import toast from "react-hot-toast";
+import { fetchUserData } from "../../services/profileService";
 
 const Navbar = () => {
   const pathName = window.location.pathname;
@@ -33,17 +34,11 @@ const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState();
 
-  const fetchProfileData = async () => {
-    const response = await axiosInstance.get("/users/profile");
-    setData(response.data);
-    return response.data;
-  };
-
   const {
     data: profileData,
     isLoading,
     error,
-  } = useQuery(["Profile"], fetchProfileData);
+  } = useQuery(["Profile"], () => fetchUserData(setData));
 
   const handleLogout = async () => {
     try {

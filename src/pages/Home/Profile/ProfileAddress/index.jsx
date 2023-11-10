@@ -4,13 +4,15 @@ import "./Address.css";
 
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { ProfileContext } from "../../../../context/ProfileProvider";
-import axiosInstance from "../../../../libs/axios";
-import { handleRefetchProfileData } from "../../../../libs/queryFunctions";
 import Profile from "..";
 import { useDisclosure } from "@chakra-ui/react";
 import Slider from "../../../../components/Slider";
 import { AddressDrawer } from "../../../../components/Slider/AddressDrawer";
 import address from "../../../../assets/images/VectorImages/NO_ADDRESS.png";
+import {
+  handleDeleteUserAdditionalAddress,
+  handleDeleteUserAddress,
+} from "../../../../services/profileService";
 
 const ProfileAddress = () => {
   const { data } = useContext(ProfileContext);
@@ -20,30 +22,6 @@ const ProfileAddress = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-
-  const handleDeleteAddress = async () => {
-    const response = await axiosInstance.patch("/users/profile", {
-      address: {},
-    });
-    handleRefetchProfileData();
-    return response.data;
-  };
-
-  const handleDeleteAdditionalAddress = async (addressId) => {
-    const index = data?.additional_address.findIndex(
-      (address) => address.id === addressId
-    );
-    if (index !== -1) {
-      const additionalAddress = [...data?.additional_address].filter(
-        (address) => address.id !== addressId
-      );
-      const response = await axiosInstance.patch("/users/profile", {
-        additional_address: additionalAddress,
-      });
-      handleRefetchProfileData();
-      return response.data;
-    }
-  };
 
   return (
     <Profile>
@@ -78,7 +56,7 @@ const ProfileAddress = () => {
                   <Trash2
                     size={20}
                     onClick={() => {
-                      handleDeleteAddress();
+                      handleDeleteUserAddress();
                     }}
                   />
                 </div>
@@ -115,7 +93,7 @@ const ProfileAddress = () => {
                     <Trash2
                       size={20}
                       onClick={() => {
-                        handleDeleteAdditionalAddress(address.id);
+                        handleDeleteUserAdditionalAddress(data, address.id);
                       }}
                     />
                   </div>

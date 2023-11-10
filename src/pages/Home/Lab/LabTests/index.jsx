@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./labTests.css";
 
 import MainLayout from "../../../../components/MainLayout";
-import axiosInstance from "../../../../libs/axios";
+
 import { useQuery } from "@tanstack/react-query";
 import LabTestCard from "../../../../components/LabTestCard";
 import Loader from "../../../../components/Loader";
+import { fetchAllLabTests } from "../../../../services/labService";
 
 const LabTests = () => {
-  const [selectedTests, setSelectedTests] = useState([]);
-
-  // Function to fetch all lab tests
-  const fetchAllLabTests = async () => {
-    const response = await axiosInstance.get("/lab/test");
-    return response.data;
-  };
-
   // Use the useQuery hook to manage lab test data and its state
   const { data, isLoading, error } = useQuery(["LabTests"], fetchAllLabTests);
 

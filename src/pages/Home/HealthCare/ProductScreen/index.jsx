@@ -4,11 +4,10 @@ import "./ProductScreen.css";
 import MainLayout from "../../../../components/MainLayout";
 import { ChevronDown } from "lucide-react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import axiosInstance from "../../../../libs/axios";
-import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../../../components/Loader";
 import { handleCartQuantity } from "../../../../services/cartService";
+import { fetchProductById } from "../../../../services/productsService";
 
 const Product = () => {
   const navigate = useNavigate();
@@ -18,20 +17,12 @@ const Product = () => {
   const { id } = useParams();
 
   // Define an asynchronous function to fetch product data by ID
-  const fetchProduct = async () => {
-    try {
-      const response = await axiosInstance.get(`/products/${id}`);
-      return response.data;
-    } catch (error) {
-      throw new Error("Error fetching product data");
-    }
-  };
 
   const {
     data: productData,
     isLoading,
     error,
-  } = useQuery(["Product"], fetchProduct);
+  } = useQuery(["Product", id], () => fetchProductById(id));
 
   // Use the useMutation hook to handle quantity updates and cart addition
   const { mutate, isLoading: quantityLoading } = useMutation((product) => {

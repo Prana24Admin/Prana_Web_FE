@@ -3,20 +3,14 @@ import "./wishlist.css";
 
 import { useQuery } from "@tanstack/react-query";
 
-import axiosInstance from "../../../libs/axios";
-
 import MainLayout from "../../../components/MainLayout";
 import ProductItem from "../../../components/ProductItem";
 import wishlist from "../../../assets/images/VectorImages/WHISHLIST.png";
 import Loader from "../../../components/Loader";
+import { fetchWishlistData } from "../../../services/wishlistService";
 
 const Wishlist = () => {
-  const fetchWishlist = async () => {
-    const response = await axiosInstance.get("/wishlist");
-    return response.data;
-  };
-
-  const { data, isLoading, error } = useQuery(["Wishlist"], fetchWishlist);
+  const { data, isLoading, error } = useQuery(["Wishlist"], fetchWishlistData);
 
   return (
     <MainLayout>

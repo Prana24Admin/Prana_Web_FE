@@ -16,9 +16,9 @@ import { Calendar, Timer } from "lucide-react";
 import Image from "../../../assets/images/doctor/clinic/dentist.jpg";
 import { formatDateToText, formatTime } from "../../../libs/dateTimeFormater";
 import { useMutation } from "@tanstack/react-query";
-import axiosInstance from "../../../libs/axios";
 import BookingSuccess from "../../../assets/images/Lottie/booking_success.json";
 import Lottie from "lottie-react";
+import { bookDoctorAppointment } from "../../../services/appointmentsService";
 
 // BookAppointmentModal component for handling appointment booking confirmation
 const BookAppointmentModal = ({
@@ -34,38 +34,18 @@ const BookAppointmentModal = ({
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [bookingSuccessId, setBookingSuccessId] = useState("");
 
-  // Function to post booking data to the server
-  const postBookingData = async (bookingData) => {
-    // Determine the consultation type (offline or online)
-    const consultationType = bookingData.type === "offline" ? true : false;
-    console.log(bookingData);
-
-    // Send a POST request to create the appointment
-    const response = await axiosInstance.post("/users/appointment/", {
-      date: bookingData.date,
-      timeslot_id: bookingData.timeslot_id,
-      is_offline: consultationType,
-    });
-
-    // If the request is successful, update state and set the booking success flag
-    if (response.status === 201 || response.status === 200) {
-      setBookingSuccessId(response.data.uuid);
-      setBookingSuccess(true);
-    }
-
-    return response.data;
-  };
-
   // React Query hook for handling the mutation (posting booking data)
   const { mutate, isLoading } = useMutation(
     (bookingData) => {
-      return postBookingData(bookingData);
+      return bookDoctorAppointment(bookingData, setBookingSuccessId);
     },
     {
       onError: () => toast.error("Failed! Try again"), // Display an error toast if mutation fails
     },
     {
-      onSuccess: () => setBookingSuccess(true), // Set booking success flag on successful mutation
+      onSuccess: () => {
+        setBookingSuccess(true);
+      }, // Set booking success flag on successful mutation
     }
   );
 

@@ -1,11 +1,11 @@
 import React from "react";
 import "./labcheckout.css";
 
-import CheckoutLayout from "../../../../components/CheckoutLayout";
+import CheckoutLayout from "../../../../../components/CheckoutLayout";
 import { useQuery } from "@tanstack/react-query";
-import CartCard from "../../../../components/CartCard";
-import Loader from "../../../../components/Loader";
-import { fetchLabCartData } from "../../../../services/labCartService";
+import CartCard from "../../../../../components/CartCard";
+import Loader from "../../../../../components/Loader";
+import { fetchLabCartData } from "../../../../../services/labCartService";
 
 const LabTestCheckout = () => {
   // Use the useQuery hook to manage lab cart data and its state

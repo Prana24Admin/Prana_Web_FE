@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "../../../libs/axios";
 import Coupon from "../../Coupon";
+import { fetchCoupons } from "../../../services/couponService";
 
 // CouponDrawer component for displaying a list of coupons
 export const CouponDrawer = ({
@@ -8,12 +8,6 @@ export const CouponDrawer = ({
   setSelectedCoupon,
   onClose,
 }) => {
-  // Fetch coupons using React Query
-  const fetchCoupons = async () => {
-    const response = await axiosInstance.get("/coupons");
-    return response.data;
-  };
-
   // Use the useQuery hook to fetch and manage coupon data
   const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
 

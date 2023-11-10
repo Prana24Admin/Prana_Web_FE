@@ -1,7 +1,6 @@
 import React from "react";
 import "./appointments.css";
 
-import axiosInstance from "../../../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import Profile from "../../Profile";
 import Loader from "../../../../components/Loader";
@@ -11,18 +10,16 @@ import {
   formatTime,
 } from "../../../../libs/dateTimeFormater";
 import { useNavigate } from "react-router-dom";
+import { fetchAllAppointments } from "../../../../services/appointmentsService";
 
 const Appointments = () => {
   const navigate = useNavigate();
 
-  const fetchAllAppointments = async () => {
-    const response = await axiosInstance.get("/users/appointment/");
-    return response.data;
-  };
   const { data, isLoading, error } = useQuery(
     ["Appointments"],
     fetchAllAppointments
   );
+
   return (
     <Profile>
       <p className="appointments-Header">Appointments</p>

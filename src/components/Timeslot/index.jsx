@@ -2,12 +2,12 @@ import { ChevronDown } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
 import DatePicker from "../DatePicker";
 import "../../pages/Home/Doctor/DoctorProfile/doctorProfile.css";
-import axiosInstance from "../../libs/axios";
 import { useQuery } from "@tanstack/react-query";
 import { formatDate, formatTime } from "../../libs/dateTimeFormater";
 import { useDisclosure } from "@chakra-ui/react";
 import BookAppointmentModal from "../Modals/BookAppointment";
 import { DoctorBookingContext } from "../../context/DoctorBookingProvider";
+import { fetchDoctorTimeSlot } from "../../services/doctorService";
 
 // TimeSlot Component for booking doctor appointments
 const TimeSlot = ({ doctorId }) => {
@@ -22,20 +22,12 @@ const TimeSlot = ({ doctorId }) => {
   const [selectedDateData, setSelectedDateData] = useState({});
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
 
-  // Function to fetch doctor's time slots using axios
-  const fetchDoctorTimeSlot = async () => {
-    const response = await axiosInstance.get(
-      `/doctor/timeslot?doctor_id=${doctorId}`
-    );
-    return response.data;
-  };
-
   // Using react-query to fetch doctor's time slots
   const {
     data: timeSlotData,
     isLoading,
     error,
-  } = useQuery(["TimeSlot"], fetchDoctorTimeSlot);
+  } = useQuery(["TimeSlot", doctorId], () => fetchDoctorTimeSlot(doctorId));
 
   // Effect hook to update selectedDateData based on selectedDate and timeSlotData
   useEffect(() => {
@@ -54,12 +46,6 @@ const TimeSlot = ({ doctorId }) => {
 
     getSelectedTimeSlot();
   }, [selectedDate, timeSlotData]);
-
-  // Logging selectedDate and selectedDateData to console
-  useEffect(() => {
-    console.log(selectedDate);
-    console.log(selectedDateData);
-  });
 
   return (
     <section>

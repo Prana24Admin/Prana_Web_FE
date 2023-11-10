@@ -9,8 +9,8 @@
   background-color: var(--powderWhite);
 }
 .prescription-image {
-  width: 20rem;
-  height: 20rem;
+  width: 15rem;
+  height: 15rem;
   mix-blend-mode: multiply;
 }
 .prescription-flexRightContainer {

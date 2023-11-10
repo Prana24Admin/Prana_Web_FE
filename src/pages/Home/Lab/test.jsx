@@ -21,18 +21,18 @@ const AllTest = () => {
       Image: Health,
       path: "/lab",
     },
-    {
-      id: 3,
-      name: "Upload Prescription",
-      Image: Book,
-      path: "/lab",
-    },
-    {
-      id: 4,
-      name: "Book on Call",
-      Image: All,
-      path: "/lab",
-    },
+    // {
+    //   id: 3,
+    //   name: "Upload Prescription",
+    //   Image: Book,
+    //   path: "/lab",
+    // },
+    // {
+    //   id: 4,
+    //   name: "Book on Call",
+    //   Image: All,
+    //   path: "/lab",
+    // },
   ];
 
   return (

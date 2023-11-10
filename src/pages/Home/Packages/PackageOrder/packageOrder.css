@@ -96,11 +96,11 @@
   font-weight: 600;
   color: var(--ashGray);
 }
-.packageOrder-descriptionText {
+/* .packageOrder-descriptionText {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--neutralBlack);
-}
+} */
 .packageOrder-detailsContainer {
   display: flex;
   flex-direction: column;

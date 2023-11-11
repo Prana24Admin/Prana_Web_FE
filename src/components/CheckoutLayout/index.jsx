@@ -10,10 +10,8 @@ import { AddressDrawer } from "../Slider/AddressDrawer";
 import { useDisclosure } from "@chakra-ui/react";
 import SuccessModal from "../Modals/SucessModal";
 import { ProfileContext } from "../../context/ProfileProvider";
-import {
-  placeHealthCareCartOrder,
-  placeLabCartOrder,
-} from "../../services/orderService";
+import { placeLabCartOrder } from "../../services/labTestOrderService";
+import { placeHealthCareCartOrder } from "../../services/healthcareOrders";
 
 const CheckoutLayout = ({ children, cartData }) => {
   // Extracting the current path from the URL

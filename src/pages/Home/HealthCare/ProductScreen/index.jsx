@@ -132,8 +132,10 @@ const Product = () => {
                   <div className="product-priceContainer">
                     <p className="product-amountText">
                       ₹
-                      {productData.price -
-                        (productData.price * productData.discount) / 100}
+                      {Math.ceil(
+                        productData.price -
+                          (productData.price * productData.discount) / 100
+                      )}
                     </p>
                     <p className="product-mrpDescriptionText">
                       MRP :

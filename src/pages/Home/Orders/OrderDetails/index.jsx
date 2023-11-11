@@ -1,7 +1,7 @@
 import React from "react";
 import "./OrderDetails.css";
 
-import image from "../../../../assets/images/profile/avatar.png";
+import image from "../../../../assets/images/VectorImages/404 Error.png";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import format from "date-fns/format";
@@ -92,17 +92,25 @@ const HealthCareOrderDetails = () => {
               </div>
             </div>
             <div className="orderDetails-borderContainer">
-              <div className="orderDetails-justifyContainer">
-                <div className="orderDetails-borderFlexContainer">
-                  <img className="orderDetails-image" src={image} alt="sanju" />
-                  <div>
-                    <p className="orderDetails-header">Order name</p>
-                    <p>₹399.00</p>
-                    <button className="orderDetails-button">
-                      View your Item
-                    </button>
+              <div className="orderDetails-itemsJustifyContainer">
+                {data.items.map((orderItem) => (
+                  <div className="orderDetails-borderFlexContainer">
+                    <img
+                      className="orderDetails-image"
+                      src={image}
+                      alt={orderItem.product.name}
+                    />
+                    <div>
+                      <p className="orderDetails-header">
+                        {orderItem.product.name}
+                      </p>
+                      <p>₹{orderItem.amount}</p>
+                      <button className="orderDetails-button">
+                        View your Item
+                      </button>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

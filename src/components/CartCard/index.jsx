@@ -74,11 +74,16 @@ const CartCard = ({ cartItem, labItem = null }) => {
               <p className="cart-discountText">
                 ₹
                 {pathName.includes("/lab")
-                  ? (
+                  ? Math.ceil(
                       labItem.lab_test.price -
-                      labItem.lab_test.price * (labItem.lab_test.discount / 100)
-                    ).toFixed(2)
-                  : cartItem.product.price}
+                        labItem.lab_test.price *
+                          (labItem.lab_test.discount / 100)
+                    )
+                  : Math.ceil(
+                      cartItem.product.price -
+                        cartItem.product.price *
+                          (cartItem.product.discount / 100)
+                    )}
               </p>
               <span className="cart-linethrough">
                 ₹

@@ -2,6 +2,12 @@ import toast from "react-hot-toast";
 import axiosInstance from "../libs/axios";
 import { handleRefetchCartItems } from "../libs/queryFunctions";
 
+// Function to fetch cart items using async function
+export const fetchCartData = async () => {
+  const response = await axiosInstance.get("/cart");
+  return response.data;
+};
+
 // Function to handle quantity updates and add to cart
 export const handleCartQuantity = async (product) => {
   try {
@@ -34,12 +40,6 @@ export const handleCartQuantity = async (product) => {
   } catch (err) {
     console.log(err);
   }
-};
-
-// Function to fetch cart items using async function
-export const fetchCartData = async () => {
-  const response = await axiosInstance.get("/cart");
-  return response.data;
 };
 
 //Function to add item to cart

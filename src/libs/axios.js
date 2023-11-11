@@ -1,5 +1,4 @@
 import axios from "axios";
-import toast from "react-hot-toast";
 
 const axiosInstance = axios.create({
   baseURL: "https://api-prana.prana24.in/api",

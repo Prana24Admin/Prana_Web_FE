@@ -29,6 +29,17 @@ const Cart = () => {
     return sum + product.product.price * product.quantity;
   }, 0);
 
+  const totalDiscount = data?.reduce((sum, product) => {
+    return (
+      sum +
+      parseFloat(
+        product.product.price *
+          (product.product.discount / 100) *
+          product.quantity
+      )
+    );
+  }, 0);
+
   // Effect to check for a previously applied coupon in local storage
   useEffect(() => {
     const coupon = JSON.parse(localStorage.getItem("appliedCoupon"));
@@ -43,10 +54,11 @@ const Cart = () => {
   useEffect(() => {
     const couponDiscount = () => {
       if (
-        subTotal <= selectedCoupon.max_value &&
-        subTotal >= selectedCoupon.min_value
+        subTotal - totalDiscount <= selectedCoupon.max_value &&
+        subTotal - totalDiscount >= selectedCoupon.min_value
       ) {
-        const couponPrice = subTotal * (selectedCoupon.discount / 100);
+        const couponPrice =
+          (subTotal - totalDiscount) * (selectedCoupon.discount / 100);
         if (selectedCoupon.max_amount >= couponPrice) {
           setCouponValue(couponPrice);
         } else {
@@ -58,7 +70,7 @@ const Cart = () => {
     if (selectedCoupon) {
       couponDiscount();
     }
-  }, [subTotal, selectedCoupon]);
+  }, [subTotal, selectedCoupon, totalDiscount]);
 
   // Function to handle removing applied coupon
   const handleRemoveCoupon = () => {
@@ -110,6 +122,7 @@ const Cart = () => {
                     <Bill
                       subTotal={subTotal}
                       couponValue={couponValue}
+                      discount={totalDiscount}
                       selectedCoupon={selectedCoupon}
                       btnRef={btnRef}
                       handleRemoveCoupon={handleRemoveCoupon}

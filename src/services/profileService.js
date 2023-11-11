@@ -20,18 +20,23 @@ export const updateUserProfile = async (userData) => {
 };
 
 export const uploadUserImage = async (formData) => {
-  const response = await axiosInstance.post(
-    "https://api-prana.prana24.in/api/users/profile/upload",
-    formData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
-  if (response.status === 200 || response.status === 201)
-    handleRefetchProfileData();
-  return response.data;
+  try {
+    const response = await axiosInstance.post(
+      "https://api-prana.prana24.in/api/users/profile/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    if (response.status === 200 || response.status === 201)
+      handleRefetchProfileData();
+    return response.data;
+  } catch (error) {
+    if (error.message === "Network Error")
+      toast.error("Cannot upload images greater than 5mb");
+  }
 };
 
 export const addUserAddress = async (

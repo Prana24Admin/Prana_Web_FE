@@ -63,6 +63,7 @@
   display: flex;
   width: 100%;
   gap: 1rem;
+  justify-content: center;
 }
 .available-leftContainer {
   width: 70%;
@@ -136,7 +137,8 @@
   color: var(--pearlWhite);
 }
 .available-rightContainer {
-  padding: 1rem 3rem;
+  /* padding: 1rem 3rem; */
+  width: 30%;
 }
 .type {
   text-align: center;
@@ -169,7 +171,7 @@
   color: var(--pearlWhite);
 }
 .available-imageContainer {
-  /* width: 50%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,7 +183,18 @@
   color: var(--ashGray);
 }
 .available-image {
-  width: 30rem;
+  width: 100%;
   height: 30rem;
-  object-fit: cover;
+  object-fit: contain;
+}
+.available-noDoctorsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

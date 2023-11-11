@@ -59,7 +59,9 @@ const AppointmentById = () => {
                 <div className="orderDetails-borderFlexContainer">
                   <div>
                     <p className="orderDetails-header">Clinic Details</p>
-                    <p className="orderDetails-bodyText">address</p>
+                    <div>
+                      <p className="orderDetails-bodyText">Hospital_address</p>
+                    </div>
                   </div>
                   <div>
                     <p className="orderDetails-header">Consultation Type</p>
@@ -83,7 +85,9 @@ const AppointmentById = () => {
                 <div className="orderDetails-borderFlexContainer">
                   <img className="orderDetails-image" src={image} alt="sanju" />
                   <div>
-                    <p className="orderDetails-header">Doctor Name</p>
+                    <p className="orderDetails-header">
+                      {data.doctor.first_name} {data.doctor.last_name}
+                    </p>
                     <p className="orderDetails-bodyText">Specialization</p>
                   </div>
                 </div>

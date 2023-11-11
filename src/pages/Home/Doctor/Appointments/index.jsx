@@ -73,12 +73,16 @@ const Appointments = () => {
                   <div>
                     <img
                       className="appointments-image"
-                      src={profile}
+                      src={appointment.image}
                       alt="Avatar"
                     />
                   </div>
+
                   <div>
-                    <p className="appointments-doctorTitle">Dr.Name</p>
+                    <p className="appointments-doctorTitle">
+                      {appointment.doctor.first_name}{" "}
+                      {appointment.doctor.last_name}
+                    </p>
                     <p className="appointments-titleText">Specialization</p>
                   </div>
                 </div>

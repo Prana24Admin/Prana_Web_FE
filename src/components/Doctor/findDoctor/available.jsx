@@ -25,10 +25,6 @@ const Available = () => {
       <div className="available-flexContainer">
         {/* Left container for doctor details */}
         <div className="available-leftContainer">
-          {/* Information about booking appointments */}
-          <p className="available-doctorDetails">
-            Book appointments with minimum wait-time & verified doctor details
-          </p>
           <div>
             {/* Doctors title based on data loading and availability */}
             <p className="available-doctorsTitle">
@@ -46,16 +42,19 @@ const Available = () => {
               {data && data.doctors.length > 0 ? (
                 `${data.doctors.length} doctors found`
               ) : (
-                <div className="available-imageContainer">
-                  {/* Image for no doctors found */}
-                  <img
-                    style={{ width: "50%" }}
-                    src={doctors}
-                    alt="No Doctors found Near you !"
-                  />
-                  <p className="available-imageDescription">
-                    Sorry! No Doctors found Near you{" "}
-                  </p>
+                <div>
+                  {data && (
+                    <div className="fullContainer flexColumn">
+                      <img
+                        style={{ width: "50%" }}
+                        src={doctors}
+                        alt="No Doctors found Near you !"
+                      />
+                      <p className="available-imageDescription">
+                        Sorry! No Doctors found Near you{" "}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )}
             </p>
@@ -74,13 +73,16 @@ const Available = () => {
             })}
         </div>
         {/* Right container for the image */}
-        <div className="available-rightContainer">
-          <img
-            className="available-image"
-            src={DoctorsNear}
-            alt="Doctors_Near_You"
-          />
-        </div>
+
+        {data && data.doctors.length > 0 && (
+          <div className={"available-rightContainer"}>
+            {/* <img
+              className="available-image"
+              src={DoctorsNear}
+              alt="Doctors_Near_You"
+            /> */}
+          </div>
+        )}
       </div>
     </div>
   );

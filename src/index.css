@@ -46,6 +46,7 @@ body p {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

@@ -59,11 +59,15 @@ export const addUserAddress = async (
         additional_address: [...(data?.additional_address || []), formData],
       });
     }
+    if (response) {
+      toast.success("Added");
+    }
   } else if (method === "edit") {
     // Edit the existing address in the profile
     response = await axiosInstance.patch("/users/profile", {
       address: formData,
     });
+    toast.success("Updated");
   } else {
     // Edit a specific additional address
     const index = data?.additional_address.findIndex(
@@ -75,8 +79,12 @@ export const addUserAddress = async (
       response = await axiosInstance.patch("/users/profile", {
         additional_address: updatedAddress,
       });
+      if (response) {
+        toast.success("Updated");
+      }
     }
   }
+
   return response;
 };
 

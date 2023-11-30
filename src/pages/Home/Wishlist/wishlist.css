@@ -37,6 +37,7 @@
 }
 .favorites-cardContainer {
   cursor: pointer;
+  height: 18rem;
   background-color: var(--white);
   position: relative;
   transition: 0.3s ease-in-out;
@@ -56,11 +57,11 @@
   scale: 1.03;
 } */
 .favorites-image {
-  height: 60%;
+  height: 65%;
   width: 100%;
   border-radius: 5px;
   margin-bottom: 0.75rem;
-  object-fit: cover;
+  object-fit: contain;
 }
 .favorites-productName {
   font-size: 1.2rem;

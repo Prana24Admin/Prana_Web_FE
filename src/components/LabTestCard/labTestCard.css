@@ -7,7 +7,11 @@
   transition: border 0.2s ease-in;
   cursor: pointer;
   width: 98%;
+  height: 12rem;
   margin: 0.5rem 0rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
 }
 
 .testCard-container:hover {
@@ -62,6 +66,13 @@
 }
 .testCard-justifyContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
+  margin-top: auto; /* Push to the bottom */
+}
+.testCard-alignColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }

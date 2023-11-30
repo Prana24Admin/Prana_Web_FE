@@ -31,27 +31,25 @@ const LabTestCard = ({ test }) => {
       className="testCard-container"
       onClick={() => navigate(`/lab/test/${test.uuid}`)}
     >
-      <div>
+      <div className="testCard-alignColumn">
         {/* Displaying the lab test name */}
-        <p className="testCard-testName">{test.name}</p>
-        {/* Displaying information about the test report turnaround time */}
-        <div className="testCard-report">
-          <p className="testCard-reportText">
-            Get test report in {test.report_tat}{" "}
-            {test.report_tat_unit.toLowerCase()}
-          </p>
+        <div>
+          <p className="testCard-testName">{test.name}</p>
         </div>
-        {/* Displaying the test price and a button to book the test */}
-        <div className="testCard-justifyContainer">
-          <p className="testCard-price">₹{test.price}</p>
-          {
-            <button
-              onClick={() => mutateLabAdd(test.uuid)}
-              className="testCard-selectButton"
-            >
-              Book
-            </button>
-          }
+        <div>
+          {/* Displaying information about the test report turnaround time */}
+          <div className="testCard-report">
+            <p className="testCard-reportText">
+              Get test report in {test.report_tat}{" "}
+              {test.report_tat_unit.toLowerCase()}
+            </p>
+          </div>
+
+          {/* Displaying the test price and a button to book the test */}
+          <div className="testCard-justifyContainer">
+            <p className="testCard-price">₹{test.price}</p>
+            {<button className="testCard-selectButton">Book</button>}
+          </div>
         </div>
       </div>
     </div>

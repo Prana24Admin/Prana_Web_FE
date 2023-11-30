@@ -9,10 +9,17 @@ export const fetchLabCartData = async () => {
 };
 
 //Adding lab test to cart
-export const handleAddToLabCart = async (testId) => {
+export const handleAddToLabCart = async (testId, navigate, data) => {
+  if (!JSON.parse(localStorage.getItem("isAuthenticated"))) {
+    return toast.error("Login");
+  }
   const response = await axiosInstance.post("/cart/labcart", {
     lab_test_id: testId,
   });
+
+  if (response.status === 200) {
+    navigate("/lab/cart");
+  }
 
   return response.data;
 };

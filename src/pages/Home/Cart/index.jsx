@@ -48,7 +48,7 @@ const Cart = () => {
     } else {
       setSelectedCoupon(null);
     }
-  }, []);
+  }, [subTotal, totalDiscount]);
 
   // Effect to apply coupon discount based on subtotal and selected coupon
   useEffect(() => {
@@ -142,6 +142,7 @@ const Cart = () => {
               <CouponDrawer
                 selectedCoupon={selectedCoupon}
                 setSelectedCoupon={setSelectedCoupon}
+                subTotal={subTotal - totalDiscount}
                 onClose={onClose}
               />
             }

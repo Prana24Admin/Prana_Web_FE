@@ -3,23 +3,30 @@ import "./addressDrawer.css";
 
 import Input from "../../Input";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { addUserAddress } from "../../../services/profileService";
+import toast from "react-hot-toast";
 
 // AddressDrawer component for adding/editing user addresses
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   // Access profile data from the context
   const { data } = useContext(ProfileContext);
 
+  const [place, setPlace] = useState(() =>
+    method === "add"
+      ? ""
+      : method === "edit"
+      ? data.address.place
+      : additionalAddress.place
+  );
+
   // React Hook Form setup for handling form state
   const {
     register,
     handleSubmit,
-    setValue,
-    getValues,
     formState: { errors, isSubmitting },
   } = useForm({
     // Set default values based on the method (add, edit)
@@ -31,12 +38,6 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
           ? data.uuid
           : additionalAddress.id,
       // Set other default values based on the method
-      place:
-        method === "add"
-          ? ""
-          : method === "edit"
-          ? data.address.place
-          : additionalAddress.place,
       name:
         method === "add"
           ? ""
@@ -82,11 +83,16 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     },
   });
 
+  useEffect(() => {
+    console.log(place);
+  }, [place]);
+
   // Handle form submission
   const onSubmit = async (formData) => {
+    if (place === "") return toast.error("Select place");
     try {
       // Validate form data
-      if (formData.place === "") return;
+      formData.place = place;
 
       const response = await addUserAddress(
         data,
@@ -99,6 +105,11 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
       if (response.status === 200 || response.status === 201) {
         handleRefetchProfileData();
         onClose();
+        if (method === "add") {
+          toast.success("Address added");
+        } else {
+          toast.success("Address updated");
+        }
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
@@ -113,15 +124,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
         <div>
           <div className="addressDrawer-iconContainer">
             <button
-              onClick={() => setValue("place", "Home")}
+              onClick={() => setPlace("Home")}
               type="button"
               className={
-                getValues("place") === "Home"
+                place === "Home"
                   ? "addressDrawer-selectedInnerIconContainer"
                   : "addressDrawer-innerIconContainer"
               }
             >
-              {getValues("place") === "Home" ? (
+              {place === "Home" ? (
                 <CheckCircle size={16} strokeWidth={2.5} />
               ) : (
                 <Home size={16} />
@@ -129,15 +140,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               <p>Home</p>
             </button>
             <button
-              onClick={() => setValue("place", "Work")}
+              onClick={() => setPlace("Work")}
               type="button"
               className={
-                getValues("place") === "Work"
+                place === "Work"
                   ? "addressDrawer-selectedInnerIconContainer"
                   : "addressDrawer-innerIconContainer"
               }
             >
-              {getValues("place") === "Work" ? (
+              {place === "Work" ? (
                 <CheckCircle size={16} strokeWidth={2.5} />
               ) : (
                 <Building size={16} />
@@ -145,15 +156,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
               <p>Work</p>
             </button>
             <button
-              onClick={() => setValue("place", "Other")}
+              onClick={() => setPlace("Other")}
               type="button"
               className={
-                getValues("place") === "Other"
+                place === "Other"
                   ? "addressDrawer-selectedInnerIconContainer"
                   : "addressDrawer-innerIconContainer"
               }
             >
-              {getValues("place") === "Other" ? (
+              {place === "Other" ? (
                 <CheckCircle size={16} strokeWidth={2.5} />
               ) : (
                 <Building size={16} />

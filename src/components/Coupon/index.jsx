@@ -1,18 +1,23 @@
 import { format } from "date-fns";
 import React from "react";
 import "./coupon.css";
+import toast from "react-hot-toast";
 
 const Coupon = ({
   item,
   smallCoupon = false,
-  selectedCoupon,
+  subTotal,
   setSelectedCoupon,
   onClose,
 }) => {
   // Function to handle coupon selection
   const handleCouponSelect = (coupon) => {
     // Set the selected coupon in the parent component state
+    if (subTotal > coupon.max_value) {
+      return toast.error("Coupon cannot be applied");
+    }
     setSelectedCoupon(coupon);
+    toast.success("Coupon applied");
 
     // Store the selected coupon in local storage
     localStorage.setItem("appliedCoupon", JSON.stringify(coupon));

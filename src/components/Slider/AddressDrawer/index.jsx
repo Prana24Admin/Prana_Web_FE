@@ -3,7 +3,9 @@ import "./addressDrawer.css";
 
 import Input from "../../Input";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
+
 import { useContext, useEffect, useState } from "react";
+
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
@@ -14,6 +16,7 @@ import toast from "react-hot-toast";
 export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   // Access profile data from the context
   const { data } = useContext(ProfileContext);
+
 
   const [place, setPlace] = useState(() =>
     method === "add"
@@ -92,6 +95,7 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     if (place === "") return toast.error("Select place");
     try {
       // Validate form data
+
       formData.place = place;
 
       const response = await addUserAddress(

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./labTestById.css";
 
+import toast from "react-hot-toast";
 import MainLayout from "../../../../../components/MainLayout";
 import labTest from "../../../../../assets/images/VectorImages/LabTest.png";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,10 +17,12 @@ import {
 } from "lucide-react";
 import { handleAddToLabCart } from "../../../../../services/labCartService";
 import { fetchLabTestById } from "../../../../../services/labService";
+import { ProfileContext } from "../../../../../context/ProfileProvider";
 
 const LabTestsById = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { data } = useContext(ProfileContext);
 
   // Use the useQuery hook to manage test data and its state
   const {
@@ -30,10 +33,17 @@ const LabTestsById = () => {
 
   // Use the useMutation hook to handle the addition of the test to the cart
   const { mutate, isLoading: AddingToCart } = useMutation(
-    (testId) => handleAddToLabCart(testId),
-    {
-      onSuccess: () => navigate("/lab/cart"),
+    (testId) => {
+      return handleAddToLabCart(testId, navigate, data);
     }
+    // {
+    //   onSuccess: () => navigate("/lab/cart"),
+    // },
+    // {
+    //   onError: () => {
+    //     return toast.error("Login");
+    //   },
+    // }
   );
 
   return (

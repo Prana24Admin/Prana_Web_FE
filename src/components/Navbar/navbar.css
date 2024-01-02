@@ -11,10 +11,8 @@
 }
 .headerFlex {
   display: flex;
-
   justify-content: space-around;
   align-items: center;
-
   color: var(--neutralBlack);
   height: 70px;
   border-bottom: 1px solid var(--cloudGray);
@@ -48,7 +46,6 @@
   justify-content: space-around;
   align-items: center;
   color: var(--neutralBlack);
-  margin-top: 1rem;
   gap: 1rem;
 }
 .nav_child li {
@@ -104,7 +101,7 @@ a:link {
   border-radius: 5px;
   border: 1px solid var(--neutralBlack);
 }
-.alingContainer {
+.alignContainer {
   display: flex;
   align-items: center;
 }

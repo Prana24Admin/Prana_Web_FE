@@ -111,24 +111,26 @@ const Navbar = () => {
     }
   }, [searchText]);
 
+  useEffect(() => {
+    if (searchText.length === 0) {
+      setSearchResult();
+    }
+  }, [searchText]);
+
   return (
     <>
       <div className="header">
         <div className="headerFlex">
           <div className="logo">
-            <div className="d-flex flex-row alingContainer">
-              <div className="d-flex flex-column">
-                {/* <p className="par-nav">Prana24 </p> */}
-                <img
-                  className="prana-logo"
-                  width={85}
-                  height={85}
-                  src={Logo}
-                  alt="logo"
-                  onClick={() => navigate("/")}
-                />
-              </div>
-
+            <div className=" alignContainer">
+              <img
+                className="prana-logo"
+                width={85}
+                height={85}
+                src={Logo}
+                alt="logo"
+                onClick={() => navigate("/")}
+              />
               <div className="navbar-location" onClick={onOpen}>
                 <div>
                   <MapPin size={20} />
@@ -158,7 +160,7 @@ const Navbar = () => {
           </div>
           <div className="nav">
             <ul className="nav_links">
-              <div className="nav_child alingContainer">
+              <div className="nav_child alignContainer">
                 <div
                   style={{
                     position: "relative",
@@ -182,7 +184,10 @@ const Navbar = () => {
                     className="search-field"
                     onChange={(e) => setSearchText(e.target.value)}
                   />
-                  {searchText && searchResult && (
+                  {searchText &&
+                  searchResult &&
+                  (searchResult.products.rows.length > 0 ||
+                    searchResult.tests.rows.length > 0) ? (
                     <div className="navbar-searchResultBox">
                       {searchResult.products.rows.length > 0 &&
                         searchResult.products.rows.length < 8 &&
@@ -217,6 +222,16 @@ const Navbar = () => {
                           </div>
                         ))}
                     </div>
+                  ) : (
+                    searchText && (
+                      <div className="navbar-searchResultBox">
+                        <div className="navbar-searchResultItem">
+                          <p className="navbar-searchResultItemName">
+                            No Products or tests Found
+                          </p>
+                        </div>
+                      </div>
+                    )
                   )}
                 </div>
                 {!pathName.includes("/lab") && (

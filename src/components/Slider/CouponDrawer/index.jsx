@@ -5,6 +5,7 @@ import { fetchCoupons } from "../../../services/couponService";
 export const CouponDrawer = ({
   selectedCoupon,
   setSelectedCoupon,
+  subTotal,
   onClose,
 }) => {
   // Use the useQuery hook to fetch and manage coupon data
@@ -23,6 +24,7 @@ export const CouponDrawer = ({
               smallCoupon={true}
               selectedCoupon={selectedCoupon}
               setSelectedCoupon={setSelectedCoupon}
+              subTotal={subTotal}
               onClose={onClose}
             />
           ))}

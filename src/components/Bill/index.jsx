@@ -131,7 +131,9 @@ const Bill = ({
                   subTotal -
                   discount -
                   couponValue +
-                  Math.ceil((subTotal - discount - couponValue) * 0.1)
+                  (!pathName.includes("/cart")
+                    ? Math.ceil((subTotal - discount - couponValue) * 0.1)
+                    : 0)
                 ).toFixed(2)}`}
           </p>
         </div>

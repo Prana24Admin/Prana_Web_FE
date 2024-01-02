@@ -3,7 +3,9 @@ import "./addressDrawer.css";
 
 import Input from "../../Input";
 import { handleRefetchProfileData } from "../../../libs/queryFunctions";
-import { useContext, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
+
 import { ProfileContext } from "../../../context/ProfileProvider";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
@@ -15,15 +17,14 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
   // Access profile data from the context
   const { data } = useContext(ProfileContext);
 
-  const [place, setPlace] = useState(() => {
-    if (method === "add") {
-      return "";
-    } else if (method === "edit") {
-      return data.address.place;
-    } else {
-      return additionalAddress.place;
-    }
-  });
+
+  const [place, setPlace] = useState(() =>
+    method === "add"
+      ? ""
+      : method === "edit"
+      ? data.address.place
+      : additionalAddress.place
+  );
 
   // React Hook Form setup for handling form state
   const {
@@ -85,11 +86,15 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
     },
   });
 
+  useEffect(() => {
+    console.log(place);
+  }, [place]);
+
   // Handle form submission
   const onSubmit = async (formData) => {
+    if (place === "") return toast.error("Select place");
     try {
       // Validate form data
-      if (place === "") return toast.error("Select Place");
 
       formData.place = place;
 
@@ -104,6 +109,11 @@ export const AddressDrawer = ({ method, additionalAddress, onClose }) => {
       if (response.status === 200 || response.status === 201) {
         handleRefetchProfileData();
         onClose();
+        if (method === "add") {
+          toast.success("Address added");
+        } else {
+          toast.success("Address updated");
+        }
       }
     } catch (error) {
       console.error("Error submitting the form:", error);

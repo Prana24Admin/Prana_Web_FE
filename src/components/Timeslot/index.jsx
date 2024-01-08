@@ -111,19 +111,23 @@ const TimeSlot = ({ doctorId }) => {
                 <div
                   className={
                     selectedTimeSlot ===
-                    selectedDate +
-                      selectedDateData.start_time +
-                      " - " +
-                      selectedDateData.end_time
+                    (selectedDateData
+                      ? selectedDate +
+                        selectedDateData.start_time +
+                        " - " +
+                        selectedDateData.end_time
+                      : "")
                       ? "doctorProfile-selectedTimeText"
                       : "doctorProfile-timeText"
                   }
                   onClick={() =>
                     setSelectedTimeSlot(
-                      selectedDate +
-                        selectedDateData.start_time +
-                        " - " +
-                        selectedDateData.end_time
+                      selectedDateData
+                        ? selectedDate +
+                            selectedDateData.start_time +
+                            " - " +
+                            selectedDateData.end_time
+                        : ""
                     )
                   }
                 >

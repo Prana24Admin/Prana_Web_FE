@@ -48,7 +48,7 @@ export const addUserAddress = async (
   let response;
   // Perform actions based on the method (add, edit)
   if (method === "add") {
-    if (!data?.address) {
+    if (!data || !data.address) {
       // If user has no address, patch profile with the new address
       response = await axiosInstance.patch("/users/profile", {
         address: formData,
@@ -56,7 +56,7 @@ export const addUserAddress = async (
     } else {
       // If user has an address, add the new address to additional addresses
       response = await axiosInstance.patch("/users/profile", {
-        additional_address: [...(data?.additional_address || []), formData],
+        additional_address: [...(data.additional_address || []), formData],
       });
     }
     if (response) {
@@ -67,14 +67,16 @@ export const addUserAddress = async (
     response = await axiosInstance.patch("/users/profile", {
       address: formData,
     });
-    toast.success("Updated");
+    if (response) {
+      toast.success("Updated");
+    }
   } else {
     // Edit a specific additional address
     const index = data?.additional_address.findIndex(
       (address) => address.id === additionalAddress.id
     );
     if (index !== -1) {
-      const updatedAddress = [...data?.additional_address];
+      const updatedAddress = [...(data.additional_address || [])];
       updatedAddress[index] = { ...updatedAddress[index], ...formData };
       response = await axiosInstance.patch("/users/profile", {
         additional_address: updatedAddress,

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./labTestById.css";
 
-import toast from "react-hot-toast";
 import MainLayout from "../../../../../components/MainLayout";
 import labTest from "../../../../../assets/images/VectorImages/LabTest.png";
 import { useNavigate, useParams } from "react-router-dom";
@@ -32,7 +31,7 @@ const LabTestsById = () => {
   } = useQuery(["LabTestId", id], () => fetchLabTestById(id));
 
   // Use the useMutation hook to handle the addition of the test to the cart
-  const { mutate, isLoading: AddingToCart } = useMutation(
+  const { mutate } = useMutation(
     (testId) => {
       return handleAddToLabCart(testId, navigate, data);
     }

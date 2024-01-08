@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../../assets/css/Doctor/inner/filter.css";
 
 import MainLayout from "../../MainLayout";
@@ -7,10 +7,11 @@ import DoctorsNear from "../../../assets/images/VectorImages/Doctors_near_you.pn
 import { fetchDoctorsByZipCode } from "../../../services/doctorService";
 
 const DoctorNearMe = () => {
-  const { data, isLoading, error } = useQuery(
-    ["DoctorByZipCode"],
-    fetchDoctorsByZipCode
-  );
+  const { data } = useQuery(["DoctorByZipCode"], fetchDoctorsByZipCode);
+
+  useEffect(() => {
+    console.log(data);
+  });
 
   return (
     <MainLayout>

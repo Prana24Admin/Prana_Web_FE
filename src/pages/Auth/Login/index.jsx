@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import "../Register/register.css";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";

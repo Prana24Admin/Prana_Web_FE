@@ -15,15 +15,9 @@ import Young from "../../../assets/images/lab/package/young-indian.jpg";
 import ThyroidBasic from "../../../assets/images/lab/package/thyroid-basic.jpg";
 import Tax from "../../../assets/images/lab/package/tax-saver.jpg";
 
-import { useNavigate } from "react-router-dom";
 import TestPackageCarousel from "../../../components/CarouselLayout/TestPackageCarousel";
 
 const Packages = () => {
-  const navigate = useNavigate();
-  const navigateAppointment = () => {
-    navigate("/inner/doctor/appointment");
-  };
-
   const newArr = [
     {
       Image: BasicWomen,

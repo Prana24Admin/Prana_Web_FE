@@ -58,7 +58,7 @@ const ProductItem = ({ product, wishlistItem = null }) => {
           loading="lazy"
           className="favorites-image"
           src={Image}
-          alt={product.name}
+          alt={product?.name}
         />
         {/* Product name */}
         <p className="favorites-productName">

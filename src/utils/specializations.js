@@ -1,12 +1,6 @@
 import Dentist from "../assets/images/doctor/clinic/dentist.jpg";
 import Dietitian from "../assets/images/doctor/clinic/dietitian.jpg";
 import Gas from "../assets/images/doctor/clinic/gastroenterologist.jpg";
-import GeneralDoctor from "../assets/images/doctor/clinic/generalDoctor.jpg";
-import GeneralSurgeon from "../assets/images/doctor/clinic/generalSurgeon.jpg";
-import Gynecologist from "../assets/images/doctor/clinic/gynecologist.jpg";
-import Orthopedist from "../assets/images/doctor/clinic/orthopedist.jpg";
-import Pediatrician from "../assets/images/doctor/clinic/pediatrician.jpg";
-import Physiotherapist from "../assets/images/doctor/clinic/physiotherapist.jpg";
 
 export const specializations = [
   {

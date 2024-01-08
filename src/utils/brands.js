@@ -4,7 +4,6 @@ import EasyLive from "../assets/images/home/featurebrands/easyLive.png";
 import EasyPharm from "../assets/images/home/featurebrands/easyPharm.jpg";
 import Friend from "../assets/images/home/featurebrands/Friend.jpg";
 import Glucon from "../assets/images/home/featurebrands/Glucon.jpg";
-import SeeAll from "../assets/images/VectorImages/More.png";
 
 export const brands = [
   {

@@ -5,7 +5,7 @@ import "./carousel.css";
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import ProductItem from "../ProductItem";
 import { NextBtn, PreviousBtn } from "./CarouselButtons";
 let slidesToShow = 5;
@@ -75,8 +75,6 @@ const ProductCarousel = ({ multiData }) => {
 };
 
 const CarouselCard = ({ item }) => {
-  const navigate = useNavigate();
-
   return (
     // <div
     //   className="productCard-borderContainer"

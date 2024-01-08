@@ -12,9 +12,7 @@ const LabOrderDetails = () => {
   const { id } = useParams();
 
   // Use the useQuery hook to manage lab order data and its state
-  const { data, isLoading, error } = useQuery(["LabOrderById", id], () =>
-    fetchLabOrderById(id)
-  );
+  const { data } = useQuery(["LabOrderById", id], () => fetchLabOrderById(id));
 
   return (
     <MainLayout>

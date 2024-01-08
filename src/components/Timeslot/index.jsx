@@ -23,11 +23,9 @@ const TimeSlot = ({ doctorId }) => {
   const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
 
   // Using react-query to fetch doctor's time slots
-  const {
-    data: timeSlotData,
-    isLoading,
-    error,
-  } = useQuery(["TimeSlot", doctorId], () => fetchDoctorTimeSlot(doctorId));
+  const { data: timeSlotData } = useQuery(["TimeSlot", doctorId], () =>
+    fetchDoctorTimeSlot(doctorId)
+  );
 
   // Effect hook to update selectedDateData based on selectedDate and timeSlotData
   useEffect(() => {
@@ -129,12 +127,13 @@ const TimeSlot = ({ doctorId }) => {
                     )
                   }
                 >
-                  <p>
-                    {selectedDateData &&
-                      formatTime(selectedDateData.start_time) +
+                  {selectedDateData && (
+                    <p>
+                      {formatTime(selectedDateData.start_time) +
                         " - " +
                         formatTime(selectedDateData.end_time)}
-                  </p>
+                    </p>
+                  )}
                 </div>
               </div>
               {/* Continue Booking button */}

@@ -13,11 +13,9 @@ import { fetchBrandDetails } from "../../../../services/brandsService";
 const BrandDetails = () => {
   const { id } = useParams();
 
-  const {
-    data: brandDetailsData,
-    isLoading,
-    error,
-  } = useQuery(["BrandDetails", id], () => fetchBrandDetails(id));
+  const { data: brandDetailsData } = useQuery(["BrandDetails", id], () =>
+    fetchBrandDetails(id)
+  );
 
   return (
     <MainLayout>

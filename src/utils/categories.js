@@ -3,7 +3,6 @@ import Durex from "../assets/images/home/shop/durex.jpg";
 import Evion from "../assets/images/home/shop/evion.jpg";
 import Harpic from "../assets/images/home/shop/harpic.jpg";
 import HealthCondition from "../assets/images/home/shop/healthCondition.jpg";
-import SeeAll from "../assets/images/VectorImages/More.png";
 
 import FoodDrink from "../assets/images/inner/med/popular/inner-fooddrink.jpg";
 import Vitamin from "../assets/images/inner/med/popular/inner-vitamin.jpg";
@@ -16,7 +15,6 @@ import Deal2 from "../assets/images/inner/med/Deals/innermed-deal2.jpg";
 import Deal3 from "../assets/images/inner/med/Deals/innermed-deal3.jpg";
 import Deal4 from "../assets/images/inner/med/Deals/innermed-deal4.jpg";
 import Deal5 from "../assets/images/inner/med/Deals/innermed-deal5.jpg";
-import Deal6 from "../assets/images/inner/med/Deals/innermed-deal6.jpg";
 
 import LungCare from "../assets/images/inner/med/health/lung-care.jpg";
 import Diabetes from "../assets/images/inner/med/health/diabetic-care.jpg";

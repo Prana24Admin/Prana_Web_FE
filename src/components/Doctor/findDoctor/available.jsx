@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import DoctorCard from "../../DoctorCard";
 import Loader from "../../Loader";
 import doctors from "../../../assets/images/VectorImages/NO_DOCTORS.png";
-import DoctorsNear from "../../../assets/images/VectorImages/Doctors_near_you.png";
 import { fetchDoctorsBySpecialization } from "../../../services/doctorService";
 
 const Available = () => {
@@ -27,7 +26,7 @@ const Available = () => {
         <div className="available-leftContainer">
           <div>
             {/* Doctors title based on data loading and availability */}
-            <p className="available-doctorsTitle">
+            <div className="available-doctorsTitle">
               {isLoading && (
                 <div className="fullContainer">
                   {/* Loader component during data loading */}
@@ -57,7 +56,7 @@ const Available = () => {
                   )}
                 </div>
               )}
-            </p>
+            </div>
           </div>
           {/* DoctorCard components for displaying individual doctor details */}
           {data &&

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NextBtn, PreviousBtn } from "./CarouselButtons";
-import LazyLoadedImage from "../../libs/LazyLoadedImage";
+
 let slidesToShow = 4;
 
 const carouselProperties = {

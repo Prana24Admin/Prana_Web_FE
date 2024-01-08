@@ -4,7 +4,7 @@ import "./appointments.css";
 import { useQuery } from "@tanstack/react-query";
 import Profile from "../../Profile";
 import Loader from "../../../../components/Loader";
-import profile from "../../../../assets/images/profile/avatar.png";
+
 import {
   formatDateToText,
   formatTime,

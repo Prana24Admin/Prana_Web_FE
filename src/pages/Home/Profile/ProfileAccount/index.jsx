@@ -21,7 +21,7 @@ const ProfileAccount = () => {
     phoneNumber: data?.phone_number,
   });
 
-  const { mutate, isLoading } = useMutation(
+  const { mutate } = useMutation(
     (userData) => {
       return updateUserProfile(userData);
     },

@@ -1,10 +1,10 @@
 import React from "react";
 import "./labTestCard.css";
 
-import { useMutation } from "@tanstack/react-query";
-import { handleRefetchLabCartData } from "../../libs/queryFunctions";
+// import { useMutation } from "@tanstack/react-query";
+// import { handleRefetchLabCartData } from "../../libs/queryFunctions";
 import { useNavigate } from "react-router-dom";
-import { handleAddToLabCart } from "../../services/labCartService";
+// import { handleAddToLabCart } from "../../services/labCartService";
 
 // LabTestCard component for rendering a card representing a lab test
 const LabTestCard = ({ test }) => {
@@ -12,18 +12,18 @@ const LabTestCard = ({ test }) => {
   const navigate = useNavigate();
 
   // React Query hook for handling the mutation to add a lab test to the cart
-  const { mutate: mutateLabAdd, isLoading: isAddLoading } = useMutation(
-    // Mutation function to be executed
-    (test) => {
-      return handleAddToLabCart(test.uuid);
-    },
-    {
-      // On successful mutation, refetch the lab cart data
-      onSuccess: () => {
-        handleRefetchLabCartData();
-      },
-    }
-  );
+  // const { mutate: mutateLabAdd, isLoading: isAddLoading } = useMutation(
+  //   // Mutation function to be executed
+  //   (test) => {
+  //     return handleAddToLabCart(test.uuid);
+  //   },
+  //   {
+  //     // On successful mutation, refetch the lab cart data
+  //     onSuccess: () => {
+  //       handleRefetchLabCartData();
+  //     },
+  //   }
+  // );
 
   // JSX structure for rendering a lab test card
   return (

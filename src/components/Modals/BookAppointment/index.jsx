@@ -35,7 +35,7 @@ const BookAppointmentModal = ({
   const [bookingSuccessId, setBookingSuccessId] = useState("");
 
   // React Query hook for handling the mutation (posting booking data)
-  const { mutate, isLoading } = useMutation(
+  const { mutate } = useMutation(
     (bookingData) => {
       return bookDoctorAppointment(bookingData, setBookingSuccessId);
     },

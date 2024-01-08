@@ -9,7 +9,7 @@ export const CouponDrawer = ({
   onClose,
 }) => {
   // Use the useQuery hook to fetch and manage coupon data
-  const { data, isLoading, error } = useQuery(["Coupons"], fetchCoupons);
+  const { data } = useQuery(["Coupons"], fetchCoupons);
 
   // JSX structure for rendering the CouponDrawer component
   return (

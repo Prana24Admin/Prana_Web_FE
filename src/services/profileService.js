@@ -106,20 +106,22 @@ export const handleDeleteUserAddress = async () => {
 };
 
 export const handleDeleteUserAdditionalAddress = async (data, addressId) => {
-  const index = data?.additional_address.findIndex(
-    (address) => address.id === addressId
-  );
-  if (index !== -1) {
-    const additionalAddress = [...data?.additional_address].filter(
-      (address) => address.id !== addressId
+  if (data?.additional_address) {
+    const index = data.additional_address.findIndex(
+      (address) => address.id === addressId
     );
-    const response = await axiosInstance.patch("/users/profile", {
-      additional_address: additionalAddress,
-    });
-    if (response.status === 200 || response.status === 201) {
-      handleRefetchProfileData();
-      toast.success("Deleted");
+    if (index !== -1) {
+      const additionalAddress = [...data.additional_address].filter(
+        (address) => address.id !== addressId
+      );
+      const response = await axiosInstance.patch("/users/profile", {
+        additional_address: additionalAddress,
+      });
+      if (response.status === 200 || response.status === 201) {
+        handleRefetchProfileData();
+        toast.success("Deleted");
+      }
+      return response.data;
     }
-    return response.data;
   }
 };

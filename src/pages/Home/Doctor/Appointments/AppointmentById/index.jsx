@@ -40,7 +40,7 @@ const AppointmentById = () => {
                   Appointment Booked On{" "}
                   <span className="orderDetails-idText">
                     {" "}
-                    {formatDateToText(new Date(data.date), "dd MMMM yyyy")}
+                    {formatDateToText(new Date(data.date))}
                   </span>
                 </p>
 

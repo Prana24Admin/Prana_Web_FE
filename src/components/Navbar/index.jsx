@@ -34,11 +34,13 @@ const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState();
 
-  const {
-    data: profileData,
-    isLoading,
-    error,
-  } = useQuery(["Profile"], () => fetchUserData(setData));
+  const { data: profileData } = useQuery(["Profile"], () =>
+    fetchUserData(setData)
+  );
+
+  useEffect(() => {
+    console.log(profileData);
+  });
 
   const handleLogout = async () => {
     try {
@@ -187,7 +189,7 @@ const Navbar = () => {
                   {searchText &&
                   searchResult &&
                   (searchResult.products?.rows.length > 0 ||
-                    searchResult.tests.rows.length > 0) ? (
+                    searchResult.tests?.rows.length > 0) ? (
                     <div className="navbar-searchResultBox">
                       {searchResult.products.rows.length > 0 &&
                         searchResult.products.rows.length < 8 &&

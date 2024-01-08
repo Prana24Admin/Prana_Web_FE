@@ -3,7 +3,6 @@ import Shilajit from "../assets/images/inner/ayurveda/herbs/shilajit.jpg";
 import Giloy from "../assets/images/inner/ayurveda/herbs/giloy.jpg";
 import Amla from "../assets/images/inner/ayurveda/herbs/amla.jpg";
 import Isabgol from "../assets/images/inner/ayurveda/herbs/isabgol.jpg";
-import More from "../assets/images/VectorImages/More.png";
 
 import Onion from "../assets/images/inner/ayurveda/hair/onion.jpg";
 import Bhringraj from "../assets/images/inner/ayurveda/hair/bhringraj.jpg";

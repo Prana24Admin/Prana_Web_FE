@@ -24,7 +24,7 @@ const RemoveModal = ({
   pathName, // Path indicating the type of cart (e.g., "/lab")
 }) => {
   // React Query hook for handling the mutation (adding to wishlist)
-  const { mutate, isLoading } = useMutation(
+  const { mutate } = useMutation(
     (productId) => {
       return addToWishlist(productId);
     },

@@ -36,7 +36,7 @@ const Coupon = ({
             loading="lazy"
             src="https://i.pinimg.com/originals/c7/84/67/c78467db9ff497393cb548a48f02d451.png"
             alt={"coupon"}
-            className={smallCoupon ? "coupon-image" : "coupon-image"}
+            className="coupon-image"
           />
         </div>
         {/* Vertical line separator */}
@@ -57,7 +57,7 @@ const Coupon = ({
         {smallCoupon && (
           <button
             onClick={() => handleCouponSelect(item)}
-            className={"small-copybtn"}
+            className="small-copybtn"
           >
             "SELECT"
           </button>

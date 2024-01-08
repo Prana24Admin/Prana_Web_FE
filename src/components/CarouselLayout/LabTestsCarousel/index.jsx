@@ -62,10 +62,8 @@ const LabTestsCarousel = ({ multiData }) => {
   // Adjusting the number of slides to show based on the window width
   if (width <= 426) {
     slidesToShow = 1;
-  } else if (width > 426 && width <= 769) {
+  } else if (width <= 769) {
     slidesToShow = 3;
-  } else if (width > 769 && width <= 1025) {
-    slidesToShow = 4;
   } else {
     slidesToShow = 4;
   }

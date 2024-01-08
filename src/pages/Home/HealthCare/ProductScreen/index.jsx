@@ -206,7 +206,10 @@ const Product = () => {
                         </p>
                         {productData.meta[tag]
                           .split(".")
-                          .map((line) => line.length > 0 && <li>{line}.</li>)}
+                          .map(
+                            (line, index) =>
+                              line.length > 0 && <li key={index}>{line}.</li>
+                          )}
                       </div>
                     )
                 )}

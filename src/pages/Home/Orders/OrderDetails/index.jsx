@@ -94,7 +94,10 @@ const HealthCareOrderDetails = () => {
             <div className="orderDetails-borderContainer">
               <div className="orderDetails-itemsJustifyContainer">
                 {data.items.map((orderItem) => (
-                  <div className="orderDetails-borderFlexContainer">
+                  <div
+                    key={orderItem.uuid}
+                    className="orderDetails-borderFlexContainer"
+                  >
                     <img
                       className="orderDetails-image"
                       src={image}

@@ -62,7 +62,7 @@ const ProductItem = ({ product, wishlistItem = null }) => {
         />
         {/* Product name */}
         <p className="favorites-productName">
-          {wishlistItem !== null ? wishlistItem?.product.name : product?.name}
+          {wishlistItem !== null ? wishlistItem?.product?.name : product?.name}
         </p>
         {/* Product price information */}
         <div className="favorites-flexContainer">

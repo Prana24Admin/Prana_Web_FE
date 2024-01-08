@@ -186,7 +186,7 @@ const Navbar = () => {
                   />
                   {searchText &&
                   searchResult &&
-                  (searchResult.products.rows.length > 0 ||
+                  (searchResult.products?.rows.length > 0 ||
                     searchResult.tests.rows.length > 0) ? (
                     <div className="navbar-searchResultBox">
                       {searchResult.products.rows.length > 0 &&

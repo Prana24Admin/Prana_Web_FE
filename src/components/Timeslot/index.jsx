@@ -83,7 +83,7 @@ const TimeSlot = ({ doctorId }) => {
               <span className="doctorProfile-subheader">15mins</span>
             </p>
             {/* Consultation type information */}
-            {Object.keys(selectedDateData).length > 0 && (
+            {selectedDateData && Object.keys(selectedDateData).length > 0 && (
               <p className="doctorProfile-description">
                 Consultation type:{" "}
                 <span className="doctorProfile-subheader">

@@ -53,7 +53,7 @@ const BrandDetails = () => {
               >
                 {brandDetailsData.items.length > 0 ? (
                   brandDetailsData.items.map((product) => (
-                    <div className="card-borderContainer">
+                    <div key={product.uuid} className="card-borderContainer">
                       <img
                         loading="lazy"
                         className="card-image"

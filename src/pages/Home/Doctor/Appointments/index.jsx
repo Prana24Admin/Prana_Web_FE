@@ -38,7 +38,7 @@ const Appointments = () => {
       {data && (
         <div className="appointments-mainContainer">
           {data.data.map((appointment) => (
-            <div className="appointments-boxContainer">
+            <div key={appointment.uuid} className="appointments-boxContainer">
               <div className="appointments-justifyContainer">
                 <div>
                   <p className="appointments-titleText">

@@ -72,9 +72,12 @@ export const addUserAddress = async (
     }
   } else {
     // Edit a specific additional address
-    const index = data?.additional_address.findIndex(
-      (address) => address.id === additionalAddress.id
-    );
+    const index =
+      data?.additional_address &&
+      data.additional_address.findIndex(
+        (address) => address.id === additionalAddress.id
+      );
+
     if (index !== -1) {
       const updatedAddress = [...(data.additional_address || [])];
       updatedAddress[index] = { ...updatedAddress[index], ...formData };

@@ -123,7 +123,7 @@ const LabTestsById = () => {
                       </div>
                       <div className="packageOrder-packageFlex">
                         {testData.tests.map((test) => (
-                          <p className="packageOrder-flex">
+                          <p key={test.name} className="packageOrder-flex">
                             <Dot size={35} color="var(--neutralBlack)" />
                             <span className="packageOrder-descriptionText">
                               {test.name}

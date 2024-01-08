@@ -38,10 +38,6 @@ const Navbar = () => {
     fetchUserData(setData)
   );
 
-  useEffect(() => {
-    console.log(profileData);
-  });
-
   const handleLogout = async () => {
     try {
       const response = await logout();

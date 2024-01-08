@@ -3,6 +3,7 @@ import "../../pages/Home/Wishlist/wishlist.css";
 
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
+import Image from "../../assets/images/home/body.png";
 
 import toast from "react-hot-toast";
 import { useMutation } from "@tanstack/react-query";
@@ -48,22 +49,44 @@ const ProductItem = ({ product, wishlistItem = null }) => {
         className="favorites-cardContainer"
         onClick={() =>
           wishlistItem
-            ? navigate(`/product/${wishlistItem?.product?.uuid}`)
-            : navigate(`/product/${product?.uuid}`)
+            ? navigate(`/product/${wishlistItem.product.uuid}`)
+            : navigate(`/product/${product.uuid}`)
         }
       >
-        {/* ... (rest of the component) ... */}
+        {/* Product image */}
+        <img
+          loading="lazy"
+          className="favorites-image"
+          src={Image}
+          alt={product?.name}
+        />
+        {/* Product name */}
+        <p className="favorites-productName">
+          {wishlistItem !== null ? wishlistItem?.product?.name : product?.name}
+        </p>
+        {/* Product price information */}
+        <div className="favorites-flexContainer">
+          <p className="favorites-productPrice">
+            ₹{wishlistItem ? wishlistItem.product.discount : product.discount}
+          </p>
+          <p style={{ fontSize: "0.85rem", color: "var(--neutralBlack)" }}>
+            MRP:
+            <span className="favorites-mrpPrice">
+              ₹{wishlistItem ? wishlistItem.product.price : product.price}
+            </span>
+          </p>
+        </div>
       </div>
       {/* Trash icon for removing from wishlist */}
       {wishlistItem && (
-        <div onClick={() => removeFromWishlist(wishlistItem?.uuid)}>
+        <div onClick={() => removeFromWishlist(wishlistItem.uuid)}>
           <Trash2 className="favorites-trashIcon" size={32} />
         </div>
       )}
       {/* Add to cart button for wishlist items */}
       {wishlistItem && (
         <button
-          onClick={() => mutate(wishlistItem?.product?.uuid)}
+          onClick={() => mutate(wishlistItem.product.uuid)}
           className="wishlist-addToCartButton"
         >
           Add to cart

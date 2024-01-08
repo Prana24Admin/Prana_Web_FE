@@ -81,7 +81,7 @@ const RemoveModal = ({
                 onClick={() =>
                   pathName.includes("/lab")
                     ? removeLabCartItem(labTest.uuid)
-                    : removeCartItem(product.uuid)
+                    : removeCartItem(product.uuid, onClose)
                 }
                 className="removeModal-removeButton"
               >

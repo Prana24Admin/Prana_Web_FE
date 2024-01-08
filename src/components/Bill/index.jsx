@@ -20,16 +20,20 @@ const Bill = ({
 
   const handleToCheckout = () => {
     // Storing the bill details in localStorage before navigation
-    localStorage.setItem(
-      "bill",
-      JSON.stringify({
-        subTotal,
-        selectedCoupon,
-        couponValue,
-        discount,
-        sampleCollectionCharges,
-      })
-    );
+
+    const billDetails = {
+      subTotal,
+      discount,
+      sampleCollectionCharges,
+    };
+
+    if (selectedCoupon) {
+      // Only set the selectedCoupon to localStorage if it's not null
+      billDetails.selectedCoupon = selectedCoupon;
+      billDetails.couponValue = couponValue;
+    }
+
+    localStorage.setItem("bill", JSON.stringify(billDetails));
 
     // Determining the correct checkout route based on the pathname
     if (pathName === "/lab/cart") navigate("/lab/checkout");

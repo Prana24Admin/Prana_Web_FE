@@ -27,8 +27,9 @@ export const placeHealthCareCartOrder = async (
     const shippingAddress = `${completeAddress.houseNumber}, ${completeAddress.street}, ${completeAddress.city}, ${completeAddress.state}, ${completeAddress.pinCode}`;
     const billingAddress = shippingAddress;
 
-    let coupon_code = JSON.parse(localStorage.getItem("bill"))?.selectedCoupon
-      .code;
+    // Check if the "bill" in localStorage contains a selectedCoupon
+    const billDetails = JSON.parse(localStorage.getItem("bill"));
+    const coupon_code = billDetails?.selectedCoupon?.code;
 
     const products = cartData.map((item) => {
       return item.product.uuid;
@@ -40,7 +41,10 @@ export const placeHealthCareCartOrder = async (
     formData.append("shipping_address", shippingAddress);
     formData.append("billing_address", billingAddress);
     formData.append("payment_method", paymentMethod);
-    formData.append("coupon_code", coupon_code);
+    // Append coupon_code to formData only if it's present in the billDetails
+    if (coupon_code) {
+      formData.append("coupon_code", coupon_code);
+    }
 
     const response = await axiosInstance.post("/orders", formData, {
       headers: {

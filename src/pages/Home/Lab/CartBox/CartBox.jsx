@@ -14,9 +14,7 @@ const CartBox = () => {
             <div className="cartBox-iconContainer">
               <ShoppingCart size={25} color="var(--crimsonPink)" />
             </div>
-            <p className="cartBox-text">
-              You have 1 item in your cart worth ₹655. Click here to view cart.
-            </p>
+            <p className="cartBox-text">Click here to view your lab cart.</p>
           </div>
           <button className="cartBox-button">View Cart</button>
         </div>

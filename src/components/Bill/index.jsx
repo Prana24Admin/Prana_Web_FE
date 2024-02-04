@@ -118,7 +118,11 @@ const Bill = ({
             <p className="cart-descriptionText">Delivery charges</p>
             <p className="cart-descriptionText">
               + ₹
-              {Math.ceil((subTotal - discount - couponValue) * 0.1).toFixed(2)}
+              {Math.ceil(
+                couponValue
+                  ? (subTotal - discount - couponValue) * 0.1
+                  : (subTotal - discount) * 0.1
+              ).toFixed(2)}
             </p>
           </div>
         )}
@@ -134,9 +138,13 @@ const Bill = ({
               : `₹${(
                   subTotal -
                   discount -
-                  couponValue +
+                  (couponValue || 0) +
                   (!pathName.includes("/cart")
-                    ? Math.ceil((subTotal - discount - couponValue) * 0.1)
+                    ? Math.ceil(
+                        couponValue
+                          ? (subTotal - discount - couponValue) * 0.1
+                          : (subTotal - discount) * 0.1
+                      )
                     : 0)
                 ).toFixed(2)}`}
           </p>

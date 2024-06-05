@@ -20,7 +20,8 @@ const ForgotPassword = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "https://api-prana.prana24.in/api/auth/forgot-password",
+        // "https://api-prana.prana24.in/api/auth/forgot-password",
+        "http://192.168.1.6:4000/api/auth/forgot-password",
         data
       );
       if (response.status === 200) {

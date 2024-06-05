@@ -4,7 +4,8 @@ import axiosInstance from "../libs/axios";
 
 export const login = async (data) => {
   const response = await axios.post(
-    "https://api-prana.prana24.in/api/auth/login",
+    // "https://api-prana.prana24.in/api/auth/login",
+    "http://192.168.1.6:4000/api/auth/login",
     data
   );
   if (response.status === 200) {
@@ -25,7 +26,8 @@ export const login = async (data) => {
 
 export const signup = async (data) => {
   const response = await axios.post(
-    "https://api-prana.prana24.in/api/auth/signup",
+    // "https://api-prana.prana24.in/api/auth/signup",
+    "http://192.168.1.6:4000/api/auth/signup",
     data
   );
   return response;

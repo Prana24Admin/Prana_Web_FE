@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api-prana.prana24.in/api",
+  // baseURL: "https://api-prana.prana24.in/api",
+  baseUrl: "http://192.168.1.6:4000/api",
 });
 
 axiosInstance.interceptors.request.use(

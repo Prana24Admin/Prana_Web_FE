@@ -22,7 +22,8 @@ export const updateUserProfile = async (userData) => {
 export const uploadUserImage = async (formData) => {
   try {
     const response = await axiosInstance.post(
-      "https://api-prana.prana24.in/api/users/profile/upload",
+      // "https://api-prana.prana24.in/api/users/profile/upload",
+      "http://192.168.1.6:4000/api/users/profile/upload",
       formData,
       {
         headers: {

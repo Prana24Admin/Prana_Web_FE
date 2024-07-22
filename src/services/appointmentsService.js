@@ -1,12 +1,16 @@
 import axiosInstance from "../libs/axios";
 
 export const fetchAllAppointments = async () => {
-  const response = await axiosInstance.get("/users/appointment/");
+  const response = await axiosInstance.get(
+    "http://192.168.1.2:4000/api/users/appointment/"
+  );
   return response.data;
 };
 
 export const fetchAppointmentById = async (id) => {
-  const response = await axiosInstance.get(`/users/appointment/${id}`);
+  const response = await axiosInstance.get(
+    `http://192.168.1.2:4000/api/users/appointment/${id}`
+  );
   return response.data;
 };
 
@@ -19,11 +23,14 @@ export const bookDoctorAppointment = async (
   const consultationType = bookingData.type === "offline" ? true : false;
 
   // Send a POST request to create the appointment
-  const response = await axiosInstance.post("/users/appointment/", {
-    date: bookingData.date,
-    timeslot_id: bookingData.timeslot_id,
-    is_offline: consultationType,
-  });
+  const response = await axiosInstance.post(
+    "http://192.168.1.2:4000/api/users/appointment/",
+    {
+      date: bookingData.date,
+      timeslot_id: bookingData.timeslot_id,
+      is_offline: consultationType,
+    }
+  );
 
   // If the request is successful, update state and set the booking success flag
   if (response.status === 201 || response.status === 200) {

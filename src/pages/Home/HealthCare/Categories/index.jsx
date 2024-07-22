@@ -1,9 +1,10 @@
 import React from "react";
+// import "./categories.css";
 import "./categories.css";
 
 import ImageP from "../../../../assets/images/inner/med/popular/inner-smoking.jpg";
 
-import { useQuery } from "@tanstack/react-query";
+import { isError, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../../../components/Loader";
 import { fetchCategories } from "../../../../services/filtersService";
@@ -13,6 +14,7 @@ const Categories = () => {
 
   // Use the useQuery hook to manage category data and its state
   const { data, isLoading, error } = useQuery(["categories"], fetchCategories);
+  error && console.log(error);
 
   return (
     <>

@@ -4,14 +4,16 @@ import { handleRefetchCartItems } from "../libs/queryFunctions";
 
 // Function to fetch cart items using async function
 export const fetchCartData = async () => {
-  const response = await axiosInstance.get("/cart");
+  const response = await axiosInstance.get("http://192.168.1.2:4000/api/cart");
   return response.data;
 };
 
 // Function to handle quantity updates and add to cart
 export const handleCartQuantity = async (product) => {
   try {
-    const cartData = await axiosInstance.get("/cart");
+    const cartData = await axiosInstance.get(
+      "http://192.168.1.2:4000/api/cart"
+    );
     const existingCartItem = cartData.data.find(
       (item) => item.product.uuid === product.productId
     );
@@ -20,19 +22,25 @@ export const handleCartQuantity = async (product) => {
         toast.error("Product is already present in the cart.");
         return;
       } else {
-        const response = await axiosInstance.post(`/cart`, {
-          quantity: product.quantity,
-          product_id: product.productId,
-        });
+        const response = await axiosInstance.post(
+          `http://192.168.1.2:4000/api/cart`,
+          {
+            quantity: product.quantity,
+            product_id: product.productId,
+          }
+        );
         if (response.status === 200) {
           toast.success("Product quantity updated in the cart.");
         }
       }
     } else {
-      const response = await axiosInstance.post("/cart", {
-        quantity: product.quantity ?? 1,
-        product_id: product.productId,
-      });
+      const response = await axiosInstance.post(
+        "http://192.168.1.2:4000/api/cart",
+        {
+          quantity: product.quantity ?? 1,
+          product_id: product.productId,
+        }
+      );
       if (response.status === 201 || response.status === 200) {
         toast.success("Added to cart");
       }
@@ -44,17 +52,22 @@ export const handleCartQuantity = async (product) => {
 
 //Function to add item to cart
 export const addToCart = async (productId) => {
-  const response = await axiosInstance.post("/cart", {
-    quantity: 1,
-    product_id: productId,
-  });
+  const response = await axiosInstance.post(
+    "http://192.168.1.2:4000/api/cart",
+    {
+      quantity: 1,
+      product_id: productId,
+    }
+  );
 
   return response.data;
 };
 
 //Function to remove items from cart
 export const removeCartItem = async (productId, onClose) => {
-  const response = await axiosInstance.delete(`/cart/${productId}`);
+  const response = await axiosInstance.delete(
+    `http://192.168.1.2:4000/api/cart/${productId}`
+  );
   if (response.status === 200) {
     toast.success("Product removed");
     localStorage.removeItem(productId);

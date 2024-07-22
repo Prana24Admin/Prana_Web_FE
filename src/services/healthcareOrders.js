@@ -3,13 +3,17 @@ import axiosInstance from "../libs/axios";
 
 // Function to fetch all healthcare orders
 export const fetchAllOrders = async () => {
-  const response = await axiosInstance.get("/orders");
+  const response = await axiosInstance.get(
+    "http://192.168.1.2:4000/api/orders"
+  );
   return response.data;
 };
 
 // Function to fetch order details by ID
 export const fetchOrderHealthcareById = async (id) => {
-  const response = await axiosInstance.get(`/orders/${id}`);
+  const response = await axiosInstance.get(
+    `http://192.168.1.2:4000/api/orders/${id}`
+  );
   return response.data;
 };
 
@@ -46,11 +50,15 @@ export const placeHealthCareCartOrder = async (
       formData.append("coupon_code", coupon_code);
     }
 
-    const response = await axiosInstance.post("/orders", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = await axiosInstance.post(
+      "http://192.168.1.2:4000/api/orders",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
 
     if (response.status === 200) {
       setSuccessOrderId(response.data.uuid);

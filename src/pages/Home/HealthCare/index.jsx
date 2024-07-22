@@ -1,4 +1,5 @@
 import React from "react";
+import "./healthCare.css";
 
 import Categories from "./Categories";
 import MainLayout from "../../../components/MainLayout";

@@ -8,6 +8,11 @@ import NotFound from "./pages/404";
 import Register from "./pages/Auth/Register";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import ProtectedRoute from "./libs/ProtectedRoute";
+import MedicalHistory from "./pages/Home/MedicalHistory";
+import Remainders from "./pages/Home/Remainders";
+import AddRefillMedicine from "./pages/Home/RefilMedicine";
+import EquipmentRental from "./pages/Home/EquipmentRental";
+import VitalSigns from "./pages/Home/VitalSigns";
 
 const About = lazy(() => import("./pages/Home/About"));
 const Contact = lazy(() => import("./pages/Home/Contact"));
@@ -53,6 +58,9 @@ const Prescription = lazy(() =>
 );
 const HealthcareOrders = lazy(() =>
   import("./pages/Home/Orders/HealthCareOrders")
+);
+const HomeHealthCare = lazy(() =>
+  import("./pages/Home/HealthCare/HomeHealthCare")
 );
 const HealthCareOrderDetails = lazy(() =>
   import("./pages/Home/Orders/OrderDetails")
@@ -238,6 +246,54 @@ const Navigation = () => {
             element={
               <ProtectedRoute>
                 <AppointmentById />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/homehealthcare"
+            element={
+              <ProtectedRoute>
+                <HomeHealthCare />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/medicalHistory"
+            element={
+              <ProtectedRoute>
+                <MedicalHistory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/remainders"
+            element={
+              <ProtectedRoute>
+                <Remainders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/addrefillmedicine"
+            element={
+              <ProtectedRoute>
+                <AddRefillMedicine />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/equipmentrental"
+            element={
+              <ProtectedRoute>
+                <EquipmentRental />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/vitalsigns"
+            element={
+              <ProtectedRoute>
+                <VitalSigns />
               </ProtectedRoute>
             }
           />

@@ -3,18 +3,23 @@ import axiosInstance from "../libs/axios";
 import { handleRefetchProfileData } from "../libs/queryFunctions";
 
 export const fetchUserData = async (setData) => {
-  const response = await axiosInstance.get("/users/profile");
+  const response = await axiosInstance.get(
+    "http://192.168.1.2:4000/api/users/profile"
+  );
   setData(response.data);
   return response.data;
 };
 
 export const updateUserProfile = async (userData) => {
-  const response = await axiosInstance.patch("/users/profile", {
-    first_name: userData.firstName,
-    last_name: userData.lastName,
-    email: userData.email,
-    phone_number: userData.phoneNumber,
-  });
+  const response = await axiosInstance.patch(
+    "http://192.168.1.2:4000/api/users/profile",
+    {
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      email: userData.email,
+      phone_number: userData.phoneNumber,
+    }
+  );
 
   return response.data;
 };
@@ -22,8 +27,8 @@ export const updateUserProfile = async (userData) => {
 export const uploadUserImage = async (formData) => {
   try {
     const response = await axiosInstance.post(
-      // "https://api-prana.prana24.in/api/users/profile/upload",
-      "http://192.168.1.6:4000/api/users/profile/upload",
+      // "http://192.168.1.2:4000/api/users/profile/upload",
+      "http://192.168.1.2:4000/api/users/profile/upload",
       formData,
       {
         headers: {
@@ -51,9 +56,12 @@ export const addUserAddress = async (
   if (method === "add") {
     if (!data || !data.address) {
       // If user has no address, patch profile with the new address
-      response = await axiosInstance.patch("/users/profile", {
-        address: formData,
-      });
+      response = await axiosInstance.patch(
+        "http://192.168.1.2:4000/api/users/profile",
+        {
+          address: formData,
+        }
+      );
     } else {
       // If user has an address, add the new address to additional addresses
       response = await axiosInstance.patch("/users/profile", {
@@ -95,9 +103,12 @@ export const addUserAddress = async (
 };
 
 export const handleDeleteUserAddress = async () => {
-  const response = await axiosInstance.patch("/users/profile", {
-    address: {},
-  });
+  const response = await axiosInstance.patch(
+    "http://192.168.1.2:4000/api/users/profile",
+    {
+      address: {},
+    }
+  );
 
   if (response.status === 200 || response.status === 201) {
     handleRefetchProfileData();
@@ -115,9 +126,12 @@ export const handleDeleteUserAdditionalAddress = async (data, addressId) => {
       const additionalAddress = [...data.additional_address].filter(
         (address) => address.id !== addressId
       );
-      const response = await axiosInstance.patch("/users/profile", {
-        additional_address: additionalAddress,
-      });
+      const response = await axiosInstance.patch(
+        "http://192.168.1.2:4000/api/users/profile",
+        {
+          additional_address: additionalAddress,
+        }
+      );
       if (response.status === 200 || response.status === 201) {
         handleRefetchProfileData();
         toast.success("Deleted");

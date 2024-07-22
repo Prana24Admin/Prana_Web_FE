@@ -125,6 +125,50 @@ const Profile = ({ children }) => {
                     <div style={{ width: "10%" }} />
                     <p className="profile-innerOptionsText">Appointments</p>
                   </div>
+                  <div
+                    onClick={() => navigate("/equipmentrental")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Equipment Rental</p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/homehealthcare")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Home Health-Care</p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/medicalhistory")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Medical History</p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/remainders")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Remainders</p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/addrefillmedicine")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">
+                      Add Refill medicine
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => navigate("/vitalsigns")}
+                    className="profile-optionsMainContainer"
+                  >
+                    <div style={{ width: "10%" }} />
+                    <p className="profile-innerOptionsText">Vital Signs</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -4,7 +4,7 @@ import { handleRefetchProfileData } from "../libs/queryFunctions";
 
 export const fetchUserData = async (setData) => {
   const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/users/profile"
+    "users/profile"
   );
   setData(response.data);
   return response.data;
@@ -12,7 +12,7 @@ export const fetchUserData = async (setData) => {
 
 export const updateUserProfile = async (userData) => {
   const response = await axiosInstance.patch(
-    "http://192.168.1.2:4000/api/users/profile",
+    "users/profile",
     {
       first_name: userData.firstName,
       last_name: userData.lastName,
@@ -27,8 +27,7 @@ export const updateUserProfile = async (userData) => {
 export const uploadUserImage = async (formData) => {
   try {
     const response = await axiosInstance.post(
-      // "http://192.168.1.2:4000/api/users/profile/upload",
-      "http://192.168.1.2:4000/api/users/profile/upload",
+      "users/profile/upload",
       formData,
       {
         headers: {
@@ -57,7 +56,7 @@ export const addUserAddress = async (
     if (!data || !data.address) {
       // If user has no address, patch profile with the new address
       response = await axiosInstance.patch(
-        "http://192.168.1.2:4000/api/users/profile",
+        "users/profile",
         {
           address: formData,
         }
@@ -104,7 +103,7 @@ export const addUserAddress = async (
 
 export const handleDeleteUserAddress = async () => {
   const response = await axiosInstance.patch(
-    "http://192.168.1.2:4000/api/users/profile",
+    "users/profile",
     {
       address: {},
     }
@@ -127,7 +126,7 @@ export const handleDeleteUserAdditionalAddress = async (data, addressId) => {
         (address) => address.id !== addressId
       );
       const response = await axiosInstance.patch(
-        "http://192.168.1.2:4000/api/users/profile",
+        "users/profile",
         {
           additional_address: additionalAddress,
         }

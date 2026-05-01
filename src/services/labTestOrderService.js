@@ -4,7 +4,7 @@ import axiosInstance from "../libs/axios";
 // Function to fetch all lab test orders
 export const fetchAllLabOrders = async () => {
   const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/orders/laborders/"
+    "orders/laborders/"
   );
   return response.data;
 };
@@ -12,7 +12,7 @@ export const fetchAllLabOrders = async () => {
 // Function to fetch lab order details by ID
 export const fetchLabOrderById = async (id) => {
   const response = await axiosInstance.get(
-    `http://192.168.1.2:4000/api/orders/laborders/${id}`
+    `orders/laborders/${id}`
   );
   return response.data;
 };
@@ -46,7 +46,7 @@ export const placeLabCartOrder = async (
     // formData.append("coupon_code", coupon_code);
 
     const response = await axiosInstance.post(
-      "http://192.168.1.2:4000/api/orders/laborders",
+      "orders/laborders",
       formData,
       {
         headers: {

@@ -4,14 +4,14 @@ import { handleRefetchWishlistData } from "../libs/queryFunctions";
 
 export const fetchWishlistData = async () => {
   const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/wishlist"
+    "wishlist"
   );
   return response.data;
 };
 
 export const addToWishlist = async (productId) => {
   const response = await axiosInstance.post(
-    "http://192.168.1.2:4000/api/wishlist",
+    "wishlist",
     {
       product_id: productId,
       quantity: 1,
@@ -24,7 +24,7 @@ export const addToWishlist = async (productId) => {
 export const removeFromWishlist = async (id) => {
   try {
     const response = await axiosInstance.delete(
-      `http://192.168.1.2:4000/api/wishlist/${id}`
+      `wishlist/${id}`
     );
     if (response.status === 200) {
       // Display a success notification using toast.

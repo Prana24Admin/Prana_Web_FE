@@ -44,7 +44,11 @@ const Login = () => {
       }
     } catch (error) {
       // Handle any errors that may occur during login.
-      toast.error("An error occurred while logging in.");
+      const message =
+        error?.response?.data?.error ||
+        error?.response?.data?.message ||
+        "An error occurred while logging in.";
+      toast.error(message);
       console.error("Login error:", error);
     }
   };

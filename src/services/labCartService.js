@@ -5,7 +5,7 @@ import { handleRefetchLabCartData } from "../libs/queryFunctions";
 // Function to fetch lab cart data
 export const fetchLabCartData = async () => {
   const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/cart/labcart"
+    "cart/labcart"
   );
   return response.data;
 };
@@ -16,7 +16,7 @@ export const handleAddToLabCart = async (testId, navigate, data) => {
     return toast.error("Login");
   }
   const response = await axiosInstance.post(
-    "http://192.168.1.2:4000/api/cart/labcart",
+    "cart/labcart",
     {
       lab_test_id: testId,
     }
@@ -32,7 +32,7 @@ export const handleAddToLabCart = async (testId, navigate, data) => {
 //Function to remove lab test from cart
 export const removeLabCartItem = async (testId) => {
   const response = await axiosInstance.delete(
-    `http://192.168.1.2:4000/api/cart/labcart/${testId}`
+    `cart/labcart/${testId}`
   );
   if (response.status === 200) {
     toast.success("Test removed");

@@ -4,7 +4,7 @@ import axiosInstance from "../libs/axios";
 export const fetchDoctorById = async (id, setData) => {
   try {
     const response = await axiosInstance.get(
-      `http://192.168.1.2:4000/api/doctor/${id}`
+      `doctor/${id}`
     );
     setData(response.data);
     return response.data;
@@ -16,7 +16,7 @@ export const fetchDoctorById = async (id, setData) => {
 export const fetchDoctorsByZipCode = async () => {
   const zipcode = localStorage.getItem("location").split(",")[0];
   const response = await axiosInstance.get(
-    `http://192.168.1.2:4000/api/doctor?zipcode=${zipcode}`
+    `doctor?zipcode=${zipcode}`
   );
   return response.data;
 };
@@ -24,7 +24,7 @@ export const fetchDoctorsByZipCode = async () => {
 // Function to fetch doctors by specialization from the server
 export const fetchDoctorsBySpecialization = async (id) => {
   const response = await axiosInstance.get(
-    `http://192.168.1.2:4000/api/doctor/specialization/${id}`
+    `doctor/specialization/${id}`
   );
   return response.data;
 };

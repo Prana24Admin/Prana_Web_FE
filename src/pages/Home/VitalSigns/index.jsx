@@ -25,10 +25,7 @@ const VitalSigns = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post(
-        "http://192.168.1.2:4000/api/vitals",
-        formData
-      );
+      const response = await axiosInstance.post("vitals", formData);
       console.log("Response:", response.data);
     } catch (error) {
       console.error("Error submitting form:", error);

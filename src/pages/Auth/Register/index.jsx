@@ -46,7 +46,9 @@ const Register = () => {
       }
     } catch (error) {
       // Handle any errors that may occur during registration.
-      toast.error("An error occurred while registering.");
+      const message =
+        error?.response?.data?.message || "An error occurred while registering.";
+      toast.error(message);
       console.error("Registration error:", error);
     }
   };

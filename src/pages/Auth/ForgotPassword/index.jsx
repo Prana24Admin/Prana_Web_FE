@@ -1,9 +1,9 @@
 import React from "react";
 import AuthLayout from "../../../components/AuthLayout";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../libs/axios";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -19,11 +19,7 @@ const ForgotPassword = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        // "http://192.168.1.2:4000/api/auth/forgot-password",
-        "http://192.168.1.2:4000/api/auth/forgot-password",
-        data
-      );
+      const response = await axiosInstance.post("auth/forgot-password", data);
       if (response.status === 200) {
         // Display a success toast when the password reset link is sent.
         toast.success("Password reset link has been sent to your email.");

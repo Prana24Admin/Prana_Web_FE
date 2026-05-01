@@ -1,13 +1,8 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import axiosInstance from "../libs/axios";
 
 export const login = async (data) => {
-  const response = await axios.post(
-    // "http://192.168.1.2:4000/api/auth/login",
-    "http://192.168.1.2:4000/api/auth/login",
-    data
-  );
+  const response = await axiosInstance.post("users/signin", data);
   if (response.status === 200) {
     // Display a success toast when the login is successful.
     toast.success("Login successful");
@@ -25,11 +20,7 @@ export const login = async (data) => {
 };
 
 export const signup = async (data) => {
-  const response = await axios.post(
-    // "http://192.168.1.2:4000/api/auth/signup",
-    "http://192.168.1.2:4000/api/auth/signup",
-    data
-  );
+  const response = await axiosInstance.post("users/signup", data);
   return response;
 };
 

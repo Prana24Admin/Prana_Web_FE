@@ -3,16 +3,14 @@ import axiosInstance from "../libs/axios";
 
 // Function to fetch all healthcare orders
 export const fetchAllOrders = async () => {
-  const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/orders"
-  );
+  const response = await axiosInstance.get("orders");
   return response.data;
 };
 
 // Function to fetch order details by ID
 export const fetchOrderHealthcareById = async (id) => {
   const response = await axiosInstance.get(
-    `http://192.168.1.2:4000/api/orders/${id}`
+    `orders/${id}`
   );
   return response.data;
 };
@@ -51,7 +49,7 @@ export const placeHealthCareCartOrder = async (
     }
 
     const response = await axiosInstance.post(
-      "http://192.168.1.2:4000/api/orders",
+      "orders",
       formData,
       {
         headers: {

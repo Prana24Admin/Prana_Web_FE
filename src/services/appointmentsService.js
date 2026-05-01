@@ -2,14 +2,14 @@ import axiosInstance from "../libs/axios";
 
 export const fetchAllAppointments = async () => {
   const response = await axiosInstance.get(
-    "http://192.168.1.2:4000/api/users/appointment/"
+    "users/appointment/"
   );
   return response.data;
 };
 
 export const fetchAppointmentById = async (id) => {
   const response = await axiosInstance.get(
-    `http://192.168.1.2:4000/api/users/appointment/${id}`
+    `users/appointment/${id}`
   );
   return response.data;
 };
@@ -24,7 +24,7 @@ export const bookDoctorAppointment = async (
 
   // Send a POST request to create the appointment
   const response = await axiosInstance.post(
-    "http://192.168.1.2:4000/api/users/appointment/",
+    "users/appointment/",
     {
       date: bookingData.date,
       timeslot_id: bookingData.timeslot_id,

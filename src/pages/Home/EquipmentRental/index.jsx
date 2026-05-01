@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./equipmentRental.css";
 import Profile from "../Profile";
 import Input from "../../../components/Input";
@@ -21,9 +20,7 @@ const EquipmentRental = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axiosInstance.get(
-          "http://192.168.1.2:4000/api/equipments"
-        );
+        const response = await axiosInstance.get("equipments");
         setServices(response.data.data);
       } catch (error) {
         console.error("Error fetching services:", error);
@@ -75,10 +72,7 @@ const EquipmentRental = () => {
     // console.log("Data", selectedService);
 
     try {
-      const response = await axiosInstance.post(
-        "http://192.168.1.2:4000/api/equipment-rental",
-        data
-      );
+      const response = await axiosInstance.post("equipment-rental", data);
       console.log("API response:", response.data);
       alert("Rental request submitted successfully!");
     } catch (error) {
